@@ -558,27 +558,14 @@
       font-weight: 600;
     }
 
-    /* ---------- GALLERY SECTION ---------- */
+    /* ---------- GALLERY SECTION (CLEAN - NO TEXT) ---------- */
     .gallery {
       padding: 40px 0 50px;
       margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.4s both;
     }
 
-    .gallery-intro {
-      max-width: 650px;
-      margin: 0 auto 30px;
-      text-align: center;
-      font-size: 1.05rem;
-      color: #5a4030;
-      line-height: 1.7;
-    }
-
-    .gallery-intro i {
-      color: #c49a6c;
-    }
-
-    /* Masonry grid layout */
+    /* ✅ Clean gallery grid - just photos */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -591,7 +578,6 @@
       box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08);
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-      position: relative;
       background: #f5ede4;
       aspect-ratio: 1 / 1;
     }
@@ -599,12 +585,10 @@
     /* Different aspect ratios for variety */
     .gallery-item:nth-child(1) {
       aspect-ratio: 1 / 1.2;
-      grid-row: span 1;
     }
 
     .gallery-item:nth-child(2) {
       aspect-ratio: 1.2 / 1;
-      grid-column: span 1;
     }
 
     .gallery-item:nth-child(3) {
@@ -621,7 +605,6 @@
 
     .gallery-item:nth-child(6) {
       aspect-ratio: 1.3 / 1;
-      grid-column: span 1;
     }
 
     .gallery-item:nth-child(7) {
@@ -647,45 +630,6 @@
 
     .gallery-item:hover img {
       transform: scale(1.05);
-    }
-
-    /* Placeholder for empty images */
-    .gallery-item .placeholder-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      font-size: 3rem;
-      color: #c49a6c;
-      background: #f5ede4;
-    }
-
-    /* Gallery image overlay */
-    .gallery-item .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px 16px 16px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.5));
-      color: #fff;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
-
-    .gallery-item .gallery-overlay span {
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .gallery-item .gallery-overlay i {
-      margin-right: 6px;
     }
 
     /* ---------- CONTACT ---------- */
@@ -1286,77 +1230,47 @@
       </div>
     </section>
 
-    <!-- ✅ GALLERY SECTION -->
+    <!-- ✅ GALLERY SECTION - CLEAN, NO TEXT -->
     <section class="gallery" id="gallery">
       <div class="gallery-header">
         <h2><span>Galerie Foto</span></h2>
         <div class="divider"></div>
       </div>
 
-      <div class="gallery-intro">
-        <i class="fas fa-camera"></i>
-        Momente din activitățile noastre – bucurie, învățare și comunitate.
-        <i class="fas fa-camera"></i>
-      </div>
-
       <div class="gallery-grid">
         <!-- 👇 REPLACE 'gallery1.jpg' with your actual image names -->
-        <!-- You can add as many as you want by copying this block -->
+        <!-- Add as many as you want by copying this block -->
 
         <div class="gallery-item">
-          <img src="images/gallery1.jpg" alt="Activitate club seniori" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Activitate club seniori</span>
-          </div>
+          <img src="images/gallery1.jpg" alt="Gallery photo" />
         </div>
 
         <div class="gallery-item">
-          <img src="images/gallery2.jpg" alt="Atelier creativ" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Atelier creativ</span>
-          </div>
+          <img src="images/gallery2.jpg" alt="Gallery photo" />
         </div>
 
         <div class="gallery-item">
-          <img src="images/gallery3.jpg" alt="Excursie" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Excursie</span>
-          </div>
+          <img src="images/gallery3.jpg" alt="Gallery photo" />
         </div>
 
         <div class="gallery-item">
-          <img src="images/gallery4.jpg" alt="Socializare" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Socializare</span>
-          </div>
+          <img src="images/gallery4.jpg" alt="Gallery photo" />
         </div>
 
         <div class="gallery-item">
-          <img src="images/gallery5.jpg" alt="Atelier" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Atelier</span>
-          </div>
+          <img src="images/gallery5.jpg" alt="Gallery photo" />
         </div>
 
         <div class="gallery-item">
-          <img src="images/gallery6.jpg" alt="Eveniment" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Eveniment</span>
-          </div>
+          <img src="images/gallery6.jpg" alt="Gallery photo" />
         </div>
 
         <div class="gallery-item">
-          <img src="images/gallery7.jpg" alt="Activități" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Activități</span>
-          </div>
+          <img src="images/gallery7.jpg" alt="Gallery photo" />
         </div>
 
         <div class="gallery-item">
-          <img src="images/gallery8.jpg" alt="Momente de bucurie" />
-          <div class="gallery-overlay">
-            <span><i class="fas fa-image"></i> Momente de bucurie</span>
-          </div>
+          <img src="images/gallery8.jpg" alt="Gallery photo" />
         </div>
       </div>
     </section>
