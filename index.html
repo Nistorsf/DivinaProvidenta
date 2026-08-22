@@ -1,1 +1,405 @@
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Divina Providența — Cine suntem</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fcf8f2;
+      color: #3d2c1e;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    nav {
+      padding: 22px 0 18px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 2px solid rgba(184, 142, 97, 0.15);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-weight: 600;
+      color: #5a4030;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s, border-bottom 0.2s;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover {
+      color: #a67c52;
+      border-bottom-color: #a67c52;
+    }
+    .hero {
+      position: relative;
+      padding: 100px 0 140px;
+      text-align: center;
+      border-radius: 48px;
+      margin: 36px 0 48px;
+      overflow: hidden;
+      animation: fadeUp 1s ease-out;
+      background-image: url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: inset 0 0 0 1000px rgba(60, 44, 30, 0.35);
+    }
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 20px;
+    }
+    .hero-logo img {
+      src: url('images/logo.png');
+      height: 80px;
+      width: auto;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+      transition: transform 0.3s;
+      display: inline-block;
+    }
+    .hero-logo img:hover {
+      transform: scale(1.05);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.2rem;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .hero h1 span {
+      background: rgba(166, 124, 82, 0.85);
+      padding: 0 20px;
+      border-radius: 40px;
+      display: inline-block;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .hero .subhead {
+      font-size: 1.2rem;
+      max-width: 540px;
+      margin: 8px auto 36px;
+      color: #ffffff;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .hero .subhead i {
+      color: #e8d5b8;
+      margin: 0 6px;
+    }
+    .btn {
+      display: inline-block;
+      background: #a67c52;
+      color: #fff;
+      font-weight: 600;
+      padding: 16px 48px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+      position: relative;
+      z-index: 2;
+    }
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+      background: #b88d62;
+    }
+    .btn i {
+      margin-right: 12px;
+    }
+    .float {
+      animation: float 3.2s ease-in-out infinite;
+    }
+    .about {
+      padding: 70px 0 80px;
+      margin-bottom: 40px;
+      animation: fadeUp 1s ease-out 0.2s both;
+    }
+    .about-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .about-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      font-style: italic;
+      color: #3d2c1e;
+    }
+    .about-header h2 span {
+      color: #a67c52;
+      background: #f5ede4;
+      padding: 0 16px;
+      border-radius: 40px;
+      display: inline-block;
+    }
+    .about-header .divider {
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(90deg, #c49a6c, #a67c52);
+      margin: 12px auto 0;
+      border-radius: 4px;
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .mission-card {
+      background: #f5ede4;
+      padding: 48px 52px;
+      border-radius: 40px;
+      box-shadow: 0 12px 30px -8px rgba(166, 124, 82, 0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .mission-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(166, 124, 82, 0.18);
+    }
+    .mission-card p {
+      font-size: 1.2rem;
+      max-width: 780px;
+      margin: 0 auto;
+      color: #4d3a2c;
+      line-height: 1.8;
+    }
+    .mission-card p i {
+      color: #c49a6c;
+      margin: 0 6px;
+    }
+    .mission-card .big-icon {
+      font-size: 2.8rem;
+      color: #a67c52;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .value-item {
+      background: #fcf8f2;
+      padding: 32px 24px;
+      border-radius: 32px;
+      box-shadow: 0 8px 22px -6px rgba(166, 124, 82, 0.08);
+      border: 1px solid rgba(166, 124, 82, 0.08);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .value-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 34px -8px rgba(166, 124, 82, 0.14);
+    }
+    .value-item .value-icon {
+      font-size: 2.2rem;
+      color: #c49a6c;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .value-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #3d2c1e;
+      margin-bottom: 8px;
+    }
+    .value-item p {
+      font-size: 0.98rem;
+      color: #6b5544;
+      line-height: 1.6;
+    }
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 32px 0 24px;
+      border-top: 1px solid rgba(166, 124, 82, 0.12);
+      color: #8a7566;
+      font-size: 0.95rem;
+    }
+    footer i {
+      color: #c49a6c;
+      margin: 0 5px;
+    }
+    footer .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #a67c52;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+    @media (max-width: 900px) {
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      nav {
+        justify-content: center;
+      }
+      .nav-links {
+        gap: 18px;
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+      .hero {
+        padding: 60px 20px 100px;
+        margin: 20px 0 30px;
+      }
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+      .hero-logo img {
+        height: 60px;
+      }
+      .about-header h2 {
+        font-size: 2.2rem;
+      }
+      .mission-card {
+        padding: 32px 24px;
+      }
+      .mission-card p {
+        font-size: 1rem;
+      }
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .value-item {
+        padding: 24px 18px;
+      }
+      .btn {
+        padding: 14px 32px;
+        font-size: 1rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero .subhead {
+        font-size: 1rem;
+      }
+      .hero-logo img {
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="nav-links">
+        <a href="#">Acasă</a>
+        <a href="#about">Cine suntem</a>
+        <a href="#">Servicii</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-logo">
+        <img src="images/logo.png" alt="Divina Providența logo" />
+      </div>
+      <h1>
+        <span>Divina Providența</span>
+      </h1>
+      <p class="subhead">
+        <i class="fas fa-feather-alt"></i> 
+        Unde căldura întâlnește îndrumarea divină
+        <i class="fas fa-feather-alt"></i>
+      </p>
+      <a href="#about" class="btn float">
+        <i class="fas fa-arrow-right"></i> Descoperă misiunea noastră
+      </a>
+    </section>
+    <section class="about" id="about">
+      <div class="about-header">
+        <h2><span>Cine suntem?</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="mission-card">
+          <span class="big-icon"><i class="fas fa-hands-holding-heart"></i></span>
+          <p>
+            Suntem o organizație non-profit care crede din toată inima că 
+            <strong>fiecare om contează</strong>, indiferent de vârstă. 
+            Misiunea noastră este să construim <strong>punți calde</strong> 
+            între generații, să aducem educația mai aproape de comunități 
+            și să transformăm <strong>solidaritatea</strong> într-un motor 
+            real, plin de speranță, al schimbării sociale.
+          </p>
+        </div>
+        <div class="values-grid">
+          <div class="value-item">
+            <span class="value-icon"><i class="fas fa-hand-holding-heart"></i></span>
+            <h3>Prezență</h3>
+            <p>Să fim acolo unde este nevoie, cu drag și fără judecată.</p>
+          </div>
+          <div class="value-item">
+            <span class="value-icon"><i class="fas fa-seedling"></i></span>
+            <h3>Regenerare</h3>
+            <p>Binele făcut cu credință are puterea de a încălzi și transforma comunități.</p>
+          </div>
+          <div class="value-item">
+            <span class="value-icon"><i class="fas fa-dove"></i></span>
+            <h3>Credință</h3>
+            <p>Chemarea noastră – <em>Divina Providența</em> – este un angajament sfânt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>
+        <i class="fas fa-dove"></i> 
+        <span class="footer-brand">Divina Providența</span> 
+        &nbsp;·&nbsp; cu dragoste <i class="fas fa-heart"></i> 
+        &nbsp;·&nbsp; 2026
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
