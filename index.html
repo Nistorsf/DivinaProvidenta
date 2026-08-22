@@ -33,9 +33,9 @@
       padding: 0 24px;
     }
 
-    /* ---------- STICKY NAVIGATION ---------- */
+    /* ---------- STICKY NAVIGATION (Enhanced) ---------- */
     nav {
-      padding: 12px 0 8px;
+      padding: 14px 0 10px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -51,15 +51,15 @@
 
     nav.scrolled {
       box-shadow: 0 4px 20px rgba(166, 124, 82, 0.08);
-      padding: 8px 0 6px;
+      padding: 10px 0 8px;
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       font-weight: 600;
       color: #5a4030;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       align-items: center;
       flex-wrap: wrap;
     }
@@ -67,17 +67,18 @@
     .nav-links a {
       text-decoration: none;
       color: inherit;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: 30px;
       transition: all 0.3s ease;
       position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
+    /* ✅ Icon styles */
     .nav-links a i {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       opacity: 0.6;
       transition: opacity 0.3s, transform 0.3s;
     }
@@ -87,13 +88,14 @@
       transform: translateY(-2px);
     }
 
+    /* ✅ Underline animation - slides from left to right */
     .nav-links a::after {
       content: '';
       position: absolute;
       bottom: 2px;
       left: 50%;
       width: 0;
-      height: 2px;
+      height: 2.5px;
       background: #a67c52;
       border-radius: 4px;
       transition: all 0.3s ease;
@@ -101,16 +103,17 @@
     }
 
     .nav-links a:hover::after {
-      width: 60%;
+      width: 70%;
     }
 
+    /* ✅ Active link - different style */
     .nav-links a.active {
       color: #a67c52;
       background: rgba(166, 124, 82, 0.08);
     }
 
     .nav-links a.active::after {
-      width: 60%;
+      width: 70%;
       background: #a67c52;
     }
 
@@ -119,6 +122,7 @@
       color: #a67c52;
     }
 
+    /* ✅ Hover effects */
     .nav-links a:hover {
       color: #a67c52;
       transform: translateY(-2px);
@@ -132,10 +136,10 @@
     /* ---------- HERO ---------- */
     .hero {
       position: relative;
-      padding: 60px 0 60px;
+      padding: 80px 0 60px;
       text-align: center;
-      border-radius: 32px;
-      margin: 20px 0 24px;
+      border-radius: 40px;
+      margin: 24px 0 30px;
       overflow: hidden;
       animation: fadeUp 1s ease-out;
       background-image: url('images/hero-bg.jpg');
@@ -143,12 +147,12 @@
       background-position: center;
       background-repeat: no-repeat;
       box-shadow: inset 0 0 0 1000px rgba(60, 44, 30, 0.35);
-      scroll-margin-top: 60px;
+      scroll-margin-top: 70px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 400px;
+      justify-content: flex-start;
+      min-height: 600px;
     }
 
     .hero-content {
@@ -157,15 +161,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
       padding: 0 20px;
     }
 
     .hero .subhead {
-      font-size: 1.6rem;
-      max-width: 650px;
-      margin: 0 auto 16px;
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto 20px;
       color: #ffffff;
       font-weight: 400;
       letter-spacing: 0.5px;
@@ -173,6 +177,7 @@
       z-index: 2;
       text-shadow: 0 2px 20px rgba(0,0,0,0.3);
       line-height: 1.4;
+      white-space: nowrap;
     }
 
     .hero .subhead i {
@@ -181,7 +186,7 @@
     }
 
     .hero .btn-wrapper {
-      margin-top: 20px;
+      margin-top: 350px;
       position: relative;
       z-index: 2;
     }
@@ -191,10 +196,10 @@
       background: #a67c52;
       color: #fff;
       font-weight: 600;
-      padding: 14px 44px;
+      padding: 18px 56px;
       border-radius: 60px;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 1.1rem;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
     }
@@ -215,17 +220,17 @@
 
     /* ---------- SECTION HEADERS ---------- */
     .about, .services, .team, .contact, .gallery {
-      scroll-margin-top: 60px;
+      scroll-margin-top: 70px;
     }
 
     .about-header, .services-header, .team-header, .contact-header, .gallery-header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      font-size: 2.6rem;
       font-weight: 600;
       font-style: italic;
       color: #3d2c1e;
@@ -234,37 +239,37 @@
     .about-header h2 span, .services-header h2 span, .team-header h2 span, .contact-header h2 span, .gallery-header h2 span {
       color: #a67c52;
       background: #f5ede4;
-      padding: 0 12px;
+      padding: 0 14px;
       border-radius: 40px;
       display: inline-block;
     }
 
     .about-header .divider, .services-header .divider, .team-header .divider, .contact-header .divider, .gallery-header .divider {
-      width: 50px;
+      width: 60px;
       height: 3px;
       background: linear-gradient(90deg, #c49a6c, #a67c52);
-      margin: 6px auto 0;
+      margin: 8px auto 0;
       border-radius: 4px;
     }
 
     /* ---------- ABOUT ---------- */
     .about {
-      padding: 30px 0 20px;
-      margin-bottom: 5px;
+      padding: 40px 0 30px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.2s both;
     }
 
     .about-content {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 28px;
     }
 
     .mission-card {
       background: #f5ede4;
-      padding: 24px 32px;
-      border-radius: 28px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 32px 40px;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -272,34 +277,34 @@
 
     .mission-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
     }
 
     .mission-card p {
-      font-size: 1rem;
+      font-size: 1.05rem;
       max-width: 760px;
       margin: 0 auto;
       color: #4d3a2c;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .mission-card .big-icon {
-      font-size: 2rem;
+      font-size: 2.4rem;
       color: #a67c52;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       display: block;
     }
 
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 20px;
     }
 
     .value-item {
       background: #fcf8f2;
-      padding: 18px 16px;
-      border-radius: 24px;
+      padding: 24px 20px;
+      border-radius: 28px;
       box-shadow: 0 6px 18px -6px rgba(166, 124, 82, 0.06);
       border: 1px solid rgba(166, 124, 82, 0.06);
       text-align: center;
@@ -312,40 +317,40 @@
     }
 
     .value-item .value-icon {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: #c49a6c;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: block;
     }
 
     .value-item h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #3d2c1e;
       margin-bottom: 4px;
     }
 
     .value-item p {
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       color: #6b5544;
       line-height: 1.5;
     }
 
     /* ---------- SERVICES ---------- */
     .services {
-      padding: 20px 0 20px;
-      margin-bottom: 5px;
+      padding: 30px 0 30px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.3s both;
     }
 
     .services-intro {
       max-width: 700px;
-      margin: 0 auto 20px;
+      margin: 0 auto 28px;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #4d3a2c;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .services-intro i {
@@ -355,11 +360,11 @@
 
     .service-card {
       background: #f5ede4;
-      padding: 24px 28px;
-      border-radius: 28px;
+      padding: 32px 36px;
+      border-radius: 32px;
       box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
@@ -369,52 +374,52 @@
     }
 
     .service-card .service-icon {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: #a67c52;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: block;
     }
 
     .service-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .service-card .service-sub {
-      font-size: 0.92rem;
+      font-size: 0.98rem;
       color: #5a4030;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-style: italic;
     }
 
     .service-card p {
       color: #4d3a2c;
-      line-height: 1.6;
-      font-size: 0.92rem;
-      margin-bottom: 10px;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
     }
 
     .service-features {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 12px;
+      gap: 14px;
+      margin-top: 16px;
     }
 
     .service-features li {
       list-style: none;
       background: #fcf8f2;
-      padding: 10px 16px;
-      border-radius: 16px;
+      padding: 12px 18px;
+      border-radius: 18px;
       border: 1px solid rgba(166, 124, 82, 0.06);
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       color: #4d3a2c;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       transition: background 0.2s;
     }
 
@@ -424,16 +429,16 @@
 
     .service-features li i {
       color: #a67c52;
-      font-size: 0.9rem;
-      min-width: 18px;
+      font-size: 1rem;
+      min-width: 20px;
       text-align: center;
     }
 
     .services-more {
       text-align: center;
-      margin-top: 12px;
+      margin-top: 16px;
       color: #8a7566;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .services-more i {
@@ -442,18 +447,18 @@
 
     /* ---------- TEAM ---------- */
     .team {
-      padding: 20px 0 20px;
-      margin-bottom: 5px;
+      padding: 30px 0 30px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.35s both;
     }
 
     .team-intro {
       max-width: 650px;
-      margin: 0 auto 20px;
+      margin: 0 auto 30px;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #5a4030;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .team-intro i {
@@ -463,16 +468,16 @@
     .team-grid {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
 
     .team-member {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
       background: #f5ede4;
-      padding: 20px 24px;
-      border-radius: 28px;
+      padding: 24px 28px;
+      border-radius: 32px;
       box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       transition: transform 0.3s, box-shadow 0.3s;
@@ -500,9 +505,9 @@
       right: 24px;
       background: #a67c52;
       color: #fff;
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 3px 12px;
+      padding: 3px 14px;
       border-radius: 30px;
       letter-spacing: 0.5px;
       box-shadow: 0 4px 12px rgba(166, 124, 82, 0.2);
@@ -521,9 +526,9 @@
       right: 24px;
       background: #8aaa7a;
       color: #fff;
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 3px 12px;
+      padding: 3px 14px;
       border-radius: 30px;
       letter-spacing: 0.5px;
       box-shadow: 0 4px 12px rgba(138, 170, 122, 0.2);
@@ -531,8 +536,8 @@
 
     .team-member-image {
       flex-shrink: 0;
-      width: 120px;
-      height: 120px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       overflow: hidden;
       border: 4px solid #ffffff;
@@ -566,7 +571,7 @@
 
     .team-member-info .member-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: #3d2c1e;
       margin-bottom: 2px;
@@ -581,23 +586,19 @@
     }
 
     .team-member-info .member-role {
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #a67c52;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
-      gap: 6px;
-    }
-
-    .team-member-info .member-role i {
-      font-size: 0.8rem;
+      gap: 8px;
     }
 
     .team-member-info .member-description {
       color: #4d3a2c;
-      line-height: 1.5;
-      font-size: 0.88rem;
+      line-height: 1.6;
+      font-size: 0.92rem;
     }
 
     .team-member-info .member-description .nickname {
@@ -613,19 +614,19 @@
 
     /* ---------- GALLERY ---------- */
     .gallery {
-      padding: 20px 0 30px;
-      margin-bottom: 5px;
+      padding: 40px 0 50px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.4s both;
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      gap: 16px;
     }
 
     .gallery-item {
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08);
       transition: transform 0.3s, box-shadow 0.3s;
@@ -658,7 +659,7 @@
     .gallery-item:nth-child(22) { aspect-ratio: 1.1 / 1; }
 
     .gallery-item:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       box-shadow: 0 16px 40px -12px rgba(166, 124, 82, 0.2);
     }
 
@@ -760,9 +761,9 @@
       left: 50%;
       transform: translateX(-50%);
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       background: rgba(0, 0, 0, 0.5);
-      padding: 6px 18px;
+      padding: 8px 20px;
       border-radius: 30px;
       backdrop-filter: blur(4px);
     }
@@ -774,16 +775,16 @@
 
     /* ---------- CONTACT ---------- */
     .contact {
-      padding: 20px 0 15px;
-      margin-bottom: 5px;
+      padding: 30px 0 20px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.4s both;
     }
 
     .contact-card {
       background: #f5ede4;
-      padding: 24px 28px;
-      border-radius: 28px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 32px 36px;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
       max-width: 700px;
@@ -793,37 +794,37 @@
 
     .contact-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
     }
 
     .contact-card .contact-icon {
-      font-size: 2rem;
+      font-size: 2.4rem;
       color: #a67c52;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: block;
     }
 
     .contact-card .contact-question {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .contact-card .contact-details {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       background: #fcf8f2;
-      padding: 10px 20px;
+      padding: 12px 22px;
       border-radius: 60px;
       border: 1px solid rgba(166, 124, 82, 0.06);
       transition: background 0.2s, transform 0.2s;
@@ -838,16 +839,16 @@
     }
 
     .contact-item i {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #a67c52;
-      min-width: 22px;
+      min-width: 24px;
     }
 
     .contact-item a {
       text-decoration: none;
       color: #3d2c1e;
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       transition: color 0.2s;
     }
 
@@ -858,13 +859,13 @@
     .contact-item .label {
       color: #8a7566;
       font-weight: 400;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
     }
 
     .contact-note {
-      margin-top: 12px;
+      margin-top: 14px;
       color: #6b5544;
-      font-size: 0.88rem;
+      font-size: 0.92rem;
     }
 
     .contact-note i {
@@ -874,14 +875,14 @@
 
     /* ---------- ERASMUS+ ---------- */
     .erasmus-section {
-      padding: 8px 0 8px;
+      padding: 10px 0 10px;
       animation: fadeUp 1s ease-out 0.5s both;
     }
 
     .erasmus-card {
       background: #f5ede4;
-      padding: 16px 24px;
-      border-radius: 24px;
+      padding: 20px 28px;
+      border-radius: 28px;
       box-shadow: 0 6px 18px -6px rgba(166, 124, 82, 0.06);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
@@ -896,15 +897,15 @@
     }
 
     .erasmus-card .flag-icon {
-      font-size: 2rem;
+      font-size: 2.2rem;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .erasmus-card p {
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       color: #4d3a2c;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .erasmus-card strong {
@@ -912,11 +913,11 @@
     }
 
     .erasmus-card .erasmus-icons {
-      margin-top: 6px;
+      margin-top: 8px;
       display: flex;
       justify-content: center;
-      gap: 10px;
-      font-size: 1rem;
+      gap: 12px;
+      font-size: 1.1rem;
       color: #a67c52;
     }
 
@@ -924,10 +925,10 @@
     footer {
       margin-top: auto;
       text-align: center;
-      padding: 12px 0 10px;
+      padding: 16px 0 14px;
       border-top: 1px solid rgba(166, 124, 82, 0.08);
       color: #8a7566;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
     }
 
     footer i {
@@ -951,93 +952,95 @@
     @media (max-width: 900px) {
       .values-grid { grid-template-columns: repeat(2, 1fr); }
       .service-features { grid-template-columns: 1fr; }
-      .team-member { flex-direction: column !important; text-align: center; padding: 20px 16px; }
-      .team-member-image { width: 110px; height: 110px; }
+      .team-member { flex-direction: column !important; text-align: center; padding: 24px 20px; }
+      .team-member-image { width: 130px; height: 130px; }
       .team-member-info .member-role { justify-content: center; }
       .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -10px; }
-      .hero .subhead { font-size: 1.3rem; }
+      .hero .subhead { font-size: 1.2rem; }
+      .hero .btn-wrapper { margin-top: 280px; }
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-      .nav-links { gap: 14px; font-size: 0.8rem; }
+      .nav-links { gap: 16px; font-size: 0.85rem; }
       .nav-links a { padding: 4px 8px; }
-      .nav-links a i { font-size: 0.65rem; }
+      .nav-links a i { font-size: 0.7rem; }
     }
 
     @media (max-width: 700px) {
-      nav { justify-content: center; padding: 8px 0 6px; }
-      .nav-links { gap: 8px; font-size: 0.7rem; justify-content: center; }
-      .nav-links a { padding: 3px 6px; gap: 3px; }
-      .nav-links a i { font-size: 0.55rem; }
+      nav { justify-content: center; padding: 10px 0 8px; }
+      .nav-links { gap: 10px; font-size: 0.78rem; justify-content: center; }
+      .nav-links a { padding: 4px 6px; gap: 4px; }
+      .nav-links a i { font-size: 0.6rem; }
       .nav-links a::after { display: none; }
-      .hero { padding: 40px 20px 40px; margin: 12px 0 16px; border-radius: 24px; min-height: 300px; }
-      .hero .subhead { font-size: 1.1rem; white-space: normal; }
-      .hero .btn-wrapper { margin-top: 16px; }
-      .btn { padding: 12px 28px; font-size: 0.9rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 1.8rem; }
-      .about-header, .services-header, .team-header, .contact-header, .gallery-header { margin-bottom: 16px; }
-      .mission-card { padding: 20px 18px; }
-      .mission-card p { font-size: 0.92rem; }
-      .values-grid { grid-template-columns: 1fr; gap: 12px; }
-      .value-item { padding: 16px 14px; }
-      .service-card { padding: 20px 16px; }
-      .service-card h3 { font-size: 1.4rem; }
-      .team-member { padding: 16px 14px; gap: 16px; }
-      .team-member-image { width: 100px; height: 100px; }
-      .team-member-info .member-name { font-size: 1.2rem; }
-      .team-member.founder::before, .team-member.volunteer::before { font-size: 0.5rem; padding: 2px 8px; top: -8px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .gallery-item { border-radius: 12px; }
-      .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 12px 8px; }
-      .lightbox-prev { left: 6px; }
-      .lightbox-next { right: 6px; }
-      .lightbox-close { font-size: 2rem; top: 10px; right: 14px; }
-      .lightbox-counter { font-size: 0.75rem; padding: 4px 14px; bottom: 16px; }
-      .contact { padding: 16px 0 12px; }
-      .contact-card { padding: 20px 16px; }
-      .contact-card .contact-question { font-size: 1.1rem; }
-      .contact-item { padding: 8px 14px; max-width: 100%; gap: 8px; }
-      .contact-item a { font-size: 0.8rem; }
-      .contact-item .label { font-size: 0.7rem; }
-      .erasmus-card { padding: 14px 16px; border-radius: 20px; }
-      .erasmus-card .flag-icon { font-size: 1.6rem; }
-      .erasmus-card p { font-size: 0.8rem; }
-      .erasmus-section { padding: 4px 0 6px; }
-      .about { padding: 20px 0 16px; }
-      .services { padding: 16px 0 16px; }
-      .team { padding: 16px 0 16px; }
-      .gallery { padding: 16px 0 20px; }
-      .services-intro { font-size: 0.92rem; margin: 0 auto 14px; }
-      .team-intro { font-size: 0.92rem; margin: 0 auto 14px; }
+      .hero { padding: 40px 20px 40px; margin: 16px 0 20px; border-radius: 28px; min-height: 450px; }
+      .hero .subhead { font-size: 1rem; white-space: normal; }
+      .hero .btn-wrapper { margin-top: 200px; }
+      .btn { padding: 14px 32px; font-size: 0.95rem; }
+      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 2rem; }
+      .about-header, .services-header, .team-header, .contact-header, .gallery-header { margin-bottom: 20px; }
+      .mission-card { padding: 24px 20px; }
+      .mission-card p { font-size: 0.95rem; }
+      .values-grid { grid-template-columns: 1fr; gap: 14px; }
+      .value-item { padding: 18px 16px; }
+      .service-card { padding: 24px 18px; }
+      .service-card h3 { font-size: 1.5rem; }
+      .team-member { padding: 20px 16px; gap: 20px; }
+      .team-member-image { width: 110px; height: 110px; }
+      .team-member-info .member-name { font-size: 1.3rem; }
+      .team-member.founder::before, .team-member.volunteer::before { font-size: 0.55rem; padding: 2px 10px; top: -8px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .gallery-item { border-radius: 16px; }
+      .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 15px 10px; }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+      .lightbox-close { font-size: 2.2rem; top: 12px; right: 18px; }
+      .lightbox-counter { font-size: 0.8rem; padding: 6px 16px; bottom: 20px; }
+      .contact { padding: 20px 0 15px; }
+      .contact-card { padding: 24px 18px; }
+      .contact-card .contact-question { font-size: 1.2rem; }
+      .contact-item { padding: 10px 16px; max-width: 100%; gap: 10px; }
+      .contact-item a { font-size: 0.85rem; }
+      .contact-item .label { font-size: 0.75rem; }
+      .erasmus-card { padding: 16px 20px; border-radius: 24px; }
+      .erasmus-card .flag-icon { font-size: 1.8rem; }
+      .erasmus-card p { font-size: 0.85rem; }
+      .erasmus-section { padding: 5px 0 8px; }
+      .about { padding: 25px 0 20px; }
+      .services { padding: 20px 0 20px; }
+      .team { padding: 20px 0 20px; }
+      .gallery { padding: 30px 0 30px; }
+      .services-intro { font-size: 0.95rem; margin: 0 auto 18px; }
+      .team-intro { font-size: 0.95rem; margin: 0 auto 20px; }
     }
 
     @media (max-width: 480px) {
       .container { padding: 0 14px; }
-      .nav-links { gap: 5px; font-size: 0.6rem; }
-      .nav-links a { padding: 2px 4px; gap: 2px; }
-      .nav-links a i { font-size: 0.45rem; }
-      .hero { padding: 24px 12px 30px; min-height: 250px; }
-      .hero .subhead { font-size: 0.95rem; }
-      .hero .btn-wrapper { margin-top: 12px; }
-      .btn { padding: 10px 20px; font-size: 0.8rem; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .lightbox-prev, .lightbox-next { font-size: 1.5rem; padding: 10px 6px; }
+      .nav-links { gap: 6px; font-size: 0.7rem; }
+      .nav-links a { padding: 3px 4px; gap: 2px; }
+      .nav-links a i { font-size: 0.5rem; }
+      .hero { padding: 30px 16px 30px; min-height: 350px; }
+      .hero .subhead { font-size: 0.9rem; white-space: normal; }
+      .hero .btn-wrapper { margin-top: 150px; }
+      .btn { padding: 12px 24px; font-size: 0.85rem; }
+      .btn i { margin-right: 6px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .lightbox-prev, .lightbox-next { font-size: 1.5rem; padding: 12px 8px; }
       .lightbox-prev { left: 4px; }
       .lightbox-next { right: 4px; }
-      .lightbox-close { font-size: 1.6rem; top: 8px; right: 10px; }
-      .lightbox-counter { font-size: 0.65rem; padding: 3px 10px; bottom: 12px; }
-      .service-features li { font-size: 0.8rem; padding: 8px 12px; }
-      .contact-item { flex-wrap: wrap; justify-content: center; gap: 3px; border-radius: 30px; }
-      .team-member-image { width: 80px; height: 80px; }
-      .team-member.founder::before, .team-member.volunteer::before { font-size: 0.45rem; padding: 2px 6px; top: -6px; }
-      .contact-card .contact-question { font-size: 0.95rem; }
-      .erasmus-card p { font-size: 0.75rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 1.5rem; }
+      .lightbox-close { font-size: 1.8rem; top: 10px; right: 14px; }
+      .lightbox-counter { font-size: 0.7rem; padding: 4px 12px; bottom: 14px; }
+      .service-features li { font-size: 0.85rem; padding: 10px 14px; }
+      .contact-item { flex-wrap: wrap; justify-content: center; gap: 4px; border-radius: 30px; }
+      .team-member-image { width: 100px; height: 100px; }
+      .team-member.founder::before, .team-member.volunteer::before { font-size: 0.5rem; padding: 2px 8px; top: -7px; }
+      .contact-card .contact-question { font-size: 1rem; }
+      .erasmus-card p { font-size: 0.8rem; }
+      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 1.7rem; }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- NAVIGATION -->
+    <!-- ✅ ENHANCED NAVIGATION with Icons & Animations -->
     <nav id="navbar">
       <div class="nav-links">
         <a href="#home" class="active">
@@ -1143,7 +1146,7 @@
           învață lucruri noi și contribuie activ la viața comunității.
         </p>
 
-        <h4 style="font-family:'Playfair Display',serif; font-size:1rem; color:#a67c52; margin:10px 0 8px;">
+        <h4 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#a67c52; margin:14px 0 10px;">
           <i class="fas fa-gift"></i> Ce oferim:
         </h4>
 
@@ -1243,28 +1246,72 @@
       </div>
 
       <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item"><img src="images/gallery1.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery2.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery3.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery4.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery5.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery6.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery7.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery8.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery9.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery10.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery11.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery12.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery13.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery14.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery15.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery16.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery17.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery18.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery19.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery20.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery21.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery22.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item">
+          <img src="images/gallery1.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery2.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery3.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery4.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery5.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery6.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery7.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery8.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery9.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery10.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery11.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery12.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery13.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery14.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery15.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery16.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery17.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery18.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery19.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery20.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery21.jpg" alt="Gallery photo" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery22.jpg" alt="Gallery photo" />
+        </div>
       </div>
     </section>
 
@@ -1281,7 +1328,7 @@
       </div>
     </div>
 
-    <!-- ✅ CONTACT - Updated Email -->
+    <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
@@ -1312,7 +1359,7 @@
           <div class="contact-item">
             <i class="fas fa-envelope"></i>
             <span class="label">Email:</span>
-            <a href="mailto:asociatiadivinaprovidenta@gmail.com">asociatiadivinaprovidenta@gmail.com</a>
+            <a href="mailto:contact@divinaprovidenta.ro">contact@divinaprovidenta.ro</a>
           </div>
         </div>
 
