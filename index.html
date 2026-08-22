@@ -83,10 +83,10 @@
       border-bottom-color: #a67c52;
     }
 
-    /* ---------- HERO SECTION ---------- */
+    /* ---------- HERO SECTION (NO LOGO) ---------- */
     .hero {
       position: relative;
-      padding: 120px 0 160px;
+      padding: 140px 0 160px;
       text-align: center;
       border-radius: 48px;
       margin: 36px 0 48px;
@@ -104,28 +104,34 @@
       justify-content: center;
     }
 
-    .hero-logo {
+    /* Hero title - big, elegant, centered (replaces logo) */
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 600;
+      font-style: italic;
+      color: #ffffff;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.3);
       position: relative;
       z-index: 2;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
-    .hero-logo img {
-      height: 180px;
-      width: auto;
-      filter: drop-shadow(0 4px 30px rgba(0,0,0,0.35));
-      transition: transform 0.3s;
+    .hero-title span {
+      background: rgba(166, 124, 82, 0.75);
+      padding: 4px 24px;
+      border-radius: 60px;
       display: inline-block;
-    }
-
-    .hero-logo img:hover {
-      transform: scale(1.05);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
 
     .hero .subhead {
       font-size: 1.2rem;
       max-width: 540px;
-      margin: 8px auto 36px;
+      margin: 0 auto 36px;
       color: #ffffff;
       font-weight: 400;
       letter-spacing: 0.2px;
@@ -549,19 +555,11 @@
       justify-content: center;
     }
 
-    /* Fallback if image doesn't load */
     .team-member-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    /* Show a colored background if image is missing */
-    .team-member-image img:not([src]), 
-    .team-member-image img[src=""],
-    .team-member-image img[src$=".jpg"]:not([src*="mihaela"]):not([src*="petru"]) {
-      display: none;
     }
 
     .team-member.founder .team-member-image {
@@ -627,14 +625,14 @@
 
     /* ---------- CONTACT SECTION ---------- */
     .contact {
-      padding: 70px 0 80px;
-      margin-bottom: 40px;
+      padding: 60px 0 50px;
+      margin-bottom: 20px;
       animation: fadeUp 1s ease-out 0.4s both;
     }
 
     .contact-header {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 40px;
     }
 
     .contact-header h2 {
@@ -663,7 +661,7 @@
 
     .contact-card {
       background: #f5ede4;
-      padding: 48px 52px;
+      padding: 40px 44px;
       border-radius: 40px;
       box-shadow: 0 12px 30px -8px rgba(166, 124, 82, 0.12), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
@@ -679,38 +677,38 @@
     }
 
     .contact-card .contact-icon {
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: #a67c52;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: block;
     }
 
     .contact-card .contact-question {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .contact-card .contact-details {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       align-items: center;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       background: #fcf8f2;
-      padding: 16px 28px;
+      padding: 14px 24px;
       border-radius: 60px;
       border: 1px solid rgba(166, 124, 82, 0.08);
       transition: background 0.2s, transform 0.2s;
       width: 100%;
-      max-width: 400px;
+      max-width: 380px;
       justify-content: center;
     }
 
@@ -720,16 +718,16 @@
     }
 
     .contact-item i {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: #a67c52;
-      min-width: 30px;
+      min-width: 26px;
     }
 
     .contact-item a {
       text-decoration: none;
       color: #3d2c1e;
       font-weight: 500;
-      font-size: 1.05rem;
+      font-size: 1rem;
       transition: color 0.2s;
     }
 
@@ -740,11 +738,11 @@
     .contact-item .label {
       color: #8a7566;
       font-weight: 400;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .contact-note {
-      margin-top: 24px;
+      margin-top: 18px;
       color: #6b5544;
       font-size: 0.95rem;
     }
@@ -754,18 +752,17 @@
       margin: 0 4px;
     }
 
-    /* ---------- ERASMUS+ SECTION ---------- */
+    /* ---------- ERASMUS+ SECTION (TIGHT SPACING) ---------- */
     .erasmus-section {
-      padding: 40px 0 50px;
-      margin-bottom: 30px;
+      padding: 20px 0 10px;
       animation: fadeUp 1s ease-out 0.5s both;
     }
 
     .erasmus-card {
       background: #f5ede4;
-      padding: 36px 44px;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 28px 36px;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
       max-width: 750px;
@@ -774,20 +771,20 @@
     }
 
     .erasmus-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(166, 124, 82, 0.16);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
     }
 
     .erasmus-card .flag-icon {
-      font-size: 3rem;
+      font-size: 2.5rem;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .erasmus-card p {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       color: #4d3a2c;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
     .erasmus-card strong {
@@ -795,27 +792,27 @@
     }
 
     .erasmus-card .erasmus-icons {
-      margin-top: 12px;
+      margin-top: 10px;
       display: flex;
       justify-content: center;
-      gap: 16px;
-      font-size: 1.4rem;
+      gap: 14px;
+      font-size: 1.2rem;
       color: #a67c52;
     }
 
-    /* ---------- FOOTER ---------- */
+    /* ---------- FOOTER (TIGHT SPACING) ---------- */
     footer {
       margin-top: auto;
       text-align: center;
-      padding: 32px 0 24px;
-      border-top: 1px solid rgba(166, 124, 82, 0.12);
+      padding: 20px 0 18px;
+      border-top: 1px solid rgba(166, 124, 82, 0.10);
       color: #8a7566;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     footer i {
       color: #c49a6c;
-      margin: 0 5px;
+      margin: 0 4px;
     }
 
     footer .footer-brand {
@@ -862,6 +859,9 @@
         transform: translateX(50%);
         top: -12px;
       }
+      .hero-title {
+        font-size: 3.5rem;
+      }
     }
 
     @media (max-width: 700px) {
@@ -876,14 +876,18 @@
         justify-content: center;
       }
       .hero {
-        padding: 60px 20px 100px;
+        padding: 80px 20px 100px;
         margin: 20px 0 30px;
       }
-      .hero-logo img {
-        height: 120px;
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      .hero-title span {
+        padding: 2px 16px;
       }
       .hero .subhead {
         font-size: 1rem;
+        margin-bottom: 28px;
       }
       .about-header h2,
       .services-header h2,
@@ -925,28 +929,37 @@
         font-size: 0.65rem;
         padding: 3px 12px;
       }
+      .contact {
+        padding: 40px 0 30px;
+      }
       .contact-card {
-        padding: 32px 24px;
+        padding: 28px 20px;
       }
       .contact-card .contact-question {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
       .contact-item {
-        padding: 14px 20px;
+        padding: 12px 18px;
         max-width: 100%;
       }
       .contact-item a {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
       .btn {
         padding: 14px 32px;
         font-size: 1rem;
       }
       .erasmus-card {
-        padding: 28px 20px;
+        padding: 20px 16px;
+      }
+      .erasmus-card .flag-icon {
+        font-size: 2rem;
       }
       .erasmus-card p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+      }
+      .erasmus-section {
+        padding: 10px 0 5px;
       }
     }
 
@@ -954,8 +967,8 @@
       .container {
         padding: 0 16px;
       }
-      .hero-logo img {
-        height: 100px;
+      .hero-title {
+        font-size: 2.2rem;
       }
       .hero .subhead {
         font-size: 0.9rem;
@@ -967,7 +980,7 @@
       .contact-item {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 8px;
+        gap: 6px;
         border-radius: 30px;
       }
       .team-member-image {
@@ -980,14 +993,11 @@
         padding: 2px 10px;
         top: -10px;
       }
-      .erasmus-card {
-        padding: 20px 16px;
-      }
-      .erasmus-card .flag-icon {
-        font-size: 2.2rem;
+      .contact-card .contact-question {
+        font-size: 1.1rem;
       }
       .erasmus-card p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -1008,9 +1018,11 @@
 
     <!-- HERO / ACASĂ SECTION -->
     <section class="hero" id="home">
-      <div class="hero-logo">
-        <img src="images/logo.png" alt="Divina Providența logo" />
+      <!-- ✅ NEW: Big elegant text instead of logo -->
+      <div class="hero-title">
+        <span>Divina Providența</span>
       </div>
+      <!-- ✅ SUBTITLE MOVED HERE - directly below the title -->
       <p class="subhead">
         <i class="fas fa-feather-alt"></i> 
         Unde căldura întâlnește îndrumarea divină
@@ -1118,7 +1130,7 @@
       </div>
     </section>
 
-    <!-- TEAM SECTION - EXACTLY 2 MEMBERS -->
+    <!-- TEAM SECTION -->
     <section class="team" id="team">
       <div class="team-header">
         <h2><span>Echipa Noastră</span></h2>
@@ -1182,7 +1194,7 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION (TIGHT SPACING) -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
@@ -1225,7 +1237,7 @@
       </div>
     </section>
 
-    <!-- ✅ ERASMUS+ SECTION - AT THE BOTTOM -->
+    <!-- ✅ ERASMUS+ SECTION (TIGHT SPACING) -->
     <section class="erasmus-section">
       <div class="erasmus-card">
         <span class="flag-icon">🇪🇺</span>
@@ -1242,7 +1254,7 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (TIGHT SPACING) -->
     <footer>
       <p>
         <i class="fas fa-dove"></i> 
