@@ -442,6 +442,7 @@
     .service-features li:nth-child(2) { animation-delay: 0.2s; }
     .service-features li:nth-child(3) { animation-delay: 0.3s; }
     .service-features li:nth-child(4) { animation-delay: 0.4s; }
+    .service-features li:nth-child(5) { animation-delay: 0.5s; }
 
     .service-features li:hover {
       background: #f8f0e8;
@@ -458,17 +459,6 @@
 
     .service-features li:hover i {
       transform: scale(1.2);
-    }
-
-    .services-more {
-      text-align: center;
-      margin-top: 16px;
-      color: #8a7566;
-      font-size: 0.9rem;
-    }
-
-    .services-more i {
-      color: #c49a6c;
     }
 
     /* ---------- TEAM ---------- */
@@ -586,7 +576,6 @@
       box-shadow: 0 12px 32px rgba(166, 124, 82, 0.2);
     }
 
-    /* ✅ Click/Tap Zoom Effect */
     .team-member-image.zoomed {
       transform: scale(1.8);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -649,10 +638,6 @@
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .team-member-info .member-role i {
-      font-size: 0.85rem;
     }
 
     .team-member-info .member-description {
@@ -1328,7 +1313,7 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- ✅ SERVICES - Updated -->
     <section class="services" id="services">
       <div class="services-header">
         <h2><span>Serviciile Noastre</span></h2>
@@ -1377,16 +1362,17 @@
             <i class="fas fa-book-open"></i>
             Povești și exemple reale, care inspiră și conectează generațiile
           </li>
+          <li>
+            <i class="fas fa-bus"></i>
+            <strong>Călătorii și vizite ghidate</strong> spre destinații europene, gândite pentru confortul și ritmul seniorilor, care lărgesc orizontul și aduc bucuria descoperirii la orice vârstă.
+          </li>
         </ul>
       </div>
 
-      <div class="services-more">
-        <i class="fas fa-plus-circle"></i>
-        Mai multe servicii vor fi adăugate în curând.
-      </div>
+      <!-- ✅ REMOVED: "Mai multe servicii vor fi adăugate în curând" -->
     </section>
 
-    <!-- ✅ TEAM with Zoom on Photo Click -->
+    <!-- TEAM -->
     <section class="team" id="team">
       <div class="team-header">
         <h2><span>Echipa Noastră</span></h2>
@@ -1697,10 +1683,8 @@
     teamPhotos.forEach(photo => {
       photo.addEventListener('click', function(e) {
         e.stopPropagation();
-        // Toggle zoom class
         this.classList.toggle('zoomed');
 
-        // If zoomed, add a click listener to document to unzoom when clicking outside
         if (this.classList.contains('zoomed')) {
           const unzoom = function(event) {
             if (!photo.contains(event.target)) {
@@ -1708,7 +1692,6 @@
               document.removeEventListener('click', unzoom);
             }
           };
-          // Use setTimeout to prevent the current click from triggering the unzoom
           setTimeout(() => {
             document.addEventListener('click', unzoom);
           }, 10);
