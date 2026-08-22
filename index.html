@@ -894,10 +894,18 @@
       box-shadow: 0 12px 24px -8px rgba(166, 124, 82, 0.10);
     }
 
-    .erasmus-card .flag-icon {
+    /* ✅ Flags container - Romanian flag + EU flag */
+    .flags-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .flag-icon {
       font-size: 2.2rem;
-      display: block;
-      margin-bottom: 6px;
+      display: inline-block;
     }
 
     .erasmus-card p {
@@ -960,6 +968,7 @@
       .nav-links { gap: 16px; font-size: 0.85rem; }
       .nav-links a { padding: 4px 8px; }
       .nav-links a i { font-size: 0.7rem; }
+      .flag-icon { font-size: 1.8rem; }
     }
 
     @media (max-width: 700px) {
@@ -998,7 +1007,7 @@
       .contact-item a { font-size: 0.85rem; }
       .contact-item .label { font-size: 0.75rem; }
       .erasmus-card { padding: 16px 20px; border-radius: 24px; }
-      .erasmus-card .flag-icon { font-size: 1.8rem; }
+      .flag-icon { font-size: 1.6rem; }
       .erasmus-card p { font-size: 0.85rem; }
       .erasmus-section { padding: 5px 0 8px; }
       .about { padding: 25px 0 20px; }
@@ -1030,6 +1039,7 @@
       .team-member-image { width: 100px; height: 100px; }
       .team-member.founder::before, .team-member.volunteer::before { font-size: 0.5rem; padding: 2px 8px; top: -7px; }
       .contact-card .contact-question { font-size: 1rem; }
+      .flag-icon { font-size: 1.4rem; }
       .erasmus-card p { font-size: 0.8rem; }
       .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 1.7rem; }
     }
@@ -1326,7 +1336,7 @@
       </div>
     </div>
 
-    <!-- CONTACT - Email Updated -->
+    <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
@@ -1369,10 +1379,13 @@
       </div>
     </section>
 
-    <!-- ERASMUS+ -->
+    <!-- ✅ ERASMUS+ with Romanian Flag + EU Flag -->
     <section class="erasmus-section">
       <div class="erasmus-card">
-        <span class="flag-icon">🇪🇺</span>
+        <div class="flags-container">
+          <span class="flag-icon">🇷🇴</span>
+          <span class="flag-icon">🇪🇺</span>
+        </div>
         <p>
           <strong>Acest serviciu este dezvoltat prin proiectul ACTION – Seniors Active in the Community</strong> 
           (Nr. 2024-2-RO01-KA210-ADU-000278611), finanțat de 
