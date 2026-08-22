@@ -33,7 +33,7 @@
       padding: 0 24px;
     }
 
-    /* ---------- STICKY NAVIGATION (Enhanced) ---------- */
+    /* ---------- STICKY NAVIGATION ---------- */
     nav {
       padding: 14px 0 10px;
       display: flex;
@@ -76,7 +76,6 @@
       gap: 8px;
     }
 
-    /* Icon styles */
     .nav-links a i {
       font-size: 0.85rem;
       opacity: 0.6;
@@ -88,7 +87,6 @@
       transform: translateY(-2px);
     }
 
-    /* Underline animation */
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -771,58 +769,59 @@
       margin-right: 6px;
     }
 
-    /* ---------- CONTACT ---------- */
+    /* ---------- CONTACT & FORM ---------- */
     .contact {
       padding: 30px 0 20px;
       margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.4s both;
     }
 
-    .contact-card {
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info {
       background: #f5ede4;
-      padding: 32px 36px;
-      border-radius: 32px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 28px 24px;
+      border-radius: 28px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .contact-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
-    }
-
-    .contact-card .contact-icon {
-      font-size: 2.4rem;
+    .contact-info .contact-icon {
+      font-size: 2.2rem;
       color: #a67c52;
       margin-bottom: 8px;
       display: block;
     }
 
-    .contact-card .contact-question {
+    .contact-info .contact-question {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .contact-card .contact-details {
+    .contact-info .contact-details {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
     }
 
-    .contact-item {
+    .contact-info .contact-item {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       background: #fcf8f2;
-      padding: 12px 22px;
+      padding: 10px 18px;
       border-radius: 60px;
       border: 1px solid rgba(166, 124, 82, 0.06);
       transition: background 0.2s, transform 0.2s;
@@ -831,44 +830,148 @@
       justify-content: center;
     }
 
-    .contact-item:hover {
+    .contact-info .contact-item:hover {
       background: #f8f0e8;
       transform: scale(1.02);
     }
 
-    .contact-item i {
-      font-size: 1.1rem;
+    .contact-info .contact-item i {
+      font-size: 1rem;
       color: #a67c52;
-      min-width: 24px;
+      min-width: 22px;
     }
 
-    .contact-item a {
+    .contact-info .contact-item a {
       text-decoration: none;
       color: #3d2c1e;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: color 0.2s;
     }
 
-    .contact-item a:hover {
+    .contact-info .contact-item a:hover {
       color: #a67c52;
     }
 
-    .contact-item .label {
+    .contact-info .contact-item .label {
       color: #8a7566;
       font-weight: 400;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
     }
 
     .contact-note {
-      margin-top: 14px;
+      margin-top: 12px;
       color: #6b5544;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
     }
 
     .contact-note i {
       color: #c49a6c;
       margin: 0 4px;
+    }
+
+    /* ---------- CONTACT FORM ---------- */
+    .contact-form-wrapper {
+      background: #f5ede4;
+      padding: 28px 24px;
+      border-radius: 28px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .contact-form-wrapper h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #3d2c1e;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .contact-form-wrapper h3 i {
+      color: #a67c52;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #3d2c1e;
+      margin-bottom: 4px;
+    }
+
+    .form-group label i {
+      color: #a67c52;
+      margin-right: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(166, 124, 82, 0.15);
+      background: #fcf8f2;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      color: #3d2c1e;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #a67c52;
+      box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      background: #a67c52;
+      color: #fff;
+      font-weight: 600;
+      padding: 14px 40px;
+      border-radius: 60px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.2);
+      background: #b88d62;
+    }
+
+    .submit-btn i {
+      margin-right: 8px;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: #2d7a4a;
+      background: #e8f5ee;
+      border-radius: 16px;
+      margin-top: 10px;
+    }
+
+    .form-success i {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 10px;
     }
 
     /* ---------- ERASMUS+ ---------- */
@@ -894,7 +997,6 @@
       box-shadow: 0 12px 24px -8px rgba(166, 124, 82, 0.10);
     }
 
-    /* ✅ Flags container - Romanian flag + EU flag */
     .flags-container {
       display: flex;
       align-items: center;
@@ -968,6 +1070,7 @@
       .nav-links { gap: 16px; font-size: 0.85rem; }
       .nav-links a { padding: 4px 8px; }
       .nav-links a i { font-size: 0.7rem; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 30px; }
       .flag-icon { font-size: 1.8rem; }
     }
 
@@ -1000,12 +1103,13 @@
       .lightbox-next { right: 8px; }
       .lightbox-close { font-size: 2.2rem; top: 12px; right: 18px; }
       .lightbox-counter { font-size: 0.8rem; padding: 6px 16px; bottom: 20px; }
-      .contact { padding: 20px 0 15px; }
-      .contact-card { padding: 24px 18px; }
-      .contact-card .contact-question { font-size: 1.2rem; }
-      .contact-item { padding: 10px 16px; max-width: 100%; gap: 10px; }
-      .contact-item a { font-size: 0.85rem; }
-      .contact-item .label { font-size: 0.75rem; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 20px; }
+      .contact-info { padding: 20px 16px; }
+      .contact-form-wrapper { padding: 20px 16px; }
+      .contact-info .contact-question { font-size: 1.1rem; }
+      .contact-info .contact-item { padding: 8px 14px; max-width: 100%; gap: 8px; }
+      .contact-info .contact-item a { font-size: 0.8rem; }
+      .contact-info .contact-item .label { font-size: 0.7rem; }
       .erasmus-card { padding: 16px 20px; border-radius: 24px; }
       .flag-icon { font-size: 1.6rem; }
       .erasmus-card p { font-size: 0.85rem; }
@@ -1038,7 +1142,7 @@
       .contact-item { flex-wrap: wrap; justify-content: center; gap: 4px; border-radius: 30px; }
       .team-member-image { width: 100px; height: 100px; }
       .team-member.founder::before, .team-member.volunteer::before { font-size: 0.5rem; padding: 2px 8px; top: -7px; }
-      .contact-card .contact-question { font-size: 1rem; }
+      .contact-info .contact-question { font-size: 1rem; }
       .flag-icon { font-size: 1.4rem; }
       .erasmus-card p { font-size: 0.8rem; }
       .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 1.7rem; }
@@ -1048,7 +1152,7 @@
 <body>
 
   <div class="container">
-    <!-- ENHANCED NAVIGATION with Icons & Animations -->
+    <!-- ENHANCED NAVIGATION -->
     <nav id="navbar">
       <div class="nav-links">
         <a href="#home" class="active">
@@ -1254,72 +1358,28 @@
       </div>
 
       <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item">
-          <img src="images/gallery1.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery2.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery3.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery4.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery5.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery6.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery7.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery8.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery9.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery10.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery11.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery12.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery13.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery14.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery15.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery16.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery17.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery18.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery19.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery20.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery21.jpg" alt="Gallery photo" />
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery22.jpg" alt="Gallery photo" />
-        </div>
+        <div class="gallery-item"><img src="images/gallery1.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery2.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery3.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery4.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery5.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery6.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery7.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery8.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery9.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery10.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery11.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery12.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery13.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery14.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery15.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery16.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery17.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery18.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery19.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery20.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery21.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery22.jpg" alt="Gallery photo" /></div>
       </div>
     </section>
 
@@ -1336,50 +1396,84 @@
       </div>
     </div>
 
-    <!-- CONTACT -->
+    <!-- ✅ CONTACT + FORM -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
         <div class="divider"></div>
       </div>
 
-      <div class="contact-card">
-        <span class="contact-icon"><i class="fas fa-envelope-open-text"></i></span>
-        <div class="contact-question">
-          Vrei să te înscrii sau să afli mai multe detalii?
+      <div class="contact-wrapper">
+        <!-- Contact Info (Left) -->
+        <div class="contact-info">
+          <span class="contact-icon"><i class="fas fa-envelope-open-text"></i></span>
+          <div class="contact-question">
+            Vrei să te înscrii sau să afli mai multe detalii?
+          </div>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span class="label">Sediul:</span>
+              <a href="https://maps.google.com/?q=Gropnița,+Iași" target="_blank">
+                Asociația Divina Providența, Gropnița, județul Iași
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <span class="label">Telefon:</span>
+              <a href="tel:+40744760938">0744 760 938</a>
+            </div>
+
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span class="label">Email:</span>
+              <a href="mailto:asociatiadivinaprovidenta@gmail.com">asociatiadivinaprovidenta@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-note">
+            <i class="fas fa-heart"></i>
+            Suntem aici pentru tine! Nu ezita să ne contactezi.
+            <i class="fas fa-heart"></i>
+          </div>
         </div>
 
-        <div class="contact-details">
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span class="label">Sediul:</span>
-            <a href="https://maps.google.com/?q=Gropnița,+Iași" target="_blank">
-              Asociația Divina Providența, Gropnița, județul Iași
-            </a>
-          </div>
+        <!-- Contact Form (Right) -->
+        <div class="contact-form-wrapper">
+          <h3><i class="fas fa-pen"></i> Trimite-ne un mesaj</h3>
 
-          <div class="contact-item">
-            <i class="fas fa-phone-alt"></i>
-            <span class="label">Telefon:</span>
-            <a href="tel:+40744760938">0744 760 938</a>
-          </div>
+          <form id="contactForm" action="https://formspree.io/f/xvgpolab" method="POST">
+            <div class="form-group">
+              <label for="name"><i class="fas fa-user"></i> Nume și Prenume</label>
+              <input type="text" id="name" name="name" placeholder="Ex: Ion Popescu" required />
+            </div>
 
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span class="label">Email:</span>
-            <a href="mailto:asociatiadivinaprovidenta@gmail.com">asociatiadivinaprovidenta@gmail.com</a>
-          </div>
-        </div>
+            <div class="form-group">
+              <label for="phone"><i class="fas fa-phone"></i> Număr de telefon</label>
+              <input type="tel" id="phone" name="phone" placeholder="Ex: 0744 760 938" required />
+            </div>
 
-        <div class="contact-note">
-          <i class="fas fa-heart"></i>
-          Suntem aici pentru tine! Nu ezita să ne contactezi.
-          <i class="fas fa-heart"></i>
+            <div class="form-group">
+              <label for="message"><i class="fas fa-comment"></i> Mesaj</label>
+              <textarea id="message" name="message" placeholder="Scrie mesajul tău aici..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i> Trimite mesaj
+            </button>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Mesaj trimis cu succes!</strong><br />Vom reveni cât mai curând.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ✅ ERASMUS+ with Romanian Flag + EU Flag -->
+    <!-- ERASMUS+ -->
     <section class="erasmus-section">
       <div class="erasmus-card">
         <div class="flags-container">
@@ -1479,6 +1573,34 @@
       } else if (e.key === 'ArrowRight') {
         changeImage(1);
       }
+    });
+
+    // ---------- CONTACT FORM ----------
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          contactForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+          contactForm.reset();
+        } else {
+          alert('A apărut o eroare. Te rugăm să încerci din nou.');
+        }
+      }).catch(error => {
+        alert('A apărut o eroare. Te rugăm să încerci din nou.');
+      });
     });
   </script>
 </body>
