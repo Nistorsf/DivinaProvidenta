@@ -38,12 +38,12 @@
 
     /* ---------- STICKY NAVIGATION ---------- */
     nav {
-      padding: 18px 0 14px;
+      padding: 14px 0 10px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
       flex-wrap: wrap;
-      border-bottom: 2px solid rgba(184, 142, 97, 0.15);
+      border-bottom: 2px solid rgba(184, 142, 97, 0.12);
       background: rgba(252, 248, 242, 0.92);
       backdrop-filter: blur(10px);
       position: sticky;
@@ -54,14 +54,15 @@
 
     nav.scrolled {
       box-shadow: 0 4px 20px rgba(166, 124, 82, 0.08);
-      padding: 12px 0 10px;
+      padding: 10px 0 8px;
     }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 28px;
       font-weight: 600;
       color: #5a4030;
+      font-size: 0.95rem;
     }
 
     .nav-links a {
@@ -83,13 +84,13 @@
       border-bottom-color: #a67c52;
     }
 
-    /* ---------- HERO SECTION (NO LOGO) ---------- */
+    /* ---------- HERO SECTION ---------- */
     .hero {
       position: relative;
       padding: 140px 0 160px;
       text-align: center;
-      border-radius: 48px;
-      margin: 36px 0 48px;
+      border-radius: 40px;
+      margin: 24px 0 30px;
       overflow: hidden;
       animation: fadeUp 1s ease-out;
       background-image: url('images/hero-bg.jpg');
@@ -97,44 +98,55 @@
       background-position: center;
       background-repeat: no-repeat;
       box-shadow: inset 0 0 0 1000px rgba(60, 44, 30, 0.35);
-      scroll-margin-top: 80px;
+      scroll-margin-top: 70px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 480px;
     }
 
-    /* Hero title - big, elegant, centered (replaces logo) */
+    /* Hero content - moved higher with less gap between elements */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0 20px;
+    }
+
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: 4.5rem;
+      font-size: 4.2rem;
       font-weight: 600;
       font-style: italic;
       color: #ffffff;
       text-shadow: 0 4px 30px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 2;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       letter-spacing: -0.5px;
       line-height: 1.2;
     }
 
     .hero-title span {
       background: rgba(166, 124, 82, 0.75);
-      padding: 4px 24px;
+      padding: 4px 28px;
       border-radius: 60px;
       display: inline-block;
       backdrop-filter: blur(4px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
 
+    /* ✅ Subtitle - moved closer to title (reduced margin) */
     .hero .subhead {
       font-size: 1.2rem;
-      max-width: 540px;
-      margin: 0 auto 36px;
+      max-width: 520px;
+      margin: 6px auto 24px;
       color: #ffffff;
       font-weight: 400;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.3px;
       position: relative;
       z-index: 2;
       text-shadow: 0 2px 12px rgba(0,0,0,0.2);
@@ -145,6 +157,13 @@
       margin: 0 6px;
     }
 
+    /* ✅ Button wrapper - moved closer to subtitle */
+    .hero .btn-wrapper {
+      margin-top: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
     .btn {
       display: inline-block;
       background: #a67c52;
@@ -153,7 +172,7 @@
       padding: 16px 48px;
       border-radius: 60px;
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
       position: relative;
@@ -167,7 +186,7 @@
     }
 
     .btn i {
-      margin-right: 12px;
+      margin-right: 10px;
     }
 
     .float {
@@ -176,171 +195,143 @@
 
     /* ---------- SECTION SCROLL MARGIN ---------- */
     .about, .services, .team, .contact {
-      scroll-margin-top: 80px;
+      scroll-margin-top: 70px;
     }
 
-    /* ---------- ABOUT SECTION ---------- */
-    .about {
-      padding: 70px 0 80px;
-      margin-bottom: 40px;
-      animation: fadeUp 1s ease-out 0.2s both;
-    }
-
-    .about-header {
+    /* ---------- SECTION HEADERS (shared) ---------- */
+    .about-header, .services-header, .team-header, .contact-header {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 30px;
     }
 
-    .about-header h2 {
+    .about-header h2, .services-header h2, .team-header h2, .contact-header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 2.6rem;
       font-weight: 600;
       font-style: italic;
       color: #3d2c1e;
     }
 
-    .about-header h2 span {
+    .about-header h2 span, .services-header h2 span, .team-header h2 span, .contact-header h2 span {
       color: #a67c52;
       background: #f5ede4;
-      padding: 0 16px;
+      padding: 0 14px;
       border-radius: 40px;
       display: inline-block;
     }
 
-    .about-header .divider {
-      width: 70px;
-      height: 4px;
+    .about-header .divider, .services-header .divider, .team-header .divider, .contact-header .divider {
+      width: 60px;
+      height: 3px;
       background: linear-gradient(90deg, #c49a6c, #a67c52);
-      margin: 12px auto 0;
+      margin: 8px auto 0;
       border-radius: 4px;
+    }
+
+    /* ---------- ABOUT SECTION ---------- */
+    .about {
+      padding: 40px 0 30px;
+      margin-bottom: 10px;
+      animation: fadeUp 1s ease-out 0.2s both;
     }
 
     .about-content {
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 28px;
     }
 
     .mission-card {
       background: #f5ede4;
-      padding: 48px 52px;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -8px rgba(166, 124, 82, 0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 32px 40px;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .mission-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(166, 124, 82, 0.18);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
     }
 
     .mission-card p {
-      font-size: 1.2rem;
-      max-width: 780px;
+      font-size: 1.05rem;
+      max-width: 760px;
       margin: 0 auto;
       color: #4d3a2c;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
     .mission-card p i {
       color: #c49a6c;
-      margin: 0 6px;
+      margin: 0 4px;
     }
 
     .mission-card .big-icon {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       color: #a67c52;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: block;
     }
 
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 20px;
     }
 
     .value-item {
       background: #fcf8f2;
-      padding: 32px 24px;
-      border-radius: 32px;
-      box-shadow: 0 8px 22px -6px rgba(166, 124, 82, 0.08);
-      border: 1px solid rgba(166, 124, 82, 0.08);
+      padding: 24px 20px;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px -6px rgba(166, 124, 82, 0.06);
+      border: 1px solid rgba(166, 124, 82, 0.06);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .value-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 34px -8px rgba(166, 124, 82, 0.14);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px -8px rgba(166, 124, 82, 0.12);
     }
 
     .value-item .value-icon {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       color: #c49a6c;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       display: block;
     }
 
     .value-item h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .value-item p {
-      font-size: 0.98rem;
+      font-size: 0.92rem;
       color: #6b5544;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* ---------- SERVICES SECTION ---------- */
     .services {
-      padding: 70px 0 80px;
-      margin-bottom: 40px;
+      padding: 30px 0 30px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.3s both;
     }
 
-    .services-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .services-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 600;
-      font-style: italic;
-      color: #3d2c1e;
-    }
-
-    .services-header h2 span {
-      color: #a67c52;
-      background: #f5ede4;
-      padding: 0 16px;
-      border-radius: 40px;
-      display: inline-block;
-    }
-
-    .services-header .divider {
-      width: 70px;
-      height: 4px;
-      background: linear-gradient(90deg, #c49a6c, #a67c52);
-      margin: 12px auto 0;
-      border-radius: 4px;
-    }
-
     .services-intro {
-      max-width: 800px;
-      margin: 0 auto 50px;
+      max-width: 700px;
+      margin: 0 auto 28px;
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: #4d3a2c;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
     .services-intro i {
@@ -350,65 +341,66 @@
 
     .service-card {
       background: #f5ede4;
-      padding: 40px 44px;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 32px 36px;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
-      margin-bottom: 40px;
+      margin-bottom: 24px;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(166, 124, 82, 0.16);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
     }
 
     .service-card .service-icon {
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       color: #a67c52;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       display: block;
     }
 
     .service-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .service-card .service-sub {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       color: #5a4030;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       font-style: italic;
     }
 
     .service-card p {
       color: #4d3a2c;
-      line-height: 1.8;
-      font-size: 1rem;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
     }
 
     .service-features {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 24px;
+      gap: 14px;
+      margin-top: 16px;
     }
 
     .service-features li {
       list-style: none;
       background: #fcf8f2;
-      padding: 14px 20px;
-      border-radius: 20px;
-      border: 1px solid rgba(166, 124, 82, 0.08);
-      font-size: 0.98rem;
+      padding: 12px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(166, 124, 82, 0.06);
+      font-size: 0.92rem;
       color: #4d3a2c;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       transition: background 0.2s;
     }
 
@@ -418,54 +410,36 @@
 
     .service-features li i {
       color: #a67c52;
-      font-size: 1.2rem;
-      min-width: 24px;
+      font-size: 1rem;
+      min-width: 20px;
       text-align: center;
+    }
+
+    .services-more {
+      text-align: center;
+      margin-top: 16px;
+      color: #8a7566;
+      font-size: 0.9rem;
+    }
+
+    .services-more i {
+      color: #c49a6c;
     }
 
     /* ---------- TEAM SECTION ---------- */
     .team {
-      padding: 70px 0 80px;
-      margin-bottom: 40px;
+      padding: 30px 0 30px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.35s both;
     }
 
-    .team-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .team-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 600;
-      font-style: italic;
-      color: #3d2c1e;
-    }
-
-    .team-header h2 span {
-      color: #a67c52;
-      background: #f5ede4;
-      padding: 0 16px;
-      border-radius: 40px;
-      display: inline-block;
-    }
-
-    .team-header .divider {
-      width: 70px;
-      height: 4px;
-      background: linear-gradient(90deg, #c49a6c, #a67c52);
-      margin: 12px auto 0;
-      border-radius: 4px;
-    }
-
     .team-intro {
-      max-width: 700px;
-      margin: 0 auto 50px;
+      max-width: 650px;
+      margin: 0 auto 30px;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #5a4030;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
     .team-intro i {
@@ -475,24 +449,24 @@
     .team-grid {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 24px;
     }
 
     .team-member {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 32px;
       background: #f5ede4;
-      padding: 32px 36px;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 24px 28px;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .team-member:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(166, 124, 82, 0.16);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
     }
 
     .team-member:nth-child(even) {
@@ -508,16 +482,16 @@
     .team-member.founder::before {
       content: '⭐ Fondator';
       position: absolute;
-      top: -12px;
-      right: 30px;
+      top: -10px;
+      right: 24px;
       background: #a67c52;
       color: #fff;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 4px 16px;
+      padding: 3px 14px;
       border-radius: 30px;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 12px rgba(166, 124, 82, 0.25);
+      box-shadow: 0 4px 12px rgba(166, 124, 82, 0.2);
     }
 
     .team-member.volunteer {
@@ -529,26 +503,26 @@
     .team-member.volunteer::before {
       content: '🤝 Voluntar';
       position: absolute;
-      top: -12px;
-      right: 30px;
+      top: -10px;
+      right: 24px;
       background: #8aaa7a;
       color: #fff;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 4px 16px;
+      padding: 3px 14px;
       border-radius: 30px;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 12px rgba(138, 170, 122, 0.25);
+      box-shadow: 0 4px 12px rgba(138, 170, 122, 0.2);
     }
 
     .team-member-image {
       flex-shrink: 0;
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       overflow: hidden;
       border: 4px solid #ffffff;
-      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.15);
+      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.12);
       background: #e8ddd0;
       display: flex;
       align-items: center;
@@ -564,12 +538,12 @@
 
     .team-member.founder .team-member-image {
       border-color: #a67c52;
-      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.25);
+      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.2);
     }
 
     .team-member.volunteer .team-member-image {
       border-color: #8aaa7a;
-      box-shadow: 0 8px 24px rgba(138, 170, 122, 0.25);
+      box-shadow: 0 8px 24px rgba(138, 170, 122, 0.2);
     }
 
     .team-member-info {
@@ -578,10 +552,10 @@
 
     .team-member-info .member-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .team-member.founder .member-name {
@@ -593,23 +567,23 @@
     }
 
     .team-member-info .member-role {
-      font-size: 1rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #a67c52;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
     .team-member-info .member-role i {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .team-member-info .member-description {
       color: #4d3a2c;
-      line-height: 1.7;
-      font-size: 0.98rem;
+      line-height: 1.6;
+      font-size: 0.92rem;
     }
 
     .team-member-info .member-description .nickname {
@@ -625,45 +599,16 @@
 
     /* ---------- CONTACT SECTION ---------- */
     .contact {
-      padding: 60px 0 50px;
-      margin-bottom: 20px;
+      padding: 30px 0 20px;
+      margin-bottom: 10px;
       animation: fadeUp 1s ease-out 0.4s both;
-    }
-
-    .contact-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .contact-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 600;
-      font-style: italic;
-      color: #3d2c1e;
-    }
-
-    .contact-header h2 span {
-      color: #a67c52;
-      background: #f5ede4;
-      padding: 0 16px;
-      border-radius: 40px;
-      display: inline-block;
-    }
-
-    .contact-header .divider {
-      width: 70px;
-      height: 4px;
-      background: linear-gradient(90deg, #c49a6c, #a67c52);
-      margin: 12px auto 0;
-      border-radius: 4px;
     }
 
     .contact-card {
       background: #f5ede4;
-      padding: 40px 44px;
-      border-radius: 40px;
-      box-shadow: 0 12px 30px -8px rgba(166, 124, 82, 0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+      padding: 32px 36px;
+      border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
       max-width: 700px;
@@ -672,43 +617,43 @@
     }
 
     .contact-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(166, 124, 82, 0.18);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
     }
 
     .contact-card .contact-icon {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       color: #a67c52;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       display: block;
     }
 
     .contact-card .contact-question {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: #3d2c1e;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .contact-card .contact-details {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       align-items: center;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       background: #fcf8f2;
-      padding: 14px 24px;
+      padding: 12px 22px;
       border-radius: 60px;
-      border: 1px solid rgba(166, 124, 82, 0.08);
+      border: 1px solid rgba(166, 124, 82, 0.06);
       transition: background 0.2s, transform 0.2s;
       width: 100%;
-      max-width: 380px;
+      max-width: 360px;
       justify-content: center;
     }
 
@@ -718,16 +663,16 @@
     }
 
     .contact-item i {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #a67c52;
-      min-width: 26px;
+      min-width: 24px;
     }
 
     .contact-item a {
       text-decoration: none;
       color: #3d2c1e;
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: color 0.2s;
     }
 
@@ -738,13 +683,13 @@
     .contact-item .label {
       color: #8a7566;
       font-weight: 400;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
 
     .contact-note {
-      margin-top: 18px;
+      margin-top: 14px;
       color: #6b5544;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .contact-note i {
@@ -752,17 +697,17 @@
       margin: 0 4px;
     }
 
-    /* ---------- ERASMUS+ SECTION (TIGHT SPACING) ---------- */
+    /* ---------- ERASMUS+ SECTION ---------- */
     .erasmus-section {
-      padding: 20px 0 10px;
+      padding: 10px 0 10px;
       animation: fadeUp 1s ease-out 0.5s both;
     }
 
     .erasmus-card {
       background: #f5ede4;
-      padding: 28px 36px;
-      border-radius: 32px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08);
+      padding: 20px 28px;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px -6px rgba(166, 124, 82, 0.06);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
       max-width: 750px;
@@ -771,20 +716,20 @@
     }
 
     .erasmus-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -8px rgba(166, 124, 82, 0.10);
     }
 
     .erasmus-card .flag-icon {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .erasmus-card p {
-      font-size: 0.98rem;
+      font-size: 0.92rem;
       color: #4d3a2c;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .erasmus-card strong {
@@ -792,22 +737,22 @@
     }
 
     .erasmus-card .erasmus-icons {
-      margin-top: 10px;
+      margin-top: 8px;
       display: flex;
       justify-content: center;
-      gap: 14px;
-      font-size: 1.2rem;
+      gap: 12px;
+      font-size: 1.1rem;
       color: #a67c52;
     }
 
-    /* ---------- FOOTER (TIGHT SPACING) ---------- */
+    /* ---------- FOOTER ---------- */
     footer {
       margin-top: auto;
       text-align: center;
-      padding: 20px 0 18px;
-      border-top: 1px solid rgba(166, 124, 82, 0.10);
+      padding: 16px 0 14px;
+      border-top: 1px solid rgba(166, 124, 82, 0.08);
       color: #8a7566;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     footer i {
@@ -844,11 +789,11 @@
       .team-member {
         flex-direction: column !important;
         text-align: center;
-        padding: 28px 24px;
+        padding: 24px 20px;
       }
       .team-member-image {
-        width: 160px;
-        height: 160px;
+        width: 130px;
+        height: 130px;
       }
       .team-member-info .member-role {
         justify-content: center;
@@ -857,147 +802,204 @@
       .team-member.volunteer::before {
         right: 50%;
         transform: translateX(50%);
-        top: -12px;
+        top: -10px;
       }
       .hero-title {
-        font-size: 3.5rem;
+        font-size: 3.4rem;
       }
     }
 
     @media (max-width: 700px) {
       nav {
         justify-content: center;
-        padding: 14px 0 10px;
+        padding: 10px 0 8px;
       }
       .nav-links {
-        gap: 18px;
-        font-size: 0.95rem;
+        gap: 14px;
+        font-size: 0.85rem;
         flex-wrap: wrap;
         justify-content: center;
       }
       .hero {
         padding: 80px 20px 100px;
-        margin: 20px 0 30px;
+        margin: 16px 0 20px;
+        border-radius: 28px;
+        min-height: 380px;
       }
       .hero-title {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
       }
       .hero-title span {
         padding: 2px 16px;
       }
       .hero .subhead {
         font-size: 1rem;
-        margin-bottom: 28px;
+        margin: 4px auto 18px;
+        max-width: 400px;
+      }
+      .hero .btn-wrapper {
+        margin-top: 12px;
+      }
+      .btn {
+        padding: 14px 32px;
+        font-size: 0.95rem;
       }
       .about-header h2,
       .services-header h2,
       .team-header h2,
       .contact-header h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
+      }
+      .about-header, .services-header, .team-header, .contact-header {
+        margin-bottom: 20px;
       }
       .mission-card {
-        padding: 32px 24px;
+        padding: 24px 20px;
       }
       .mission-card p {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
       .values-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 14px;
       }
       .value-item {
-        padding: 24px 18px;
+        padding: 18px 16px;
       }
       .service-card {
-        padding: 28px 20px;
-      }
-      .service-card h3 {
-        font-size: 1.6rem;
-      }
-      .team-member {
         padding: 24px 18px;
       }
+      .service-card h3 {
+        font-size: 1.5rem;
+      }
+      .team-member {
+        padding: 20px 16px;
+        gap: 20px;
+      }
       .team-member-image {
-        width: 140px;
-        height: 140px;
+        width: 110px;
+        height: 110px;
       }
       .team-member-info .member-name {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
       .team-member.founder::before,
       .team-member.volunteer::before {
-        font-size: 0.65rem;
-        padding: 3px 12px;
+        font-size: 0.55rem;
+        padding: 2px 10px;
+        top: -8px;
       }
       .contact {
-        padding: 40px 0 30px;
+        padding: 20px 0 15px;
       }
       .contact-card {
-        padding: 28px 20px;
+        padding: 24px 18px;
       }
       .contact-card .contact-question {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
       .contact-item {
-        padding: 12px 18px;
+        padding: 10px 16px;
         max-width: 100%;
+        gap: 10px;
       }
       .contact-item a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
-      .btn {
-        padding: 14px 32px;
-        font-size: 1rem;
+      .contact-item .label {
+        font-size: 0.75rem;
       }
       .erasmus-card {
-        padding: 20px 16px;
+        padding: 16px 20px;
+        border-radius: 24px;
       }
       .erasmus-card .flag-icon {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       .erasmus-card p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
       .erasmus-section {
-        padding: 10px 0 5px;
+        padding: 5px 0 8px;
+      }
+      .about {
+        padding: 25px 0 20px;
+      }
+      .services {
+        padding: 20px 0 20px;
+      }
+      .team {
+        padding: 20px 0 20px;
+      }
+      .services-intro {
+        font-size: 0.95rem;
+        margin: 0 auto 18px;
+      }
+      .team-intro {
+        font-size: 0.95rem;
+        margin: 0 auto 20px;
       }
     }
 
     @media (max-width: 480px) {
       .container {
-        padding: 0 16px;
+        padding: 0 14px;
+      }
+      .hero {
+        padding: 60px 16px 80px;
+        min-height: 300px;
       }
       .hero-title {
         font-size: 2.2rem;
       }
+      .hero-title span {
+        padding: 2px 12px;
+      }
       .hero .subhead {
         font-size: 0.9rem;
+        margin: 4px auto 14px;
+      }
+      .hero .btn-wrapper {
+        margin-top: 10px;
+      }
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+      }
+      .btn i {
+        margin-right: 6px;
       }
       .service-features li {
-        font-size: 0.9rem;
-        padding: 12px 16px;
+        font-size: 0.85rem;
+        padding: 10px 14px;
       }
       .contact-item {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 6px;
+        gap: 4px;
         border-radius: 30px;
       }
       .team-member-image {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
       }
       .team-member.founder::before,
       .team-member.volunteer::before {
-        font-size: 0.6rem;
-        padding: 2px 10px;
-        top: -10px;
+        font-size: 0.5rem;
+        padding: 2px 8px;
+        top: -7px;
       }
       .contact-card .contact-question {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
       .erasmus-card p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+      }
+      .about-header h2,
+      .services-header h2,
+      .team-header h2,
+      .contact-header h2 {
+        font-size: 1.7rem;
       }
     }
   </style>
@@ -1016,24 +1018,26 @@
       </div>
     </nav>
 
-    <!-- HERO / ACASĂ SECTION -->
+    <!-- HERO -->
     <section class="hero" id="home">
-      <!-- ✅ NEW: Big elegant text instead of logo -->
-      <div class="hero-title">
-        <span>Divina Providența</span>
+      <div class="hero-content">
+        <div class="hero-title">
+          <span>Divina Providența</span>
+        </div>
+        <p class="subhead">
+          <i class="fas fa-feather-alt"></i> 
+          Unde căldura întâlnește îndrumarea divină
+          <i class="fas fa-feather-alt"></i>
+        </p>
+        <div class="btn-wrapper">
+          <a href="#services" class="btn float">
+            <i class="fas fa-arrow-right"></i> Descoperă serviciile noastre
+          </a>
+        </div>
       </div>
-      <!-- ✅ SUBTITLE MOVED HERE - directly below the title -->
-      <p class="subhead">
-        <i class="fas fa-feather-alt"></i> 
-        Unde căldura întâlnește îndrumarea divină
-        <i class="fas fa-feather-alt"></i>
-      </p>
-      <a href="#services" class="btn float">
-        <i class="fas fa-arrow-right"></i> Descoperă serviciile noastre
-      </a>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT -->
     <section class="about" id="about">
       <div class="about-header">
         <h2><span>Cine suntem?</span></h2>
@@ -1071,7 +1075,7 @@
       </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+    <!-- SERVICES -->
     <section class="services" id="services">
       <div class="services-header">
         <h2><span>Serviciile Noastre</span></h2>
@@ -1084,7 +1088,6 @@
         <i class="fas fa-heart"></i>
       </div>
 
-      <!-- Club de Seniori -->
       <div class="service-card">
         <span class="service-icon"><i class="fas fa-users"></i></span>
         <h3>Club de Seniori</h3>
@@ -1094,13 +1097,13 @@
           <i class="fas fa-quote-right" style="color:#c49a6c; font-size:0.8rem;"></i>
         </div>
 
-        <p style="margin-bottom:12px;">
+        <p>
           Credem că un club de seniori înseamnă mai mult decât un loc de întâlnire — este un 
           <strong>spațiu viu</strong>, unde oamenii creează relații, își împărtășesc experiența, 
           învață lucruri noi și contribuie activ la viața comunității.
         </p>
 
-        <h4 style="font-family:'Playfair Display',serif; font-size:1.2rem; color:#a67c52; margin:20px 0 12px;">
+        <h4 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#a67c52; margin:14px 0 10px;">
           <i class="fas fa-gift"></i> Ce oferim:
         </h4>
 
@@ -1124,13 +1127,13 @@
         </ul>
       </div>
 
-      <div style="text-align:center; margin-top:20px; color:#8a7566; font-size:0.95rem;">
-        <i class="fas fa-plus-circle" style="color:#c49a6c;"></i>
+      <div class="services-more">
+        <i class="fas fa-plus-circle"></i>
         Mai multe servicii vor fi adăugate în curând.
       </div>
     </section>
 
-    <!-- TEAM SECTION -->
+    <!-- TEAM -->
     <section class="team" id="team">
       <div class="team-header">
         <h2><span>Echipa Noastră</span></h2>
@@ -1144,7 +1147,6 @@
       </div>
 
       <div class="team-grid">
-        <!-- ⭐ MEMBRU FONDATOR: Mihaela Ionescu -->
         <div class="team-member founder">
           <div class="team-member-image">
             <img src="images/mihaela-ionescu.jpg" alt="Mihaela Ionescu - Fondatoare" />
@@ -1168,7 +1170,6 @@
           </div>
         </div>
 
-        <!-- 🤝 CROITORIU PETRU -->
         <div class="team-member volunteer">
           <div class="team-member-image">
             <img src="images/croitoriu-petru.jpg" alt="Croitoriu Petru - Domnul Petrică" />
@@ -1194,7 +1195,7 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION (TIGHT SPACING) -->
+    <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
@@ -1237,7 +1238,7 @@
       </div>
     </section>
 
-    <!-- ✅ ERASMUS+ SECTION (TIGHT SPACING) -->
+    <!-- ERASMUS+ -->
     <section class="erasmus-section">
       <div class="erasmus-card">
         <span class="flag-icon">🇪🇺</span>
@@ -1254,7 +1255,7 @@
       </div>
     </section>
 
-    <!-- FOOTER (TIGHT SPACING) -->
+    <!-- FOOTER -->
     <footer>
       <p>
         <i class="fas fa-dove"></i> 
@@ -1282,7 +1283,7 @@
     window.addEventListener('scroll', function() {
       let current = 'home';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
+        const sectionTop = section.offsetTop - 110;
         if (window.scrollY >= sectionTop) {
           current = section.getAttribute('id');
         }
