@@ -82,10 +82,10 @@
       border-bottom-color: #a67c52;
     }
 
-    /* ---------- HERO SECTION - CLEAN, MINIMAL ---------- */
+    /* ---------- HERO SECTION ---------- */
     .hero {
       position: relative;
-      padding: 180px 0 180px;
+      padding: 100px 0 180px;
       text-align: center;
       border-radius: 40px;
       margin: 24px 0 30px;
@@ -101,7 +101,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 450px;
+      min-height: 480px;
     }
 
     .hero-content {
@@ -115,11 +115,11 @@
       padding: 0 20px;
     }
 
-    /* ✅ ONLY the subtitle - clean and simple */
+    /* ✅ Subtitle at the top */
     .hero .subhead {
-      font-size: 1.8rem;
-      max-width: 650px;
-      margin: 0 auto 32px;
+      font-size: 2.2rem;
+      max-width: 700px;
+      margin: 0 auto 20px;
       color: #ffffff;
       font-weight: 400;
       letter-spacing: 0.5px;
@@ -134,7 +134,9 @@
       margin: 0 8px;
     }
 
+    /* ✅ Button moved MUCH LOWER with large margin-top */
     .hero .btn-wrapper {
+      margin-top: 120px;
       position: relative;
       z-index: 2;
     }
@@ -762,7 +764,10 @@
         top: -10px;
       }
       .hero .subhead {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+      }
+      .hero .btn-wrapper {
+        margin-top: 80px;
       }
     }
 
@@ -778,15 +783,18 @@
         justify-content: center;
       }
       .hero {
-        padding: 100px 20px 100px;
+        padding: 60px 20px 120px;
         margin: 16px 0 20px;
         border-radius: 28px;
-        min-height: 320px;
+        min-height: 380px;
       }
       .hero .subhead {
-        font-size: 1.3rem;
-        margin: 0 auto 24px;
+        font-size: 1.5rem;
+        margin: 0 auto 16px;
         max-width: 400px;
+      }
+      .hero .btn-wrapper {
+        margin-top: 60px;
       }
       .btn {
         padding: 14px 32px;
@@ -894,12 +902,15 @@
         padding: 0 14px;
       }
       .hero {
-        padding: 80px 16px 80px;
-        min-height: 280px;
+        padding: 40px 16px 80px;
+        min-height: 300px;
       }
       .hero .subhead {
-        font-size: 1.1rem;
-        margin: 0 auto 18px;
+        font-size: 1.2rem;
+        margin: 0 auto 12px;
+      }
+      .hero .btn-wrapper {
+        margin-top: 40px;
       }
       .btn {
         padding: 12px 24px;
@@ -957,15 +968,15 @@
       </div>
     </nav>
 
-    <!-- ✅ HERO - CLEAN & MINIMAL -->
+    <!-- ✅ HERO - Subtitle at top, button much lower -->
     <section class="hero" id="home">
       <div class="hero-content">
-        <!-- ✅ ONLY the subtitle - no "Divina Providența", no "ASOCIAȚIA" -->
         <p class="subhead">
           <i class="fas fa-feather-alt"></i> 
           Unde căldura întâlnește îndrumarea divină
           <i class="fas fa-feather-alt"></i>
         </p>
+        <!-- ✅ Button moved MUCH LOWER with margin-top: 120px -->
         <div class="btn-wrapper">
           <a href="#services" class="btn float">
             <i class="fas fa-arrow-right"></i> Descoperă serviciile noastre
