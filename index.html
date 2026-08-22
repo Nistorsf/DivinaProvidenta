@@ -137,7 +137,7 @@
       border-radius: 40px;
       margin: 24px 0 30px;
       overflow: hidden;
-      animation: fadeUp 1s ease-out;
+      animation: fadeUp 0.8s ease-out;
       background-image: url('images/hero-bg.jpg');
       background-size: cover;
       background-position: center;
@@ -174,6 +174,7 @@
       text-shadow: 0 2px 20px rgba(0,0,0,0.3);
       line-height: 1.4;
       white-space: nowrap;
+      animation: fadeUp 0.8s ease-out 0.2s both;
     }
 
     .hero .subhead i {
@@ -185,6 +186,7 @@
       margin-top: 350px;
       position: relative;
       z-index: 2;
+      animation: fadeUp 0.8s ease-out 0.4s both;
     }
 
     .btn {
@@ -252,7 +254,7 @@
     .about {
       padding: 40px 0 30px;
       margin-bottom: 10px;
-      animation: fadeUp 1s ease-out 0.2s both;
+      animation: fadeUp 0.8s ease-out 0.2s both;
     }
 
     .about-content {
@@ -305,11 +307,16 @@
       border: 1px solid rgba(166, 124, 82, 0.06);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeUp 0.6s ease-out both;
     }
 
+    .value-item:nth-child(1) { animation-delay: 0.1s; }
+    .value-item:nth-child(2) { animation-delay: 0.2s; }
+    .value-item:nth-child(3) { animation-delay: 0.3s; }
+
     .value-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px -8px rgba(166, 124, 82, 0.12);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px -8px rgba(166, 124, 82, 0.15);
     }
 
     .value-item .value-icon {
@@ -317,6 +324,11 @@
       color: #c49a6c;
       margin-bottom: 8px;
       display: block;
+      transition: transform 0.3s;
+    }
+
+    .value-item:hover .value-icon {
+      transform: scale(1.2) rotate(-5deg);
     }
 
     .value-item h3 {
@@ -337,7 +349,7 @@
     .services {
       padding: 30px 0 30px;
       margin-bottom: 10px;
-      animation: fadeUp 1s ease-out 0.3s both;
+      animation: fadeUp 0.8s ease-out 0.3s both;
     }
 
     .services-intro {
@@ -362,6 +374,7 @@
       border: 1px solid rgba(255,255,255,0.3);
       margin-bottom: 24px;
       transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeUp 0.8s ease-out 0.4s both;
     }
 
     .service-card:hover {
@@ -374,6 +387,11 @@
       color: #a67c52;
       margin-bottom: 10px;
       display: block;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(-3deg);
     }
 
     .service-card h3 {
@@ -416,11 +434,18 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
+      animation: fadeUp 0.5s ease-out both;
     }
+
+    .service-features li:nth-child(1) { animation-delay: 0.1s; }
+    .service-features li:nth-child(2) { animation-delay: 0.2s; }
+    .service-features li:nth-child(3) { animation-delay: 0.3s; }
+    .service-features li:nth-child(4) { animation-delay: 0.4s; }
 
     .service-features li:hover {
       background: #f8f0e8;
+      transform: translateX(4px);
     }
 
     .service-features li i {
@@ -428,6 +453,11 @@
       font-size: 1rem;
       min-width: 20px;
       text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .service-features li:hover i {
+      transform: scale(1.2);
     }
 
     .services-more {
@@ -445,7 +475,7 @@
     .team {
       padding: 30px 0 30px;
       margin-bottom: 10px;
-      animation: fadeUp 1s ease-out 0.35s both;
+      animation: fadeUp 0.8s ease-out 0.35s both;
     }
 
     .team-intro {
@@ -477,11 +507,15 @@
       box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeUp 0.8s ease-out both;
     }
 
+    .team-member:nth-child(1) { animation-delay: 0.1s; }
+    .team-member:nth-child(2) { animation-delay: 0.3s; }
+
     .team-member:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
     }
 
     .team-member:nth-child(even) {
@@ -542,6 +576,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .team-member-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(166, 124, 82, 0.2);
+    }
+
+    /* ✅ Click/Tap Zoom Effect */
+    .team-member-image.zoomed {
+      transform: scale(1.8);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      border-color: #a67c52;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+
+    .team-member-image.zoomed img {
+      transform: scale(1);
     }
 
     .team-member-image img {
@@ -549,6 +604,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.5s;
+    }
+
+    .team-member-image:hover img {
+      transform: scale(1.08);
     }
 
     .team-member.founder .team-member-image {
@@ -591,6 +651,10 @@
       gap: 8px;
     }
 
+    .team-member-info .member-role i {
+      font-size: 0.85rem;
+    }
+
     .team-member-info .member-description {
       color: #4d3a2c;
       line-height: 1.6;
@@ -612,7 +676,7 @@
     .gallery {
       padding: 40px 0 50px;
       margin-bottom: 10px;
-      animation: fadeUp 1s ease-out 0.4s both;
+      animation: fadeUp 0.8s ease-out 0.4s both;
     }
 
     .gallery-grid {
@@ -629,7 +693,21 @@
       cursor: pointer;
       background: #f5ede4;
       aspect-ratio: 1 / 1;
+      animation: fadeUp 0.6s ease-out both;
     }
+
+    .gallery-item:nth-child(1) { animation-delay: 0.05s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.1s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.15s; }
+    .gallery-item:nth-child(4) { animation-delay: 0.2s; }
+    .gallery-item:nth-child(5) { animation-delay: 0.25s; }
+    .gallery-item:nth-child(6) { animation-delay: 0.3s; }
+    .gallery-item:nth-child(7) { animation-delay: 0.35s; }
+    .gallery-item:nth-child(8) { animation-delay: 0.4s; }
+    .gallery-item:nth-child(9) { animation-delay: 0.45s; }
+    .gallery-item:nth-child(10) { animation-delay: 0.5s; }
+    .gallery-item:nth-child(11) { animation-delay: 0.55s; }
+    .gallery-item:nth-child(12) { animation-delay: 0.6s; }
 
     .gallery-item:nth-child(1) { aspect-ratio: 1 / 1.2; }
     .gallery-item:nth-child(2) { aspect-ratio: 1.2 / 1; }
@@ -643,16 +721,6 @@
     .gallery-item:nth-child(10) { aspect-ratio: 1.1 / 1; }
     .gallery-item:nth-child(11) { aspect-ratio: 0.9 / 1; }
     .gallery-item:nth-child(12) { aspect-ratio: 1.2 / 1; }
-    .gallery-item:nth-child(13) { aspect-ratio: 1 / 1; }
-    .gallery-item:nth-child(14) { aspect-ratio: 1 / 1.2; }
-    .gallery-item:nth-child(15) { aspect-ratio: 1.1 / 1; }
-    .gallery-item:nth-child(16) { aspect-ratio: 0.9 / 1; }
-    .gallery-item:nth-child(17) { aspect-ratio: 1.3 / 1; }
-    .gallery-item:nth-child(18) { aspect-ratio: 1 / 1; }
-    .gallery-item:nth-child(19) { aspect-ratio: 1 / 1.1; }
-    .gallery-item:nth-child(20) { aspect-ratio: 1.2 / 1; }
-    .gallery-item:nth-child(21) { aspect-ratio: 1 / 1; }
-    .gallery-item:nth-child(22) { aspect-ratio: 1.1 / 1; }
 
     .gallery-item:hover {
       transform: translateY(-6px);
@@ -773,7 +841,7 @@
     .contact {
       padding: 30px 0 20px;
       margin-bottom: 10px;
-      animation: fadeUp 1s ease-out 0.4s both;
+      animation: fadeUp 0.8s ease-out 0.4s both;
     }
 
     .contact-wrapper {
@@ -792,6 +860,12 @@
       box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
       text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-info:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
     }
 
     .contact-info .contact-icon {
@@ -877,6 +951,12 @@
       border-radius: 28px;
       box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-form-wrapper:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
     }
 
     .contact-form-wrapper h3 {
@@ -917,7 +997,7 @@
       background: #fcf8f2;
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
       color: #3d2c1e;
     }
 
@@ -926,6 +1006,7 @@
       outline: none;
       border-color: #a67c52;
       box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.1);
+      transform: scale(1.01);
     }
 
     .form-group textarea {
@@ -966,6 +1047,7 @@
       background: #e8f5ee;
       border-radius: 16px;
       margin-top: 10px;
+      animation: fadeUp 0.5s ease-out;
     }
 
     .form-success i {
@@ -977,7 +1059,7 @@
     /* ---------- ERASMUS+ ---------- */
     .erasmus-section {
       padding: 10px 0 10px;
-      animation: fadeUp 1s ease-out 0.5s both;
+      animation: fadeUp 0.8s ease-out 0.5s both;
     }
 
     .erasmus-card {
@@ -1029,6 +1111,14 @@
       color: #a67c52;
     }
 
+    .erasmus-card .erasmus-icons i {
+      transition: transform 0.3s;
+    }
+
+    .erasmus-card .erasmus-icons i:hover {
+      transform: scale(1.2);
+    }
+
     /* ---------- FOOTER ---------- */
     footer {
       margin-top: auto;
@@ -1042,6 +1132,11 @@
     footer i {
       color: #c49a6c;
       margin: 0 4px;
+      transition: transform 0.3s;
+    }
+
+    footer i:hover {
+      transform: scale(1.2);
     }
 
     /* ---------- ANIMATIONS ---------- */
@@ -1062,6 +1157,7 @@
       .service-features { grid-template-columns: 1fr; }
       .team-member { flex-direction: column !important; text-align: center; padding: 24px 20px; }
       .team-member-image { width: 130px; height: 130px; }
+      .team-member-image.zoomed { transform: scale(1.5); }
       .team-member-info .member-role { justify-content: center; }
       .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -10px; }
       .hero .subhead { font-size: 1.2rem; }
@@ -1094,6 +1190,7 @@
       .service-card h3 { font-size: 1.5rem; }
       .team-member { padding: 20px 16px; gap: 20px; }
       .team-member-image { width: 110px; height: 110px; }
+      .team-member-image.zoomed { transform: scale(1.4); }
       .team-member-info .member-name { font-size: 1.3rem; }
       .team-member.founder::before, .team-member.volunteer::before { font-size: 0.55rem; padding: 2px 10px; top: -8px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -1141,6 +1238,7 @@
       .service-features li { font-size: 0.85rem; padding: 10px 14px; }
       .contact-item { flex-wrap: wrap; justify-content: center; gap: 4px; border-radius: 30px; }
       .team-member-image { width: 100px; height: 100px; }
+      .team-member-image.zoomed { transform: scale(1.3); }
       .team-member.founder::before, .team-member.volunteer::before { font-size: 0.5rem; padding: 2px 8px; top: -7px; }
       .contact-info .contact-question { font-size: 1rem; }
       .flag-icon { font-size: 1.4rem; }
@@ -1288,7 +1386,7 @@
       </div>
     </section>
 
-    <!-- TEAM -->
+    <!-- ✅ TEAM with Zoom on Photo Click -->
     <section class="team" id="team">
       <div class="team-header">
         <h2><span>Echipa Noastră</span></h2>
@@ -1303,7 +1401,7 @@
 
       <div class="team-grid">
         <div class="team-member founder">
-          <div class="team-member-image">
+          <div class="team-member-image" id="mihaelaPhoto">
             <img src="images/mihaela-ionescu.jpg" alt="Mihaela Ionescu - Fondatoare" />
           </div>
           <div class="team-member-info">
@@ -1326,7 +1424,7 @@
         </div>
 
         <div class="team-member volunteer">
-          <div class="team-member-image">
+          <div class="team-member-image" id="petruPhoto">
             <img src="images/croitoriu-petru.jpg" alt="Croitoriu Petru - Domnul Petrică" />
           </div>
           <div class="team-member-info">
@@ -1370,16 +1468,6 @@
         <div class="gallery-item"><img src="images/gallery10.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery11.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery12.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery13.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery14.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery15.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery16.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery17.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery18.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery19.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery20.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery21.jpg" alt="Gallery photo" /></div>
-        <div class="gallery-item"><img src="images/gallery22.jpg" alt="Gallery photo" /></div>
       </div>
     </section>
 
@@ -1396,7 +1484,7 @@
       </div>
     </div>
 
-    <!-- ✅ CONTACT + FORM -->
+    <!-- CONTACT + FORM -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
@@ -1600,6 +1688,31 @@
         }
       }).catch(error => {
         alert('A apărut o eroare. Te rugăm să încerci din nou.');
+      });
+    });
+
+    // ---------- TEAM PHOTO ZOOM ON CLICK ----------
+    const teamPhotos = document.querySelectorAll('.team-member-image');
+
+    teamPhotos.forEach(photo => {
+      photo.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Toggle zoom class
+        this.classList.toggle('zoomed');
+
+        // If zoomed, add a click listener to document to unzoom when clicking outside
+        if (this.classList.contains('zoomed')) {
+          const unzoom = function(event) {
+            if (!photo.contains(event.target)) {
+              photo.classList.remove('zoomed');
+              document.removeEventListener('click', unzoom);
+            }
+          };
+          // Use setTimeout to prevent the current click from triggering the unzoom
+          setTimeout(() => {
+            document.addEventListener('click', unzoom);
+          }, 10);
+        }
       });
     });
   </script>
