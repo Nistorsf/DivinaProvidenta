@@ -123,8 +123,6 @@
       transform: scale(1.05);
     }
 
-    /* Removed the h1 text - only logo remains! */
-
     .hero .subhead {
       font-size: 1.2rem;
       max-width: 540px;
@@ -522,8 +520,53 @@
       box-shadow: 0 20px 40px -10px rgba(166, 124, 82, 0.16);
     }
 
+    /* 👇 Image alternates: Member 1 (founder) → image on LEFT, Member 2 (volunteer) → image on RIGHT */
     .team-member:nth-child(even) {
       flex-direction: row-reverse;
+    }
+
+    /* Founder badge - special styling */
+    .team-member.founder {
+      border: 2px solid #a67c52;
+      background: linear-gradient(145deg, #f5ede4, #f0e6da);
+      position: relative;
+    }
+
+    .team-member.founder::before {
+      content: '⭐ Fondator';
+      position: absolute;
+      top: -12px;
+      right: 30px;
+      background: #a67c52;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(166, 124, 82, 0.25);
+    }
+
+    /* Volunteer badge - special styling for domnul Petrică */
+    .team-member.volunteer {
+      border: 2px solid #8aaa7a;
+      background: linear-gradient(145deg, #f5f5ed, #eef0e8);
+      position: relative;
+    }
+
+    .team-member.volunteer::before {
+      content: '🤝 Voluntar';
+      position: absolute;
+      top: -12px;
+      right: 30px;
+      background: #8aaa7a;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(138, 170, 122, 0.25);
     }
 
     .team-member-image {
@@ -540,17 +583,21 @@
       justify-content: center;
     }
 
+    .team-member.founder .team-member-image {
+      border-color: #a67c52;
+      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.25);
+    }
+
+    .team-member.volunteer .team-member-image {
+      border-color: #8aaa7a;
+      box-shadow: 0 8px 24px rgba(138, 170, 122, 0.25);
+    }
+
     .team-member-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    .team-member-image .placeholder-icon {
-      font-size: 4rem;
-      color: #c49a6c;
-      opacity: 0.5;
     }
 
     .team-member-info {
@@ -563,6 +610,14 @@
       font-weight: 600;
       color: #3d2c1e;
       margin-bottom: 4px;
+    }
+
+    .team-member.founder .member-name {
+      color: #a67c52;
+    }
+
+    .team-member.volunteer .member-name {
+      color: #6d8a5e;
     }
 
     .team-member-info .member-role {
@@ -583,6 +638,17 @@
       color: #4d3a2c;
       line-height: 1.7;
       font-size: 0.98rem;
+    }
+
+    .team-member-info .member-description .nickname {
+      font-weight: 700;
+      color: #a67c52;
+      font-style: italic;
+    }
+
+    .team-member-info .member-description .highlight {
+      color: #a67c52;
+      font-weight: 600;
     }
 
     /* ---------- CONTACT SECTION ---------- */
@@ -767,6 +833,12 @@
       .team-member-info .member-role {
         justify-content: center;
       }
+      .team-member.founder::before,
+      .team-member.volunteer::before {
+        right: 50%;
+        transform: translateX(50%);
+        top: -12px;
+      }
     }
 
     @media (max-width: 700px) {
@@ -825,6 +897,11 @@
       .team-member-info .member-name {
         font-size: 1.4rem;
       }
+      .team-member.founder::before,
+      .team-member.volunteer::before {
+        font-size: 0.65rem;
+        padding: 3px 12px;
+      }
       .contact-card {
         padding: 32px 24px;
       }
@@ -873,6 +950,12 @@
         width: 100px;
         height: 100px;
       }
+      .team-member.founder::before,
+      .team-member.volunteer::before {
+        font-size: 0.6rem;
+        padding: 2px 10px;
+        top: -10px;
+      }
     }
   </style>
 </head>
@@ -895,7 +978,6 @@
       <div class="hero-logo">
         <img src="images/logo.png" alt="Divina Providența logo" />
       </div>
-      <!-- ✅ The "Divina Providența" text has been REMOVED from here! -->
       <p class="subhead">
         <i class="fas fa-feather-alt"></i> 
         Unde căldura întâlnește îndrumarea divină
@@ -1016,7 +1098,7 @@
       </div>
     </section>
 
-    <!-- TEAM SECTION -->
+    <!-- TEAM SECTION - EXACTLY 2 MEMBERS -->
     <section class="team" id="team">
       <div class="team-header">
         <h2><span>Echipa Noastră</span></h2>
@@ -1030,79 +1112,54 @@
       </div>
 
       <div class="team-grid">
-        <!-- MEMBER 1 -->
-        <div class="team-member">
+        <!-- ⭐ MEMBRU FONDATOR: Mihaela Ionescu (Image on LEFT) -->
+        <div class="team-member founder">
           <div class="team-member-image">
-            <img src="images/member1.jpg" alt="Nume Membru" />
+            <img src="images/mihaela-ionescu.jpg" alt="Mihaela Ionescu - Fondatoare" />
           </div>
           <div class="team-member-info">
-            <div class="member-name">Nume Prenume</div>
+            <div class="member-name">Mihaela Ionescu</div>
             <div class="member-role">
-              <i class="fas fa-badge"></i> Rol / Funcție
+              <i class="fas fa-crown"></i> Membru Fondator
             </div>
             <div class="member-description">
-              Descriere despre membru – pasiuni, experiență, contribuție în cadrul asociației. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Mihaela Ionescu este fondatoarea clubului nostru de seniori, un proiect născut din convingerea că experiența și energia seniorilor pot transforma o comunitate.
+              <br /><br />
+              Cu o pasiune constantă pentru conectarea oamenilor și dezvoltarea de activități care aduc bucurie, învățare și apartenență, Mihaela a pus bazele acestui spațiu — de la prima idee, până la activitățile și programele derulate astăzi prin proiectul <strong>ACTION</strong>.
+              <br /><br />
+              <em>„Pentru ea, un club de seniori nu este doar un loc de întâlnire, ci o comunitate în care fiecare poveste contează și fiecare voce are valoare.”</em>
+              <br /><br />
+              <i class="fas fa-quote-left" style="color:#c49a6c;"></i>
+              <span style="font-style:italic; color:#a67c52;">Prin prezență, ascultare și acțiune, construim punți între generații.</span>
+              <i class="fas fa-quote-right" style="color:#c49a6c;"></i>
             </div>
           </div>
         </div>
 
-        <!-- MEMBER 2 -->
-        <div class="team-member">
+        <!-- 🤝 CROITORIU PETRU - "Domnul Petrică" (Image on RIGHT because of nth-child(even)) -->
+        <div class="team-member volunteer">
           <div class="team-member-image">
-            <img src="images/member2.jpg" alt="Nume Membru" />
+            <img src="images/croitoriu-petru.jpg" alt="Croitoriu Petru - Domnul Petrică" />
           </div>
           <div class="team-member-info">
-            <div class="member-name">Nume Prenume</div>
+            <div class="member-name">Croitoriu Petru</div>
             <div class="member-role">
-              <i class="fas fa-badge"></i> Rol / Funcție
+              <i class="fas fa-hands-helping"></i> Voluntar și Beneficiar
             </div>
             <div class="member-description">
-              Descriere despre membru – pasiuni, experiență, contribuție în cadrul asociației. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.
+              <br /><br />
+              Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.
+              <br /><br />
+              De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.
+              <br /><br />
+              <i class="fas fa-heart" style="color:#8aaa7a;"></i>
+              <span style="font-style:italic; color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span>
+              <i class="fas fa-heart" style="color:#8aaa7a;"></i>
             </div>
           </div>
         </div>
-
-        <!-- MEMBER 3 -->
-        <div class="team-member">
-          <div class="team-member-image">
-            <img src="images/member3.jpg" alt="Nume Membru" />
-          </div>
-          <div class="team-member-info">
-            <div class="member-name">Nume Prenume</div>
-            <div class="member-role">
-              <i class="fas fa-badge"></i> Rol / Funcție
-            </div>
-            <div class="member-description">
-              Descriere despre membru – pasiuni, experiență, contribuție în cadrul asociației. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-          </div>
-        </div>
-
-        <!-- MEMBER 4 (optional - you can delete if you have fewer members) -->
-        <div class="team-member">
-          <div class="team-member-image">
-            <img src="images/member4.jpg" alt="Nume Membru" />
-          </div>
-          <div class="team-member-info">
-            <div class="member-name">Nume Prenume</div>
-            <div class="member-role">
-              <i class="fas fa-badge"></i> Rol / Funcție
-            </div>
-            <div class="member-description">
-              Descriere despre membru – pasiuni, experiență, contribuție în cadrul asociației. 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Note: add as many members as you need by copying the .team-member block above -->
-      <div style="text-align:center; margin-top:30px; color:#8a7566; font-size:0.95rem;">
-        <i class="fas fa-plus-circle" style="color:#c49a6c;"></i>
-        Alți membri vor fi adăugați în curând.
+        <!-- 👆 EXACTLY 2 MEMBERS - NO EMPTY SLOTS -->
       </div>
     </section>
 
