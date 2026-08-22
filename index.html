@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Divina Providența — Echipa</title>
+  <title>Divina Providența — Galerie</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -79,7 +79,7 @@
       border-bottom-color: #a67c52;
     }
 
-    /* ---------- HERO SECTION ---------- */
+    /* ---------- HERO ---------- */
     .hero {
       position: relative;
       padding: 80px 0 60px;
@@ -112,7 +112,6 @@
       padding: 0 20px;
     }
 
-    /* ✅ Subtitle - SMALLER to fit on ONE ROW */
     .hero .subhead {
       font-size: 1.4rem;
       max-width: 700px;
@@ -132,7 +131,6 @@
       margin: 0 8px;
     }
 
-    /* ✅ Button - at the VERY BOTTOM */
     .hero .btn-wrapper {
       margin-top: 350px;
       position: relative;
@@ -166,17 +164,17 @@
       animation: float 3.2s ease-in-out infinite;
     }
 
-    /* ---------- SECTION SCROLL MARGIN ---------- */
-    .about, .services, .team, .contact {
+    /* ---------- SECTION HEADERS ---------- */
+    .about, .services, .team, .contact, .gallery {
       scroll-margin-top: 70px;
     }
 
-    .about-header, .services-header, .team-header, .contact-header {
+    .about-header, .services-header, .team-header, .contact-header, .gallery-header {
       text-align: center;
       margin-bottom: 30px;
     }
 
-    .about-header h2, .services-header h2, .team-header h2, .contact-header h2 {
+    .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.6rem;
       font-weight: 600;
@@ -184,7 +182,7 @@
       color: #3d2c1e;
     }
 
-    .about-header h2 span, .services-header h2 span, .team-header h2 span, .contact-header h2 span {
+    .about-header h2 span, .services-header h2 span, .team-header h2 span, .contact-header h2 span, .gallery-header h2 span {
       color: #a67c52;
       background: #f5ede4;
       padding: 0 14px;
@@ -192,7 +190,7 @@
       display: inline-block;
     }
 
-    .about-header .divider, .services-header .divider, .team-header .divider, .contact-header .divider {
+    .about-header .divider, .services-header .divider, .team-header .divider, .contact-header .divider, .gallery-header .divider {
       width: 60px;
       height: 3px;
       background: linear-gradient(90deg, #c49a6c, #a67c52);
@@ -560,6 +558,136 @@
       font-weight: 600;
     }
 
+    /* ---------- GALLERY SECTION ---------- */
+    .gallery {
+      padding: 40px 0 50px;
+      margin-bottom: 10px;
+      animation: fadeUp 1s ease-out 0.4s both;
+    }
+
+    .gallery-intro {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      text-align: center;
+      font-size: 1.05rem;
+      color: #5a4030;
+      line-height: 1.7;
+    }
+
+    .gallery-intro i {
+      color: #c49a6c;
+    }
+
+    /* Masonry grid layout */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+      background: #f5ede4;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Different aspect ratios for variety */
+    .gallery-item:nth-child(1) {
+      aspect-ratio: 1 / 1.2;
+      grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(2) {
+      aspect-ratio: 1.2 / 1;
+      grid-column: span 1;
+    }
+
+    .gallery-item:nth-child(3) {
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-item:nth-child(4) {
+      aspect-ratio: 1.1 / 1;
+    }
+
+    .gallery-item:nth-child(5) {
+      aspect-ratio: 0.9 / 1;
+    }
+
+    .gallery-item:nth-child(6) {
+      aspect-ratio: 1.3 / 1;
+      grid-column: span 1;
+    }
+
+    .gallery-item:nth-child(7) {
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-item:nth-child(8) {
+      aspect-ratio: 1 / 1.1;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px -12px rgba(166, 124, 82, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Placeholder for empty images */
+    .gallery-item .placeholder-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 3rem;
+      color: #c49a6c;
+      background: #f5ede4;
+    }
+
+    /* Gallery image overlay */
+    .gallery-item .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 16px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.5));
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item .gallery-overlay span {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .gallery-item .gallery-overlay i {
+      margin-right: 6px;
+    }
+
     /* ---------- CONTACT ---------- */
     .contact {
       padding: 30px 0 20px;
@@ -767,6 +895,9 @@
       .hero .btn-wrapper {
         margin-top: 280px;
       }
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     @media (max-width: 700px) {
@@ -800,10 +931,11 @@
       .about-header h2,
       .services-header h2,
       .team-header h2,
-      .contact-header h2 {
+      .contact-header h2,
+      .gallery-header h2 {
         font-size: 2rem;
       }
-      .about-header, .services-header, .team-header, .contact-header {
+      .about-header, .services-header, .team-header, .contact-header, .gallery-header {
         margin-bottom: 20px;
       }
       .mission-card {
@@ -841,6 +973,13 @@
         font-size: 0.55rem;
         padding: 2px 10px;
         top: -8px;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .gallery-item {
+        border-radius: 16px;
       }
       .contact {
         padding: 20px 0 15px;
@@ -884,6 +1023,9 @@
       .team {
         padding: 20px 0 20px;
       }
+      .gallery {
+        padding: 30px 0 30px;
+      }
       .services-intro {
         font-size: 0.95rem;
         margin: 0 auto 18px;
@@ -916,6 +1058,10 @@
       .btn i {
         margin-right: 6px;
       }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
       .service-features li {
         font-size: 0.85rem;
         padding: 10px 14px;
@@ -945,7 +1091,8 @@
       .about-header h2,
       .services-header h2,
       .team-header h2,
-      .contact-header h2 {
+      .contact-header h2,
+      .gallery-header h2 {
         font-size: 1.7rem;
       }
     }
@@ -960,13 +1107,14 @@
         <a href="#about">Cine suntem</a>
         <a href="#services">Servicii</a>
         <a href="#team">Echipa</a>
+        <a href="#gallery">Galerie</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
 
+    <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-content">
-        <!-- ✅ Subtitle - SMALLER to fit on ONE ROW -->
         <p class="subhead">
           <i class="fas fa-feather-alt"></i> 
           Unde căldura întâlnește îndrumarea divină
@@ -980,6 +1128,7 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="about" id="about">
       <div class="about-header">
         <h2><span>Cine suntem?</span></h2>
@@ -1017,6 +1166,7 @@
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section class="services" id="services">
       <div class="services-header">
         <h2><span>Serviciile Noastre</span></h2>
@@ -1074,6 +1224,7 @@
       </div>
     </section>
 
+    <!-- TEAM -->
     <section class="team" id="team">
       <div class="team-header">
         <h2><span>Echipa Noastră</span></h2>
@@ -1135,6 +1286,82 @@
       </div>
     </section>
 
+    <!-- ✅ GALLERY SECTION -->
+    <section class="gallery" id="gallery">
+      <div class="gallery-header">
+        <h2><span>Galerie Foto</span></h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="gallery-intro">
+        <i class="fas fa-camera"></i>
+        Momente din activitățile noastre – bucurie, învățare și comunitate.
+        <i class="fas fa-camera"></i>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- 👇 REPLACE 'gallery1.jpg' with your actual image names -->
+        <!-- You can add as many as you want by copying this block -->
+
+        <div class="gallery-item">
+          <img src="images/gallery1.jpg" alt="Activitate club seniori" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Activitate club seniori</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/gallery2.jpg" alt="Atelier creativ" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Atelier creativ</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/gallery3.jpg" alt="Excursie" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Excursie</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/gallery4.jpg" alt="Socializare" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Socializare</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/gallery5.jpg" alt="Atelier" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Atelier</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/gallery6.jpg" alt="Eveniment" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Eveniment</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/gallery7.jpg" alt="Activități" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Activități</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="images/gallery8.jpg" alt="Momente de bucurie" />
+          <div class="gallery-overlay">
+            <span><i class="fas fa-image"></i> Momente de bucurie</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
@@ -1177,6 +1404,7 @@
       </div>
     </section>
 
+    <!-- ERASMUS+ -->
     <section class="erasmus-section">
       <div class="erasmus-card">
         <span class="flag-icon">🇪🇺</span>
@@ -1193,6 +1421,7 @@
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
       <p>
         <i class="fas fa-heart" style="color:#c49a6c;"></i>
