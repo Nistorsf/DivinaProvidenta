@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Divina Providența — Echipa</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
@@ -35,7 +33,6 @@
       padding: 0 24px;
     }
 
-    /* ---------- STICKY NAVIGATION ---------- */
     nav {
       padding: 14px 0 10px;
       display: flex;
@@ -85,7 +82,7 @@
     /* ---------- HERO SECTION ---------- */
     .hero {
       position: relative;
-      padding: 40px 0 180px;
+      padding: 60px 0 200px;
       text-align: center;
       border-radius: 40px;
       margin: 24px 0 30px;
@@ -101,7 +98,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      min-height: 500px;
+      min-height: 550px;
     }
 
     .hero-content {
@@ -115,11 +112,11 @@
       padding: 0 20px;
     }
 
-    /* ✅ Subtitle - HIGHER (moved to top) */
+    /* ✅ Subtitle - at the top */
     .hero .subhead {
       font-size: 2.2rem;
       max-width: 700px;
-      margin: 0 auto 20px;
+      margin: 0 auto 30px;
       color: #ffffff;
       font-weight: 400;
       letter-spacing: 0.5px;
@@ -134,9 +131,9 @@
       margin: 0 8px;
     }
 
-    /* ✅ Button - MUCH LOWER */
+    /* ✅ Button - moved EXTREMELY LOW */
     .hero .btn-wrapper {
-      margin-top: 160px;
+      margin-top: 250px;
       position: relative;
       z-index: 2;
     }
@@ -146,10 +143,10 @@
       background: #a67c52;
       color: #fff;
       font-weight: 600;
-      padding: 16px 48px;
+      padding: 18px 56px;
       border-radius: 60px;
       text-decoration: none;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
     }
@@ -767,7 +764,7 @@
         font-size: 1.8rem;
       }
       .hero .btn-wrapper {
-        margin-top: 120px;
+        margin-top: 180px;
       }
     }
 
@@ -783,18 +780,18 @@
         justify-content: center;
       }
       .hero {
-        padding: 30px 20px 120px;
+        padding: 40px 20px 150px;
         margin: 16px 0 20px;
         border-radius: 28px;
-        min-height: 380px;
+        min-height: 400px;
       }
       .hero .subhead {
         font-size: 1.5rem;
-        margin: 0 auto 16px;
+        margin: 0 auto 20px;
         max-width: 400px;
       }
       .hero .btn-wrapper {
-        margin-top: 80px;
+        margin-top: 120px;
       }
       .btn {
         padding: 14px 32px;
@@ -902,15 +899,15 @@
         padding: 0 14px;
       }
       .hero {
-        padding: 20px 16px 80px;
-        min-height: 300px;
+        padding: 30px 16px 100px;
+        min-height: 320px;
       }
       .hero .subhead {
         font-size: 1.2rem;
-        margin: 0 auto 12px;
+        margin: 0 auto 16px;
       }
       .hero .btn-wrapper {
-        margin-top: 50px;
+        margin-top: 80px;
       }
       .btn {
         padding: 12px 24px;
@@ -957,7 +954,6 @@
 <body>
 
   <div class="container">
-    <!-- STICKY NAVIGATION -->
     <nav id="navbar">
       <div class="nav-links">
         <a href="#home" class="active">Acasă</a>
@@ -968,16 +964,14 @@
       </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-content">
-        <!-- ✅ Subtitle at the top -->
         <p class="subhead">
           <i class="fas fa-feather-alt"></i> 
           Unde căldura întâlnește îndrumarea divină
           <i class="fas fa-feather-alt"></i>
         </p>
-        <!-- ✅ Button much lower -->
+        <!-- ✅ Button - EXTREMELY LOW with 250px margin-top -->
         <div class="btn-wrapper">
           <a href="#services" class="btn float">
             <i class="fas fa-arrow-right"></i> Descoperă serviciile noastre
@@ -986,7 +980,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section class="about" id="about">
       <div class="about-header">
         <h2><span>Cine suntem?</span></h2>
@@ -1024,7 +1017,6 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
     <section class="services" id="services">
       <div class="services-header">
         <h2><span>Serviciile Noastre</span></h2>
@@ -1082,7 +1074,6 @@
       </div>
     </section>
 
-    <!-- TEAM -->
     <section class="team" id="team">
       <div class="team-header">
         <h2><span>Echipa Noastră</span></h2>
@@ -1144,7 +1135,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="contact-header">
         <h2><span>Contact</span></h2>
@@ -1187,7 +1177,6 @@
       </div>
     </section>
 
-    <!-- ERASMUS+ -->
     <section class="erasmus-section">
       <div class="erasmus-card">
         <span class="flag-icon">🇪🇺</span>
@@ -1204,7 +1193,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
       <p>
         <i class="fas fa-heart" style="color:#c49a6c;"></i>
@@ -1214,7 +1202,6 @@
     </footer>
   </div>
 
-  <!-- JavaScript -->
   <script>
     window.addEventListener('scroll', function() {
       const nav = document.getElementById('navbar');
