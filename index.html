@@ -85,7 +85,7 @@
     /* ---------- HERO SECTION ---------- */
     .hero {
       position: relative;
-      padding: 100px 0 180px;
+      padding: 40px 0 180px;
       text-align: center;
       border-radius: 40px;
       margin: 24px 0 30px;
@@ -100,8 +100,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 480px;
+      justify-content: flex-start;
+      min-height: 500px;
     }
 
     .hero-content {
@@ -110,12 +110,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
       padding: 0 20px;
     }
 
-    /* ✅ Subtitle at the top */
+    /* ✅ Subtitle - HIGHER (moved to top) */
     .hero .subhead {
       font-size: 2.2rem;
       max-width: 700px;
@@ -134,9 +134,9 @@
       margin: 0 8px;
     }
 
-    /* ✅ Button moved MUCH LOWER with large margin-top */
+    /* ✅ Button - MUCH LOWER */
     .hero .btn-wrapper {
-      margin-top: 120px;
+      margin-top: 160px;
       position: relative;
       z-index: 2;
     }
@@ -767,7 +767,7 @@
         font-size: 1.8rem;
       }
       .hero .btn-wrapper {
-        margin-top: 80px;
+        margin-top: 120px;
       }
     }
 
@@ -783,7 +783,7 @@
         justify-content: center;
       }
       .hero {
-        padding: 60px 20px 120px;
+        padding: 30px 20px 120px;
         margin: 16px 0 20px;
         border-radius: 28px;
         min-height: 380px;
@@ -794,7 +794,7 @@
         max-width: 400px;
       }
       .hero .btn-wrapper {
-        margin-top: 60px;
+        margin-top: 80px;
       }
       .btn {
         padding: 14px 32px;
@@ -902,7 +902,7 @@
         padding: 0 14px;
       }
       .hero {
-        padding: 40px 16px 80px;
+        padding: 20px 16px 80px;
         min-height: 300px;
       }
       .hero .subhead {
@@ -910,7 +910,7 @@
         margin: 0 auto 12px;
       }
       .hero .btn-wrapper {
-        margin-top: 40px;
+        margin-top: 50px;
       }
       .btn {
         padding: 12px 24px;
@@ -968,15 +968,16 @@
       </div>
     </nav>
 
-    <!-- ✅ HERO - Subtitle at top, button much lower -->
+    <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-content">
+        <!-- ✅ Subtitle at the top -->
         <p class="subhead">
           <i class="fas fa-feather-alt"></i> 
           Unde căldura întâlnește îndrumarea divină
           <i class="fas fa-feather-alt"></i>
         </p>
-        <!-- ✅ Button moved MUCH LOWER with margin-top: 120px -->
+        <!-- ✅ Button much lower -->
         <div class="btn-wrapper">
           <a href="#services" class="btn float">
             <i class="fas fa-arrow-right"></i> Descoperă serviciile noastre
