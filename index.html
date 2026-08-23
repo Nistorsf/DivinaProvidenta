@@ -3,505 +3,236 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asociația Divina Providența</title>
+  <title>Divina Providența</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #fcf8f2;
-      color: #3d2c1e;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background: #fcf8f2; color: #3d2c1e;
+      line-height: 1.6; min-height: 100vh;
+      display: flex; flex-direction: column;
       overflow-x: hidden;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
     /* ---------- SEASONAL OVERLAY ---------- */
     .seasonal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9998;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 9998;
       overflow: hidden;
     }
+    .seasonal-overlay.fade-out { animation: overlayFadeOut 1.5s ease forwards; }
+    @keyframes overlayFadeOut { 0% { opacity: 1; } 100% { opacity: 0; } }
 
-    .seasonal-overlay.fade-out {
-      animation: overlayFadeOut 1.5s ease forwards;
-    }
-
-    @keyframes overlayFadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-    /* ❄️ Snowflakes / 🍂 Leaves / 🌸 Petals / ☀️ Rays */
     .seasonal-particle {
-      position: absolute;
-      top: -20px;
+      position: absolute; top: -20px;
       animation: fall linear infinite;
       pointer-events: none;
-      font-size: 1.8rem;
-      opacity: 0.9;
+      font-size: 1.8rem; opacity: 0.9;
       user-select: none;
     }
-
     @keyframes fall {
-      0% {
-        transform: translateY(-20px) rotate(0deg) scale(1);
-        opacity: 0.9;
-      }
-      50% {
-        opacity: 0.7;
-        transform: translateY(50vh) rotate(360deg) scale(0.8);
-      }
-      100% {
-        transform: translateY(110vh) rotate(720deg) scale(0.3);
-        opacity: 0;
-      }
+      0% { transform: translateY(-20px) rotate(0deg) scale(1); opacity: 0.9; }
+      50% { opacity: 0.7; transform: translateY(50vh) rotate(360deg) scale(0.8); }
+      100% { transform: translateY(110vh) rotate(720deg) scale(0.3); opacity: 0; }
     }
 
     /* ---------- SEASONAL BANNER ---------- */
     .seasonal-banner {
-      text-align: center;
-      padding: 10px 20px;
+      text-align: center; padding: 10px 20px;
       margin: 0 -24px 0 -24px;
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 600; font-size: 1rem;
       letter-spacing: 0.3px;
       animation: fadeUp 0.8s ease-out;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
+    .seasonal-banner.winter { background: linear-gradient(90deg, #1a3a5c, #2d6a9f, #1a3a5c); color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.2); }
+    .seasonal-banner.spring { background: linear-gradient(90deg, #2d7a4a, #4caf7a, #2d7a4a); color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.2); }
+    .seasonal-banner.summer { background: linear-gradient(90deg, #e67e22, #f1c40f, #e67e22); color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.2); }
+    .seasonal-banner.autumn { background: linear-gradient(90deg, #c0392b, #e67e22, #c0392b); color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.2); }
+    .seasonal-banner.christmas { background: linear-gradient(90deg, #1a4a2a, #2d7a4a, #1a4a2a); color: #fff; text-shadow: 0 0 20px rgba(255,215,0,0.3); }
+    .seasonal-banner.newyear { background: linear-gradient(90deg, #1a1a3a, #4a2a6a, #1a1a3a); color: #fff; text-shadow: 0 0 20px rgba(255,215,0,0.3); }
+    .seasonal-banner.halloween { background: linear-gradient(90deg, #2a1a0a, #6a3a1a, #2a1a0a); color: #ffaa44; text-shadow: 0 0 20px rgba(255,150,0,0.3); }
+    .seasonal-banner.befana { background: linear-gradient(90deg, #2a1a3a, #5a2a6a, #2a1a3a); color: #ffdd88; text-shadow: 0 0 20px rgba(255,215,0,0.3); }
+    .seasonal-banner.stnicholas { background: linear-gradient(90deg, #1a2a3a, #2a5a7a, #1a2a3a); color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.2); }
+    .seasonal-banner.valentine { background: linear-gradient(90deg, #3a1a1a, #7a2a3a, #3a1a1a); color: #ffccdd; text-shadow: 0 0 20px rgba(255,100,150,0.3); }
+    .seasonal-banner.stpatrick { background: linear-gradient(90deg, #1a3a1a, #2d7a3a, #1a3a1a); color: #aaffaa; text-shadow: 0 0 20px rgba(0,255,100,0.2); }
+    .seasonal-banner.allsaints { background: linear-gradient(90deg, #1a1a2a, #3a2a5a, #1a1a2a); color: #ddccff; text-shadow: 0 0 20px rgba(200,150,255,0.2); }
 
-    .seasonal-banner.winter {
-      background: linear-gradient(90deg, #1a3a5c, #2d6a9f, #1a3a5c);
-      color: #ffffff;
-      text-shadow: 0 0 20px rgba(255,255,255,0.2);
+    .seasonal-banner i { margin: 0 8px; }
+    .seasonal-banner.hide { animation: bannerFadeOut 1s ease forwards; }
+    @keyframes bannerFadeOut { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-20px); } }
+
+    /* ---------- GIFT CONTAINER ---------- */
+    .gift-container {
+      position: fixed; bottom: 10px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 20px; z-index: 9999;
+      pointer-events: none; font-size: 2.5rem;
+      flex-wrap: wrap; justify-content: center;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      padding: 10px 24px; border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.1);
+      animation: giftAppear 1s ease-out;
     }
+    @keyframes giftAppear { 0% { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.8); } 100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); } }
+    .gift-container .gift-item { animation: giftBounce 3s ease-in-out infinite; display: inline-block; text-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .gift-container .gift-item:nth-child(2) { animation-delay: 0.5s; }
+    .gift-container .gift-item:nth-child(3) { animation-delay: 1s; }
+    .gift-container .gift-item:nth-child(4) { animation-delay: 1.5s; }
+    .gift-container .gift-item:nth-child(5) { animation-delay: 0.8s; }
+    .gift-container .gift-item:nth-child(6) { animation-delay: 1.2s; }
+    @keyframes giftBounce { 0%,100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
 
-    .seasonal-banner.spring {
-      background: linear-gradient(90deg, #2d7a4a, #4caf7a, #2d7a4a);
-      color: #ffffff;
-      text-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
+    @keyframes floatGift { 0%,100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
+    @keyframes floatDecor { 0%,100% { transform: translateY(0px) rotate(0deg) scale(1); } 50% { transform: translateY(-10px) rotate(10deg) scale(1.1); } }
 
-    .seasonal-banner.summer {
-      background: linear-gradient(90deg, #e67e22, #f1c40f, #e67e22);
-      color: #ffffff;
-      text-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
+    .holiday-mode .hero { box-shadow: inset 0 0 0 1000px rgba(60, 44, 30, 0.25); }
+    .christmas .hero .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 60px rgba(255,200,100,0.2); }
+    .newyear .hero .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 60px rgba(255,215,0,0.2); }
+    .halloween .hero .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 60px rgba(255,100,0,0.2); }
+    .befana .hero .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 60px rgba(255,215,0,0.2); }
 
-    .seasonal-banner.autumn {
-      background: linear-gradient(90deg, #c0392b, #e67e22, #c0392b);
-      color: #ffffff;
-      text-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
-
-    .seasonal-banner i {
-      margin: 0 8px;
-    }
-
-    .seasonal-banner.hide {
-      animation: bannerFadeOut 1s ease forwards;
-    }
-
-    @keyframes bannerFadeOut {
-      0% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-20px); }
-    }
-
-    /* ---------- NAVIGATION ---------- */
+    /* ---------- NAV ---------- */
     nav {
       padding: 14px 0 10px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      flex-wrap: wrap;
+      display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap;
       border-bottom: 2px solid rgba(184, 142, 97, 0.12);
-      background: rgba(252, 248, 242, 0.92);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: box-shadow 0.3s, padding 0.3s;
-      gap: 16px;
+      background: rgba(252, 248, 242, 0.92); backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 1000;
+      transition: box-shadow 0.3s, padding 0.3s; gap: 16px;
     }
-
-    nav.scrolled {
-      box-shadow: 0 4px 20px rgba(166, 124, 82, 0.08);
-      padding: 10px 0 8px;
-    }
-
+    nav.scrolled { box-shadow: 0 4px 20px rgba(166,124,82,0.08); padding: 10px 0 8px; }
     .nav-links {
-      display: flex;
-      gap: 28px;
-      font-weight: 600;
-      color: #5a4030;
-      font-size: 0.95rem;
-      align-items: center;
-      flex-wrap: wrap;
+      display: flex; gap: 28px; font-weight: 600;
+      color: #5a4030; font-size: 0.95rem;
+      align-items: center; flex-wrap: wrap;
     }
-
     .nav-links a {
-      text-decoration: none;
-      color: inherit;
-      padding: 6px 12px;
-      border-radius: 30px;
+      text-decoration: none; color: inherit;
+      padding: 6px 12px; border-radius: 30px;
       transition: all 0.3s ease;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      position: relative; display: inline-flex; align-items: center; gap: 8px;
     }
-
-    .nav-links a i {
-      font-size: 0.85rem;
-      opacity: 0.6;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .nav-links a:hover i {
-      opacity: 1;
-      transform: translateY(-2px);
-    }
-
+    .nav-links a i { font-size: 0.85rem; opacity: 0.6; transition: opacity 0.3s, transform 0.3s; }
+    .nav-links a:hover i { opacity: 1; transform: translateY(-2px); }
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 2px;
-      left: 50%;
-      width: 0;
-      height: 2.5px;
-      background: #a67c52;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
+      content: ''; position: absolute; bottom: 2px; left: 50%;
+      width: 0; height: 2.5px; background: #a67c52;
+      border-radius: 4px; transition: all 0.3s ease; transform: translateX(-50%);
     }
-
-    .nav-links a:hover::after {
-      width: 70%;
-    }
-
-    .nav-links a.active {
-      color: #a67c52;
-      background: rgba(166, 124, 82, 0.08);
-    }
-
-    .nav-links a.active::after {
-      width: 70%;
-      background: #a67c52;
-    }
-
-    .nav-links a.active i {
-      opacity: 1;
-      color: #a67c52;
-    }
-
-    .nav-links a:hover {
-      color: #a67c52;
-      transform: translateY(-2px);
-      background: rgba(166, 124, 82, 0.05);
-    }
-
-    .nav-links a:active {
-      transform: scale(0.95);
-    }
+    .nav-links a:hover::after { width: 70%; }
+    .nav-links a.active { color: #a67c52; background: rgba(166,124,82,0.08); }
+    .nav-links a.active::after { width: 70%; background: #a67c52; }
+    .nav-links a.active i { opacity: 1; color: #a67c52; }
+    .nav-links a:hover { color: #a67c52; transform: translateY(-2px); background: rgba(166,124,82,0.05); }
+    .nav-links a:active { transform: scale(0.95); }
 
     /* ---------- LANGUAGE SWITCHER ---------- */
-    .language-switcher {
-      position: relative;
-      display: inline-block;
-    }
-
+    .language-switcher { position: relative; display: inline-block; }
     .language-btn {
-      background: #f5ede4;
-      border: 1px solid rgba(166, 124, 82, 0.15);
-      color: #3d2c1e;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      background: #f5ede4; border: 1px solid rgba(166,124,82,0.15);
+      color: #3d2c1e; padding: 8px 16px; border-radius: 30px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
     }
-
-    .language-btn:hover {
-      background: #a67c52;
-      color: #fff;
-      border-color: #a67c52;
-    }
-
-    .language-btn i {
-      font-size: 0.85rem;
-    }
-
-    .language-btn .current-flag {
-      font-size: 1.2rem;
-    }
-
+    .language-btn:hover { background: #a67c52; color: #fff; border-color: #a67c52; }
+    .language-btn .current-flag { font-size: 1.2rem; }
     .language-dropdown {
-      display: none;
-      position: absolute;
-      top: 45px;
-      right: 0;
-      background: #fcf8f2;
-      border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-      min-width: 180px;
-      overflow: hidden;
-      z-index: 100;
-      border: 1px solid rgba(166, 124, 82, 0.1);
+      display: none; position: absolute; top: 45px; right: 0;
+      background: #fcf8f2; border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      min-width: 180px; overflow: hidden; z-index: 100;
+      border: 1px solid rgba(166,124,82,0.1);
     }
-
-    .language-dropdown.active {
-      display: block;
-      animation: fadeDown 0.3s ease-out;
-    }
-
+    .language-dropdown.active { display: block; animation: fadeDown 0.3s ease-out; }
     .language-dropdown a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 18px;
-      color: #3d2c1e;
-      text-decoration: none;
-      font-size: 0.9rem;
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 18px; color: #3d2c1e;
+      text-decoration: none; font-size: 0.9rem;
       transition: background 0.2s;
     }
-
-    .language-dropdown a:hover {
-      background: #f5ede4;
-    }
-
-    .language-dropdown a.active-lang {
-      background: #f5ede4;
-      color: #a67c52;
-      font-weight: 600;
-    }
-
-    .language-dropdown a .lang-flag {
-      font-size: 1.4rem;
-      width: 28px;
-      text-align: center;
-    }
-
-    .language-dropdown a .lang-name {
-      flex: 1;
-    }
-
-    .language-dropdown a .check-mark {
-      color: #a67c52;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .language-dropdown a.active-lang .check-mark {
-      opacity: 1;
-    }
-
-    @keyframes fadeDown {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    .language-dropdown a:hover { background: #f5ede4; }
+    .language-dropdown a.active-lang { background: #f5ede4; color: #a67c52; font-weight: 600; }
+    .language-dropdown a .lang-flag { font-size: 1.4rem; width: 28px; text-align: center; }
+    .language-dropdown a .lang-name { flex: 1; }
+    .language-dropdown a .check-mark { color: #a67c52; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s; }
+    .language-dropdown a.active-lang .check-mark { opacity: 1; }
+    @keyframes fadeDown { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
 
     /* ---------- HERO ---------- */
     .hero {
-      position: relative;
-      padding: 80px 0 60px;
-      text-align: center;
-      border-radius: 40px;
-      margin: 24px 0 30px;
-      overflow: hidden;
+      position: relative; padding: 80px 0 60px;
+      text-align: center; border-radius: 40px;
+      margin: 24px 0 30px; overflow: hidden;
       animation: fadeUp 0.8s ease-out;
       background-image: url('images/hero-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      box-shadow: inset 0 0 0 1000px rgba(60, 44, 30, 0.35);
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      box-shadow: inset 0 0 0 1000px rgba(60,44,30,0.35);
       scroll-margin-top: 70px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
       min-height: 600px;
     }
-
-    .hero.snow-effect .subhead {
-      text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.1);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      padding: 0 20px;
-    }
-
+    .hero.snow-effect .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.1); }
+    .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; padding: 0 20px; }
     .hero .subhead {
-      font-size: 1.4rem;
-      max-width: 700px;
-      margin: 0 auto 20px;
-      color: #ffffff;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      position: relative;
-      z-index: 2;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-      line-height: 1.4;
-      animation: fadeUp 0.8s ease-out 0.2s both;
+      font-size: 1.4rem; max-width: 700px; margin: 0 auto 20px;
+      color: #ffffff; font-weight: 400; letter-spacing: 0.5px;
+      position: relative; z-index: 2; text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      line-height: 1.4; animation: fadeUp 0.8s ease-out 0.2s both;
     }
-
-    .hero .subhead i {
-      color: #e8d5b8;
-      margin: 0 8px;
-    }
-
-    .hero .btn-wrapper {
-      margin-top: 350px;
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 0.8s ease-out 0.4s both;
-    }
-
+    .hero .subhead i { color: #e8d5b8; margin: 0 8px; }
+    .hero .btn-wrapper { margin-top: 350px; position: relative; z-index: 2; animation: fadeUp 0.8s ease-out 0.4s both; }
     .btn {
-      display: inline-block;
-      background: #a67c52;
-      color: #fff;
-      font-weight: 600;
-      padding: 18px 56px;
-      border-radius: 60px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      display: inline-block; background: #a67c52; color: #fff;
+      font-weight: 600; padding: 18px 56px; border-radius: 60px;
+      text-decoration: none; font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
     }
+    .btn:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.35); background: #b88d62; }
+    .btn i { margin-right: 10px; }
+    .float { animation: float 3.2s ease-in-out infinite; }
 
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
-      background: #b88d62;
+    /* ---------- SECTIONS ---------- */
+    .about, .services, .team, .contact, .gallery { scroll-margin-top: 70px; }
+    .about-header, .services-header, .team-header, .contact-header, .gallery-header {
+      text-align: center; margin-bottom: 30px; perspective: 800px;
     }
-
-    .btn i {
-      margin-right: 10px;
-    }
-
-    .float {
-      animation: float 3.2s ease-in-out infinite;
-    }
-
-    /* ---------- SECTION HEADERS ---------- */
-    .about,
-    .services,
-    .team,
-    .contact,
-    .gallery {
-      scroll-margin-top: 70px;
-    }
-
-    .about-header,
-    .services-header,
-    .team-header,
-    .contact-header,
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 30px;
-      perspective: 800px;
-    }
-
-    .about-header h2,
-    .services-header h2,
-    .team-header h2,
-    .contact-header h2,
-    .gallery-header h2 {
+    .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      font-weight: 600;
-      font-style: italic;
-      color: #3d2c1e;
-      display: inline-block;
+      font-size: 2.6rem; font-weight: 600; font-style: italic;
+      color: #3d2c1e; display: inline-block;
       transform-style: preserve-3d;
       animation: float3D 6s ease-in-out infinite;
-      transition: transform 0.3s ease;
-      cursor: default;
+      transition: transform 0.3s ease; cursor: default;
     }
-
-    .about-header h2:hover,
-    .services-header h2:hover,
-    .team-header h2:hover,
-    .contact-header h2:hover,
-    .gallery-header h2:hover {
-      animation-play-state: paused;
-      transform: translateZ(40px) scale(1.05);
+    .about-header h2:hover, .services-header h2:hover, .team-header h2:hover, .contact-header h2:hover, .gallery-header h2:hover {
+      animation-play-state: paused; transform: translateZ(40px) scale(1.05);
     }
-
-    .about-header h2 span,
-    .services-header h2 span,
-    .team-header h2 span,
-    .contact-header h2 span,
-    .gallery-header h2 span {
-      color: #a67c52;
-      background: #f5ede4;
-      padding: 0 14px;
-      border-radius: 40px;
-      display: inline-block;
-      box-shadow: 0 4px 20px rgba(166, 124, 82, 0.08);
+    .about-header h2 span, .services-header h2 span, .team-header h2 span, .contact-header h2 span, .gallery-header h2 span {
+      color: #a67c52; background: #f5ede4; padding: 0 14px; border-radius: 40px;
+      display: inline-block; box-shadow: 0 4px 20px rgba(166,124,82,0.08);
       transform-style: preserve-3d;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .about-header h2:hover span,
-    .services-header h2:hover span,
-    .team-header h2:hover span,
-    .contact-header h2:hover span,
-    .gallery-header h2:hover span {
-      box-shadow: 0 8px 40px rgba(166, 124, 82, 0.15);
+    .about-header h2:hover span, .services-header h2:hover span, .team-header h2:hover span, .contact-header h2:hover span, .gallery-header h2:hover span {
+      box-shadow: 0 8px 40px rgba(166,124,82,0.15);
     }
-
-    .about-header .divider,
-    .services-header .divider,
-    .team-header .divider,
-    .contact-header .divider,
-    .gallery-header .divider {
-      width: 60px;
-      height: 4px;
+    .about-header .divider, .services-header .divider, .team-header .divider, .contact-header .divider, .gallery-header .divider {
+      width: 60px; height: 4px;
       background: linear-gradient(90deg, #c49a6c, #a67c52);
-      margin: 8px auto 0;
-      border-radius: 4px;
+      margin: 8px auto 0; border-radius: 4px;
       transform-style: preserve-3d;
       animation: dividerFloat 6s ease-in-out infinite;
-      box-shadow: 0 4px 15px rgba(166, 124, 82, 0.2);
+      box-shadow: 0 4px 15px rgba(166,124,82,0.2);
     }
-
     @keyframes float3D {
       0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
       25% { transform: translateY(-8px) rotateX(2deg) rotateY(2deg); }
@@ -509,19 +240,16 @@
       75% { transform: translateY(-5px) rotateX(-1deg) rotateY(-1deg); }
       100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
     }
-
     @keyframes dividerFloat {
       0% { transform: translateY(0px) scaleX(1); opacity: 1; }
       50% { transform: translateY(-4px) scaleX(1.1); opacity: 0.8; }
       100% { transform: translateY(0px) scaleX(1); opacity: 1; }
     }
-
     .about-header h2 { animation-delay: 0s; }
     .services-header h2 { animation-delay: 0.5s; }
     .team-header h2 { animation-delay: 1s; }
     .gallery-header h2 { animation-delay: 1.5s; }
     .contact-header h2 { animation-delay: 0.8s; }
-
     .about-header .divider { animation-delay: 0.2s; }
     .services-header .divider { animation-delay: 0.7s; }
     .team-header .divider { animation-delay: 1.2s; }
@@ -529,436 +257,121 @@
     .contact-header .divider { animation-delay: 1s; }
 
     /* ---------- ABOUT ---------- */
-    .about {
-      padding: 40px 0 30px;
-      margin-bottom: 10px;
-      animation: fadeUp 0.8s ease-out 0.2s both;
-    }
-
-    .about-content {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
+    .about { padding: 40px 0 30px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.2s both; }
+    .about-content { display: flex; flex-direction: column; gap: 28px; }
     .mission-card {
-      background: #f5ede4;
-      padding: 32px 40px;
-      border-radius: 32px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: #f5ede4; padding: 32px 40px; border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
+      text-align: center; transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .mission-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
-    }
-
-    .mission-card p {
-      font-size: 1.05rem;
-      max-width: 760px;
-      margin: 0 auto;
-      color: #4d3a2c;
-      line-height: 1.7;
-    }
-
-    .mission-card .big-icon {
-      font-size: 2.4rem;
-      color: #a67c52;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
+    .mission-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -8px rgba(166,124,82,0.14); }
+    .mission-card p { font-size: 1.05rem; max-width: 760px; margin: 0 auto; color: #4d3a2c; line-height: 1.7; }
+    .mission-card .big-icon { font-size: 2.4rem; color: #a67c52; margin-bottom: 12px; display: block; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .value-item {
-      background: #fcf8f2;
-      padding: 24px 20px;
-      border-radius: 28px;
-      box-shadow: 0 6px 18px -6px rgba(166, 124, 82, 0.06);
-      border: 1px solid rgba(166, 124, 82, 0.06);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: #fcf8f2; padding: 24px 20px; border-radius: 28px;
+      box-shadow: 0 6px 18px -6px rgba(166,124,82,0.06);
+      border: 1px solid rgba(166,124,82,0.06);
+      text-align: center; transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeUp 0.6s ease-out both;
     }
-
     .value-item:nth-child(1) { animation-delay: 0.1s; }
     .value-item:nth-child(2) { animation-delay: 0.2s; }
     .value-item:nth-child(3) { animation-delay: 0.3s; }
-
-    .value-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 28px -8px rgba(166, 124, 82, 0.15);
-    }
-
-    .value-item .value-icon {
-      font-size: 1.8rem;
-      color: #c49a6c;
-      margin-bottom: 8px;
-      display: block;
-      transition: transform 0.3s;
-    }
-
-    .value-item:hover .value-icon {
-      transform: scale(1.2) rotate(-5deg);
-    }
-
-    .value-item h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #3d2c1e;
-      margin-bottom: 4px;
-    }
-
-    .value-item p {
-      font-size: 0.92rem;
-      color: #6b5544;
-      line-height: 1.5;
-    }
+    .value-item:hover { transform: translateY(-6px); box-shadow: 0 12px 28px -8px rgba(166,124,82,0.15); }
+    .value-item .value-icon { font-size: 1.8rem; color: #c49a6c; margin-bottom: 8px; display: block; transition: transform 0.3s; }
+    .value-item:hover .value-icon { transform: scale(1.2) rotate(-5deg); }
+    .value-item h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: #3d2c1e; margin-bottom: 4px; }
+    .value-item p { font-size: 0.92rem; color: #6b5544; line-height: 1.5; }
 
     /* ---------- SERVICES ---------- */
-    .services {
-      padding: 30px 0 30px;
-      margin-bottom: 10px;
-      animation: fadeUp 0.8s ease-out 0.3s both;
-    }
-
-    .services-intro {
-      max-width: 700px;
-      margin: 0 auto 28px;
-      text-align: center;
-      font-size: 1.05rem;
-      color: #4d3a2c;
-      line-height: 1.7;
-    }
-
-    .services-intro i {
-      color: #c49a6c;
-      margin: 0 4px;
-    }
-
+    .services { padding: 30px 0 30px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.3s both; }
+    .services-intro { max-width: 700px; margin: 0 auto 28px; text-align: center; font-size: 1.05rem; color: #4d3a2c; line-height: 1.7; }
+    .services-intro i { color: #c49a6c; margin: 0 4px; }
     .service-card {
-      background: #f5ede4;
-      padding: 32px 36px;
-      border-radius: 32px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      margin-bottom: 24px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: #f5ede4; padding: 32px 36px; border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
+      margin-bottom: 24px; transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeUp 0.8s ease-out 0.4s both;
     }
-
-    .service-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.12);
-    }
-
-    .service-card .service-icon {
-      font-size: 2.2rem;
-      color: #a67c52;
-      margin-bottom: 10px;
-      display: block;
-      transition: transform 0.3s;
-    }
-
-    .service-card:hover .service-icon {
-      transform: scale(1.1) rotate(-3deg);
-    }
-
-    .service-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #3d2c1e;
-      margin-bottom: 8px;
-    }
-
-    .service-card .service-sub {
-      font-size: 0.98rem;
-      color: #5a4030;
-      margin-bottom: 12px;
-      font-style: italic;
-    }
-
-    .service-card p {
-      color: #4d3a2c;
-      line-height: 1.7;
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
-
-    .service-features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 16px;
-    }
-
+    .service-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -8px rgba(166,124,82,0.12); }
+    .service-card .service-icon { font-size: 2.2rem; color: #a67c52; margin-bottom: 10px; display: block; transition: transform 0.3s; }
+    .service-card:hover .service-icon { transform: scale(1.1) rotate(-3deg); }
+    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; color: #3d2c1e; margin-bottom: 8px; }
+    .service-card .service-sub { font-size: 0.98rem; color: #5a4030; margin-bottom: 12px; font-style: italic; }
+    .service-card p { color: #4d3a2c; line-height: 1.7; font-size: 0.95rem; margin-bottom: 12px; }
+    .service-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
     .service-features li {
-      list-style: none;
-      background: #fcf8f2;
-      padding: 12px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(166, 124, 82, 0.06);
-      font-size: 0.92rem;
-      color: #4d3a2c;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: background 0.2s, transform 0.2s;
-      animation: fadeUp 0.5s ease-out both;
+      list-style: none; background: #fcf8f2; padding: 12px 18px; border-radius: 18px;
+      border: 1px solid rgba(166,124,82,0.06); font-size: 0.92rem;
+      color: #4d3a2c; display: flex; align-items: center; gap: 10px;
+      transition: background 0.2s, transform 0.2s; animation: fadeUp 0.5s ease-out both;
     }
-
     .service-features li:nth-child(1) { animation-delay: 0.1s; }
     .service-features li:nth-child(2) { animation-delay: 0.2s; }
     .service-features li:nth-child(3) { animation-delay: 0.3s; }
     .service-features li:nth-child(4) { animation-delay: 0.4s; }
     .service-features li:nth-child(5) { animation-delay: 0.5s; }
-
-    .service-features li:hover {
-      background: #f8f0e8;
-      transform: translateX(4px);
-    }
-
-    .service-features li i {
-      color: #a67c52;
-      font-size: 1rem;
-      min-width: 20px;
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .service-features li:hover i {
-      transform: scale(1.2);
-    }
+    .service-features li:hover { background: #f8f0e8; transform: translateX(4px); }
+    .service-features li i { color: #a67c52; font-size: 1rem; min-width: 20px; text-align: center; transition: transform 0.3s; }
+    .service-features li:hover i { transform: scale(1.2); }
 
     /* ---------- TEAM ---------- */
-    .team {
-      padding: 30px 0 30px;
-      margin-bottom: 10px;
-      animation: fadeUp 0.8s ease-out 0.35s both;
-    }
-
-    .team-intro {
-      max-width: 650px;
-      margin: 0 auto 30px;
-      text-align: center;
-      font-size: 1.05rem;
-      color: #5a4030;
-      line-height: 1.7;
-    }
-
-    .team-intro i {
-      color: #c49a6c;
-    }
-
-    .team-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
+    .team { padding: 30px 0 30px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.35s both; }
+    .team-intro { max-width: 650px; margin: 0 auto 30px; text-align: center; font-size: 1.05rem; color: #5a4030; line-height: 1.7; }
+    .team-intro i { color: #c49a6c; }
+    .team-grid { display: flex; flex-direction: column; gap: 24px; }
     .team-member {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      background: #f5ede4;
-      padding: 24px 28px;
-      border-radius: 32px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeUp 0.8s ease-out both;
+      display: flex; align-items: center; gap: 32px;
+      background: #f5ede4; padding: 24px 28px; border-radius: 32px;
+      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: transform 0.3s, box-shadow 0.3s; animation: fadeUp 0.8s ease-out both;
     }
-
     .team-member:nth-child(1) { animation-delay: 0.1s; }
     .team-member:nth-child(2) { animation-delay: 0.3s; }
-
-    .team-member:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
-    }
-
-    .team-member:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
-    .team-member.founder {
-      border: 2px solid #a67c52;
-      background: linear-gradient(145deg, #f5ede4, #f0e6da);
-      position: relative;
-    }
-
-    .team-member.founder::before {
-      content: '⭐ Fondator';
-      position: absolute;
-      top: -10px;
-      right: 24px;
-      background: #a67c52;
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 3px 14px;
-      border-radius: 30px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 12px rgba(166, 124, 82, 0.2);
-    }
-
-    .team-member.volunteer {
-      border: 2px solid #8aaa7a;
-      background: linear-gradient(145deg, #f5f5ed, #eef0e8);
-      position: relative;
-    }
-
-    .team-member.volunteer::before {
-      content: '🤝 Voluntar';
-      position: absolute;
-      top: -10px;
-      right: 24px;
-      background: #8aaa7a;
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 3px 14px;
-      border-radius: 30px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 12px rgba(138, 170, 122, 0.2);
-    }
-
+    .team-member:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(166,124,82,0.14); }
+    .team-member:nth-child(even) { flex-direction: row-reverse; }
+    .team-member.founder { border: 2px solid #a67c52; background: linear-gradient(145deg, #f5ede4, #f0e6da); position: relative; }
+    .team-member.founder::before { content: '⭐ Fondator'; position: absolute; top: -10px; right: 24px; background: #a67c52; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 3px 14px; border-radius: 30px; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(166,124,82,0.2); }
+    .team-member.volunteer { border: 2px solid #8aaa7a; background: linear-gradient(145deg, #f5f5ed, #eef0e8); position: relative; }
+    .team-member.volunteer::before { content: '🤝 Voluntar'; position: absolute; top: -10px; right: 24px; background: #8aaa7a; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 3px 14px; border-radius: 30px; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(138,170,122,0.2); }
     .team-member-image {
-      flex-shrink: 0;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 4px solid #ffffff;
-      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.12);
-      background: #e8ddd0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0; width: 150px; height: 150px; border-radius: 50%;
+      overflow: hidden; border: 4px solid #ffffff;
+      box-shadow: 0 8px 24px rgba(166,124,82,0.12);
+      background: #e8ddd0; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
     }
-
-    .team-member-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 32px rgba(166, 124, 82, 0.2);
-    }
-
-    .team-member-image.zoomed {
-      transform: scale(1.8);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      z-index: 10;
-      border-color: #a67c52;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-    }
-
-    .team-member-image.zoomed img {
-      transform: scale(1);
-    }
-
-    .team-member-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s;
-    }
-
-    .team-member-image:hover img {
-      transform: scale(1.08);
-    }
-
-    .team-member.founder .team-member-image {
-      border-color: #a67c52;
-      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.2);
-    }
-
-    .team-member.volunteer .team-member-image {
-      border-color: #8aaa7a;
-      box-shadow: 0 8px 24px rgba(138, 170, 122, 0.2);
-    }
-
-    .team-member-info {
-      flex: 1;
-    }
-
-    .team-member-info .member-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #3d2c1e;
-      margin-bottom: 2px;
-    }
-
-    .team-member.founder .member-name {
-      color: #a67c52;
-    }
-
-    .team-member.volunteer .member-name {
-      color: #6d8a5e;
-    }
-
-    .team-member-info .member-role {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #a67c52;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .team-member-info .member-description {
-      color: #4d3a2c;
-      line-height: 1.6;
-      font-size: 0.92rem;
-    }
-
-    .team-member-info .member-description .nickname {
-      font-weight: 700;
-      color: #a67c52;
-      font-style: italic;
-    }
-
-    .team-member-info .member-description .highlight {
-      color: #a67c52;
-      font-weight: 600;
-    }
+    .team-member-image:hover { transform: scale(1.05); box-shadow: 0 12px 32px rgba(166,124,82,0.2); }
+    .team-member-image.zoomed { transform: scale(1.8); box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 10; border-color: #a67c52; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease; }
+    .team-member-image.zoomed img { transform: scale(1); }
+    .team-member-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+    .team-member-image:hover img { transform: scale(1.08); }
+    .team-member.founder .team-member-image { border-color: #a67c52; box-shadow: 0 8px 24px rgba(166,124,82,0.2); }
+    .team-member.volunteer .team-member-image { border-color: #8aaa7a; box-shadow: 0 8px 24px rgba(138,170,122,0.2); }
+    .team-member-info { flex: 1; }
+    .team-member-info .member-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: #3d2c1e; margin-bottom: 2px; }
+    .team-member.founder .member-name { color: #a67c52; }
+    .team-member.volunteer .member-name { color: #6d8a5e; }
+    .team-member-info .member-role { font-size: 0.92rem; font-weight: 600; color: #a67c52; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .team-member-info .member-description { color: #4d3a2c; line-height: 1.6; font-size: 0.92rem; }
+    .team-member-info .member-description .nickname { font-weight: 700; color: #a67c52; font-style: italic; }
+    .team-member-info .member-description .highlight { color: #a67c52; font-weight: 600; }
 
     /* ---------- GALLERY ---------- */
-    .gallery {
-      padding: 40px 0 50px;
-      margin-bottom: 10px;
-      animation: fadeUp 0.8s ease-out 0.4s both;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
+    .gallery { padding: 40px 0 50px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.4s both; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .gallery-item {
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08);
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08);
       transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      background: #f5ede4;
-      aspect-ratio: 1 / 1;
+      cursor: pointer; background: #f5ede4; aspect-ratio: 1/1;
       animation: fadeUp 0.6s ease-out both;
     }
-
     .gallery-item:nth-child(1) { animation-delay: 0.05s; }
     .gallery-item:nth-child(2) { animation-delay: 0.1s; }
     .gallery-item:nth-child(3) { animation-delay: 0.15s; }
@@ -971,7 +384,6 @@
     .gallery-item:nth-child(10) { animation-delay: 0.5s; }
     .gallery-item:nth-child(11) { animation-delay: 0.55s; }
     .gallery-item:nth-child(12) { animation-delay: 0.6s; }
-
     .gallery-item:nth-child(1) { aspect-ratio: 1 / 1.2; }
     .gallery-item:nth-child(2) { aspect-ratio: 1.2 / 1; }
     .gallery-item:nth-child(3) { aspect-ratio: 1 / 1; }
@@ -984,435 +396,128 @@
     .gallery-item:nth-child(10) { aspect-ratio: 1.1 / 1; }
     .gallery-item:nth-child(11) { aspect-ratio: 0.9 / 1; }
     .gallery-item:nth-child(12) { aspect-ratio: 1.2 / 1; }
-
-    .gallery-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px -12px rgba(166, 124, 82, 0.2);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
+    .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 16px 40px -12px rgba(166,124,82,0.2); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+    .gallery-item:hover img { transform: scale(1.05); }
 
     /* ---------- LIGHTBOX ---------- */
     .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.92);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.92);
+      z-index: 9999; justify-content: center; align-items: center;
+      opacity: 0; transition: opacity 0.3s ease;
     }
-
-    .lightbox.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 90%;
-      max-height: 90%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-content img {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: #fff;
-      font-size: 3rem;
-      cursor: pointer;
-      z-index: 10;
-      transition: transform 0.3s, color 0.3s;
-      background: none;
-      border: none;
-    }
-
-    .lightbox-close:hover {
-      transform: rotate(90deg);
-      color: #c49a6c;
-    }
-
-    .lightbox-prev,
-    .lightbox-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #fff;
-      font-size: 3rem;
-      cursor: pointer;
-      z-index: 10;
-      padding: 20px 15px;
-      transition: color 0.3s, transform 0.3s;
-      background: none;
-      border: none;
-    }
-
-    .lightbox-prev:hover,
-    .lightbox-next:hover {
-      color: #c49a6c;
-      transform: translateY(-50%) scale(1.1);
-    }
-
+    .lightbox.active { display: flex; opacity: 1; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-content img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; z-index: 10; transition: transform 0.3s, color 0.3s; background: none; border: none; }
+    .lightbox-close:hover { transform: rotate(90deg); color: #c49a6c; }
+    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; cursor: pointer; z-index: 10; padding: 20px 15px; transition: color 0.3s, transform 0.3s; background: none; border: none; }
+    .lightbox-prev:hover, .lightbox-next:hover { color: #c49a6c; transform: translateY(-50%) scale(1.1); }
     .lightbox-prev { left: 20px; }
     .lightbox-next { right: 20px; }
+    .lightbox-counter { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.95rem; background: rgba(0,0,0,0.5); padding: 8px 20px; border-radius: 30px; backdrop-filter: blur(4px); }
+    .lightbox-counter i { color: #c49a6c; margin-right: 6px; }
 
-    .lightbox-counter {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #fff;
-      font-size: 0.95rem;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 8px 20px;
-      border-radius: 30px;
-      backdrop-filter: blur(4px);
-    }
-
-    .lightbox-counter i {
-      color: #c49a6c;
-      margin-right: 6px;
-    }
-
-    /* ---------- CONTACT & FORM ---------- */
-    .contact {
-      padding: 30px 0 20px;
-      margin-bottom: 10px;
-      animation: fadeUp 0.8s ease-out 0.4s both;
-    }
-
-    .contact-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 900px;
-      margin: 0 auto;
-      align-items: start;
-    }
-
+    /* ---------- CONTACT ---------- */
+    .contact { padding: 30px 0 20px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.4s both; }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; align-items: start; }
     .contact-info {
-      background: #f5ede4;
-      padding: 28px 24px;
-      border-radius: 28px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      text-align: center;
+      background: #f5ede4; padding: 28px 24px; border-radius: 28px;
+      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3); text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .contact-info:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
-    }
-
-    .contact-info .contact-icon {
-      font-size: 2.2rem;
-      color: #a67c52;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .contact-info .contact-question {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #3d2c1e;
-      margin-bottom: 12px;
-    }
-
-    .contact-info .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
-
+    .contact-info:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -8px rgba(166,124,82,0.14); }
+    .contact-info .contact-icon { font-size: 2.2rem; color: #a67c52; margin-bottom: 8px; display: block; }
+    .contact-info .contact-question { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: #3d2c1e; margin-bottom: 12px; }
+    .contact-info .contact-details { display: flex; flex-direction: column; gap: 10px; align-items: center; }
     .contact-info .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #fcf8f2;
-      padding: 10px 18px;
-      border-radius: 60px;
-      border: 1px solid rgba(166, 124, 82, 0.06);
+      display: flex; align-items: center; gap: 10px;
+      background: #fcf8f2; padding: 10px 18px; border-radius: 60px;
+      border: 1px solid rgba(166,124,82,0.06);
       transition: background 0.2s, transform 0.2s;
-      width: 100%;
-      max-width: 360px;
-      justify-content: center;
+      width: 100%; max-width: 360px; justify-content: center;
     }
-
-    .contact-info .contact-item:hover {
-      background: #f8f0e8;
-      transform: scale(1.02);
-    }
-
-    .contact-info .contact-item i {
-      font-size: 1rem;
-      color: #a67c52;
-      min-width: 22px;
-    }
-
-    .contact-info .contact-item a {
-      text-decoration: none;
-      color: #3d2c1e;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .contact-info .contact-item a:hover {
-      color: #a67c52;
-    }
-
-    .contact-info .contact-item .label {
-      color: #8a7566;
-      font-weight: 400;
-      font-size: 0.8rem;
-    }
-
-    .contact-note {
-      margin-top: 12px;
-      color: #6b5544;
-      font-size: 0.88rem;
-    }
-
-    .contact-note i {
-      color: #c49a6c;
-      margin: 0 4px;
-    }
+    .contact-info .contact-item:hover { background: #f8f0e8; transform: scale(1.02); }
+    .contact-info .contact-item i { font-size: 1rem; color: #a67c52; min-width: 22px; }
+    .contact-info .contact-item a { text-decoration: none; color: #3d2c1e; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+    .contact-info .contact-item a:hover { color: #a67c52; }
+    .contact-info .contact-item .label { color: #8a7566; font-weight: 400; font-size: 0.8rem; }
+    .contact-note { margin-top: 12px; color: #6b5544; font-size: 0.88rem; }
+    .contact-note i { color: #c49a6c; margin: 0 4px; }
 
     /* ---------- CONTACT FORM ---------- */
     .contact-form-wrapper {
-      background: #f5ede4;
-      padding: 28px 24px;
-      border-radius: 28px;
-      box-shadow: 0 8px 24px -8px rgba(166, 124, 82, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: #f5ede4; padding: 28px 24px; border-radius: 28px;
+      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .contact-form-wrapper:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px -8px rgba(166, 124, 82, 0.14);
-    }
-
-    .contact-form-wrapper h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: #3d2c1e;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-
-    .contact-form-wrapper h3 i {
-      color: #a67c52;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #3d2c1e;
-      margin-bottom: 4px;
-    }
-
-    .form-group label i {
-      color: #a67c52;
-      margin-right: 6px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(166, 124, 82, 0.15);
-      background: #fcf8f2;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    .contact-form-wrapper:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -8px rgba(166,124,82,0.14); }
+    .contact-form-wrapper h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #3d2c1e; text-align: center; margin-bottom: 16px; }
+    .contact-form-wrapper h3 i { color: #a67c52; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: #3d2c1e; margin-bottom: 4px; }
+    .form-group label i { color: #a67c52; margin-right: 6px; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px; border-radius: 16px;
+      border: 1px solid rgba(166,124,82,0.15);
+      background: #fcf8f2; font-family: 'Inter', sans-serif;
+      font-size: 0.95rem; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
       color: #3d2c1e;
     }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #a67c52;
-      box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.1);
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: #a67c52;
+      box-shadow: 0 0 0 3px rgba(166,124,82,0.1);
       transform: scale(1.01);
     }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
+    .form-group textarea { resize: vertical; min-height: 100px; }
     .submit-btn {
-      display: inline-block;
-      background: #a67c52;
-      color: #fff;
-      font-weight: 600;
-      padding: 14px 40px;
-      border-radius: 60px;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
+      display: inline-block; background: #a67c52; color: #fff;
+      font-weight: 600; padding: 14px 40px; border-radius: 60px;
+      border: none; font-size: 1rem; cursor: pointer;
       transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
       width: 100%;
     }
-
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(166, 124, 82, 0.2);
-      background: #b88d62;
-    }
-
-    .submit-btn i {
-      margin-right: 8px;
-    }
-
-    /* Success message */
+    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(166,124,82,0.2); background: #b88d62; }
+    .submit-btn i { margin-right: 8px; }
     .form-success {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      color: #2d7a4a;
-      background: #e8f5ee;
-      border-radius: 16px;
-      margin-top: 10px;
-      animation: fadeUp 0.5s ease-out;
+      display: none; text-align: center; padding: 20px;
+      color: #2d7a4a; background: #e8f5ee; border-radius: 16px;
+      margin-top: 10px; animation: fadeUp 0.5s ease-out;
     }
+    .form-success i { font-size: 2.5rem; display: block; margin-bottom: 10px; }
 
-    .form-success i {
-      font-size: 2.5rem;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    /* ---------- ERASMUS+ ---------- */
-    .erasmus-section {
-      padding: 10px 0 10px;
-      animation: fadeUp 0.8s ease-out 0.5s both;
-    }
-
+    /* ---------- ERASMUS ---------- */
+    .erasmus-section { padding: 10px 0 10px; animation: fadeUp 0.8s ease-out 0.5s both; }
     .erasmus-card {
-      background: #f5ede4;
-      padding: 20px 28px;
-      border-radius: 28px;
-      box-shadow: 0 6px 18px -6px rgba(166, 124, 82, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto;
+      background: #f5ede4; padding: 20px 28px; border-radius: 28px;
+      box-shadow: 0 6px 18px -6px rgba(166,124,82,0.06);
+      border: 1px solid rgba(255,255,255,0.3);
+      text-align: center; max-width: 750px; margin: 0 auto;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .erasmus-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px -8px rgba(166, 124, 82, 0.10);
-    }
-
-    .flags-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .flag-icon {
-      font-size: 2.2rem;
-      display: inline-block;
-    }
-
-    .erasmus-card p {
-      font-size: 0.92rem;
-      color: #4d3a2c;
-      line-height: 1.6;
-    }
-
-    .erasmus-card strong {
-      color: #a67c52;
-    }
-
-    .erasmus-card .erasmus-icons {
-      margin-top: 8px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      font-size: 1.1rem;
-      color: #a67c52;
-    }
-
-    .erasmus-card .erasmus-icons i {
-      transition: transform 0.3s;
-    }
-
-    .erasmus-card .erasmus-icons i:hover {
-      transform: scale(1.2);
-    }
+    .erasmus-card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -8px rgba(166,124,82,0.10); }
+    .flags-container { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; }
+    .flag-icon { font-size: 2.2rem; display: inline-block; }
+    .erasmus-card p { font-size: 0.92rem; color: #4d3a2c; line-height: 1.6; }
+    .erasmus-card strong { color: #a67c52; }
+    .erasmus-card .erasmus-icons { margin-top: 8px; display: flex; justify-content: center; gap: 12px; font-size: 1.1rem; color: #a67c52; }
+    .erasmus-card .erasmus-icons i { transition: transform 0.3s; }
+    .erasmus-card .erasmus-icons i:hover { transform: scale(1.2); }
 
     /* ---------- FOOTER ---------- */
     footer {
-      margin-top: auto;
-      text-align: center;
-      padding: 16px 0 14px;
-      border-top: 1px solid rgba(166, 124, 82, 0.08);
-      color: #8a7566;
-      font-size: 0.85rem;
+      margin-top: auto; text-align: center; padding: 16px 0 14px;
+      border-top: 1px solid rgba(166,124,82,0.08);
+      color: #8a7566; font-size: 0.85rem;
     }
+    footer i { color: #c49a6c; margin: 0 4px; transition: transform 0.3s; }
+    footer i:hover { transform: scale(1.2); }
 
-    footer i {
-      color: #c49a6c;
-      margin: 0 4px;
-      transition: transform 0.3s;
-    }
-
-    footer i:hover {
-      transform: scale(1.2);
-    }
-
-    /* ---------- ANIMATIONS ---------- */
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
-    }
+    @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0px); } }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
@@ -1431,12 +536,10 @@
       .nav-links a i { font-size: 0.7rem; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 30px; }
       .flag-icon { font-size: 1.8rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 {
-        font-size: 2.2rem;
-      }
+      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 2.2rem; }
       .seasonal-particle { font-size: 1.4rem; }
+      .gift-container { font-size: 2rem; padding: 8px 18px; gap: 14px; }
     }
-
     @media (max-width: 700px) {
       nav { justify-content: center; padding: 10px 0 8px; gap: 10px; }
       .nav-links { gap: 10px; font-size: 0.78rem; justify-content: center; }
@@ -1451,12 +554,8 @@
       .hero .subhead { font-size: 1rem; white-space: normal; }
       .hero .btn-wrapper { margin-top: 200px; }
       .btn { padding: 14px 32px; font-size: 0.95rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 {
-        font-size: 2rem;
-      }
-      .about-header, .services-header, .team-header, .contact-header, .gallery-header {
-        margin-bottom: 20px;
-      }
+      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 2rem; }
+      .about-header, .services-header, .team-header, .contact-header, .gallery-header { margin-bottom: 20px; }
       .mission-card { padding: 24px 20px; }
       .mission-card p { font-size: 0.95rem; }
       .values-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -1494,8 +593,8 @@
       .team-intro { font-size: 0.95rem; margin: 0 auto 20px; }
       .seasonal-particle { font-size: 1.2rem; }
       .seasonal-banner { font-size: 0.85rem; padding: 8px 16px; }
+      .gift-container { font-size: 1.6rem; padding: 6px 14px; gap: 10px; bottom: 6px; }
     }
-
     @media (max-width: 480px) {
       .container { padding: 0 14px; }
       .nav-links { gap: 6px; font-size: 0.7rem; }
@@ -1524,249 +623,116 @@
       .contact-info .contact-question { font-size: 1rem; }
       .flag-icon { font-size: 1.4rem; }
       .erasmus-card p { font-size: 0.8rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 {
-        font-size: 1.7rem;
-      }
+      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 1.7rem; }
       .seasonal-particle { font-size: 1rem; }
       .seasonal-banner { font-size: 0.75rem; padding: 6px 12px; }
+      .gift-container { font-size: 1.3rem; padding: 4px 10px; gap: 8px; bottom: 4px; border-radius: 40px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== SEASONAL OVERLAY ========== -->
+  <!-- SEASONAL OVERLAY -->
   <div class="seasonal-overlay" id="seasonalOverlay"></div>
 
-  <!-- ========== SEASONAL BANNER ========== -->
+  <!-- SEASONAL BANNER -->
   <div class="seasonal-banner" id="seasonalBanner"></div>
 
+  <!-- GIFT CONTAINER -->
+  <div class="gift-container" id="giftContainer">
+    <span class="gift-item">🎁</span>
+    <span class="gift-item">🎀</span>
+    <span class="gift-item">📦</span>
+    <span class="gift-item">🎄</span>
+    <span class="gift-item">🎁</span>
+    <span class="gift-item">🎀</span>
+  </div>
+
   <div class="container">
-    <!-- NAVIGATION WITH LANGUAGE SWITCHER -->
+    <!-- NAVIGATION -->
     <nav id="navbar">
-      <!-- Language Switcher -->
       <div class="language-switcher">
         <button class="language-btn" id="languageBtn">
           <i class="fas fa-globe"></i> <span class="current-flag" id="currentFlag">🇷🇴</span> <span id="currentLangLabel">RO</span> <i class="fas fa-chevron-down"></i>
         </button>
         <div class="language-dropdown" id="languageDropdown">
-          <a href="#" data-lang="ro" class="active-lang">
-            <span class="lang-flag">🇷🇴</span>
-            <span class="lang-name">Română</span>
-            <span class="check-mark"><i class="fas fa-check"></i></span>
-          </a>
-          <a href="#" data-lang="en">
-            <span class="lang-flag">🇬🇧</span>
-            <span class="lang-name">English</span>
-            <span class="check-mark"><i class="fas fa-check"></i></span>
-          </a>
-          <a href="#" data-lang="fr">
-            <span class="lang-flag">🇫🇷</span>
-            <span class="lang-name">Français</span>
-            <span class="check-mark"><i class="fas fa-check"></i></span>
-          </a>
-          <a href="#" data-lang="de">
-            <span class="lang-flag">🇩🇪</span>
-            <span class="lang-name">Deutsch</span>
-            <span class="check-mark"><i class="fas fa-check"></i></span>
-          </a>
-          <a href="#" data-lang="it">
-            <span class="lang-flag">🇮🇹</span>
-            <span class="lang-name">Italiano</span>
-            <span class="check-mark"><i class="fas fa-check"></i></span>
-          </a>
+          <a href="#" data-lang="ro" class="active-lang"><span class="lang-flag">🇷🇴</span><span class="lang-name">Română</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+          <a href="#" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+          <a href="#" data-lang="fr"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+          <a href="#" data-lang="de"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+          <a href="#" data-lang="it"><span class="lang-flag">🇮🇹</span><span class="lang-name">Italiano</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
         </div>
       </div>
-
       <div class="nav-links">
-        <a href="#home" class="active" data-key="nav-home">
-          <i class="fas fa-home"></i> <span>Acasă</span>
-        </a>
-        <a href="#about" data-key="nav-about">
-          <i class="fas fa-users"></i> <span>Cine suntem</span>
-        </a>
-        <a href="#services" data-key="nav-services">
-          <i class="fas fa-hand-holding-heart"></i> <span>Servicii</span>
-        </a>
-        <a href="#team" data-key="nav-team">
-          <i class="fas fa-user-friends"></i> <span>Echipa</span>
-        </a>
-        <a href="#gallery" data-key="nav-gallery">
-          <i class="fas fa-images"></i> <span>Galerie</span>
-        </a>
-        <a href="#contact" data-key="nav-contact">
-          <i class="fas fa-envelope"></i> <span>Contact</span>
-        </a>
+        <a href="#home" class="active" data-key="nav-home"><i class="fas fa-home"></i> <span>Acasă</span></a>
+        <a href="#about" data-key="nav-about"><i class="fas fa-users"></i> <span>Cine suntem</span></a>
+        <a href="#services" data-key="nav-services"><i class="fas fa-hand-holding-heart"></i> <span>Servicii</span></a>
+        <a href="#team" data-key="nav-team"><i class="fas fa-user-friends"></i> <span>Echipa</span></a>
+        <a href="#gallery" data-key="nav-gallery"><i class="fas fa-images"></i> <span>Galerie</span></a>
+        <a href="#contact" data-key="nav-contact"><i class="fas fa-envelope"></i> <span>Contact</span></a>
       </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-content">
-        <p class="subhead" data-key="hero-subhead">
-          <i class="fas fa-feather-alt"></i>
-          Unde căldura întâlnește îndrumarea divină
-          <i class="fas fa-feather-alt"></i>
-        </p>
-        <div class="btn-wrapper">
-          <a href="#services" class="btn float" data-key="hero-btn">
-            <i class="fas fa-arrow-right"></i> Descoperă serviciile noastre
-          </a>
-        </div>
+        <p class="subhead" data-key="hero-subhead"><i class="fas fa-feather-alt"></i> Unde căldura întâlnește îndrumarea divină <i class="fas fa-feather-alt"></i></p>
+        <div class="btn-wrapper"><a href="#services" class="btn float" data-key="hero-btn"><i class="fas fa-arrow-right"></i> Descoperă serviciile noastre</a></div>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section class="about" id="about">
-      <div class="about-header">
-        <h2><span data-key="about-title">Cine suntem?</span></h2>
-        <div class="divider"></div>
-      </div>
+      <div class="about-header"><h2><span data-key="about-title">Cine suntem?</span></h2><div class="divider"></div></div>
       <div class="about-content">
-        <div class="mission-card">
-          <span class="big-icon"><i class="fas fa-hands-holding-heart"></i></span>
-          <p data-key="about-text">
-            Suntem o organizație non-profit care crede din toată inima că
-            <strong>fiecare om contează</strong>, indiferent de vârstă.
-            Misiunea noastră este să construim <strong>punți calde</strong>
-            între generații, să aducem educația mai aproape de comunități
-            și să transformăm <strong>solidaritatea</strong> într-un motor
-            real, plin de speranță, al schimbării sociale.
-          </p>
-        </div>
+        <div class="mission-card"><span class="big-icon"><i class="fas fa-hands-holding-heart"></i></span><p data-key="about-text">Suntem o organizație non-profit care crede din toată inima că <strong>fiecare om contează</strong>, indiferent de vârstă. Misiunea noastră este să construim <strong>punți calde</strong> între generații, să aducem educația mai aproape de comunități și să transformăm <strong>solidaritatea</strong> într-un motor real, plin de speranță, al schimbării sociale.</p></div>
         <div class="values-grid">
-          <div class="value-item">
-            <span class="value-icon"><i class="fas fa-hand-holding-heart"></i></span>
-            <h3 data-key="value1-title">Prezență</h3>
-            <p data-key="value1-desc">Să fim acolo unde este nevoie, cu drag și fără judecată.</p>
-          </div>
-          <div class="value-item">
-            <span class="value-icon"><i class="fas fa-seedling"></i></span>
-            <h3 data-key="value2-title">Regenerare</h3>
-            <p data-key="value2-desc">Binele făcut cu credință are puterea de a încălzi și transforma comunități.</p>
-          </div>
-          <div class="value-item">
-            <span class="value-icon"><i class="fas fa-dove"></i></span>
-            <h3 data-key="value3-title">Credință</h3>
-            <p data-key="value3-desc">Chemarea noastră – <em>Divina Providența</em> – este un angajament sfânt.</p>
-          </div>
+          <div class="value-item"><span class="value-icon"><i class="fas fa-hand-holding-heart"></i></span><h3 data-key="value1-title">Prezență</h3><p data-key="value1-desc">Să fim acolo unde este nevoie, cu drag și fără judecată.</p></div>
+          <div class="value-item"><span class="value-icon"><i class="fas fa-seedling"></i></span><h3 data-key="value2-title">Regenerare</h3><p data-key="value2-desc">Binele făcut cu credință are puterea de a încălzi și transforma comunități.</p></div>
+          <div class="value-item"><span class="value-icon"><i class="fas fa-dove"></i></span><h3 data-key="value3-title">Credință</h3><p data-key="value3-desc">Chemarea noastră – <em>Divina Providența</em> – este un angajament sfânt.</p></div>
         </div>
       </div>
     </section>
 
     <!-- SERVICES -->
     <section class="services" id="services">
-      <div class="services-header">
-        <h2><span data-key="services-title">Serviciile Noastre</span></h2>
-        <div class="divider"></div>
-      </div>
-
-      <div class="services-intro" data-key="services-intro">
-        <i class="fas fa-heart"></i>
-        Fiecare serviciu este construit cu grijă pentru a aduce <strong>valoare</strong> și <strong>căldură</strong> în comunitatea noastră.
-        <i class="fas fa-heart"></i>
-      </div>
-
+      <div class="services-header"><h2><span data-key="services-title">Serviciile Noastre</span></h2><div class="divider"></div></div>
+      <div class="services-intro" data-key="services-intro"><i class="fas fa-heart"></i> Fiecare serviciu este construit cu grijă pentru a aduce <strong>valoare</strong> și <strong>căldură</strong> în comunitatea noastră. <i class="fas fa-heart"></i></div>
       <div class="service-card">
         <span class="service-icon"><i class="fas fa-users"></i></span>
         <h3 data-key="service-title">Club de Seniori</h3>
-        <div class="service-sub" data-key="service-sub">
-          <i class="fas fa-quote-left" style="color:#c49a6c; font-size:0.8rem;"></i>
-          Un spațiu viu, unde oamenii creează relații, își împărtășesc experiența, învață lucruri noi și contribuie activ la viața comunității.
-          <i class="fas fa-quote-right" style="color:#c49a6c; font-size:0.8rem;"></i>
-        </div>
-
-        <p data-key="service-desc">
-          Credem că un club de seniori înseamnă mai mult decât un loc de întâlnire — este un
-          <strong>spațiu viu</strong>, unde oamenii creează relații, își împărtășesc experiența,
-          învață lucruri noi și contribuie activ la viața comunității.
-        </p>
-
-        <h4 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#a67c52; margin:14px 0 10px;" data-key="service-offer">
-          <i class="fas fa-gift"></i> Ce oferim:
-        </h4>
-
+        <div class="service-sub" data-key="service-sub"><i class="fas fa-quote-left" style="color:#c49a6c;font-size:0.8rem;"></i> Un spațiu viu, unde oamenii creează relații, își împărtășesc experiența, învață lucruri noi și contribuie activ la viața comunității. <i class="fas fa-quote-right" style="color:#c49a6c;font-size:0.8rem;"></i></div>
+        <p data-key="service-desc">Credem că un club de seniori înseamnă mai mult decât un loc de întâlnire — este un <strong>spațiu viu</strong>, unde oamenii creează relații, își împărtășesc experiența, învață lucruri noi și contribuie activ la viața comunității.</p>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#a67c52;margin:14px 0 10px;" data-key="service-offer"><i class="fas fa-gift"></i> Ce oferim:</h4>
         <ul class="service-features">
-          <li data-key="service-feature1">
-            <i class="fas fa-paint-brush"></i>
-            Activități și ateliere gândite special pentru seniori, bazate pe bune practici testate în cadrul proiectului <strong>ACTION</strong>
-          </li>
-          <li data-key="service-feature2">
-            <i class="fas fa-comments"></i>
-            Un spațiu de socializare și sprijin reciproc, unde experiența fiecăruia contează
-          </li>
-          <li data-key="service-feature3">
-            <i class="fas fa-tools"></i>
-            Instrumente și resurse dezvoltate pentru a sprijini implicarea activă a seniorilor în comunitate
-          </li>
-          <li data-key="service-feature4">
-            <i class="fas fa-book-open"></i>
-            Povești și exemple reale, care inspiră și conectează generațiile
-          </li>
-          <li data-key="service-feature5">
-            <i class="fas fa-bus"></i>
-            <strong>Călătorii și vizite ghidate</strong> spre destinații europene, gândite pentru confortul și ritmul seniorilor, care lărgesc orizontul și aduc bucuria descoperirii la orice vârstă.
-          </li>
+          <li data-key="service-feature1"><i class="fas fa-paint-brush"></i> Activități și ateliere gândite special pentru seniori, bazate pe bune practici testate în cadrul proiectului <strong>ACTION</strong></li>
+          <li data-key="service-feature2"><i class="fas fa-comments"></i> Un spațiu de socializare și sprijin reciproc, unde experiența fiecăruia contează</li>
+          <li data-key="service-feature3"><i class="fas fa-tools"></i> Instrumente și resurse dezvoltate pentru a sprijini implicarea activă a seniorilor în comunitate</li>
+          <li data-key="service-feature4"><i class="fas fa-book-open"></i> Povești și exemple reale, care inspiră și conectează generațiile</li>
+          <li data-key="service-feature5"><i class="fas fa-bus"></i> <strong>Călătorii și vizite ghidate</strong> spre destinații europene, gândite pentru confortul și ritmul seniorilor, care lărgesc orizontul și aduc bucuria descoperirii la orice vârstă.</li>
         </ul>
       </div>
     </section>
 
     <!-- TEAM -->
     <section class="team" id="team">
-      <div class="team-header">
-        <h2><span data-key="team-title">Echipa Noastră</span></h2>
-        <div class="divider"></div>
-      </div>
-
-      <div class="team-intro" data-key="team-intro">
-        <i class="fas fa-heart"></i>
-        Oamenii din spatele misiunii noastre – dedicați, pasionați și mereu aproape de comunitate.
-        <i class="fas fa-heart"></i>
-      </div>
-
+      <div class="team-header"><h2><span data-key="team-title">Echipa Noastră</span></h2><div class="divider"></div></div>
+      <div class="team-intro" data-key="team-intro"><i class="fas fa-heart"></i> Oamenii din spatele misiunii noastre – dedicați, pasionați și mereu aproape de comunitate. <i class="fas fa-heart"></i></div>
       <div class="team-grid">
         <div class="team-member founder">
-          <div class="team-member-image" id="mihaelaPhoto">
-            <img src="images/mihaela-ionescu.jpg" alt="Mihaela Ionescu" />
-          </div>
+          <div class="team-member-image" id="mihaelaPhoto"><img src="images/mihaela-ionescu.jpg" alt="Mihaela Ionescu" /></div>
           <div class="team-member-info">
             <div class="member-name">Mihaela Ionescu</div>
-            <div class="member-role" data-key="mihaela-role">
-              <i class="fas fa-crown"></i> Membru Fondator
-            </div>
-            <div class="member-description" data-key="mihaela-desc">
-              Mihaela Ionescu este fondatoarea clubului nostru de seniori, un proiect născut din convingerea că experiența și energia seniorilor pot transforma o comunitate.
-              <br /><br />
-              Cu o pasiune constantă pentru conectarea oamenilor și dezvoltarea de activități care aduc bucurie, învățare și apartenență, Mihaela a pus bazele acestui spațiu — de la prima idee, până la activitățile și programele derulate astăzi prin proiectul <strong>ACTION</strong>.
-              <br /><br />
-              <em>„Pentru ea, un club de seniori nu este doar un loc de întâlnire, ci o comunitate în care fiecare poveste contează și fiecare voce are valoare.”</em>
-              <br /><br />
-              <i class="fas fa-quote-left" style="color:#c49a6c;"></i>
-              <span style="font-style:italic; color:#a67c52;">Prin prezență, ascultare și acțiune, construim punți între generații.</span>
-              <i class="fas fa-quote-right" style="color:#c49a6c;"></i>
-            </div>
+            <div class="member-role" data-key="mihaela-role"><i class="fas fa-crown"></i> Membru Fondator</div>
+            <div class="member-description" data-key="mihaela-desc">Mihaela Ionescu este fondatoarea clubului nostru de seniori, un proiect născut din convingerea că experiența și energia seniorilor pot transforma o comunitate.<br /><br />Cu o pasiune constantă pentru conectarea oamenilor și dezvoltarea de activități care aduc bucurie, învățare și apartenență, Mihaela a pus bazele acestui spațiu — de la prima idee, până la activitățile și programele derulate astăzi prin proiectul <strong>ACTION</strong>.<br /><br /><em>„Pentru ea, un club de seniori nu este doar un loc de întâlnire, ci o comunitate în care fiecare poveste contează și fiecare voce are valoare.”</em><br /><br /><i class="fas fa-quote-left" style="color:#c49a6c;"></i> <span style="font-style:italic;color:#a67c52;">Prin prezență, ascultare și acțiune, construim punți între generații.</span> <i class="fas fa-quote-right" style="color:#c49a6c;"></i></div>
           </div>
         </div>
-
         <div class="team-member volunteer">
-          <div class="team-member-image" id="petruPhoto">
-            <img src="images/croitoriu-petru.jpg" alt="Croitoriu Petru" />
-          </div>
+          <div class="team-member-image" id="petruPhoto"><img src="images/croitoriu-petru.jpg" alt="Croitoriu Petru" /></div>
           <div class="team-member-info">
             <div class="member-name">Croitoriu Petru</div>
-            <div class="member-role" data-key="petru-role">
-              <i class="fas fa-hands-helping"></i> Voluntar și Beneficiar
-            </div>
-            <div class="member-description" data-key="petru-desc">
-              <span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.
-              <br /><br />
-              Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.
-              <br /><br />
-              De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.
-              <br /><br />
-              <i class="fas fa-heart" style="color:#8aaa7a;"></i>
-              <span style="font-style:italic; color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span>
-              <i class="fas fa-heart" style="color:#8aaa7a;"></i>
-            </div>
+            <div class="member-role" data-key="petru-role"><i class="fas fa-hands-helping"></i> Voluntar și Beneficiar</div>
+            <div class="member-description" data-key="petru-desc"><span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.<br /><br />Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.<br /><br />De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.<br /><br /><i class="fas fa-heart" style="color:#8aaa7a;"></i> <span style="font-style:italic;color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span> <i class="fas fa-heart" style="color:#8aaa7a;"></i></div>
           </div>
         </div>
       </div>
@@ -1774,11 +740,7 @@
 
     <!-- GALLERY -->
     <section class="gallery" id="gallery">
-      <div class="gallery-header">
-        <h2><span data-key="gallery-title">Galerie Foto</span></h2>
-        <div class="divider"></div>
-      </div>
-
+      <div class="gallery-header"><h2><span data-key="gallery-title">Galerie Foto</span></h2><div class="divider"></div></div>
       <div class="gallery-grid" id="galleryGrid">
         <div class="gallery-item"><img src="images/gallery1.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery2.jpg" alt="Gallery photo" /></div>
@@ -1800,122 +762,52 @@
       <button class="lightbox-close" id="lightboxClose">&times;</button>
       <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
       <button class="lightbox-next" id="lightboxNext">&#10095;</button>
-      <div class="lightbox-content">
-        <img id="lightboxImage" src="" alt="Enlarged view" />
-      </div>
-      <div class="lightbox-counter" id="lightboxCounter">
-        <i class="fas fa-image"></i> <span id="currentIndex">1</span> / <span id="totalImages">0</span>
-      </div>
+      <div class="lightbox-content"><img id="lightboxImage" src="" alt="Enlarged view" /></div>
+      <div class="lightbox-counter" id="lightboxCounter"><i class="fas fa-image"></i> <span id="currentIndex">1</span> / <span id="totalImages">0</span></div>
     </div>
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
-      <div class="contact-header">
-        <h2><span data-key="contact-title">Contact</span></h2>
-        <div class="divider"></div>
-      </div>
-
+      <div class="contact-header"><h2><span data-key="contact-title">Contact</span></h2><div class="divider"></div></div>
       <div class="contact-wrapper">
         <div class="contact-info">
           <span class="contact-icon"><i class="fas fa-envelope-open-text"></i></span>
-          <div class="contact-question" data-key="contact-question">
-            Vrei să te înscrii sau să afli mai multe detalii?
-          </div>
-
+          <div class="contact-question" data-key="contact-question">Vrei să te înscrii sau să afli mai multe detalii?</div>
           <div class="contact-details">
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span class="label" data-key="contact-address-label">Sediul:</span>
-              <a href="https://maps.google.com/?q=Gropnița,+Iași" target="_blank" data-key="contact-address">
-                Asociația Divina Providența, Gropnița, județul Iași
-              </a>
-            </div>
-
-            <div class="contact-item">
-              <i class="fas fa-phone-alt"></i>
-              <span class="label" data-key="contact-phone-label">Telefon:</span>
-              <a href="tel:+40744760938">0744 760 938</a>
-            </div>
-
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <span class="label" data-key="contact-email-label">Email:</span>
-              <a href="mailto:asociatiadivinaprovidenta@gmail.com">asociatiadivinaprovidenta@gmail.com</a>
-            </div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span class="label" data-key="contact-address-label">Sediul:</span><a href="https://maps.google.com/?q=Gropnița,+Iași" target="_blank" data-key="contact-address">Asociația Divina Providența, Gropnița, județul Iași</a></div>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i><span class="label" data-key="contact-phone-label">Telefon:</span><a href="tel:+40744760938">0744 760 938</a></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span class="label" data-key="contact-email-label">Email:</span><a href="mailto:asociatiadivinaprovidenta@gmail.com">asociatiadivinaprovidenta@gmail.com</a></div>
           </div>
-
-          <div class="contact-note" data-key="contact-note">
-            <i class="fas fa-heart"></i>
-            Suntem aici pentru tine! Nu ezita să ne contactezi.
-            <i class="fas fa-heart"></i>
-          </div>
+          <div class="contact-note" data-key="contact-note"><i class="fas fa-heart"></i> Suntem aici pentru tine! Nu ezita să ne contactezi. <i class="fas fa-heart"></i></div>
         </div>
-
         <div class="contact-form-wrapper">
           <h3 data-key="form-title"><i class="fas fa-pen"></i> Trimite-ne un mesaj</h3>
-
           <form id="contactForm" action="https://formspree.io/f/xvgpolab" method="POST">
-            <div class="form-group">
-              <label for="name" data-key="form-name"><i class="fas fa-user"></i> Nume și Prenume</label>
-              <input type="text" id="name" name="name" placeholder="Ex: Ion Popescu" data-key="form-name-placeholder" />
-            </div>
-
-            <div class="form-group">
-              <label for="phone" data-key="form-phone"><i class="fas fa-phone"></i> Număr de telefon</label>
-              <input type="tel" id="phone" name="phone" placeholder="Ex: 0744 760 938" data-key="form-phone-placeholder" />
-            </div>
-
-            <div class="form-group">
-              <label for="message" data-key="form-message"><i class="fas fa-comment"></i> Mesaj</label>
-              <textarea id="message" name="message" placeholder="Scrie mesajul tău aici..." data-key="form-message-placeholder"></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn" data-key="form-submit">
-              <i class="fas fa-paper-plane"></i> Trimite mesaj
-            </button>
+            <div class="form-group"><label for="name" data-key="form-name"><i class="fas fa-user"></i> Nume și Prenume</label><input type="text" id="name" name="name" placeholder="Ex: Ion Popescu" data-key="form-name-placeholder" /></div>
+            <div class="form-group"><label for="phone" data-key="form-phone"><i class="fas fa-phone"></i> Număr de telefon</label><input type="tel" id="phone" name="phone" placeholder="Ex: 0744 760 938" data-key="form-phone-placeholder" /></div>
+            <div class="form-group"><label for="message" data-key="form-message"><i class="fas fa-comment"></i> Mesaj</label><textarea id="message" name="message" placeholder="Scrie mesajul tău aici..." data-key="form-message-placeholder"></textarea></div>
+            <button type="submit" class="submit-btn" data-key="form-submit"><i class="fas fa-paper-plane"></i> Trimite mesaj</button>
           </form>
-
-          <div class="form-success" id="formSuccess" data-key="form-success">
-            <i class="fas fa-check-circle"></i>
-            <p><strong>Mesaj trimis cu succes!</strong><br />Vom reveni cât mai curând.</p>
-          </div>
+          <div class="form-success" id="formSuccess" data-key="form-success"><i class="fas fa-check-circle"></i><p><strong>Mesaj trimis cu succes!</strong><br />Vom reveni cât mai curând.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- ERASMUS+ -->
+    <!-- ERASMUS -->
     <section class="erasmus-section">
       <div class="erasmus-card">
-        <div class="flags-container">
-          <span class="flag-icon">🇷🇴</span>
-          <span class="flag-icon">🇪🇺</span>
-        </div>
-        <p data-key="erasmus-text">
-          <strong>Acest serviciu este dezvoltat prin proiectul ACTION – Seniors Active in the Community</strong>
-          (Nr. 2024-2-RO01-KA210-ADU-000278611), finanțat de
-          <strong>Uniunea Europeană</strong> prin Programul <strong>Erasmus+</strong>.
-        </p>
-        <div class="erasmus-icons">
-          <i class="fas fa-euro-sign"></i>
-          <i class="fas fa-graduation-cap"></i>
-          <i class="fas fa-globe-europe"></i>
-        </div>
+        <div class="flags-container"><span class="flag-icon">🇷🇴</span><span class="flag-icon">🇪🇺</span></div>
+        <p data-key="erasmus-text"><strong>Acest serviciu este dezvoltat prin proiectul ACTION – Seniors Active in the Community</strong> (Nr. 2024-2-RO01-KA210-ADU-000278611), finanțat de <strong>Uniunea Europeană</strong> prin Programul <strong>Erasmus+</strong>.</p>
+        <div class="erasmus-icons"><i class="fas fa-euro-sign"></i><i class="fas fa-graduation-cap"></i><i class="fas fa-globe-europe"></i></div>
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-      <p data-key="footer-text">
-        <i class="fas fa-heart" style="color:#c49a6c;"></i>
-        Cu dragoste pentru comunitate
-        <i class="fas fa-heart" style="color:#c49a6c;"></i>
-      </p>
-    </footer>
+    <footer><p data-key="footer-text"><i class="fas fa-heart" style="color:#c49a6c;"></i> Cu dragoste pentru comunitate <i class="fas fa-heart" style="color:#c49a6c;"></i></p></footer>
   </div>
 
-  <!-- JAVASCRIPT -->
   <script>
-    // ========== SEASONAL FEATURES ==========
+    // ========== SEASONAL & HOLIDAY FEATURES ==========
     function getSeason() {
       const month = new Date().getMonth();
       if (month === 11 || month === 0 || month === 1) return 'winter';
@@ -1924,66 +816,110 @@
       return 'autumn';
     }
 
+    function getHoliday() {
+      const now = new Date();
+      const month = now.getMonth();
+      const day = now.getDate();
+
+      // Christmas (Dec 24 - Jan 1)
+      if (month === 11 && day >= 24 && day <= 31) return 'christmas';
+      if (month === 0 && day === 1) return 'newyear';
+      // Halloween (Oct 31)
+      if (month === 9 && day === 31) return 'halloween';
+      // La Befana (Jan 6)
+      if (month === 0 && day === 6) return 'befana';
+      // St. Nicholas (Dec 6)
+      if (month === 11 && day === 6) return 'stnicholas';
+      // St. Valentine (Feb 14)
+      if (month === 1 && day === 14) return 'valentine';
+      // St. Patrick (Mar 17)
+      if (month === 2 && day === 17) return 'stpatrick';
+      // All Saints (Nov 1)
+      if (month === 10 && day === 1) return 'allsaints';
+      // Immaculate Conception (Dec 8)
+      if (month === 11 && day === 8) return 'immaculate';
+      return null;
+    }
+
     const season = getSeason();
+    const holiday = getHoliday();
+    const isHoliday = holiday !== null;
+    const pauseSummer = isHoliday;
 
     const seasonalConfig = {
-      winter: {
-        emojis: ['❄️', '❄️', '❄️', '❄️', '❄️', '❄️'],
-        count: 60,
-        banner: {
-          icon: '❄️',
-          text: 'Iarnă magică! Sărbători fericite și un An Nou plin de bucurii! 🎄✨'
-        },
-        heroClass: 'snow-effect'
-      },
-      spring: {
-        emojis: ['🌸', '🌺', '🌷', '🌼', '🌻', '🌹'],
-        count: 45,
-        banner: {
-          icon: '🌸',
-          text: 'Primăvară înflorită! Natură renaște, iar inimi se deschid către bucurie! 🌷🌿'
-        },
-        heroClass: ''
-      },
-      summer: {
-        emojis: ['☀️', '🌞', '🌻', '🌊', '⛱️', '🏖️'],
-        count: 35,
-        banner: {
-          icon: '☀️',
-          text: 'Vară caldă și luminoasă! Fiecare zi aduce soare și zâmbete! 🌞😎'
-        },
-        heroClass: ''
-      },
-      autumn: {
-        emojis: ['🍂', '🍁', '🍃', '🌾', '🍄', '🎃'],
-        count: 50,
-        banner: {
-          icon: '🍂',
-          text: 'Toamnă aurie! Frunzele cad, dar căldura rămâne în comunitatea noastră! 🍁✨'
-        },
-        heroClass: ''
-      }
+      winter: { emojis: ['❄️','❄️','❄️','❄️','❄️','❄️'], count: 60, banner: { icon: '❄️', text: 'Iarnă magică! Sărbători fericite și un An Nou plin de bucurii! 🎄✨' }, heroClass: 'snow-effect' },
+      spring: { emojis: ['🌸','🌺','🌷','🌼','🌻','🌹'], count: 45, banner: { icon: '🌸', text: 'Primăvară înflorită! Natură renaște, iar inimi se deschid către bucurie! 🌷🌿' }, heroClass: '' },
+      summer: { emojis: ['☀️','🌞','🌻','🌊','⛱️','🏖️'], count: 35, banner: { icon: '☀️', text: 'Vară caldă și luminoasă! Fiecare zi aduce soare și zâmbete! 🌞😎' }, heroClass: '' },
+      autumn: { emojis: ['🍂','🍁','🍃','🌾','🍄','🎃'], count: 50, banner: { icon: '🍂', text: 'Toamnă aurie! Frunzele cad, dar căldura rămâne în comunitatea noastră! 🍁✨' }, heroClass: '' }
     };
 
-    const config = seasonalConfig[season];
+    const holidayConfigs = {
+      christmas: { emojis: ['🎄','⭐','🔔','🕊️','✨','❄️','🎁','🦌','☃️','🌟','🎀'], count: 80, banner: { icon: '🎄', text: '🎄 Crăciun Fericit! Pacea și bucuria să fie în inimile voastre! ✨🕊️' }, showGifts: true, decorations: ['🎄','⭐','🔔','🕊️','✨','🎀','🦌'] },
+      newyear: { emojis: ['🎆','🎇','🎉','🥂','🌟','✨','🎊','🍾','🎈','🕛'], count: 70, banner: { icon: '🎆', text: '🎆 La mulți ani! Un An Nou plin de speranță, bucurie și împliniri! 🥂✨' }, showGifts: true, decorations: ['🎆','🎇','🎉','🥂','🌟','✨'] },
+      halloween: { emojis: ['🎃','👻','🦇','🧙','💀','🕸️','🕷️','⚰️','🧛','🐺'], count: 45, banner: { icon: '🎃', text: '🎃 Halloween! Noaptea magică a poveștilor și misterelor! 👻🦇' }, showGifts: false, decorations: ['🎃','👻','🦇','🧙','💀','🕸️'] },
+      befana: { emojis: ['🧹','⭐','🎁','🧦','👵','🌟','✨','🧹'], count: 40, banner: { icon: '🧹', text: '🧹 La Befana! Epifania aduce daruri și speranță pentru noul an! ⭐✨' }, showGifts: true, decorations: ['🧹','⭐','🎁','🧦','🌟'] },
+      stnicholas: { emojis: ['🎅','🧦','🎁','🌟','🔔','✨','❄️'], count: 50, banner: { icon: '🎅', text: '🎅 Sfântul Nicolae! Aduce daruri și bucurie copiilor și celor curați la inimă! 🧦🎁' }, showGifts: true, decorations: ['🎅','🧦','🎁','🌟','🔔'] },
+      valentine: { emojis: ['❤️','💕','🌹','💝','💖','💘','💓','🌺','💗'], count: 55, banner: { icon: '❤️', text: '❤️ La mulți ani de Sfântul Valentin! Dragostea este cea mai frumoasă comoară! 🌹💕' }, showGifts: false, decorations: ['❤️','🌹','💕','💝','💖'] },
+      stpatrick: { emojis: ['🍀','🌈','☘️','💚','🍻','🎩','🪙'], count: 45, banner: { icon: '🍀', text: '🍀 La mulți ani de Sfântul Patrick! Noroc și binecuvântări irlandeze! 🌈💚' }, showGifts: false, decorations: ['🍀','🌈','☘️','💚','🎩'] },
+      allsaints: { emojis: ['🕯️','🌟','⛪','✨','🕊️','🌹','📿'], count: 40, banner: { icon: '🕯️', text: '🕯️ Toți Sfinții! Lumina și pacea să fie cu cei dragi care au plecat dintre noi. 🌟✨' }, showGifts: false, decorations: ['🕯️','🌟','⛪','🕊️','🌹'] }
+    };
 
-    // Add seasonal banner
+    let config;
+    if (isHoliday && holidayConfigs[holiday]) {
+      config = holidayConfigs[holiday];
+    } else {
+      config = seasonalConfig[season];
+    }
+
     const banner = document.getElementById('seasonalBanner');
-    banner.className = `seasonal-banner ${season}`;
-    banner.innerHTML = `
-      <i class="fas fa-${season === 'winter' ? 'snowflake' : season === 'spring' ? 'flower' : season === 'summer' ? 'sun' : 'leaf'}"></i>
-      ${config.banner.text}
-      <i class="fas fa-${season === 'winter' ? 'snowflake' : season === 'spring' ? 'flower' : season === 'summer' ? 'sun' : 'leaf'}"></i>
-    `;
+    if (isHoliday) {
+      banner.className = 'seasonal-banner ' + holiday;
+      banner.innerHTML = `<i class="fas fa-${holiday === 'christmas' ? 'tree' : holiday === 'newyear' ? 'fire' : holiday === 'halloween' ? 'pumpkin' : holiday === 'befana' ? 'broom' : holiday === 'valentine' ? 'heart' : 'star'}"></i> ${config.banner.text} <i class="fas fa-${holiday === 'christmas' ? 'tree' : holiday === 'newyear' ? 'fire' : holiday === 'halloween' ? 'pumpkin' : holiday === 'befana' ? 'broom' : holiday === 'valentine' ? 'heart' : 'star'}"></i>`;
+    } else {
+      banner.className = 'seasonal-banner ' + season;
+      banner.innerHTML = `<i class="fas fa-${season === 'winter' ? 'snowflake' : season === 'spring' ? 'flower' : season === 'summer' ? 'sun' : 'leaf'}"></i> ${config.banner.text} <i class="fas fa-${season === 'winter' ? 'snowflake' : season === 'spring' ? 'flower' : season === 'summer' ? 'sun' : 'leaf'}"></i>`;
+    }
 
-    // Add seasonal particles (with fade effect)
     const overlay = document.getElementById('seasonalOverlay');
     const particles = [];
 
-    for (let i = 0; i < config.count; i++) {
+    // Show/hide gift container
+    const giftContainer = document.getElementById('giftContainer');
+    if (isHoliday && config.showGifts) {
+      giftContainer.style.display = 'flex';
+    } else {
+      giftContainer.style.display = 'none';
+    }
+
+    // Decorations
+    let decorationElements = [];
+    if (isHoliday && config.decorations) {
+      for (let i = 0; i < 20; i++) {
+        const decor = document.createElement('div');
+        decor.className = 'seasonal-particle';
+        decor.textContent = config.decorations[Math.floor(Math.random() * config.decorations.length)];
+        decor.style.left = Math.random() * 100 + '%';
+        decor.style.top = Math.random() * 100 + '%';
+        decor.style.fontSize = (1.2 + Math.random() * 1.5) + 'rem';
+        decor.style.animation = 'floatDecor ' + (4 + Math.random() * 4) + 's ease-in-out infinite';
+        decor.style.animationDelay = (Math.random() * 5) + 's';
+        decor.style.opacity = 0.6 + Math.random() * 0.3;
+        decor.style.position = 'absolute';
+        decor.style.pointerEvents = 'none';
+        decor.style.zIndex = '9996';
+        overlay.appendChild(decor);
+        decorationElements.push(decor);
+      }
+    }
+
+    // Particles
+    const particleEmojis = isHoliday ? config.emojis : config.emojis;
+    const particleCount = isHoliday ? config.count : config.count;
+
+    for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
       particle.className = 'seasonal-particle';
-      const emoji = config.emojis[Math.floor(Math.random() * config.emojis.length)];
+      const emoji = particleEmojis[Math.floor(Math.random() * particleEmojis.length)];
       particle.textContent = emoji;
       particle.style.left = Math.random() * 100 + '%';
       particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
@@ -1994,48 +930,47 @@
       particles.push(particle);
     }
 
-    // Auto-stop after 20 seconds with fade out
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+      @keyframes floatGift { 0%,100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
+      @keyframes floatDecor { 0%,100% { transform: translateY(0px) rotate(0deg) scale(1); } 50% { transform: translateY(-10px) rotate(10deg) scale(1.1); } }
+      .seasonal-particle { position: absolute; top: -20px; animation: fall linear infinite; pointer-events: none; font-size: 1.8rem; opacity: 0.9; user-select: none; }
+      @keyframes fall { 0% { transform: translateY(-20px) rotate(0deg) scale(1); opacity: 0.9; } 50% { opacity: 0.7; transform: translateY(50vh) rotate(360deg) scale(0.8); } 100% { transform: translateY(110vh) rotate(720deg) scale(0.3); opacity: 0; } }
+      .seasonal-overlay.fade-out { animation: overlayFadeOut 1.5s ease forwards; }
+      @keyframes overlayFadeOut { 0% { opacity: 1; } 100% { opacity: 0; } }
+      .seasonal-banner.hide { animation: bannerFadeOut 1s ease forwards; }
+      @keyframes bannerFadeOut { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-20px); } }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // ⏱️ CHANGED: Auto-stop after 10 seconds (down from 20)
+    const stopDelay = 10000; // 10 seconds
+
     setTimeout(function() {
-      // Fade out overlay
       overlay.classList.add('fade-out');
-      // Hide banner
       banner.classList.add('hide');
+      if (giftContainer) { giftContainer.style.opacity = '0'; giftContainer.style.transition = 'opacity 1.5s'; }
+      setTimeout(function() { overlay.style.display = 'none'; banner.style.display = 'none'; if (giftContainer) { giftContainer.style.display = 'none'; } }, 1500);
+    }, stopDelay);
 
-      // After fade animation, remove particles
-      setTimeout(function() {
-        overlay.style.display = 'none';
-        banner.style.display = 'none';
-      }, 1500);
-    }, 20000);
-
-    // Add snow effect to hero (winter only)
-    if (season === 'winter') {
+    if (season === 'winter' && !isHoliday) {
       document.querySelector('.hero').classList.add('snow-effect');
+    }
+    if (isHoliday) {
+      document.body.classList.add('holiday-mode');
     }
 
     // ========== LANGUAGE TRANSLATIONS ==========
     const translations = {
       ro: {
-        'nav-home': 'Acasă',
-        'nav-about': 'Cine suntem',
-        'nav-services': 'Servicii',
-        'nav-team': 'Echipa',
-        'nav-gallery': 'Galerie',
-        'nav-contact': 'Contact',
-        'hero-subhead': '🪶 Unde căldura întâlnește îndrumarea divină 🪶',
-        'hero-btn': 'Descoperă serviciile noastre',
-        'about-title': 'Cine suntem?',
-        'about-text': 'Suntem o organizație non-profit care crede din toată inima că <strong>fiecare om contează</strong>, indiferent de vârstă. Misiunea noastră este să construim <strong>punți calde</strong> între generații, să aducem educația mai aproape de comunități și să transformăm <strong>solidaritatea</strong> într-un motor real, plin de speranță, al schimbării sociale.',
-        'value1-title': 'Prezență',
-        'value1-desc': 'Să fim acolo unde este nevoie, cu drag și fără judecată.',
-        'value2-title': 'Regenerare',
-        'value2-desc': 'Binele făcut cu credință are puterea de a încălzi și transforma comunități.',
-        'value3-title': 'Credință',
-        'value3-desc': 'Chemarea noastră – <em>Divina Providența</em> – este un angajament sfânt.',
-        'services-title': 'Serviciile Noastre',
-        'services-intro': '❤️ Fiecare serviciu este construit cu grijă pentru a aduce <strong>valoare</strong> și <strong>căldură</strong> în comunitatea noastră. ❤️',
-        'service-title': 'Club de Seniori',
-        'service-sub': 'Un spațiu viu, unde oamenii creează relații, își împărtășesc experiența, învață lucruri noi și contribuie activ la viața comunității.',
+        'nav-home': 'Acasă', 'nav-about': 'Cine suntem', 'nav-services': 'Servicii', 'nav-team': 'Echipa', 'nav-gallery': 'Galerie', 'nav-contact': 'Contact',
+        'hero-subhead': '🪶 Unde căldura întâlnește îndrumarea divină 🪶', 'hero-btn': 'Descoperă serviciile noastre',
+        'about-title': 'Cine suntem?', 'about-text': 'Suntem o organizație non-profit care crede din toată inima că <strong>fiecare om contează</strong>, indiferent de vârstă. Misiunea noastră este să construim <strong>punți calde</strong> între generații, să aducem educația mai aproape de comunități și să transformăm <strong>solidaritatea</strong> într-un motor real, plin de speranță, al schimbării sociale.',
+        'value1-title': 'Prezență', 'value1-desc': 'Să fim acolo unde este nevoie, cu drag și fără judecată.',
+        'value2-title': 'Regenerare', 'value2-desc': 'Binele făcut cu credință are puterea de a încălzi și transforma comunități.',
+        'value3-title': 'Credință', 'value3-desc': 'Chemarea noastră – <em>Divina Providența</em> – este un angajament sfânt.',
+        'services-title': 'Serviciile Noastre', 'services-intro': '❤️ Fiecare serviciu este construit cu grijă pentru a aduce <strong>valoare</strong> și <strong>căldură</strong> în comunitatea noastră. ❤️',
+        'service-title': 'Club de Seniori', 'service-sub': 'Un spațiu viu, unde oamenii creează relații, își împărtășesc experiența, învață lucruri noi și contribuie activ la viața comunității.',
         'service-desc': 'Credem că un club de seniori înseamnă mai mult decât un loc de întâlnire — este un <strong>spațiu viu</strong>, unde oamenii creează relații, își împărtășesc experiența, învață lucruri noi și contribuie activ la viața comunității.',
         'service-offer': '🎁 Ce oferim:',
         'service-feature1': 'Activități și ateliere gândite special pentru seniori, bazate pe bune practici testate în cadrul proiectului ACTION',
@@ -2043,53 +978,32 @@
         'service-feature3': 'Instrumente și resurse dezvoltate pentru a sprijini implicarea activă a seniorilor în comunitate',
         'service-feature4': 'Povești și exemple reale, care inspiră și conectează generațiile',
         'service-feature5': '🚌 <strong>Călătorii și vizite ghidate</strong> spre destinații europene, gândite pentru confortul și ritmul seniorilor, care lărgesc orizontul și aduc bucuria descoperirii la orice vârstă.',
-        'team-title': 'Echipa Noastră',
-        'team-intro': '❤️ Oamenii din spatele misiunii noastre – dedicați, pasionați și mereu aproape de comunitate. ❤️',
+        'team-title': 'Echipa Noastră', 'team-intro': '❤️ Oamenii din spatele misiunii noastre – dedicați, pasionați și mereu aproape de comunitate. ❤️',
         'mihaela-role': '👑 Membru Fondator',
-        'mihaela-desc': 'Mihaela Ionescu este fondatoarea clubului nostru de seniori, un proiect născut din convingerea că experiența și energia seniorilor pot transforma o comunitate.<br /><br />Cu o pasiune constantă pentru conectarea oamenilor și dezvoltarea de activități care aduc bucurie, învățare și apartenență, Mihaela a pus bazele acestui spațiu — de la prima idee, până la activitățile și programele derulate astăzi prin proiectul <strong>ACTION</strong>.<br /><br /><em>„Pentru ea, un club de seniori nu este doar un loc de întâlnire, ci o comunitate în care fiecare poveste contează și fiecare voce are valoare.”</em><br /><br />❤️ <span style="font-style:italic; color:#a67c52;">Prin prezență, ascultare și acțiune, construim punți între generații.</span> ❤️',
+        'mihaela-desc': 'Mihaela Ionescu este fondatoarea clubului nostru de seniori, un proiect născut din convingerea că experiența și energia seniorilor pot transforma o comunitate.<br /><br />Cu o pasiune constantă pentru conectarea oamenilor și dezvoltarea de activități care aduc bucurie, învățare și apartenență, Mihaela a pus bazele acestui spațiu — de la prima idee, până la activitățile și programele derulate astăzi prin proiectul <strong>ACTION</strong>.<br /><br /><em>„Pentru ea, un club de seniori nu este doar un loc de întâlnire, ci o comunitate în care fiecare poveste contează și fiecare voce are valoare.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Prin prezență, ascultare și acțiune, construim punți între generații.</span> ❤️',
         'petru-role': '🤝 Voluntar și Beneficiar',
-        'petru-desc': '<span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.<br /><br />Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.<br /><br />De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.<br /><br />💚 <span style="font-style:italic; color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span> 💚',
+        'petru-desc': '<span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.<br /><br />Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.<br /><br />De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span> 💚',
         'gallery-title': 'Galerie Foto',
-        'contact-title': 'Contact',
-        'contact-question': 'Vrei să te înscrii sau să afli mai multe detalii?',
-        'contact-address-label': 'Sediul:',
-        'contact-address': 'Asociația Divina Providența, Gropnița, județul Iași',
-        'contact-phone-label': 'Telefon:',
-        'contact-email-label': 'Email:',
+        'contact-title': 'Contact', 'contact-question': 'Vrei să te înscrii sau să afli mai multe detalii?',
+        'contact-address-label': 'Sediul:', 'contact-address': 'Asociația Divina Providența, Gropnița, județul Iași',
+        'contact-phone-label': 'Telefon:', 'contact-email-label': 'Email:',
         'contact-note': '❤️ Suntem aici pentru tine! Nu ezita să ne contactezi. ❤️',
-        'form-title': '✏️ Trimite-ne un mesaj',
-        'form-name': '👤 Nume și Prenume',
-        'form-name-placeholder': 'Ex: Ion Popescu',
-        'form-phone': '📞 Număr de telefon',
-        'form-phone-placeholder': 'Ex: 0744 760 938',
-        'form-message': '💬 Mesaj',
-        'form-message-placeholder': 'Scrie mesajul tău aici...',
-        'form-submit': '✈️ Trimite mesaj',
-        'form-success': '✅ <strong>Mesaj trimis cu succes!</strong><br />Vom reveni cât mai curând.',
+        'form-title': '✏️ Trimite-ne un mesaj', 'form-name': '👤 Nume și Prenume', 'form-name-placeholder': 'Ex: Ion Popescu',
+        'form-phone': '📞 Număr de telefon', 'form-phone-placeholder': 'Ex: 0744 760 938',
+        'form-message': '💬 Mesaj', 'form-message-placeholder': 'Scrie mesajul tău aici...',
+        'form-submit': '✈️ Trimite mesaj', 'form-success': '✅ <strong>Mesaj trimis cu succes!</strong><br />Vom reveni cât mai curând.',
         'erasmus-text': '<strong>Acest serviciu este dezvoltat prin proiectul ACTION – Seniors Active in the Community</strong> (Nr. 2024-2-RO01-KA210-ADU-000278611), finanțat de <strong>Uniunea Europeană</strong> prin Programul <strong>Erasmus+</strong>.',
         'footer-text': '❤️ Cu dragoste pentru comunitate ❤️'
       },
       en: {
-        'nav-home': 'Home',
-        'nav-about': 'About Us',
-        'nav-services': 'Services',
-        'nav-team': 'Team',
-        'nav-gallery': 'Gallery',
-        'nav-contact': 'Contact',
-        'hero-subhead': '🪶 Where warmth meets divine guidance 🪶',
-        'hero-btn': 'Discover our services',
-        'about-title': 'About Us?',
-        'about-text': 'We are a non-profit organization that wholeheartedly believes that <strong>every person matters</strong>, regardless of age. Our mission is to build <strong>warm bridges</strong> between generations, bring education closer to communities, and transform <strong>solidarity</strong> into a real engine of social change, full of hope.',
-        'value1-title': 'Presence',
-        'value1-desc': 'To be where needed, with love and without judgment.',
-        'value2-title': 'Regeneration',
-        'value2-desc': 'Good done with faith has the power to warm and transform communities.',
-        'value3-title': 'Faith',
-        'value3-desc': 'Our calling – <em>Divina Providența</em> – is a sacred commitment.',
-        'services-title': 'Our Services',
-        'services-intro': '❤️ Every service is built with care to bring <strong>value</strong> and <strong>warmth</strong> to our community. ❤️',
-        'service-title': 'Senior Club',
-        'service-sub': 'A living space where people create relationships, share experiences, learn new things, and actively contribute to community life.',
+        'nav-home': 'Home', 'nav-about': 'About Us', 'nav-services': 'Services', 'nav-team': 'Team', 'nav-gallery': 'Gallery', 'nav-contact': 'Contact',
+        'hero-subhead': '🪶 Where warmth meets divine guidance 🪶', 'hero-btn': 'Discover our services',
+        'about-title': 'About Us?', 'about-text': 'We are a non-profit organization that wholeheartedly believes that <strong>every person matters</strong>, regardless of age. Our mission is to build <strong>warm bridges</strong> between generations, bring education closer to communities, and transform <strong>solidarity</strong> into a real engine of social change, full of hope.',
+        'value1-title': 'Presence', 'value1-desc': 'To be where needed, with love and without judgment.',
+        'value2-title': 'Regeneration', 'value2-desc': 'Good done with faith has the power to warm and transform communities.',
+        'value3-title': 'Faith', 'value3-desc': 'Our calling – <em>Divina Providența</em> – is a sacred commitment.',
+        'services-title': 'Our Services', 'services-intro': '❤️ Every service is built with care to bring <strong>value</strong> and <strong>warmth</strong> to our community. ❤️',
+        'service-title': 'Senior Club', 'service-sub': 'A living space where people create relationships, share experiences, learn new things, and actively contribute to community life.',
         'service-desc': 'We believe a senior club is more than a meeting place — it is a <strong>living space</strong>, where people create relationships, share experiences, learn new things, and actively contribute to community life.',
         'service-offer': '🎁 What we offer:',
         'service-feature1': 'Activities and workshops designed especially for seniors, based on best practices tested in the ACTION project',
@@ -2097,53 +1011,32 @@
         'service-feature3': 'Tools and resources developed to support the active involvement of seniors in the community',
         'service-feature4': 'Real stories and examples that inspire and connect generations',
         'service-feature5': '🚌 <strong>Guided tours and trips</strong> to European destinations, designed for the comfort and pace of seniors, expanding horizons and bringing the joy of discovery at any age.',
-        'team-title': 'Our Team',
-        'team-intro': '❤️ The people behind our mission – dedicated, passionate, and always close to the community. ❤️',
+        'team-title': 'Our Team', 'team-intro': '❤️ The people behind our mission – dedicated, passionate, and always close to the community. ❤️',
         'mihaela-role': '👑 Founder Member',
-        'mihaela-desc': 'Mihaela Ionescu is the founder of our senior club, a project born from the conviction that the experience and energy of seniors can transform a community.<br /><br />With a constant passion for connecting people and developing activities that bring joy, learning, and belonging, Mihaela laid the foundations of this space — from the first idea to the activities and programs running today through the <strong>ACTION</strong> project.<br /><br /><em>„For her, a senior club is not just a meeting place, but a community where every story matters and every voice has value.”</em><br /><br />❤️ <span style="font-style:italic; color:#a67c52;">Through presence, listening, and action, we build bridges between generations.</span> ❤️',
+        'mihaela-desc': 'Mihaela Ionescu is the founder of our senior club, a project born from the conviction that the experience and energy of seniors can transform a community.<br /><br />With a constant passion for connecting people and developing activities that bring joy, learning, and belonging, Mihaela laid the foundations of this space — from the first idea to the activities and programs running today through the <strong>ACTION</strong> project.<br /><br /><em>„For her, a senior club is not just a meeting place, but a community where every story matters and every voice has value.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Through presence, listening, and action, we build bridges between generations.</span> ❤️',
         'petru-role': '🤝 Volunteer and Beneficiary',
-        'petru-desc': '<span class="nickname">„Mr. Petrică”</span>, as we all affectionately call him, is a reliable person on our team, whom we can always count on. With a big heart and skilled not only in electrical work but also in all kinds of repairs, he always brings good humor, seriousness, and a youthful spirit around him.<br /><br />We appreciate his constant involvement, his elegant and youthful way of being, and the joy with which he is with us in everything we do.<br /><br />For more than a year, we have enjoyed his presence at <span class="highlight">Asociația Divina Providența</span> and the Day Center for the elderly, where he is both a <span class="highlight">beneficiary</span> and an <span class="highlight">involved volunteer</span>. In our activities, but especially on trips, we always feel him as a reliable partner — attentive, present, and ready to help whenever needed.<br /><br />💚 <span style="font-style:italic; color:#6d8a5e;">„With Mr. Petrică, every day is brighter!”</span> 💚',
+        'petru-desc': '<span class="nickname">„Mr. Petrică”</span>, as we all affectionately call him, is a reliable person on our team, whom we can always count on. With a big heart and skilled not only in electrical work but also in all kinds of repairs, he always brings good humor, seriousness, and a youthful spirit around him.<br /><br />We appreciate his constant involvement, his elegant and youthful way of being, and the joy with which he is with us in everything we do.<br /><br />For more than a year, we have enjoyed his presence at <span class="highlight">Asociația Divina Providența</span> and the Day Center for the elderly, where he is both a <span class="highlight">beneficiary</span> and an <span class="highlight">involved volunteer</span>. In our activities, but especially on trips, we always feel him as a reliable partner — attentive, present, and ready to help whenever needed.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„With Mr. Petrică, every day is brighter!”</span> 💚',
         'gallery-title': 'Photo Gallery',
-        'contact-title': 'Contact',
-        'contact-question': 'Do you want to sign up or find out more details?',
-        'contact-address-label': 'Address:',
-        'contact-address': 'Divina Providența Association, Gropnița, Iași County',
-        'contact-phone-label': 'Phone:',
-        'contact-email-label': 'Email:',
+        'contact-title': 'Contact', 'contact-question': 'Do you want to sign up or find out more details?',
+        'contact-address-label': 'Address:', 'contact-address': 'Divina Providența Association, Gropnița, Iași County',
+        'contact-phone-label': 'Phone:', 'contact-email-label': 'Email:',
         'contact-note': '❤️ We are here for you! Don\'t hesitate to contact us. ❤️',
-        'form-title': '✏️ Send us a message',
-        'form-name': '👤 Full Name',
-        'form-name-placeholder': 'Ex: John Doe',
-        'form-phone': '📞 Phone number',
-        'form-phone-placeholder': 'Ex: 0744 760 938',
-        'form-message': '💬 Message',
-        'form-message-placeholder': 'Write your message here...',
-        'form-submit': '✈️ Send message',
-        'form-success': '✅ <strong>Message sent successfully!</strong><br />We will get back to you soon.',
+        'form-title': '✏️ Send us a message', 'form-name': '👤 Full Name', 'form-name-placeholder': 'Ex: John Doe',
+        'form-phone': '📞 Phone number', 'form-phone-placeholder': 'Ex: 0744 760 938',
+        'form-message': '💬 Message', 'form-message-placeholder': 'Write your message here...',
+        'form-submit': '✈️ Send message', 'form-success': '✅ <strong>Message sent successfully!</strong><br />We will get back to you soon.',
         'erasmus-text': '<strong>This service is developed through the ACTION – Seniors Active in the Community project</strong> (No. 2024-2-RO01-KA210-ADU-000278611), funded by the <strong>European Union</strong> through the <strong>Erasmus+</strong> program.',
         'footer-text': '❤️ With love for the community ❤️'
       },
       fr: {
-        'nav-home': 'Accueil',
-        'nav-about': 'À propos',
-        'nav-services': 'Services',
-        'nav-team': 'Équipe',
-        'nav-gallery': 'Galerie',
-        'nav-contact': 'Contact',
-        'hero-subhead': '🪶 Où la chaleur rencontre la guidance divine 🪶',
-        'hero-btn': 'Découvrez nos services',
-        'about-title': 'Qui sommes-nous ?',
-        'about-text': 'Nous sommes une organisation à but non lucratif qui croit de tout cœur que <strong>chaque personne compte</strong>, quel que soit son âge. Notre mission est de construire des <strong>ponts chaleureux</strong> entre les générations, de rapprocher l\'éducation des communautés et de transformer la <strong>solidarité</strong> en un moteur réel de changement social, plein d\'espoir.',
-        'value1-title': 'Présence',
-        'value1-desc': 'Être là où c\'est nécessaire, avec amour et sans jugement.',
-        'value2-title': 'Régénération',
-        'value2-desc': 'Le bien fait avec foi a le pouvoir de réchauffer et de transformer les communautés.',
-        'value3-title': 'Foi',
-        'value3-desc': 'Notre appel – <em>Divina Providența</em> – est un engagement sacré.',
-        'services-title': 'Nos Services',
-        'services-intro': '❤️ Chaque service est construit avec soin pour apporter <strong>valeur</strong> et <strong>chaleur</strong> à notre communauté. ❤️',
-        'service-title': 'Club des Seniors',
-        'service-sub': 'Un espace vivant où les gens créent des relations, partagent leurs expériences, apprennent de nouvelles choses et contribuent activement à la vie communautaire.',
+        'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-services': 'Services', 'nav-team': 'Équipe', 'nav-gallery': 'Galerie', 'nav-contact': 'Contact',
+        'hero-subhead': '🪶 Où la chaleur rencontre la guidance divine 🪶', 'hero-btn': 'Découvrez nos services',
+        'about-title': 'Qui sommes-nous ?', 'about-text': 'Nous sommes une organisation à but non lucratif qui croit de tout cœur que <strong>chaque personne compte</strong>, quel que soit son âge. Notre mission est de construire des <strong>ponts chaleureux</strong> entre les générations, de rapprocher l\'éducation des communautés et de transformer la <strong>solidarité</strong> en un moteur réel de changement social, plein d\'espoir.',
+        'value1-title': 'Présence', 'value1-desc': 'Être là où c\'est nécessaire, avec amour et sans jugement.',
+        'value2-title': 'Régénération', 'value2-desc': 'Le bien fait avec foi a le pouvoir de réchauffer et de transformer les communautés.',
+        'value3-title': 'Foi', 'value3-desc': 'Notre appel – <em>Divina Providența</em> – est un engagement sacré.',
+        'services-title': 'Nos Services', 'services-intro': '❤️ Chaque service est construit avec soin pour apporter <strong>valeur</strong> et <strong>chaleur</strong> à notre communauté. ❤️',
+        'service-title': 'Club des Seniors', 'service-sub': 'Un espace vivant où les gens créent des relations, partagent leurs expériences, apprennent de nouvelles choses et contribuent activement à la vie communautaire.',
         'service-desc': 'Nous croyons qu\'un club de seniors est plus qu\'un lieu de rencontre — c\'est un <strong>espace vivant</strong>, où les gens créent des relations, partagent leurs expériences, apprennent de nouvelles choses et contribuent activement à la vie communautaire.',
         'service-offer': '🎁 Ce que nous offrons :',
         'service-feature1': 'Activités et ateliers conçus spécialement pour les seniors, basés sur les bonnes pratiques testées dans le projet ACTION',
@@ -2151,53 +1044,32 @@
         'service-feature3': 'Outils et ressources développés pour soutenir l\'implication active des seniors dans la communauté',
         'service-feature4': 'Histoires et exemples réels qui inspirent et connectent les générations',
         'service-feature5': '🚌 <strong>Voyages et visites guidées</strong> vers des destinations européennes, conçus pour le confort et le rythme des seniors, élargissant les horizons et apportant la joie de la découverte à tout âge.',
-        'team-title': 'Notre Équipe',
-        'team-intro': '❤️ Les personnes derrière notre mission – dévouées, passionnées et toujours proches de la communauté. ❤️',
+        'team-title': 'Notre Équipe', 'team-intro': '❤️ Les personnes derrière notre mission – dévouées, passionnées et toujours proches de la communauté. ❤️',
         'mihaela-role': '👑 Membre Fondateur',
-        'mihaela-desc': 'Mihaela Ionescu est la fondatrice de notre club de seniors, un projet né de la conviction que l\'expérience et l\'énergie des seniors peuvent transformer une communauté.<br /><br />Avec une passion constante pour connecter les gens et développer des activités qui apportent joie, apprentissage et appartenance, Mihaela a posé les bases de cet espace — de la première idée aux activités et programmes menés aujourd\'hui à travers le projet <strong>ACTION</strong>.<br /><br /><em>„Pour elle, un club de seniors n\'est pas seulement un lieu de rencontre, mais une communauté où chaque histoire compte et chaque voix a de la valeur.”</em><br /><br />❤️ <span style="font-style:italic; color:#a67c52;">Par la présence, l\'écoute et l\'action, nous construisons des ponts entre les générations.</span> ❤️',
+        'mihaela-desc': 'Mihaela Ionescu est la fondatrice de notre club de seniors, un projet né de la conviction que l\'expérience et l\'énergie des seniors peuvent transformer une communauté.<br /><br />Avec une passion constante pour connecter les gens et développer des activités qui apportent joie, apprentissage et appartenance, Mihaela a posé les bases de cet espace — de la première idée aux activités et programmes menés aujourd\'hui à travers le projet <strong>ACTION</strong>.<br /><br /><em>„Pour elle, un club de seniors n\'est pas seulement un lieu de rencontre, mais une communauté où chaque histoire compte et chaque voix a de la valeur.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Par la présence, l\'écoute et l\'action, nous construisons des ponts entre les générations.</span> ❤️',
         'petru-role': '🤝 Bénévole et Bénéficiaire',
-        'petru-desc': '<span class="nickname">„Monsieur Petrică”</span>, comme nous l\'appelons tous affectueusement, est une personne fiable de notre équipe, sur qui nous pouvons toujours compter. Avec un grand cœur et compétent non seulement en électricité mais aussi en toutes sortes de réparations, il apporte toujours autour de lui la bonne humeur, le sérieux et un esprit jeune.<br /><br />Nous apprécions son implication constante, sa façon élégante et jeune d\'être, et la joie avec laquelle il est avec nous dans tout ce que nous faisons.<br /><br />Depuis plus d\'un an, nous apprécions sa présence à <span class="highlight">l\'Asociația Divina Providența</span> et au Centre de jour pour personnes âgées, où il est à la fois <span class="highlight">bénéficiaire</span> et <span class="highlight">bénévole impliqué</span>. Dans nos activités, mais surtout lors des excursions, nous le sentons toujours comme un partenaire fiable — attentif, présent et prêt à aider chaque fois que c\'est nécessaire.<br /><br />💚 <span style="font-style:italic; color:#6d8a5e;">„Avec Monsieur Petrică, chaque jour est plus lumineux!”</span> 💚',
+        'petru-desc': '<span class="nickname">„Monsieur Petrică”</span>, comme nous l\'appelons tous affectueusement, est une personne fiable de notre équipe, sur qui nous pouvons toujours compter. Avec un grand cœur et compétent non seulement en électricité mais aussi en toutes sortes de réparations, il apporte toujours autour de lui la bonne humeur, le sérieux et un esprit jeune.<br /><br />Nous apprécions son implication constante, sa façon élégante et jeune d\'être, et la joie avec laquelle il est avec nous dans tout ce que nous faisons.<br /><br />Depuis plus d\'un an, nous apprécions sa présence à <span class="highlight">l\'Asociația Divina Providența</span> et au Centre de jour pour personnes âgées, où il est à la fois <span class="highlight">bénéficiaire</span> et <span class="highlight">bénévole impliqué</span>. Dans nos activités, mais surtout lors des excursions, nous le sentons toujours comme un partenaire fiable — attentif, présent et prêt à aider chaque fois que c\'est nécessaire.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Avec Monsieur Petrică, chaque jour est plus lumineux!”</span> 💚',
         'gallery-title': 'Galerie Photo',
-        'contact-title': 'Contact',
-        'contact-question': 'Vous voulez vous inscrire ou en savoir plus ?',
-        'contact-address-label': 'Adresse :',
-        'contact-address': 'Association Divina Providența, Gropnița, comté de Iași',
-        'contact-phone-label': 'Téléphone :',
-        'contact-email-label': 'Email :',
+        'contact-title': 'Contact', 'contact-question': 'Vous voulez vous inscrire ou en savoir plus ?',
+        'contact-address-label': 'Adresse :', 'contact-address': 'Association Divina Providența, Gropnița, comté de Iași',
+        'contact-phone-label': 'Téléphone :', 'contact-email-label': 'Email :',
         'contact-note': '❤️ Nous sommes là pour vous ! N\'hésitez pas à nous contacter. ❤️',
-        'form-title': '✏️ Envoyez-nous un message',
-        'form-name': '👤 Nom et Prénom',
-        'form-name-placeholder': 'Ex: Jean Dupont',
-        'form-phone': '📞 Numéro de téléphone',
-        'form-phone-placeholder': 'Ex: 0744 760 938',
-        'form-message': '💬 Message',
-        'form-message-placeholder': 'Écrivez votre message ici...',
-        'form-submit': '✈️ Envoyer le message',
-        'form-success': '✅ <strong>Message envoyé avec succès !</strong><br />Nous vous répondrons bientôt.',
+        'form-title': '✏️ Envoyez-nous un message', 'form-name': '👤 Nom et Prénom', 'form-name-placeholder': 'Ex: Jean Dupont',
+        'form-phone': '📞 Numéro de téléphone', 'form-phone-placeholder': 'Ex: 0744 760 938',
+        'form-message': '💬 Message', 'form-message-placeholder': 'Écrivez votre message ici...',
+        'form-submit': '✈️ Envoyer le message', 'form-success': '✅ <strong>Message envoyé avec succès !</strong><br />Nous vous répondrons bientôt.',
         'erasmus-text': '<strong>Ce service est développé dans le cadre du projet ACTION – Seniors Active in the Community</strong> (No. 2024-2-RO01-KA210-ADU-000278611), financé par l\'<strong>Union européenne</strong> dans le cadre du programme <strong>Erasmus+</strong>.',
         'footer-text': '❤️ Avec amour pour la communauté ❤️'
       },
       de: {
-        'nav-home': 'Startseite',
-        'nav-about': 'Über uns',
-        'nav-services': 'Dienstleistungen',
-        'nav-team': 'Team',
-        'nav-gallery': 'Galerie',
-        'nav-contact': 'Kontakt',
-        'hero-subhead': '🪶 Wo Wärme auf göttliche Führung trifft 🪶',
-        'hero-btn': 'Entdecken Sie unsere Dienstleistungen',
-        'about-title': 'Wer sind wir?',
-        'about-text': 'Wir sind eine gemeinnützige Organisation, die von ganzem Herzen glaubt, dass <strong>jeder Mensch zählt</strong>, unabhängig vom Alter. Unsere Mission ist es, <strong>warme Brücken</strong> zwischen Generationen zu bauen, Bildung näher an die Gemeinschaften zu bringen und <strong>Solidarität</strong> in eine reale, hoffnungsvolle Triebkraft des sozialen Wandels zu verwandeln.',
-        'value1-title': 'Präsenz',
-        'value1-desc': 'Dort zu sein, wo es nötig ist, mit Liebe und ohne Urteil.',
-        'value2-title': 'Regeneration',
-        'value2-desc': 'Gutes, das mit Glauben getan wird, hat die Kraft, Gemeinschaften zu erwärmen und zu verwandeln.',
-        'value3-title': 'Glaube',
-        'value3-desc': 'Unser Auftrag – <em>Divina Providența</em> – ist ein heiliges Versprechen.',
-        'services-title': 'Unsere Dienstleistungen',
-        'services-intro': '❤️ Jede Dienstleistung wird mit Sorgfalt aufgebaut, um <strong>Wert</strong> und <strong>Wärme</strong> in unsere Gemeinschaft zu bringen. ❤️',
-        'service-title': 'Seniorenclub',
-        'service-sub': 'Ein lebendiger Raum, in dem Menschen Beziehungen knüpfen, Erfahrungen austauschen, Neues lernen und aktiv zum Gemeinschaftsleben beitragen.',
+        'nav-home': 'Startseite', 'nav-about': 'Über uns', 'nav-services': 'Dienstleistungen', 'nav-team': 'Team', 'nav-gallery': 'Galerie', 'nav-contact': 'Kontakt',
+        'hero-subhead': '🪶 Wo Wärme auf göttliche Führung trifft 🪶', 'hero-btn': 'Entdecken Sie unsere Dienstleistungen',
+        'about-title': 'Wer sind wir?', 'about-text': 'Wir sind eine gemeinnützige Organisation, die von ganzem Herzen glaubt, dass <strong>jeder Mensch zählt</strong>, unabhängig vom Alter. Unsere Mission ist es, <strong>warme Brücken</strong> zwischen Generationen zu bauen, Bildung näher an die Gemeinschaften zu bringen und <strong>Solidarität</strong> in eine reale, hoffnungsvolle Triebkraft des sozialen Wandels zu verwandeln.',
+        'value1-title': 'Präsenz', 'value1-desc': 'Dort zu sein, wo es nötig ist, mit Liebe und ohne Urteil.',
+        'value2-title': 'Regeneration', 'value2-desc': 'Gutes, das mit Glauben getan wird, hat die Kraft, Gemeinschaften zu erwärmen und zu verwandeln.',
+        'value3-title': 'Glaube', 'value3-desc': 'Unser Auftrag – <em>Divina Providența</em> – ist ein heiliges Versprechen.',
+        'services-title': 'Unsere Dienstleistungen', 'services-intro': '❤️ Jede Dienstleistung wird mit Sorgfalt aufgebaut, um <strong>Wert</strong> und <strong>Wärme</strong> in unsere Gemeinschaft zu bringen. ❤️',
+        'service-title': 'Seniorenclub', 'service-sub': 'Ein lebendiger Raum, in dem Menschen Beziehungen knüpfen, Erfahrungen austauschen, Neues lernen und aktiv zum Gemeinschaftsleben beitragen.',
         'service-desc': 'Wir glauben, dass ein Seniorenclub mehr als ein Treffpunkt ist — es ist ein <strong>lebendiger Raum</strong>, in dem Menschen Beziehungen knüpfen, Erfahrungen austauschen, Neues lernen und aktiv zum Gemeinschaftsleben beitragen.',
         'service-offer': '🎁 Was wir anbieten:',
         'service-feature1': 'Aktivitäten und Workshops speziell für Senioren, basierend auf bewährten Praktiken aus dem ACTION-Projekt',
@@ -2205,53 +1077,32 @@
         'service-feature3': 'Werkzeuge und Ressourcen zur Unterstützung der aktiven Beteiligung von Senioren in der Gemeinschaft',
         'service-feature4': 'Echte Geschichten und Beispiele, die inspirieren und Generationen verbinden',
         'service-feature5': '🚌 <strong>Geführte Reisen und Ausflüge</strong> zu europäischen Zielen, entwickelt für den Komfort und das Tempo von Senioren, die Horizonte erweitern und die Freude am Entdecken in jedem Alter bringen.',
-        'team-title': 'Unser Team',
-        'team-intro': '❤️ Die Menschen hinter unserer Mission – engagiert, leidenschaftlich und immer nah an der Gemeinschaft. ❤️',
+        'team-title': 'Unser Team', 'team-intro': '❤️ Die Menschen hinter unserer Mission – engagiert, leidenschaftlich und immer nah an der Gemeinschaft. ❤️',
         'mihaela-role': '👑 Gründungsmitglied',
-        'mihaela-desc': 'Mihaela Ionescu ist die Gründerin unseres Seniorenclubs, ein Projekt, das aus der Überzeugung entstanden ist, dass die Erfahrung und Energie von Senioren eine Gemeinschaft verändern können.<br /><br />Mit einer ständigen Leidenschaft für die Verbindung von Menschen und die Entwicklung von Aktivitäten, die Freude, Lernen und Zugehörigkeit bringen, hat Mihaela den Grundstein für diesen Raum gelegt — von der ersten Idee bis zu den Aktivitäten und Programmen, die heute durch das <strong>ACTION</strong>-Projekt durchgeführt werden.<br /><br /><em>„Für sie ist ein Seniorenclub nicht nur ein Treffpunkt, sondern eine Gemeinschaft, in der jede Geschichte zählt und jede Stimme von Wert ist.”</em><br /><br />❤️ <span style="font-style:italic; color:#a67c52;">Durch Präsenz, Zuhören und Handeln bauen wir Brücken zwischen den Generationen.</span> ❤️',
+        'mihaela-desc': 'Mihaela Ionescu ist die Gründerin unseres Seniorenclubs, ein Projekt, das aus der Überzeugung entstanden ist, dass die Erfahrung und Energie von Senioren eine Gemeinschaft verändern können.<br /><br />Mit einer ständigen Leidenschaft für die Verbindung von Menschen und die Entwicklung von Aktivitäten, die Freude, Lernen und Zugehörigkeit bringen, hat Mihaela den Grundstein für diesen Raum gelegt — von der ersten Idee bis zu den Aktivitäten und Programmen, die heute durch das <strong>ACTION</strong>-Projekt durchgeführt werden.<br /><br /><em>„Für sie ist ein Seniorenclub nicht nur ein Treffpunkt, sondern eine Gemeinschaft, in der jede Geschichte zählt und jede Stimme von Wert ist.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Durch Präsenz, Zuhören und Handeln bauen wir Brücken zwischen den Generationen.</span> ❤️',
         'petru-role': '🤝 Freiwilliger und Begünstigter',
-        'petru-desc': '<span class="nickname">„Herr Petrică”</span>, wie wir ihn alle liebevoll nennen, ist eine zuverlässige Person in unserem Team, auf die wir uns immer verlassen können. Mit einem großen Herzen und nicht nur in Elektrik, sondern auch in allen Arten von Reparaturen geschickt, bringt er immer gute Laune, Ernsthaftigkeit und einen jugendlichen Geist um sich herum.<br /><br />Wir schätzen sein ständiges Engagement, seine elegante und jugendliche Art zu sein und die Freude, mit der er bei allem, was wir tun, dabei ist.<br /><br />Seit mehr als einem Jahr erfreuen wir uns seiner Anwesenheit bei <span class="highlight">Asociația Divina Providența</span> und im Tageszentrum für Senioren, wo er sowohl <span class="highlight">Begünstigter</span> als auch <span class="highlight">engagierter Freiwilliger</span> ist. In unseren Aktivitäten, aber besonders auf Ausflügen, fühlen wir ihn immer als einen zuverlässigen Partner — aufmerksam, präsent und bereit zu helfen, wann immer es nötig ist.<br /><br />💚 <span style="font-style:italic; color:#6d8a5e;">„Mit Herrn Petrică ist jeder Tag heller!”</span> 💚',
+        'petru-desc': '<span class="nickname">„Herr Petrică”</span>, wie wir ihn alle liebevoll nennen, ist eine zuverlässige Person in unserem Team, auf die wir uns immer verlassen können. Mit einem großen Herzen und nicht nur in Elektrik, sondern auch in allen Arten von Reparaturen geschickt, bringt er immer gute Laune, Ernsthaftigkeit und einen jugendlichen Geist um sich herum.<br /><br />Wir schätzen sein ständiges Engagement, seine elegante und jugendliche Art zu sein und die Freude, mit der er bei allem, was wir tun, dabei ist.<br /><br />Seit mehr als einem Jahr erfreuen wir uns seiner Anwesenheit bei <span class="highlight">Asociația Divina Providența</span> und im Tageszentrum für Senioren, wo er sowohl <span class="highlight">Begünstigter</span> als auch <span class="highlight">engagierter Freiwilliger</span> ist. In unseren Aktivitäten, aber besonders auf Ausflügen, fühlen wir ihn immer als einen zuverlässigen Partner — aufmerksam, präsent und bereit zu helfen, wann immer es nötig ist.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Mit Herrn Petrică ist jeder Tag heller!”</span> 💚',
         'gallery-title': 'Fotogalerie',
-        'contact-title': 'Kontakt',
-        'contact-question': 'Möchten Sie sich anmelden oder weitere Details erfahren?',
-        'contact-address-label': 'Adresse:',
-        'contact-address': 'Divina Providența Verein, Gropnița, Kreis Iași',
-        'contact-phone-label': 'Telefon:',
-        'contact-email-label': 'Email:',
+        'contact-title': 'Kontakt', 'contact-question': 'Möchten Sie sich anmelden oder weitere Details erfahren?',
+        'contact-address-label': 'Adresse:', 'contact-address': 'Divina Providența Verein, Gropnița, Kreis Iași',
+        'contact-phone-label': 'Telefon:', 'contact-email-label': 'Email:',
         'contact-note': '❤️ Wir sind für Sie da! Zögern Sie nicht, uns zu kontaktieren. ❤️',
-        'form-title': '✏️ Senden Sie uns eine Nachricht',
-        'form-name': '👤 Vor- und Nachname',
-        'form-name-placeholder': 'Z.B: Hans Müller',
-        'form-phone': '📞 Telefonnummer',
-        'form-phone-placeholder': 'Z.B: 0744 760 938',
-        'form-message': '💬 Nachricht',
-        'form-message-placeholder': 'Schreiben Sie Ihre Nachricht hier...',
-        'form-submit': '✈️ Nachricht senden',
-        'form-success': '✅ <strong>Nachricht erfolgreich gesendet!</strong><br />Wir werden uns bald bei Ihnen melden.',
+        'form-title': '✏️ Senden Sie uns eine Nachricht', 'form-name': '👤 Vor- und Nachname', 'form-name-placeholder': 'Z.B: Hans Müller',
+        'form-phone': '📞 Telefonnummer', 'form-phone-placeholder': 'Z.B: 0744 760 938',
+        'form-message': '💬 Nachricht', 'form-message-placeholder': 'Schreiben Sie Ihre Nachricht hier...',
+        'form-submit': '✈️ Nachricht senden', 'form-success': '✅ <strong>Nachricht erfolgreich gesendet!</strong><br />Wir werden uns bald bei Ihnen melden.',
         'erasmus-text': '<strong>Diese Dienstleistung wird im Rahmen des Projekts ACTION – Seniors Active in the Community</strong> (Nr. 2024-2-RO01-KA210-ADU-000278611) entwickelt, finanziert von der <strong>Europäischen Union</strong> durch das Programm <strong>Erasmus+</strong>.',
         'footer-text': '❤️ Mit Liebe für die Gemeinschaft ❤️'
       },
       it: {
-        'nav-home': 'Home',
-        'nav-about': 'Chi siamo',
-        'nav-services': 'Servizi',
-        'nav-team': 'Squadra',
-        'nav-gallery': 'Galleria',
-        'nav-contact': 'Contatti',
-        'hero-subhead': '🪶 Dove il calore incontra la guida divina 🪶',
-        'hero-btn': 'Scopri i nostri servizi',
-        'about-title': 'Chi siamo?',
-        'about-text': 'Siamo un\'organizzazione no-profit che crede con tutto il cuore che <strong>ogni persona conta</strong>, indipendentemente dall\'età. La nostra missione è costruire <strong>ponti caldi</strong> tra le generazioni, avvicinare l\'istruzione alle comunità e trasformare la <strong>solidarietà</strong> in un motore reale di cambiamento sociale, pieno di speranza.',
-        'value1-title': 'Presenza',
-        'value1-desc': 'Essere dove c\'è bisogno, con amore e senza giudizio.',
-        'value2-title': 'Rigenerazione',
-        'value2-desc': 'Il bene fatto con fede ha il potere di riscaldare e trasformare le comunità.',
-        'value3-title': 'Fede',
-        'value3-desc': 'La nostra chiamata – <em>Divina Providența</em> – è un impegno sacro.',
-        'services-title': 'I Nostri Servizi',
-        'services-intro': '❤️ Ogni servizio è costruito con cura per portare <strong>valore</strong> e <strong>calore</strong> alla nostra comunità. ❤️',
-        'service-title': 'Club degli Anziani',
-        'service-sub': 'Uno spazio vivo dove le persone creano relazioni, condividono esperienze, imparano cose nuove e contribuiscono attivamente alla vita della comunità.',
+        'nav-home': 'Home', 'nav-about': 'Chi siamo', 'nav-services': 'Servizi', 'nav-team': 'Squadra', 'nav-gallery': 'Galleria', 'nav-contact': 'Contatti',
+        'hero-subhead': '🪶 Dove il calore incontra la guida divina 🪶', 'hero-btn': 'Scopri i nostri servizi',
+        'about-title': 'Chi siamo?', 'about-text': 'Siamo un\'organizzazione no-profit che crede con tutto il cuore che <strong>ogni persona conta</strong>, indipendentemente dall\'età. La nostra missione è costruire <strong>ponti caldi</strong> tra le generazioni, avvicinare l\'istruzione alle comunità e trasformare la <strong>solidarietà</strong> in un motore reale di cambiamento sociale, pieno di speranza.',
+        'value1-title': 'Presenza', 'value1-desc': 'Essere dove c\'è bisogno, con amore e senza giudizio.',
+        'value2-title': 'Rigenerazione', 'value2-desc': 'Il bene fatto con fede ha il potere di riscaldare e trasformare le comunità.',
+        'value3-title': 'Fede', 'value3-desc': 'La nostra chiamata – <em>Divina Providența</em> – è un impegno sacro.',
+        'services-title': 'I Nostri Servizi', 'services-intro': '❤️ Ogni servizio è costruito con cura per portare <strong>valore</strong> e <strong>calore</strong> alla nostra comunità. ❤️',
+        'service-title': 'Club degli Anziani', 'service-sub': 'Uno spazio vivo dove le persone creano relazioni, condividono esperienze, imparano cose nuove e contribuiscono attivamente alla vita della comunità.',
         'service-desc': 'Crediamo che un club per anziani sia più di un luogo d\'incontro — è uno <strong>spazio vivo</strong>, dove le persone creano relazioni, condividono esperienze, imparano cose nuove e contribuiscono attivamente alla vita della comunità.',
         'service-offer': '🎁 Cosa offriamo:',
         'service-feature1': 'Attività e laboratori pensati appositamente per gli anziani, basati sulle buone pratiche testate nel progetto ACTION',
@@ -2259,71 +1110,37 @@
         'service-feature3': 'Strumenti e risorse sviluppati per sostenere il coinvolgimento attivo degli anziani nella comunità',
         'service-feature4': 'Storie ed esempi reali che ispirano e collegano le generazioni',
         'service-feature5': '🚌 <strong>Viaggi e visite guidate</strong> verso destinazioni europee, pensate per il comfort e il ritmo degli anziani, che ampliano gli orizzonti e portano la gioia della scoperta a qualsiasi età.',
-        'team-title': 'Il Nostro Team',
-        'team-intro': '❤️ Le persone dietro la nostra missione – dedite, appassionate e sempre vicine alla comunità. ❤️',
+        'team-title': 'Il Nostro Team', 'team-intro': '❤️ Le persone dietro la nostra missione – dedite, appassionate e sempre vicine alla comunità. ❤️',
         'mihaela-role': '👑 Membro Fondatore',
-        'mihaela-desc': 'Mihaela Ionescu è la fondatrice del nostro club per anziani, un progetto nato dalla convinzione che l\'esperienza e l\'energia degli anziani possano trasformare una comunità.<br /><br />Con una passione costante per connettere le persone e sviluppare attività che portano gioia, apprendimento e appartenenza, Mihaela ha gettato le basi di questo spazio — dalla prima idea alle attività e ai programmi in corso oggi attraverso il progetto <strong>ACTION</strong>.<br /><br /><em>„Per lei, un club per anziani non è solo un luogo d\'incontro, ma una comunità in cui ogni storia conta e ogni voce ha valore.”</em><br /><br />❤️ <span style="font-style:italic; color:#a67c52;">Attraverso la presenza, l\'ascolto e l\'azione, costruiamo ponti tra le generazioni.</span> ❤️',
+        'mihaela-desc': 'Mihaela Ionescu è la fondatrice del nostro club per anziani, un progetto nato dalla convinzione che l\'esperienza e l\'energia degli anziani possano trasformare una comunità.<br /><br />Con una passione costante per connettere le persone e sviluppare attività che portano gioia, apprendimento e appartenenza, Mihaela ha gettato le basi di questo spazio — dalla prima idea alle attività e ai programmi in corso oggi attraverso il progetto <strong>ACTION</strong>.<br /><br /><em>„Per lei, un club per anziani non è solo un luogo d\'incontro, ma una comunità in cui ogni storia conta e ogni voce ha valore.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Attraverso la presenza, l\'ascolto e l\'azione, costruiamo ponti tra le generazioni.</span> ❤️',
         'petru-role': '🤝 Volontario e Beneficiario',
-        'petru-desc': '<span class="nickname">„Signor Petrică”</span>, come lo chiamiamo tutti affettuosamente, è una persona affidabile del nostro team, su cui possiamo sempre contare. Con un grande cuore e abile non solo in elettronica ma anche in tutti i tipi di riparazioni, porta sempre intorno a sé buon umore, serietà e uno spirito giovane.<br /><br />Apprezziamo il suo costante impegno, il suo modo elegante e giovanile di essere, e la gioia con cui è con noi in tutto ciò che facciamo.<br /><br />Da più di un anno ci godiamo la sua presenza presso <span class="highlight">l\'Asociația Divina Providența</span> e il Centro diurno per anziani, dove è sia <span class="highlight">beneficiario</span> che <span class="highlight">volontario impegnato</span>. Nelle nostre attività, ma soprattutto nelle escursioni, lo sentiamo sempre come un partner affidabile — attento, presente e pronto ad aiutare ogni volta che ce n\'è bisogno.<br /><br />💚 <span style="font-style:italic; color:#6d8a5e;">„Con il signor Petrică, ogni giorno è più luminoso!”</span> 💚',
+        'petru-desc': '<span class="nickname">„Signor Petrică”</span>, come lo chiamiamo tutti affettuosamente, è una persona affidabile del nostro team, su cui possiamo sempre contare. Con un grande cuore e abile non solo in elettronica ma anche in tutti i tipi di riparazioni, porta sempre intorno a sé buon umore, serietà e uno spirito giovane.<br /><br />Apprezziamo il suo costante impegno, il suo modo elegante e giovanile di essere, e la gioia con cui è con noi in tutto ciò che facciamo.<br /><br />Da più di un anno ci godiamo la sua presenza presso <span class="highlight">l\'Asociația Divina Providența</span> e il Centro diurno per anziani, dove è sia <span class="highlight">beneficiario</span> che <span class="highlight">volontario impegnato</span>. Nelle nostre attività, ma soprattutto nelle escursioni, lo sentiamo sempre come un partner affidabile — attento, presente e pronto ad aiutare ogni volta che ce n\'è bisogno.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Con il signor Petrică, ogni giorno è più luminoso!”</span> 💚',
         'gallery-title': 'Galleria Fotografica',
-        'contact-title': 'Contatti',
-        'contact-question': 'Vuoi iscriverti o saperne di più?',
-        'contact-address-label': 'Sede:',
-        'contact-address': 'Associazione Divina Providența, Gropnița, contea di Iași',
-        'contact-phone-label': 'Telefono:',
-        'contact-email-label': 'Email:',
+        'contact-title': 'Contatti', 'contact-question': 'Vuoi iscriverti o saperne di più?',
+        'contact-address-label': 'Sede:', 'contact-address': 'Associazione Divina Providența, Gropnița, contea di Iași',
+        'contact-phone-label': 'Telefono:', 'contact-email-label': 'Email:',
         'contact-note': '❤️ Siamo qui per te! Non esitare a contattarci. ❤️',
-        'form-title': '✏️ Inviaci un messaggio',
-        'form-name': '👤 Nome e Cognome',
-        'form-name-placeholder': 'Es: Mario Rossi',
-        'form-phone': '📞 Numero di telefono',
-        'form-phone-placeholder': 'Es: 0744 760 938',
-        'form-message': '💬 Messaggio',
-        'form-message-placeholder': 'Scrivi il tuo messaggio qui...',
-        'form-submit': '✈️ Invia messaggio',
-        'form-success': '✅ <strong>Messaggio inviato con successo!</strong><br />Ti risponderemo presto.',
+        'form-title': '✏️ Inviaci un messaggio', 'form-name': '👤 Nome e Cognome', 'form-name-placeholder': 'Es: Mario Rossi',
+        'form-phone': '📞 Numero di telefono', 'form-phone-placeholder': 'Es: 0744 760 938',
+        'form-message': '💬 Messaggio', 'form-message-placeholder': 'Scrivi il tuo messaggio qui...',
+        'form-submit': '✈️ Invia messaggio', 'form-success': '✅ <strong>Messaggio inviato con successo!</strong><br />Ti risponderemo presto.',
         'erasmus-text': '<strong>Questo servizio è sviluppato attraverso il progetto ACTION – Seniors Active in the Community</strong> (Nr. 2024-2-RO01-KA210-ADU-000278611), finanziato dall\'<strong>Unione Europea</strong> attraverso il programma <strong>Erasmus+</strong>.',
         'footer-text': '❤️ Con amore per la comunità ❤️'
       }
     };
 
-    // ========== LANGUAGE SWITCHER LOGIC ==========
+    // ========== LANGUAGE SWITCHER ==========
     let currentLang = 'ro';
-
     const langBtn = document.getElementById('languageBtn');
     const langDropdown = document.getElementById('languageDropdown');
     const langLabel = document.getElementById('currentLangLabel');
     const currentFlag = document.getElementById('currentFlag');
     const langLinks = document.querySelectorAll('.language-dropdown a');
+    const flagMap = { ro: '🇷🇴', en: '🇬🇧', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹' };
+    const langMap = { ro: 'RO', en: 'EN', fr: 'FR', de: 'DE', it: 'IT' };
 
-    const flagMap = {
-      'ro': '🇷🇴',
-      'en': '🇬🇧',
-      'fr': '🇫🇷',
-      'de': '🇩🇪',
-      'it': '🇮🇹'
-    };
-
-    const langMap = {
-      'ro': 'RO',
-      'en': 'EN',
-      'fr': 'FR',
-      'de': 'DE',
-      'it': 'IT'
-    };
-
-    // Toggle dropdown
-    langBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      langDropdown.classList.toggle('active');
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function() {
-      langDropdown.classList.remove('active');
-    });
-
-    // Language selection
+    langBtn.addEventListener('click', function(e) { e.stopPropagation(); langDropdown.classList.toggle('active'); });
+    document.addEventListener('click', function() { langDropdown.classList.remove('active'); });
     langLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -2335,52 +1152,34 @@
 
     function setLanguage(lang) {
       currentLang = lang;
-      // Update button label and flag
       langLabel.textContent = langMap[lang] || 'RO';
       currentFlag.textContent = flagMap[lang] || '🇷🇴';
-
-      // Update active class in dropdown
-      langLinks.forEach(link => {
-        link.classList.toggle('active-lang', link.dataset.lang === lang);
-      });
-
-      // Update all elements with data-key attribute
+      langLinks.forEach(link => { link.classList.toggle('active-lang', link.dataset.lang === lang); });
       document.querySelectorAll('[data-key]').forEach(element => {
         const key = element.dataset.key;
         if (translations[lang] && translations[lang][key]) {
-          // Handle HTML content (preserve tags)
           if (key === 'about-text' || key === 'mihaela-desc' || key === 'petru-desc' ||
-            key === 'services-intro' || key === 'service-feature5' || key === 'service-desc' ||
-            key === 'erasmus-text' || key === 'form-success' || key === 'footer-text') {
+              key === 'services-intro' || key === 'service-feature5' || key === 'service-desc' ||
+              key === 'erasmus-text' || key === 'form-success' || key === 'footer-text') {
             element.innerHTML = translations[lang][key];
           } else {
             element.textContent = translations[lang][key];
           }
         }
       });
-
-      // Update placeholder attributes for form inputs
       document.querySelectorAll('[data-key]').forEach(element => {
         const key = element.dataset.key;
-        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-          if (translations[lang] && translations[lang][key]) {
-            element.placeholder = translations[lang][key];
-          }
+        if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && translations[lang] && translations[lang][key]) {
+          element.placeholder = translations[lang][key];
         }
       });
-
-      // Update nav links text inside spans
       document.querySelectorAll('.nav-links a span').forEach(span => {
         const parent = span.closest('a');
         if (parent) {
           const key = parent.dataset.key;
-          if (translations[lang] && translations[lang][key]) {
-            span.textContent = translations[lang][key];
-          }
+          if (translations[lang] && translations[lang][key]) span.textContent = translations[lang][key];
         }
       });
-
-      // Update hero button
       const heroBtn = document.querySelector('.hero .btn');
       if (heroBtn) {
         const key = heroBtn.dataset.key;
@@ -2391,8 +1190,6 @@
           heroBtn.appendChild(document.createTextNode(' ' + translations[lang][key]));
         }
       }
-
-      // Update hero subhead (preserve icons)
       const heroSubhead = document.querySelector('.hero .subhead');
       if (heroSubhead) {
         const key = heroSubhead.dataset.key;
@@ -2408,8 +1205,7 @@
       }
     }
 
-    // ========== EXISTING JAVASCRIPT ==========
-    // Gallery Lightbox
+    // ========== LIGHTBOX ==========
     const galleryItems = document.querySelectorAll('.gallery-item img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
@@ -2418,17 +1214,12 @@
     const lightboxNext = document.getElementById('lightboxNext');
     const currentIndexSpan = document.getElementById('currentIndex');
     const totalImagesSpan = document.getElementById('totalImages');
-
     let currentIndex = 0;
     const totalImages = galleryItems.length;
     totalImagesSpan.textContent = totalImages;
 
     galleryItems.forEach((img, index) => {
-      img.addEventListener('click', function(e) {
-        e.stopPropagation();
-        currentIndex = index;
-        openLightbox(currentIndex);
-      });
+      img.addEventListener('click', function(e) { e.stopPropagation(); currentIndex = index; openLightbox(currentIndex); });
     });
 
     function openLightbox(index) {
@@ -2452,114 +1243,64 @@
     }
 
     lightboxClose.addEventListener('click', closeLightbox);
-
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-    lightboxPrev.addEventListener('click', function(e) {
-      e.stopPropagation();
-      changeImage(-1);
-    });
-
-    lightboxNext.addEventListener('click', function(e) {
-      e.stopPropagation();
-      changeImage(1);
-    });
-
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+    lightboxPrev.addEventListener('click', function(e) { e.stopPropagation(); changeImage(-1); });
+    lightboxNext.addEventListener('click', function(e) { e.stopPropagation(); changeImage(1); });
     document.addEventListener('keydown', function(e) {
       if (!lightbox.classList.contains('active')) return;
-      if (e.key === 'Escape') {
-        closeLightbox();
-      } else if (e.key === 'ArrowLeft') {
-        changeImage(-1);
-      } else if (e.key === 'ArrowRight') {
-        changeImage(1);
-      }
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') changeImage(-1);
+      else if (e.key === 'ArrowRight') changeImage(1);
     });
 
-    // Contact Form
+    // ========== CONTACT FORM ==========
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
-
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-
       const formData = new FormData(contactForm);
-
-      fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        })
+      fetch(contactForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
         .then(response => {
           if (response.ok) {
             contactForm.style.display = 'none';
             formSuccess.style.display = 'block';
             contactForm.reset();
-          } else {
-            alert('A apărut o eroare. Te rugăm să încerci din nou.');
-          }
+          } else { alert('A apărut o eroare. Te rugăm să încerci din nou.'); }
         })
-        .catch(error => {
-          alert('A apărut o eroare. Te rugăm să încerci din nou.');
-        });
+        .catch(error => { alert('A apărut o eroare. Te rugăm să încerci din nou.'); });
     });
 
-    // Team Photo Zoom on Click
-    const teamPhotos = document.querySelectorAll('.team-member-image');
-
-    teamPhotos.forEach(photo => {
+    // ========== TEAM PHOTO ZOOM ==========
+    document.querySelectorAll('.team-member-image').forEach(photo => {
       photo.addEventListener('click', function(e) {
         e.stopPropagation();
         this.classList.toggle('zoomed');
-
         if (this.classList.contains('zoomed')) {
-          const unzoom = function(event) {
-            if (!photo.contains(event.target)) {
-              photo.classList.remove('zoomed');
-              document.removeEventListener('click', unzoom);
-            }
-          };
-          setTimeout(() => {
-            document.addEventListener('click', unzoom);
-          }, 10);
+          const unzoom = function(event) { if (!photo.contains(event.target)) { photo.classList.remove('zoomed'); document.removeEventListener('click', unzoom); } };
+          setTimeout(() => { document.addEventListener('click', unzoom); }, 10);
         }
       });
     });
 
-    // Sticky Navigation
+    // ========== STICKY NAV ==========
     window.addEventListener('scroll', function() {
       const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
     });
 
-    // Active Link Highlight
+    // ========== ACTIVE LINK ==========
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
-
     window.addEventListener('scroll', function() {
       let current = 'home';
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 110;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
+        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
       });
-
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
       });
     });
   </script>
