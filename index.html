@@ -101,17 +101,25 @@
     /* ---------- NAV ---------- */
     nav {
       padding: 14px 0 10px;
-      display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
       border-bottom: 2px solid rgba(184, 142, 97, 0.12);
       background: rgba(252, 248, 242, 0.92); backdrop-filter: blur(10px);
       position: sticky; top: 0; z-index: 1000;
-      transition: box-shadow 0.3s, padding 0.3s; gap: 16px;
+      transition: box-shadow 0.3s, padding 0.3s;
     }
     nav.scrolled { box-shadow: 0 4px 20px rgba(166,124,82,0.08); padding: 10px 0 8px; }
+
     .nav-links {
-      display: flex; gap: 28px; font-weight: 600;
-      color: #5a4030; font-size: 0.95rem;
-      align-items: center; flex-wrap: wrap;
+      display: flex;
+      gap: 28px;
+      font-weight: 600;
+      color: #5a4030;
+      font-size: 0.95rem;
+      align-items: center;
+      flex-wrap: wrap;
     }
     .nav-links a {
       text-decoration: none; color: inherit;
@@ -133,21 +141,100 @@
     .nav-links a:hover { color: #a67c52; transform: translateY(-2px); background: rgba(166,124,82,0.05); }
     .nav-links a:active { transform: scale(0.95); }
 
-    /* ---------- LANGUAGE SWITCHER ---------- */
-    .language-switcher { position: relative; display: inline-block; }
-    .language-btn {
-      background: #f5ede4; border: 1px solid rgba(166,124,82,0.15);
-      color: #3d2c1e; padding: 8px 16px; border-radius: 30px;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer;
-      transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
+    /* ---------- LANGUAGE SWITCHER (Nav Item Style) ---------- */
+    .language-switcher {
+      position: relative;
+      display: inline-block;
     }
-    .language-btn:hover { background: #a67c52; color: #fff; border-color: #a67c52; }
-    .language-btn .current-flag { font-size: 1.2rem; }
+
+    /* ✅ Language button now matches nav links */
+    .language-btn {
+      background: transparent;
+      border: none;
+      color: #5a4030;
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
+
+    .language-btn .current-flag {
+      font-size: 1rem;
+    }
+
+    .language-btn i {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .language-btn:hover {
+      color: #a67c52;
+      transform: translateY(-2px);
+      background: rgba(166,124,82,0.05);
+    }
+
+    .language-btn:hover i {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    /* Underline animation for language button */
+    .language-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      width: 0;
+      height: 2.5px;
+      background: #a67c52;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .language-btn:hover::after {
+      width: 70%;
+    }
+
+    /* Active state for language button (when dropdown is open) */
+    .language-btn.active-lang-btn {
+      color: #a67c52;
+      background: rgba(166,124,82,0.08);
+    }
+
+    .language-btn.active-lang-btn::after {
+      width: 70%;
+      background: #a67c52;
+    }
+
+    .language-btn.active-lang-btn i {
+      opacity: 1;
+      color: #a67c52;
+    }
+
+    .language-btn:active {
+      transform: scale(0.95);
+    }
+
     .language-dropdown {
-      display: none; position: absolute; top: 45px; right: 0;
-      background: #fcf8f2; border-radius: 16px;
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: #fcf8f2;
+      border-radius: 16px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-      min-width: 180px; overflow: hidden; z-index: 100;
+      min-width: 180px;
+      overflow: hidden;
+      z-index: 100;
       border: 1px solid rgba(166,124,82,0.1);
     }
     .language-dropdown.active { display: block; animation: fadeDown 0.3s ease-out; }
@@ -534,6 +621,8 @@
       .nav-links { gap: 16px; font-size: 0.85rem; }
       .nav-links a { padding: 4px 8px; }
       .nav-links a i { font-size: 0.7rem; }
+      .language-btn { font-size: 0.85rem; padding: 4px 8px; }
+      .language-btn .current-flag { font-size: 0.85rem; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 30px; }
       .flag-icon { font-size: 1.8rem; }
       .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 2.2rem; }
@@ -541,13 +630,14 @@
       .gift-container { font-size: 2rem; padding: 8px 18px; gap: 14px; }
     }
     @media (max-width: 700px) {
-      nav { justify-content: center; padding: 10px 0 8px; gap: 10px; }
+      nav { justify-content: center; padding: 10px 0 8px; }
       .nav-links { gap: 10px; font-size: 0.78rem; justify-content: center; }
       .nav-links a { padding: 4px 6px; gap: 4px; }
       .nav-links a i { font-size: 0.6rem; }
       .nav-links a::after { display: none; }
-      .language-btn { padding: 6px 12px; font-size: 0.75rem; }
-      .language-btn i { font-size: 0.7rem; }
+      .language-btn { font-size: 0.78rem; padding: 4px 6px; gap: 4px; }
+      .language-btn .current-flag { font-size: 0.75rem; }
+      .language-btn i { font-size: 0.6rem; }
       .language-dropdown { min-width: 140px; right: -10px; }
       .language-dropdown a { padding: 8px 14px; font-size: 0.8rem; }
       .hero { padding: 40px 20px 40px; margin: 16px 0 20px; border-radius: 28px; min-height: 450px; }
@@ -600,8 +690,9 @@
       .nav-links { gap: 6px; font-size: 0.7rem; }
       .nav-links a { padding: 3px 4px; gap: 2px; }
       .nav-links a i { font-size: 0.5rem; }
-      .language-btn { padding: 4px 10px; font-size: 0.7rem; }
-      .language-btn i { font-size: 0.6rem; }
+      .language-btn { font-size: 0.7rem; padding: 3px 4px; gap: 2px; }
+      .language-btn .current-flag { font-size: 0.7rem; }
+      .language-btn i { font-size: 0.5rem; }
       .language-dropdown { min-width: 120px; right: -15px; }
       .language-dropdown a { padding: 6px 12px; font-size: 0.75rem; }
       .hero { padding: 30px 16px 30px; min-height: 350px; }
@@ -649,20 +740,8 @@
   </div>
 
   <div class="container">
-    <!-- NAVIGATION -->
+    <!-- ✅ NAVIGATION - Language Switcher moved to the right of Contact -->
     <nav id="navbar">
-      <div class="language-switcher">
-        <button class="language-btn" id="languageBtn">
-          <i class="fas fa-globe"></i> <span class="current-flag" id="currentFlag">🇷🇴</span> <span id="currentLangLabel">RO</span> <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="language-dropdown" id="languageDropdown">
-          <a href="#" data-lang="ro" class="active-lang"><span class="lang-flag">🇷🇴</span><span class="lang-name">Română</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
-          <a href="#" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
-          <a href="#" data-lang="fr"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
-          <a href="#" data-lang="de"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
-          <a href="#" data-lang="it"><span class="lang-flag">🇮🇹</span><span class="lang-name">Italiano</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
-        </div>
-      </div>
       <div class="nav-links">
         <a href="#home" class="active" data-key="nav-home"><i class="fas fa-home"></i> <span>Acasă</span></a>
         <a href="#about" data-key="nav-about"><i class="fas fa-users"></i> <span>Cine suntem</span></a>
@@ -670,6 +749,22 @@
         <a href="#team" data-key="nav-team"><i class="fas fa-user-friends"></i> <span>Echipa</span></a>
         <a href="#gallery" data-key="nav-gallery"><i class="fas fa-images"></i> <span>Galerie</span></a>
         <a href="#contact" data-key="nav-contact"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+
+        <!-- ✅ Language Switcher - Now placed here, after Contact -->
+        <div class="language-switcher">
+          <button class="language-btn" id="languageBtn">
+            <span class="current-flag" id="currentFlag">🇷🇴</span>
+            <span id="currentLangLabel">RO</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="language-dropdown" id="languageDropdown">
+            <a href="#" data-lang="ro" class="active-lang"><span class="lang-flag">🇷🇴</span><span class="lang-name">Română</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+            <a href="#" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+            <a href="#" data-lang="fr"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+            <a href="#" data-lang="de"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+            <a href="#" data-lang="it"><span class="lang-flag">🇮🇹</span><span class="lang-name">Italiano</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -943,8 +1038,8 @@
     `;
     document.head.appendChild(styleSheet);
 
-    // ⏱️ CHANGED: Auto-stop after 10 seconds (down from 20)
-    const stopDelay = 10000; // 10 seconds
+    // ⏱️ Auto-stop after 10 seconds
+    const stopDelay = 10000;
 
     setTimeout(function() {
       overlay.classList.add('fade-out');
@@ -1139,14 +1234,29 @@
     const flagMap = { ro: '🇷🇴', en: '🇬🇧', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹' };
     const langMap = { ro: 'RO', en: 'EN', fr: 'FR', de: 'DE', it: 'IT' };
 
-    langBtn.addEventListener('click', function(e) { e.stopPropagation(); langDropdown.classList.toggle('active'); });
-    document.addEventListener('click', function() { langDropdown.classList.remove('active'); });
+    // Toggle dropdown
+    langBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      langBtn.classList.toggle('active-lang-btn');
+      langDropdown.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+        langDropdown.classList.remove('active');
+        langBtn.classList.remove('active-lang-btn');
+      }
+    });
+
+    // Language selection
     langLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         const lang = this.dataset.lang;
         setLanguage(lang);
         langDropdown.classList.remove('active');
+        langBtn.classList.remove('active-lang-btn');
       });
     });
 
