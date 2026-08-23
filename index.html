@@ -241,7 +241,7 @@
     .btn i { margin-right: 8px; }
     .float { animation: float 3.2s ease-in-out infinite; }
 
-    /* ---------- AI READ BUTTON (now just "Ascultă") ---------- */
+    /* ---------- AI READ BUTTON ---------- */
     .ai-read-btn {
       display: inline-flex;
       align-items: center;
@@ -1057,19 +1057,17 @@
             <a href="#" data-lang="fr"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
             <a href="#" data-lang="de"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
             <a href="#" data-lang="it"><span class="lang-flag">🇮🇹</span><span class="lang-name">Italiano</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
+            <a href="#" data-lang="es"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span><span class="check-mark"><i class="fas fa-check"></i></span></a>
           </div>
         </div>
       </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO (Ascultă button REMOVED) -->
     <section class="hero" id="home">
       <div class="hero-content">
         <p class="subhead" data-key="hero-subhead"><i class="fas fa-feather-alt"></i> Unde căldura întâlnește îndrumarea divină <i class="fas fa-feather-alt"></i></p>
         <div class="btn-wrapper"><a href="#services" class="btn float" data-key="hero-btn"><i class="fas fa-arrow-right"></i> Descoperă serviciile noastre</a></div>
-      </div>
-      <div style="position:absolute;bottom:20px;right:20px;z-index:3;">
-        <button class="ai-read-btn" onclick="readSection('home')" aria-label="Citește această secțiune"><i class="fas fa-head-side-brain"></i> <span>Ascultă</span></button>
       </div>
     </section>
 
@@ -1350,18 +1348,18 @@
   </div>
 
   <script>
-    // ========== AI READ-ALOUD ENGINE (FREE - Web Speech API) ==========
+    // ========== AI READ-ALOUD ENGINE ==========
     let currentUtterance = null;
     let isSpeaking = false;
 
-    // Map our language codes to BCP 47 language tags for TTS
     function getSpeechLang(lang) {
       const map = {
         ro: 'ro-RO',
         en: 'en-US',
         fr: 'fr-FR',
         de: 'de-DE',
-        it: 'it-IT'
+        it: 'it-IT',
+        es: 'es-ES'
       };
       return map[lang] || 'ro-RO';
     }
@@ -1372,7 +1370,6 @@
         return;
       }
 
-      // Stop any ongoing speech
       if (isSpeaking) {
         window.speechSynthesis.cancel();
         isSpeaking = false;
@@ -1383,14 +1380,12 @@
         return;
       }
 
-      // Clean the text: remove extra whitespace, button labels, etc.
       let cleanText = text.replace(/\s+/g, ' ').trim();
       if (!cleanText) return;
 
       const utterance = new SpeechSynthesisUtterance(cleanText);
-      // Use the CURRENTLY SELECTED language (global currentLang)
       utterance.lang = getSpeechLang(currentLang);
-      utterance.rate = 0.9;     // Slightly slower for clarity
+      utterance.rate = 0.9;
       utterance.pitch = 1.0;
       utterance.volume = 1;
 
@@ -1424,33 +1419,26 @@
       window.speechSynthesis.speak(utterance);
     }
 
-    // Read an entire section by its ID
     function readSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (!section) return;
 
-      // Clone the section so we can remove interactive elements (buttons, etc.)
       const clone = section.cloneNode(true);
-      // Remove all .ai-read-btn from the clone
       const btns = clone.querySelectorAll('.ai-read-btn');
       btns.forEach(btn => btn.remove());
-      // Remove nav, footer, lightbox if they accidentally get cloned inside (they shouldn't, but safety)
       const extraNav = clone.querySelector('nav');
       if (extraNav) extraNav.remove();
       const extraFooter = clone.querySelector('footer');
       if (extraFooter) extraFooter.remove();
 
       let text = clone.textContent || clone.innerText;
-      // Further clean up: remove "Ascultă", "Ascultă tot", "Oprește" remnants
       text = text.replace(/Ascultă/g, '').replace(/Ascultă tot/g, '').replace(/Oprește/g, '').replace(/Citește această secțiune/g, '').replace(/Citește toate noutățile/g, '').replace(/Citește această știre/g, '');
       text = text.replace(/\s+/g, ' ').trim();
 
-      // Find the actual button in the live DOM to pass to speakText
       const liveBtn = section.querySelector('.ai-read-btn');
       speakText(text, liveBtn);
     }
 
-    // Read a single news card (from the button inside it)
     function readCard(button) {
       const card = button.closest('.news-card');
       if (!card) return;
@@ -1603,7 +1591,7 @@
       document.body.classList.add('holiday-mode');
     }
 
-    // ========== LANGUAGE TRANSLATIONS ==========
+    // ========== LANGUAGE TRANSLATIONS (including Spanish) ==========
     const translations = {
       ro: {
         'nav-home': 'Acasă', 'nav-about': 'Cine suntem', 'nav-services': 'Servicii', 'nav-team': 'Echipa', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-news': 'Noutăți', 'nav-contact': 'Contact',
@@ -1779,6 +1767,41 @@
         'form-submit': '✈️ Invia messaggio', 'form-success': '✅ <strong>Messaggio inviato con successo!</strong><br />Ti risponderemo presto.',
         'erasmus-text': '<strong>Questo servizio è sviluppato attraverso il progetto ACTION – Seniors Active in the Community</strong> (Nr. 2024-2-RO01-KA210-ADU-000278611), finanziato dall\'<strong>Unione Europea</strong> attraverso il programma <strong>Erasmus+</strong>.',
         'footer-text': '❤️ Con amore per la comunità ❤️'
+      },
+      es: {
+        'nav-home': 'Inicio', 'nav-about': 'Quiénes somos', 'nav-services': 'Servicios', 'nav-team': 'Equipo', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galería', 'nav-news': 'Noticias', 'nav-contact': 'Contacto',
+        'hero-subhead': '🪶 Donde el calor se encuentra con la guía divina 🪶', 'hero-btn': 'Descubre nuestros servicios',
+        'about-title': '¿Quiénes somos?', 'about-text': 'Somos una organización sin ánimo de lucro que cree con todo su corazón que <strong>cada persona importa</strong>, independientemente de su edad. Nuestra misión es construir <strong>puentes cálidos</strong> entre generaciones, acercar la educación a las comunidades y transformar la <strong>solidaridad</strong> en un motor real de cambio social, lleno de esperanza.',
+        'value1-title': 'Presencia', 'value1-desc': 'Estar donde se nos necesita, con cariño y sin juzgar.',
+        'value2-title': 'Regeneración', 'value2-desc': 'El bien hecho con fe tiene el poder de calentar y transformar comunidades.',
+        'value3-title': 'Fe', 'value3-desc': 'Nuestro llamado – <em>Divina Providența</em> – es un compromiso sagrado.',
+        'services-title': 'Nuestros Servicios', 'services-intro': '❤️ Cada servicio está construido con cuidado para aportar <strong>valor</strong> y <strong>calidez</strong> a nuestra comunidad. ❤️',
+        'service-title': 'Club de Mayores', 'service-sub': 'Un espacio vivo donde las personas crean relaciones, comparten experiencias, aprenden cosas nuevas y contribuyen activamente a la vida comunitaria.',
+        'service-desc': 'Creemos que un club de mayores es más que un lugar de encuentro: es un <strong>espacio vivo</strong> donde las personas crean relaciones, comparten experiencias, aprenden cosas nuevas y contribuyen activamente a la vida comunitaria.',
+        'service-offer': '🎁 ¿Qué ofrecemos?',
+        'service-feature1': 'Actividades y talleres diseñados especialmente para mayores, basados en las buenas prácticas probadas en el proyecto ACTION.',
+        'service-feature2': 'Un espacio de socialización y apoyo mutuo, donde la experiencia de cada uno cuenta.',
+        'service-feature3': 'Herramientas y recursos desarrollados para apoyar la participación activa de los mayores en la comunidad.',
+        'service-feature4': 'Historias y ejemplos reales que inspiran y conectan generaciones.',
+        'service-feature5': '🚌 <strong>Viajes y visitas guiadas</strong> a destinos europeos, pensados para la comodidad y el ritmo de los mayores, que amplían horizontes y aportan la alegría del descubrimiento a cualquier edad.',
+        'team-title': 'Nuestro Equipo', 'team-intro': '❤️ Las personas detrás de nuestra misión – dedicadas, apasionadas y siempre cerca de la comunidad. ❤️',
+        'mihaela-role': '👑 Miembro Fundador',
+        'mihaela-desc': 'Mihaela Ionescu es la fundadora de nuestro club de mayores, un proyecto nacido de la convicción de que la experiencia y la energía de los mayores pueden transformar una comunidad.<br /><br />Con una pasión constante por conectar a las personas y desarrollar actividades que aportan alegría, aprendizaje y pertenencia, Mihaela sentó las bases de este espacio, desde la primera idea hasta las actividades y programas que se desarrollan hoy a través del proyecto <strong>ACTION</strong>.<br /><br /><em>„Para ella, un club de mayores no es solo un lugar de encuentro, sino una comunidad donde cada historia importa y cada voz tiene valor.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">A través de la presencia, la escucha y la acción, construimos puentes entre generaciones.</span> ❤️',
+        'petru-role': '🤝 Voluntario y Beneficiario',
+        'petru-desc': '<span class="nickname">„Don Petrică”</span>, como todos lo llamamos cariñosamente, es una persona de confianza de nuestro equipo, en quien siempre podemos contar. Con un gran corazón y habilidad no solo para la electricidad sino también para todo tipo de reparaciones, siempre aporta buen humor, seriedad y un espíritu joven a su alrededor.<br /><br />Apreciamos su implicación constante, su forma elegante y juvenil de ser, y la alegría con la que nos acompaña en todo lo que hacemos.<br /><br />Desde hace más de un año disfrutamos de su presencia en la <span class="highlight">Asociația Divina Providența</span> y en el Centro de Día para Mayores, donde es tanto <span class="highlight">beneficiario</span> como <span class="highlight">voluntario implicado</span>. En nuestras actividades, pero sobre todo en las excursiones, siempre lo sentimos como un compañero fiable: atento, presente y dispuesto a ayudar siempre que se necesita.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Con Don Petrică, ¡cada día es más brillante!”</span> 💚',
+        'gropnita-title': 'Gropnița',
+        'gallery-title': 'Galería de Fotos',
+        'news-title': 'Noticias de la Comunidad',
+        'contact-title': 'Contacto', 'contact-question': '¿Quieres inscribirte o saber más detalles?',
+        'contact-address-label': 'Sede:', 'contact-address': 'Asociación Divina Providența, Gropnița, condado de Iași',
+        'contact-phone-label': 'Teléfono:', 'contact-email-label': 'Email:',
+        'contact-note': '❤️ ¡Estamos aquí para ti! No dudes en contactarnos. ❤️',
+        'form-title': '✏️ Envíanos un mensaje', 'form-name': '👤 Nombre y Apellidos', 'form-name-placeholder': 'Ej: Juan Pérez',
+        'form-phone': '📞 Número de teléfono', 'form-phone-placeholder': 'Ej: 0744 760 938',
+        'form-message': '💬 Mensaje', 'form-message-placeholder': 'Escribe tu mensaje aquí...',
+        'form-submit': '✈️ Enviar mensaje', 'form-success': '✅ <strong>¡Mensaje enviado con éxito!</strong><br />Nos pondremos en contacto pronto.',
+        'erasmus-text': '<strong>Este servicio se desarrolla a través del proyecto ACTION – Seniors Active in the Community</strong> (Nº 2024-2-RO01-KA210-ADU-000278611), financiado por la <strong>Unión Europea</strong> a través del programa <strong>Erasmus+</strong>.',
+        'footer-text': '❤️ Con amor por la comunidad ❤️'
       }
     };
 
@@ -1789,8 +1812,8 @@
     const langLabel = document.getElementById('currentLangLabel');
     const currentFlag = document.getElementById('currentFlag');
     const langLinks = document.querySelectorAll('.language-dropdown a');
-    const flagMap = { ro: '🇷🇴', en: '🇬🇧', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹' };
-    const langMap = { ro: 'RO', en: 'EN', fr: 'FR', de: 'DE', it: 'IT' };
+    const flagMap = { ro: '🇷🇴', en: '🇬🇧', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹', es: '🇪🇸' };
+    const langMap = { ro: 'RO', en: 'EN', fr: 'FR', de: 'DE', it: 'IT', es: 'ES' };
 
     langBtn.addEventListener('click', function(e) {
       e.stopPropagation();
