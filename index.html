@@ -242,6 +242,27 @@
       pointer-events: none;
     }
 
+    /* Particle container */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 215, 180, 0.5);
+      box-shadow: 0 0 20px rgba(255, 215, 180, 0.2);
+      animation: floatParticle var(--duration) ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(0px) scale(1); opacity: 0.2; }
+      100% { transform: translateY(-40px) scale(1.2); opacity: 0.7; }
+    }
+
     .hero-content {
       position: relative;
       z-index: 2;
@@ -270,8 +291,8 @@
       border-radius: 60px;
       border: 1px solid rgba(255, 255, 255, 0.5);
       display: inline-block;
-      align-self: flex-start; /* stick to top-left, but we want centered? Actually we want top center. We'll use align-self: center; */
       align-self: center;
+      margin-top: -30px; /* Moved much higher */
     }
     .hero .subhead i { color: #a67c52; margin: 0 6px; }
     .hero .btn-wrapper {
@@ -893,8 +914,8 @@
       margin-bottom: 10px;
     }
     .partner-logo {
-      width: 140px;
-      height: 140px;
+      width: 180px;  /* Made bigger */
+      height: 180px; /* Made bigger */
       border-radius: 50%;
       overflow: hidden;
       background: #fff;
@@ -988,7 +1009,7 @@
       .gropnita-history { gap: 6px; }
       .history-badge { font-size: 0.75rem; padding: 4px 12px; }
       .news-grid { grid-template-columns: 1fr 1fr; }
-      .partner-logo { width: 120px; height: 120px; }
+      .partner-logo { width: 150px; height: 150px; }
     }
     @media (max-width: 700px) {
       .container { padding: 0 16px; }
@@ -1003,7 +1024,7 @@
       .language-dropdown { min-width: 140px; right: -10px; }
       .language-dropdown a { padding: 8px 12px; font-size: 0.8rem; }
       .hero { padding: 30px 0 20px; min-height: 350px; border-radius: 24px; margin: 12px 0 16px; }
-      .hero .subhead { font-size: 0.95rem; padding: 6px 16px; }
+      .hero .subhead { font-size: 0.95rem; padding: 6px 16px; margin-top: -20px; }
       .btn { padding: 12px 28px; font-size: 0.9rem; }
       .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.6rem; }
       .mission-card { padding: 20px 16px; }
@@ -1057,7 +1078,7 @@
       .news-card-image { height: 160px; }
       .section-header-ai { flex-direction: column; align-items: stretch; }
       .section-header-ai .ai-read-btn { align-self: flex-start; }
-      .partner-logo { width: 100px; height: 100px; border-width: 3px; }
+      .partner-logo { width: 120px; height: 120px; border-width: 3px; }
       .partner-logo i { font-size: 2.8rem; }
       .floating-logo-container { padding: 20px 0 10px 0; }
     }
@@ -1072,7 +1093,7 @@
       .language-dropdown { min-width: 120px; right: -15px; }
       .language-dropdown a { padding: 6px 10px; font-size: 0.7rem; }
       .hero { padding: 20px 0 15px; min-height: 280px; border-radius: 20px; }
-      .hero .subhead { font-size: 0.85rem; padding: 4px 12px; }
+      .hero .subhead { font-size: 0.85rem; padding: 4px 12px; margin-top: -15px; }
       .btn { padding: 10px 20px; font-size: 0.8rem; }
       .btn i { margin-right: 4px; }
       .gallery-masonry { column-count: 2; column-gap: 10px; }
@@ -1104,7 +1125,7 @@
       .news-card-image { height: 140px; }
       .news-card-body { padding: 16px; }
       .news-card-title { font-size: 1.1rem; }
-      .partner-logo { width: 80px; height: 80px; border-width: 3px; }
+      .partner-logo { width: 100px; height: 100px; border-width: 3px; }
       .partner-logo i { font-size: 2.2rem; }
       .floating-logo-container { padding: 14px 0 8px 0; }
     }
@@ -1160,8 +1181,9 @@
       </div>
     </nav>
 
-    <!-- HERO - CLEAN & BRIGHT - subhead top, button bottom -->
+    <!-- HERO - CLEAN & BRIGHT - with subtle particles -->
     <section class="hero" id="home">
+      <div class="hero-particles" id="heroParticles"></div>
       <div class="hero-content">
         <p class="subhead" data-key="hero-subhead"><i class="fas fa-feather-alt"></i> Unde căldura întâlnește îndrumarea divină <i class="fas fa-feather-alt"></i></p>
         <div class="btn-wrapper"><a href="#services" class="btn float" data-key="hero-btn"><i class="fas fa-arrow-right"></i> Descoperă serviciile noastre</a></div>
@@ -1442,6 +1464,29 @@
   </div>
 
   <script>
+    // ========== GENERATE SUBTLE HERO PARTICLES ==========
+    (function createHeroParticles() {
+      const container = document.getElementById('heroParticles');
+      if (!container) return;
+      const count = 25;
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = 4 + Math.random() * 10; // 4px to 14px
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const duration = 6 + Math.random() * 8; // 6s to 14s
+        const delay = Math.random() * 10;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = left + '%';
+        particle.style.top = top + '%';
+        particle.style.setProperty('--duration', duration + 's');
+        particle.style.animationDelay = delay + 's';
+        container.appendChild(particle);
+      }
+    })();
+
     // ========== AI READ-ALOUD ENGINE ==========
     let currentUtterance = null;
     let isSpeaking = false;
