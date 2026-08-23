@@ -14,7 +14,7 @@
       background: #fcf8f2; color: #3d2c1e;
       line-height: 1.6; min-height: 100vh;
       display: flex; flex-direction: column;
-      overflow-x: hidden; /* ← CRITICAL FIX: stops horizontal page scroll */
+      overflow-x: hidden;
       width: 100%;
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
@@ -103,7 +103,7 @@
     nav {
       padding: 14px 0 10px;
       display: flex;
-      justify-content: center; /* Center the nav links */
+      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       border-bottom: 2px solid rgba(184, 142, 97, 0.12);
@@ -575,31 +575,22 @@
       color: #a67c52;
     }
 
-    /* ---------- GALLERY - HORIZONTAL SCROLL (PHONE FRIENDLY) ---------- */
+    /* ---------- GALLERY - MASONRY (PREVIOUS PREVIOUS WAY) ---------- */
     .gallery {
       padding: 30px 0 20px;
       margin-bottom: 10px;
       animation: fadeUp 0.8s ease-out 0.4s both;
       width: 100%;
-      overflow: hidden; /* Clips any potential overflow */
     }
 
-    .gallery-scroll {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      overflow-y: visible;
-      padding: 4px 4px 16px 4px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: #a67c52 #f5ede4;
-      width: 100%;
+    .gallery-masonry {
+      column-count: 4;
+      column-gap: 16px;
     }
 
-    .gallery-scroll .gallery-item {
-      flex: 0 0 200px;
-      scroll-snap-align: start;
+    .gallery-masonry .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
       border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08);
@@ -608,38 +599,20 @@
       background: #f5ede4;
     }
 
-    .gallery-scroll .gallery-item img {
+    .gallery-masonry .gallery-item img {
       width: 100%;
-      height: auto;
       display: block;
+      height: auto;
       transition: transform 0.5s ease;
     }
 
-    .gallery-scroll .gallery-item:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 16px 40px -12px rgba(166,124,82,0.25);
+    .gallery-masonry .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px -12px rgba(166,124,82,0.2);
     }
 
-    .gallery-scroll .gallery-item:hover img {
+    .gallery-masonry .gallery-item:hover img {
       transform: scale(1.05);
-    }
-
-    .gallery-scroll::-webkit-scrollbar {
-      height: 5px;
-    }
-
-    .gallery-scroll::-webkit-scrollbar-track {
-      background: #f5ede4;
-      border-radius: 10px;
-    }
-
-    .gallery-scroll::-webkit-scrollbar-thumb {
-      background: #a67c52;
-      border-radius: 10px;
-    }
-
-    .gallery-scroll::-webkit-scrollbar-thumb:hover {
-      background: #b88d62;
     }
 
     /* ---------- LIGHTBOX ---------- */
@@ -772,7 +745,7 @@
       .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -8px; }
       .hero .subhead { font-size: 1.1rem; }
       .hero .btn-wrapper { margin-top: 200px; }
-      .gallery-scroll .gallery-item { flex: 0 0 180px; }
+      .gallery-masonry { column-count: 3; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 24px; }
       .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .contact-header h2 { font-size: 1.8rem; }
       .gropnita-grid { grid-template-columns: 1fr; }
@@ -807,9 +780,8 @@
       .team-member-image.zoomed { transform: scale(1.3); }
       .team-member-info .member-name { font-size: 1.1rem; }
       .team-member.founder::before, .team-member.volunteer::before { font-size: 0.5rem; padding: 2px 8px; top: -6px; }
-      .gallery-scroll .gallery-item { flex: 0 0 160px; }
-      .gallery-scroll { gap: 10px; }
-      .gallery-scroll .gallery-item { border-radius: 14px; }
+      .gallery-masonry { column-count: 2; column-gap: 12px; }
+      .gallery-masonry .gallery-item { margin-bottom: 12px; border-radius: 14px; }
       .lightbox-prev, .lightbox-next { font-size: 1.6rem; padding: 12px 8px; }
       .lightbox-prev { left: 6px; }
       .lightbox-next { right: 6px; }
@@ -859,9 +831,8 @@
       .hero .btn-wrapper { margin-top: 120px; }
       .btn { padding: 10px 20px; font-size: 0.8rem; }
       .btn i { margin-right: 4px; }
-      .gallery-scroll .gallery-item { flex: 0 0 140px; }
-      .gallery-scroll { gap: 8px; }
-      .gallery-scroll .gallery-item { border-radius: 12px; }
+      .gallery-masonry { column-count: 2; column-gap: 10px; }
+      .gallery-masonry .gallery-item { margin-bottom: 10px; border-radius: 12px; }
       .lightbox-prev, .lightbox-next { font-size: 1.2rem; padding: 10px 6px; }
       .lightbox-prev { left: 4px; }
       .lightbox-next { right: 4px; }
@@ -1082,10 +1053,11 @@
       </div>
     </section>
 
-    <!-- GALLERY - HORIZONTAL SCROLL -->
+    <!-- GALLERY - MASONRY with ALL 22 images -->
     <section class="gallery" id="gallery">
       <div class="gallery-header"><h2><span data-key="gallery-title">Galerie Foto</span></h2><div class="divider"></div></div>
-      <div class="gallery-scroll" id="galleryScroll">
+      <div class="gallery-masonry" id="galleryMasonry">
+        <!-- gallery1 to gallery22 – all 22 images from your GitHub -->
         <div class="gallery-item"><img src="images/gallery1.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery2.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery3.jpg" alt="Gallery photo" /></div>
@@ -1098,8 +1070,16 @@
         <div class="gallery-item"><img src="images/gallery10.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery11.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery12.jpg" alt="Gallery photo" /></div>
-        <!-- ➕ ADD MORE IMAGES BELOW – uncomment or copy this line -->
-        <!-- <div class="gallery-item"><img src="images/gallery13.jpg" alt="Gallery photo" /></div> -->
+        <div class="gallery-item"><img src="images/gallery13.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery14.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery15.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery16.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery17.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery18.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery19.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery20.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery21.jpg" alt="Gallery photo" /></div>
+        <div class="gallery-item"><img src="images/gallery22.jpg" alt="Gallery photo" /></div>
       </div>
     </section>
 
