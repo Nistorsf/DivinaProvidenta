@@ -93,7 +93,7 @@
 
     @keyframes floatDecor { 0%,100% { transform: translateY(0px) rotate(0deg) scale(1); } 50% { transform: translateY(-10px) rotate(10deg) scale(1.1); } }
 
-    .holiday-mode .hero { box-shadow: inset 0 0 0 1000px rgba(60, 44, 30, 0.25); }
+    .holiday-mode .hero { box-shadow: inset 0 0 0 1000px rgba(60, 44, 30, 0.15); }
     .christmas .hero .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 60px rgba(255,200,100,0.2); }
     .newyear .hero .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 60px rgba(255,215,0,0.2); }
     .halloween .hero .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 60px rgba(255,100,0,0.2); }
@@ -205,39 +205,188 @@
     .language-dropdown a.active-lang .check-mark { opacity: 1; }
     @keyframes fadeDown { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
 
-    /* ---------- HERO ---------- */
+    /* ========== HERO - 3D BLENDER STYLE ========== */
     .hero {
-      position: relative; padding: 60px 0 40px;
-      text-align: center; border-radius: 32px;
-      margin: 16px 0 24px; overflow: hidden;
+      position: relative;
+      padding: 60px 0 40px;
+      text-align: center;
+      border-radius: 32px;
+      margin: 16px 0 24px;
+      overflow: hidden;
       animation: fadeUp 0.8s ease-out;
-      background-image: url('images/hero-bg.jpg');
-      background-size: cover; background-position: center; background-repeat: no-repeat;
-      box-shadow: inset 0 0 0 1000px rgba(60,44,30,0.35);
-      scroll-margin-top: 70px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-start;
-      min-height: 400px;
+      min-height: 450px;
       width: 100%;
+      background: linear-gradient(145deg, #fcf6ed, #f5ebe0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
     }
-    .hero.snow-effect .subhead { text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.1); }
-    .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; padding: 0 16px; }
+    /* Background image with bright, soft overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.45;
+      z-index: 0;
+      filter: brightness(1.2) saturate(1.1);
+    }
+    /* Bright warm gradient overlay - replaces the dark shadow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(255, 235, 210, 0.5) 0%, rgba(252, 248, 242, 0.2) 70%, rgba(166, 124, 82, 0.1) 100%);
+      z-index: 0;
+      mix-blend-mode: overlay;
+    }
+
+    /* 3D Scene Container */
+    .hero-3d-scene {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      perspective: 1200px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* Floating 3D Shapes */
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      transform-style: preserve-3d;
+      will-change: transform;
+      pointer-events: none;
+    }
+    /* Main glowing sphere */
+    .shape-sphere {
+      width: 180px;
+      height: 180px;
+      top: 15%;
+      right: 5%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 215, 180, 0.8), rgba(196, 122, 74, 0.3));
+      box-shadow: 0 0 80px rgba(196, 122, 74, 0.25), inset -20px -20px 60px rgba(120, 70, 40, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      animation: floatSphere 8s ease-in-out infinite;
+      backdrop-filter: blur(2px);
+    }
+    /* Floating ring (torus-like) */
+    .shape-ring {
+      width: 140px;
+      height: 140px;
+      bottom: 10%;
+      left: 2%;
+      border: 8px solid rgba(255, 215, 180, 0.4);
+      border-top-color: rgba(255, 200, 150, 0.8);
+      border-right-color: rgba(255, 200, 150, 0.2);
+      border-radius: 50%;
+      background: transparent;
+      box-shadow: 0 0 40px rgba(196, 122, 74, 0.1), inset 0 0 40px rgba(196, 122, 74, 0.05);
+      animation: floatRing 10s ease-in-out infinite;
+      transform: rotateX(65deg) rotateZ(20deg);
+    }
+    /* Small geometric cube (diamond) */
+    .shape-cube {
+      width: 30px;
+      height: 30px;
+      top: 30%;
+      left: 15%;
+      background: linear-gradient(135deg, rgba(255, 235, 210, 0.9), rgba(196, 122, 74, 0.6));
+      border-radius: 4px;
+      box-shadow: 0 0 30px rgba(196, 122, 74, 0.2);
+      animation: floatCube 7s ease-in-out infinite;
+      transform: rotateX(45deg) rotateY(45deg);
+      backdrop-filter: blur(2px);
+    }
+    /* Small floating particle sphere */
+    .shape-sphere-small {
+      width: 50px;
+      height: 50px;
+      bottom: 30%;
+      right: 15%;
+      background: radial-gradient(circle at 40% 40%, rgba(255, 225, 200, 0.7), rgba(166, 124, 82, 0.2));
+      box-shadow: 0 0 60px rgba(166, 124, 82, 0.15);
+      animation: floatSmall 6s ease-in-out infinite;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(2px);
+    }
+
+    @keyframes floatSphere {
+      0% { transform: translate(0, 0) rotateX(0deg) rotateY(0deg) scale(1); }
+      33% { transform: translate(-20px, -30px) rotateX(10deg) rotateY(15deg) scale(1.05); }
+      66% { transform: translate(15px, -15px) rotateX(-5deg) rotateY(-10deg) scale(0.95); }
+      100% { transform: translate(0, 0) rotateX(0deg) rotateY(0deg) scale(1); }
+    }
+    @keyframes floatRing {
+      0% { transform: rotateX(65deg) rotateZ(20deg) translateY(0px) scale(1); }
+      50% { transform: rotateX(75deg) rotateZ(40deg) translateY(-20px) scale(1.05); }
+      100% { transform: rotateX(65deg) rotateZ(20deg) translateY(0px) scale(1); }
+    }
+    @keyframes floatCube {
+      0% { transform: rotateX(45deg) rotateY(45deg) translateY(0px); }
+      50% { transform: rotateX(60deg) rotateY(80deg) translateY(-15px); }
+      100% { transform: rotateX(45deg) rotateY(45deg) translateY(0px); }
+    }
+    @keyframes floatSmall {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-10px, -20px) scale(1.1); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    /* Hero content positioning */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0 16px;
+    }
     .hero .subhead {
-      font-size: 1.2rem; max-width: 90%; margin: 0 auto 16px;
-      color: #ffffff; font-weight: 400; letter-spacing: 0.5px;
-      position: relative; z-index: 2; text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-      line-height: 1.4; animation: fadeUp 0.8s ease-out 0.2s both;
+      font-size: 1.3rem;
+      max-width: 90%;
+      margin: 0 auto 16px;
+      color: #3d2c1e;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 30px rgba(255, 255, 255, 0.5);
+      line-height: 1.4;
+      animation: fadeUp 0.8s ease-out 0.2s both;
+      background: rgba(255, 248, 242, 0.3);
+      backdrop-filter: blur(4px);
+      padding: 8px 24px;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
-    .hero .subhead i { color: #e8d5b8; margin: 0 6px; }
-    .hero .btn-wrapper { margin-top: 250px; position: relative; z-index: 2; animation: fadeUp 0.8s ease-out 0.4s both; }
+    .hero .subhead i { color: #a67c52; margin: 0 6px; }
+    .hero .btn-wrapper {
+      margin-top: 30px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.8s ease-out 0.4s both;
+    }
     .btn {
-      display: inline-block; background: #a67c52; color: #fff;
-      font-weight: 600; padding: 16px 40px; border-radius: 60px;
-      text-decoration: none; font-size: 1rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      display: inline-block;
+      background: #a67c52;
+      color: #fff;
+      font-weight: 600;
+      padding: 16px 44px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 12px 35px rgba(166, 124, 82, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
       transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .btn:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.35); background: #b88d62; }
+    .btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 45px rgba(166, 124, 82, 0.45); background: #b88d62; }
     .btn i { margin-right: 8px; }
     .float { animation: float 3.2s ease-in-out infinite; }
 
@@ -287,12 +436,12 @@
     }
 
     /* ---------- SECTIONS ---------- */
-    .about, .services, .team, .gropnita, .gallery, .news, .contact, .partners { scroll-margin-top: 70px; }
-    .about-header, .services-header, .team-header, .gropnita-header, .gallery-header, .news-header, .contact-header, .partners-header {
+    .about, .services, .team, .gropnita, .gallery, .news, .contact { scroll-margin-top: 70px; }
+    .about-header, .services-header, .team-header, .gropnita-header, .gallery-header, .news-header, .contact-header {
       text-align: center; margin-bottom: 20px; perspective: 800px;
       flex: 1;
     }
-    .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2, .partners-header h2 {
+    .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem; font-weight: 600; font-style: italic;
       color: #3d2c1e; display: inline-block;
@@ -300,19 +449,19 @@
       animation: float3D 6s ease-in-out infinite;
       transition: transform 0.3s ease; cursor: default;
     }
-    .about-header h2:hover, .services-header h2:hover, .team-header h2:hover, .gropnita-header h2:hover, .gallery-header h2:hover, .news-header h2:hover, .contact-header h2:hover, .partners-header h2:hover {
+    .about-header h2:hover, .services-header h2:hover, .team-header h2:hover, .gropnita-header h2:hover, .gallery-header h2:hover, .news-header h2:hover, .contact-header h2:hover {
       animation-play-state: paused; transform: translateZ(40px) scale(1.05);
     }
-    .about-header h2 span, .services-header h2 span, .team-header h2 span, .gropnita-header h2 span, .gallery-header h2 span, .news-header h2 span, .contact-header h2 span, .partners-header h2 span {
+    .about-header h2 span, .services-header h2 span, .team-header h2 span, .gropnita-header h2 span, .gallery-header h2 span, .news-header h2 span, .contact-header h2 span {
       color: #a67c52; background: #f5ede4; padding: 0 12px; border-radius: 40px;
       display: inline-block; box-shadow: 0 4px 20px rgba(166,124,82,0.08);
       transform-style: preserve-3d;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .about-header h2:hover span, .services-header h2:hover span, .team-header h2:hover span, .gropnita-header h2:hover span, .gallery-header h2:hover span, .news-header h2:hover span, .contact-header h2:hover span, .partners-header h2:hover span {
+    .about-header h2:hover span, .services-header h2:hover span, .team-header h2:hover span, .gropnita-header h2:hover span, .gallery-header h2:hover span, .news-header h2:hover span, .contact-header h2:hover span {
       box-shadow: 0 8px 40px rgba(166,124,82,0.15);
     }
-    .about-header .divider, .services-header .divider, .team-header .divider, .gropnita-header .divider, .gallery-header .divider, .news-header .divider, .contact-header .divider, .partners-header .divider {
+    .about-header .divider, .services-header .divider, .team-header .divider, .gropnita-header .divider, .gallery-header .divider, .news-header .divider, .contact-header .divider {
       width: 60px; height: 4px;
       background: linear-gradient(90deg, #c49a6c, #a67c52);
       margin: 8px auto 0; border-radius: 4px;
@@ -759,83 +908,6 @@
       color: #a67c52;
     }
 
-    /* ---------- PARTNERS SECTION ---------- */
-    .partners {
-      padding: 30px 0 20px;
-      margin-bottom: 10px;
-      animation: fadeUp 0.8s ease-out 0.4s both;
-    }
-    .partners-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .partner-logo {
-      background: #fff;
-      border-radius: 24px;
-      padding: 20px 30px;
-      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.10);
-      border: 1px solid rgba(166,124,82,0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 160px;
-      min-height: 100px;
-      cursor: default;
-    }
-    .partner-logo:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px -12px rgba(166,124,82,0.15);
-    }
-    .partner-logo img {
-      max-width: 100%;
-      max-height: 80px;
-      width: auto;
-      height: auto;
-      display: block;
-    }
-    .partner-logo.placeholder {
-      border: 2px dashed #c49a6c;
-      background: #fcf8f2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      color: #a67c52;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-    }
-    .partner-logo.placeholder i {
-      font-size: 2.2rem;
-      color: #c49a6c;
-    }
-
-    /* ---------- LIGHTBOX ---------- */
-    .lightbox {
-      display: none; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: rgba(0,0,0,0.92);
-      z-index: 9999; justify-content: center; align-items: center;
-      opacity: 0; transition: opacity 0.3s ease;
-    }
-    .lightbox.active { display: flex; opacity: 1; }
-    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; display: flex; align-items: center; justify-content: center; }
-    .lightbox-content img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-    .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2.5rem; cursor: pointer; z-index: 10; transition: transform 0.3s, color 0.3s; background: none; border: none; }
-    .lightbox-close:hover { transform: rotate(90deg); color: #c49a6c; }
-    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2rem; cursor: pointer; z-index: 10; padding: 15px 10px; transition: color 0.3s, transform 0.3s; background: none; border: none; }
-    .lightbox-prev:hover, .lightbox-next:hover { color: #c49a6c; transform: translateY(-50%) scale(1.1); }
-    .lightbox-prev { left: 10px; }
-    .lightbox-next { right: 10px; }
-    .lightbox-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.85rem; background: rgba(0,0,0,0.5); padding: 6px 16px; border-radius: 30px; backdrop-filter: blur(4px); }
-    .lightbox-counter i { color: #c49a6c; margin-right: 4px; }
-
     /* ---------- CONTACT ---------- */
     .contact { padding: 20px 0 20px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.4s both; }
     .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 900px; margin: 0 auto; align-items: start; }
@@ -906,6 +978,43 @@
     }
     .form-success i { font-size: 2rem; display: block; margin-bottom: 8px; }
 
+    /* ---------- FLOATING LOGO (BETWEEN CONTACT AND ERASMUS) ---------- */
+    .floating-logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0 20px 0;
+      margin-bottom: 10px;
+    }
+    .partner-logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 40px rgba(166, 124, 82, 0.2), 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 4px solid #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .partner-logo:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 20px 50px rgba(166, 124, 82, 0.3);
+    }
+    .partner-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .partner-logo i {
+      font-size: 3.5rem;
+      color: #a67c52;
+    }
+
     /* ---------- ERASMUS ---------- */
     .erasmus-section { padding: 10px 0 10px; animation: fadeUp 0.8s ease-out 0.5s both; }
     .erasmus-card {
@@ -923,6 +1032,25 @@
     .erasmus-card .erasmus-icons { margin-top: 6px; display: flex; justify-content: center; gap: 10px; font-size: 1rem; color: #a67c52; }
     .erasmus-card .erasmus-icons i { transition: transform 0.3s; }
     .erasmus-card .erasmus-icons i:hover { transform: scale(1.2); }
+
+    /* ---------- LIGHTBOX ---------- */
+    .lightbox {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.92);
+      z-index: 9999; justify-content: center; align-items: center;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .lightbox.active { display: flex; opacity: 1; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-content img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2.5rem; cursor: pointer; z-index: 10; transition: transform 0.3s, color 0.3s; background: none; border: none; }
+    .lightbox-close:hover { transform: rotate(90deg); color: #c49a6c; }
+    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2rem; cursor: pointer; z-index: 10; padding: 15px 10px; transition: color 0.3s, transform 0.3s; background: none; border: none; }
+    .lightbox-prev:hover, .lightbox-next:hover { color: #c49a6c; transform: translateY(-50%) scale(1.1); }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+    .lightbox-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.85rem; background: rgba(0,0,0,0.5); padding: 6px 16px; border-radius: 30px; backdrop-filter: blur(4px); }
+    .lightbox-counter i { color: #c49a6c; margin-right: 4px; }
 
     /* ---------- FOOTER ---------- */
     footer {
@@ -945,17 +1073,19 @@
       .team-member-image.zoomed { transform: scale(1.4); }
       .team-member-info .member-role { justify-content: center; }
       .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -8px; }
+      .hero { min-height: 400px; }
       .hero .subhead { font-size: 1.1rem; }
-      .hero .btn-wrapper { margin-top: 200px; }
+      .hero .btn-wrapper { margin-top: 30px; }
+      .shape-sphere { width: 130px; height: 130px; }
+      .shape-ring { width: 100px; height: 100px; }
       .gallery-masonry { column-count: 3; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 24px; }
-      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2, .partners-header h2 { font-size: 1.8rem; }
+      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.8rem; }
       .gropnita-grid { grid-template-columns: 1fr; }
       .gropnita-history { gap: 6px; }
       .history-badge { font-size: 0.75rem; padding: 4px 12px; }
       .news-grid { grid-template-columns: 1fr 1fr; }
-      .partners-grid { gap: 20px; }
-      .partner-logo { min-width: 140px; min-height: 80px; padding: 16px 24px; }
+      .partner-logo { width: 120px; height: 120px; }
     }
     @media (max-width: 700px) {
       .container { padding: 0 16px; }
@@ -969,11 +1099,15 @@
       .language-btn i { font-size: 0.6rem; }
       .language-dropdown { min-width: 140px; right: -10px; }
       .language-dropdown a { padding: 8px 12px; font-size: 0.8rem; }
-      .hero { padding: 30px 16px 30px; margin: 12px 0 16px; border-radius: 24px; min-height: 350px; }
-      .hero .subhead { font-size: 0.95rem; }
-      .hero .btn-wrapper { margin-top: 150px; }
+      .hero { padding: 40px 0 30px; min-height: 350px; border-radius: 24px; margin: 12px 0 16px; }
+      .hero .subhead { font-size: 0.95rem; padding: 6px 16px; }
+      .hero .btn-wrapper { margin-top: 20px; }
       .btn { padding: 12px 28px; font-size: 0.9rem; }
-      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2, .partners-header h2 { font-size: 1.6rem; }
+      .shape-sphere { width: 90px; height: 90px; top: 5%; right: 0%; }
+      .shape-ring { width: 70px; height: 70px; bottom: 5%; left: 0%; border-width: 5px; }
+      .shape-cube { width: 20px; height: 20px; top: 20%; left: 5%; }
+      .shape-sphere-small { width: 30px; height: 30px; bottom: 20%; right: 5%; }
+      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.6rem; }
       .mission-card { padding: 20px 16px; }
       .mission-card p { font-size: 0.9rem; }
       .values-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -1008,7 +1142,6 @@
       .gropnita { padding: 20px 0 30px; }
       .gallery { padding: 20px 0 16px; }
       .news { padding: 20px 0 16px; }
-      .partners { padding: 20px 0 16px; }
       .services-intro { font-size: 0.9rem; margin: 0 auto 14px; }
       .team-intro { font-size: 0.9rem; margin: 0 auto 16px; }
       .seasonal-particle { font-size: 1rem; }
@@ -1026,10 +1159,9 @@
       .news-card-image { height: 160px; }
       .section-header-ai { flex-direction: column; align-items: stretch; }
       .section-header-ai .ai-read-btn { align-self: flex-start; }
-      .partners-grid { gap: 16px; }
-      .partner-logo { min-width: 120px; min-height: 70px; padding: 14px 18px; }
-      .partner-logo.placeholder i { font-size: 1.8rem; }
-      .partner-logo.placeholder span { font-size: 0.8rem; }
+      .partner-logo { width: 100px; height: 100px; border-width: 3px; }
+      .partner-logo i { font-size: 2.8rem; }
+      .floating-logo-container { padding: 20px 0 10px 0; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 12px; }
@@ -1041,11 +1173,15 @@
       .language-btn i { font-size: 0.5rem; }
       .language-dropdown { min-width: 120px; right: -15px; }
       .language-dropdown a { padding: 6px 10px; font-size: 0.7rem; }
-      .hero { padding: 20px 12px 20px; min-height: 280px; border-radius: 20px; }
-      .hero .subhead { font-size: 0.85rem; }
-      .hero .btn-wrapper { margin-top: 120px; }
+      .hero { padding: 20px 0 20px; min-height: 280px; border-radius: 20px; }
+      .hero .subhead { font-size: 0.85rem; padding: 4px 12px; }
+      .hero .btn-wrapper { margin-top: 15px; }
       .btn { padding: 10px 20px; font-size: 0.8rem; }
       .btn i { margin-right: 4px; }
+      .shape-sphere { width: 60px; height: 60px; }
+      .shape-ring { width: 50px; height: 50px; border-width: 4px; }
+      .shape-cube { width: 15px; height: 15px; }
+      .shape-sphere-small { width: 25px; height: 25px; }
       .gallery-masonry { column-count: 2; column-gap: 10px; }
       .gallery-masonry .gallery-item { margin-bottom: 10px; border-radius: 12px; }
       .lightbox-prev, .lightbox-next { font-size: 1.2rem; padding: 10px 6px; }
@@ -1061,7 +1197,7 @@
       .contact-info .contact-question { font-size: 0.9rem; }
       .flag-icon { font-size: 1.2rem; }
       .erasmus-card p { font-size: 0.75rem; }
-      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2, .partners-header h2 { font-size: 1.4rem; }
+      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.4rem; }
       .seasonal-particle { font-size: 0.8rem; }
       .seasonal-banner { font-size: 0.7rem; padding: 4px 8px; }
       .gift-container { font-size: 1.2rem; padding: 4px 8px; gap: 6px; bottom: 4px; border-radius: 30px; }
@@ -1075,9 +1211,9 @@
       .news-card-image { height: 140px; }
       .news-card-body { padding: 16px; }
       .news-card-title { font-size: 1.1rem; }
-      .partners-grid { gap: 12px; flex-direction: column; align-items: center; }
-      .partner-logo { min-width: 160px; min-height: 70px; padding: 12px 20px; }
-      .partner-logo.placeholder i { font-size: 1.5rem; }
+      .partner-logo { width: 80px; height: 80px; border-width: 3px; }
+      .partner-logo i { font-size: 2.2rem; }
+      .floating-logo-container { padding: 14px 0 8px 0; }
     }
   </style>
 </head>
@@ -1111,7 +1247,6 @@
         <a href="#gallery" data-key="nav-gallery"><i class="fas fa-images"></i> <span>Galerie</span></a>
         <a href="#news" data-key="nav-news"><i class="fas fa-newspaper"></i> <span>Noutăți</span></a>
         <a href="#contact" data-key="nav-contact"><i class="fas fa-envelope"></i> <span>Contact</span></a>
-        <a href="#partners" data-key="nav-partners"><i class="fas fa-handshake"></i> <span>Parteneri</span></a>
 
         <!-- Language Switcher -->
         <div class="language-switcher">
@@ -1132,8 +1267,14 @@
       </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO - 3D BLENDER STYLE -->
     <section class="hero" id="home">
+      <div class="hero-3d-scene">
+        <div class="shape shape-sphere"></div>
+        <div class="shape shape-ring"></div>
+        <div class="shape shape-cube"></div>
+        <div class="shape shape-sphere-small"></div>
+      </div>
       <div class="hero-content">
         <p class="subhead" data-key="hero-subhead"><i class="fas fa-feather-alt"></i> Unde căldura întâlnește îndrumarea divină <i class="fas fa-feather-alt"></i></p>
         <div class="btn-wrapper"><a href="#services" class="btn float" data-key="hero-btn"><i class="fas fa-arrow-right"></i> Descoperă serviciile noastre</a></div>
@@ -1392,39 +1533,20 @@
       </div>
     </section>
 
+    <!-- ========== FLOATING LOGO - BETWEEN CONTACT AND ERASMUS ========== -->
+    <div class="floating-logo-container">
+      <div class="partner-logo">
+        <!-- 👇 Replace the src with your actual logo image -->
+        <img src="images/logo-placeholder.png" alt="Divina Providența Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-image\'></i>';" />
+      </div>
+    </div>
+
     <!-- ERASMUS -->
     <section class="erasmus-section">
       <div class="erasmus-card">
         <div class="flags-container"><span class="flag-icon">🇷🇴</span><span class="flag-icon">🇪🇺</span></div>
         <p data-key="erasmus-text"><strong>Acest serviciu este dezvoltat prin proiectul ACTION – Seniors Active in the Community</strong> (Nr. 2024-2-RO01-KA210-ADU-000278611), finanțat de <strong>Uniunea Europeană</strong> prin Programul <strong>Erasmus+</strong>.</p>
         <div class="erasmus-icons"><i class="fas fa-euro-sign"></i><i class="fas fa-graduation-cap"></i><i class="fas fa-globe-europe"></i></div>
-      </div>
-    </section>
-
-    <!-- ========== PARTNERS SECTION (New – Logo Space) ========== -->
-    <section class="partners" id="partners">
-      <div class="section-header-ai">
-        <div class="partners-header">
-          <h2><span data-key="partners-title">Partenerii Noștri</span></h2>
-          <div class="divider"></div>
-        </div>
-        <button class="ai-read-btn" onclick="readSection('partners')" aria-label="Citește această secțiune"><i class="fas fa-head-side-brain"></i> <span>Ascultă</span></button>
-      </div>
-      <div class="partners-grid">
-        <!-- 👇 REPLACE this placeholder with your actual logo image -->
-        <div class="partner-logo placeholder">
-          <i class="fas fa-image"></i>
-          <span>LOGO</span>
-        </div>
-        <!--
-          🔥 TO ADD YOUR ACTUAL LOGO, replace the block above with:
-          <div class="partner-logo">
-            <img src="images/your-logo.png" alt="Numele Organizației" />
-          </div>
-          Make sure your image is inside the "images" folder.
-        -->
-
-        <!-- You can add more partner logos by copying the <div class="partner-logo"> block -->
       </div>
     </section>
 
@@ -1679,7 +1801,7 @@
     // ========== LANGUAGE TRANSLATIONS ==========
     const translations = {
       ro: {
-        'nav-home': 'Acasă', 'nav-about': 'Cine suntem', 'nav-services': 'Servicii', 'nav-team': 'Echipa', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-news': 'Noutăți', 'nav-contact': 'Contact', 'nav-partners': 'Parteneri',
+        'nav-home': 'Acasă', 'nav-about': 'Cine suntem', 'nav-services': 'Servicii', 'nav-team': 'Echipa', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-news': 'Noutăți', 'nav-contact': 'Contact',
         'hero-subhead': '🪶 Unde căldura întâlnește îndrumarea divină 🪶', 'hero-btn': 'Descoperă serviciile noastre',
         'about-title': 'Cine suntem?', 'about-text': 'Suntem o organizație non-profit care crede din toată inima că <strong>fiecare om contează</strong>, indiferent de vârstă. Misiunea noastră este să construim <strong>punți calde</strong> între generații, să aducem educația mai aproape de comunități și să transformăm <strong>solidaritatea</strong> într-un motor real, plin de speranță, al schimbării sociale.',
         'value1-title': 'Prezență', 'value1-desc': 'Să fim acolo unde este nevoie, cu drag și fără judecată.',
@@ -1702,7 +1824,6 @@
         'gropnita-title': 'Gropnița',
         'gallery-title': 'Galerie Foto',
         'news-title': 'Noutăți din Comunitate',
-        'partners-title': 'Partenerii Noștri',
         'contact-title': 'Contact', 'contact-question': 'Vrei să te înscrii sau să afli mai multe detalii?',
         'contact-address-label': 'Sediul:', 'contact-address': 'Asociația Divina Providența, Gropnița, județul Iași',
         'contact-phone-label': 'Telefon:', 'contact-email-label': 'Email:',
@@ -1715,7 +1836,7 @@
         'footer-text': '❤️ Cu dragoste pentru comunitate ❤️'
       },
       en: {
-        'nav-home': 'Home', 'nav-about': 'About Us', 'nav-services': 'Services', 'nav-team': 'Team', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Gallery', 'nav-news': 'News', 'nav-contact': 'Contact', 'nav-partners': 'Partners',
+        'nav-home': 'Home', 'nav-about': 'About Us', 'nav-services': 'Services', 'nav-team': 'Team', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Gallery', 'nav-news': 'News', 'nav-contact': 'Contact',
         'hero-subhead': '🪶 Where warmth meets divine guidance 🪶', 'hero-btn': 'Discover our services',
         'about-title': 'About Us?', 'about-text': 'We are a non-profit organization that wholeheartedly believes that <strong>every person matters</strong>, regardless of age. Our mission is to build <strong>warm bridges</strong> between generations, bring education closer to communities, and transform <strong>solidarity</strong> into a real engine of social change, full of hope.',
         'value1-title': 'Presence', 'value1-desc': 'To be where needed, with love and without judgment.',
@@ -1738,7 +1859,6 @@
         'gropnita-title': 'Gropnița',
         'gallery-title': 'Photo Gallery',
         'news-title': 'Community News',
-        'partners-title': 'Our Partners',
         'contact-title': 'Contact', 'contact-question': 'Do you want to sign up or find out more details?',
         'contact-address-label': 'Address:', 'contact-address': 'Divina Providența Association, Gropnița, Iași County',
         'contact-phone-label': 'Phone:', 'contact-email-label': 'Email:',
@@ -1751,7 +1871,7 @@
         'footer-text': '❤️ With love for the community ❤️'
       },
       fr: {
-        'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-services': 'Services', 'nav-team': 'Équipe', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-news': 'Actualités', 'nav-contact': 'Contact', 'nav-partners': 'Partenaires',
+        'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-services': 'Services', 'nav-team': 'Équipe', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-news': 'Actualités', 'nav-contact': 'Contact',
         'hero-subhead': '🪶 Où la chaleur rencontre la guidance divine 🪶', 'hero-btn': 'Découvrez nos services',
         'about-title': 'Qui sommes-nous ?', 'about-text': 'Nous sommes une organisation à but non lucratif qui croit de tout cœur que <strong>chaque personne compte</strong>, quel que soit son âge. Notre mission est de construire des <strong>ponts chaleureux</strong> entre les générations, de rapprocher l\'éducation des communautés et de transformer la <strong>solidarité</strong> en un moteur réel de changement social, plein d\'espoir.',
         'value1-title': 'Présence', 'value1-desc': 'Être là où c\'est nécessaire, avec amour et sans jugement.',
@@ -1774,7 +1894,6 @@
         'gropnita-title': 'Gropnița',
         'gallery-title': 'Galerie Photo',
         'news-title': 'Actualités communautaires',
-        'partners-title': 'Nos Partenaires',
         'contact-title': 'Contact', 'contact-question': 'Vous voulez vous inscrire ou en savoir plus ?',
         'contact-address-label': 'Adresse :', 'contact-address': 'Association Divina Providența, Gropnița, comté de Iași',
         'contact-phone-label': 'Téléphone :', 'contact-email-label': 'Email :',
@@ -1787,7 +1906,7 @@
         'footer-text': '❤️ Avec amour pour la communauté ❤️'
       },
       de: {
-        'nav-home': 'Startseite', 'nav-about': 'Über uns', 'nav-services': 'Dienstleistungen', 'nav-team': 'Team', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-news': 'Neuigkeiten', 'nav-contact': 'Kontakt', 'nav-partners': 'Partner',
+        'nav-home': 'Startseite', 'nav-about': 'Über uns', 'nav-services': 'Dienstleistungen', 'nav-team': 'Team', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-news': 'Neuigkeiten', 'nav-contact': 'Kontakt',
         'hero-subhead': '🪶 Wo Wärme auf göttliche Führung trifft 🪶', 'hero-btn': 'Entdecken Sie unsere Dienstleistungen',
         'about-title': 'Wer sind wir?', 'about-text': 'Wir sind eine gemeinnützige Organisation, die von ganzem Herzen glaubt, dass <strong>jeder Mensch zählt</strong>, unabhängig vom Alter. Unsere Mission ist es, <strong>warme Brücken</strong> zwischen Generationen zu bauen, Bildung näher an die Gemeinschaften zu bringen und <strong>Solidarität</strong> in eine reale, hoffnungsvolle Triebkraft des sozialen Wandels zu verwandeln.',
         'value1-title': 'Präsenz', 'value1-desc': 'Dort zu sein, wo es nötig ist, mit Liebe und ohne Urteil.',
@@ -1810,7 +1929,6 @@
         'gropnita-title': 'Gropnița',
         'gallery-title': 'Fotogalerie',
         'news-title': 'Gemeindenachrichten',
-        'partners-title': 'Unsere Partner',
         'contact-title': 'Kontakt', 'contact-question': 'Möchten Sie sich anmelden oder weitere Details erfahren?',
         'contact-address-label': 'Adresse:', 'contact-address': 'Divina Providența Verein, Gropnița, Kreis Iași',
         'contact-phone-label': 'Telefon:', 'contact-email-label': 'Email:',
@@ -1823,7 +1941,7 @@
         'footer-text': '❤️ Mit Liebe für die Gemeinschaft ❤️'
       },
       it: {
-        'nav-home': 'Home', 'nav-about': 'Chi siamo', 'nav-services': 'Servizi', 'nav-team': 'Squadra', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galleria', 'nav-news': 'Notizie', 'nav-contact': 'Contatti', 'nav-partners': 'Partner',
+        'nav-home': 'Home', 'nav-about': 'Chi siamo', 'nav-services': 'Servizi', 'nav-team': 'Squadra', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galleria', 'nav-news': 'Notizie', 'nav-contact': 'Contatti',
         'hero-subhead': '🪶 Dove il calore incontra la guida divina 🪶', 'hero-btn': 'Scopri i nostri servizi',
         'about-title': 'Chi siamo?', 'about-text': 'Siamo un\'organizzazione no-profit che crede con tutto il cuore che <strong>ogni persona conta</strong>, indipendentemente dall\'età. La nostra missione è costruire <strong>ponti caldi</strong> tra le generazioni, avvicinare l\'istruzione alle comunità e trasformare la <strong>solidarietà</strong> in un motore reale di cambiamento sociale, pieno di speranza.',
         'value1-title': 'Presenza', 'value1-desc': 'Essere dove c\'è bisogno, con amore e senza giudizio.',
@@ -1846,7 +1964,6 @@
         'gropnita-title': 'Gropnița',
         'gallery-title': 'Galleria Fotografica',
         'news-title': 'Notizie dalla comunità',
-        'partners-title': 'I Nostri Partner',
         'contact-title': 'Contatti', 'contact-question': 'Vuoi iscriverti o saperne di più?',
         'contact-address-label': 'Sede:', 'contact-address': 'Associazione Divina Providența, Gropnița, contea di Iași',
         'contact-phone-label': 'Telefono:', 'contact-email-label': 'Email:',
@@ -1859,7 +1976,7 @@
         'footer-text': '❤️ Con amore per la comunità ❤️'
       },
       es: {
-        'nav-home': 'Inicio', 'nav-about': 'Quiénes somos', 'nav-services': 'Servicios', 'nav-team': 'Equipo', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galería', 'nav-news': 'Noticias', 'nav-contact': 'Contacto', 'nav-partners': 'Socios',
+        'nav-home': 'Inicio', 'nav-about': 'Quiénes somos', 'nav-services': 'Servicios', 'nav-team': 'Equipo', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galería', 'nav-news': 'Noticias', 'nav-contact': 'Contacto',
         'hero-subhead': '🪶 Donde el calor se encuentra con la guía divina 🪶', 'hero-btn': 'Descubre nuestros servicios',
         'about-title': '¿Quiénes somos?', 'about-text': 'Somos una organización sin ánimo de lucro que cree con todo su corazón que <strong>cada persona importa</strong>, independientemente de su edad. Nuestra misión es construir <strong>puentes cálidos</strong> entre generaciones, acercar la educación a las comunidades y transformar la <strong>solidaridad</strong> en un motor real de cambio social, lleno de esperanza.',
         'value1-title': 'Presencia', 'value1-desc': 'Estar donde se nos necesita, con cariño y sin juzgar.',
@@ -1882,7 +1999,6 @@
         'gropnita-title': 'Gropnița',
         'gallery-title': 'Galería de Fotos',
         'news-title': 'Noticias de la Comunidad',
-        'partners-title': 'Nuestros Socios',
         'contact-title': 'Contacto', 'contact-question': '¿Quieres inscribirte o saber más detalles?',
         'contact-address-label': 'Sede:', 'contact-address': 'Asociación Divina Providența, Gropnița, condado de Iași',
         'contact-phone-label': 'Teléfono:', 'contact-email-label': 'Email:',
