@@ -205,10 +205,10 @@
     .language-dropdown a.active-lang .check-mark { opacity: 1; }
     @keyframes fadeDown { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
 
-    /* ========== HERO - 3D BLENDER STYLE ========== */
+    /* ========== HERO - CLEAN & BRIGHT ========== */
     .hero {
       position: relative;
-      padding: 60px 0 40px;
+      padding: 80px 0 60px;
       text-align: center;
       border-radius: 32px;
       margin: 16px 0 24px;
@@ -216,13 +216,13 @@
       animation: fadeUp 0.8s ease-out;
       min-height: 450px;
       width: 100%;
-      background: linear-gradient(145deg, #fcf6ed, #f5ebe0);
+      background: #fcf6ed; /* fallback */
       display: flex;
       align-items: center;
       justify-content: center;
       isolation: isolate;
     }
-    /* Background image with bright, soft overlay */
+    /* Background image – clean, with original brightness */
     .hero::before {
       content: '';
       position: absolute;
@@ -230,114 +230,20 @@
       background-image: url('images/hero-bg.jpg');
       background-size: cover;
       background-position: center;
-      opacity: 0.45;
+      opacity: 1; /* full brightness, no darkening */
       z-index: 0;
-      filter: brightness(1.2) saturate(1.1);
+      filter: brightness(1) saturate(1); /* original */
     }
-    /* Bright warm gradient overlay - replaces the dark shadow */
+    /* Very subtle warm overlay to improve text readability, but not dim the image */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 40%, rgba(255, 235, 210, 0.5) 0%, rgba(252, 248, 242, 0.2) 70%, rgba(166, 124, 82, 0.1) 100%);
+      background: radial-gradient(circle at 30% 40%, rgba(255, 235, 210, 0.25), rgba(252, 248, 242, 0.1) 70%);
       z-index: 0;
-      mix-blend-mode: overlay;
-    }
-
-    /* 3D Scene Container */
-    .hero-3d-scene {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      perspective: 1200px;
-      overflow: hidden;
       pointer-events: none;
     }
 
-    /* Floating 3D Shapes */
-    .shape {
-      position: absolute;
-      border-radius: 50%;
-      transform-style: preserve-3d;
-      will-change: transform;
-      pointer-events: none;
-    }
-    /* Main glowing sphere */
-    .shape-sphere {
-      width: 180px;
-      height: 180px;
-      top: 15%;
-      right: 5%;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 215, 180, 0.8), rgba(196, 122, 74, 0.3));
-      box-shadow: 0 0 80px rgba(196, 122, 74, 0.25), inset -20px -20px 60px rgba(120, 70, 40, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      animation: floatSphere 8s ease-in-out infinite;
-      backdrop-filter: blur(2px);
-    }
-    /* Floating ring (torus-like) */
-    .shape-ring {
-      width: 140px;
-      height: 140px;
-      bottom: 10%;
-      left: 2%;
-      border: 8px solid rgba(255, 215, 180, 0.4);
-      border-top-color: rgba(255, 200, 150, 0.8);
-      border-right-color: rgba(255, 200, 150, 0.2);
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: 0 0 40px rgba(196, 122, 74, 0.1), inset 0 0 40px rgba(196, 122, 74, 0.05);
-      animation: floatRing 10s ease-in-out infinite;
-      transform: rotateX(65deg) rotateZ(20deg);
-    }
-    /* Small geometric cube (diamond) */
-    .shape-cube {
-      width: 30px;
-      height: 30px;
-      top: 30%;
-      left: 15%;
-      background: linear-gradient(135deg, rgba(255, 235, 210, 0.9), rgba(196, 122, 74, 0.6));
-      border-radius: 4px;
-      box-shadow: 0 0 30px rgba(196, 122, 74, 0.2);
-      animation: floatCube 7s ease-in-out infinite;
-      transform: rotateX(45deg) rotateY(45deg);
-      backdrop-filter: blur(2px);
-    }
-    /* Small floating particle sphere */
-    .shape-sphere-small {
-      width: 50px;
-      height: 50px;
-      bottom: 30%;
-      right: 15%;
-      background: radial-gradient(circle at 40% 40%, rgba(255, 225, 200, 0.7), rgba(166, 124, 82, 0.2));
-      box-shadow: 0 0 60px rgba(166, 124, 82, 0.15);
-      animation: floatSmall 6s ease-in-out infinite;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
-    }
-
-    @keyframes floatSphere {
-      0% { transform: translate(0, 0) rotateX(0deg) rotateY(0deg) scale(1); }
-      33% { transform: translate(-20px, -30px) rotateX(10deg) rotateY(15deg) scale(1.05); }
-      66% { transform: translate(15px, -15px) rotateX(-5deg) rotateY(-10deg) scale(0.95); }
-      100% { transform: translate(0, 0) rotateX(0deg) rotateY(0deg) scale(1); }
-    }
-    @keyframes floatRing {
-      0% { transform: rotateX(65deg) rotateZ(20deg) translateY(0px) scale(1); }
-      50% { transform: rotateX(75deg) rotateZ(40deg) translateY(-20px) scale(1.05); }
-      100% { transform: rotateX(65deg) rotateZ(20deg) translateY(0px) scale(1); }
-    }
-    @keyframes floatCube {
-      0% { transform: rotateX(45deg) rotateY(45deg) translateY(0px); }
-      50% { transform: rotateX(60deg) rotateY(80deg) translateY(-15px); }
-      100% { transform: rotateX(45deg) rotateY(45deg) translateY(0px); }
-    }
-    @keyframes floatSmall {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-10px, -20px) scale(1.1); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-
-    /* Hero content positioning */
     .hero-content {
       position: relative;
       z-index: 2;
@@ -357,14 +263,15 @@
       letter-spacing: 0.5px;
       position: relative;
       z-index: 2;
-      text-shadow: 0 2px 30px rgba(255, 255, 255, 0.5);
+      text-shadow: 0 2px 20px rgba(255, 255, 255, 0.6);
       line-height: 1.4;
       animation: fadeUp 0.8s ease-out 0.2s both;
-      background: rgba(255, 248, 242, 0.3);
+      background: rgba(255, 248, 242, 0.5);
       backdrop-filter: blur(4px);
       padding: 8px 24px;
       border-radius: 60px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: inline-block;
     }
     .hero .subhead i { color: #a67c52; margin: 0 6px; }
     .hero .btn-wrapper {
@@ -1073,11 +980,9 @@
       .team-member-image.zoomed { transform: scale(1.4); }
       .team-member-info .member-role { justify-content: center; }
       .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -8px; }
-      .hero { min-height: 400px; }
+      .hero { min-height: 400px; padding: 60px 0 40px; }
       .hero .subhead { font-size: 1.1rem; }
       .hero .btn-wrapper { margin-top: 30px; }
-      .shape-sphere { width: 130px; height: 130px; }
-      .shape-ring { width: 100px; height: 100px; }
       .gallery-masonry { column-count: 3; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 24px; }
       .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.8rem; }
@@ -1103,10 +1008,6 @@
       .hero .subhead { font-size: 0.95rem; padding: 6px 16px; }
       .hero .btn-wrapper { margin-top: 20px; }
       .btn { padding: 12px 28px; font-size: 0.9rem; }
-      .shape-sphere { width: 90px; height: 90px; top: 5%; right: 0%; }
-      .shape-ring { width: 70px; height: 70px; bottom: 5%; left: 0%; border-width: 5px; }
-      .shape-cube { width: 20px; height: 20px; top: 20%; left: 5%; }
-      .shape-sphere-small { width: 30px; height: 30px; bottom: 20%; right: 5%; }
       .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.6rem; }
       .mission-card { padding: 20px 16px; }
       .mission-card p { font-size: 0.9rem; }
@@ -1178,10 +1079,6 @@
       .hero .btn-wrapper { margin-top: 15px; }
       .btn { padding: 10px 20px; font-size: 0.8rem; }
       .btn i { margin-right: 4px; }
-      .shape-sphere { width: 60px; height: 60px; }
-      .shape-ring { width: 50px; height: 50px; border-width: 4px; }
-      .shape-cube { width: 15px; height: 15px; }
-      .shape-sphere-small { width: 25px; height: 25px; }
       .gallery-masonry { column-count: 2; column-gap: 10px; }
       .gallery-masonry .gallery-item { margin-bottom: 10px; border-radius: 12px; }
       .lightbox-prev, .lightbox-next { font-size: 1.2rem; padding: 10px 6px; }
@@ -1267,14 +1164,8 @@
       </div>
     </nav>
 
-    <!-- HERO - 3D BLENDER STYLE -->
+    <!-- HERO - CLEAN & BRIGHT -->
     <section class="hero" id="home">
-      <div class="hero-3d-scene">
-        <div class="shape shape-sphere"></div>
-        <div class="shape shape-ring"></div>
-        <div class="shape shape-cube"></div>
-        <div class="shape shape-sphere-small"></div>
-      </div>
       <div class="hero-content">
         <p class="subhead" data-key="hero-subhead"><i class="fas fa-feather-alt"></i> Unde căldura întâlnește îndrumarea divină <i class="fas fa-feather-alt"></i></p>
         <div class="btn-wrapper"><a href="#services" class="btn float" data-key="hero-btn"><i class="fas fa-arrow-right"></i> Descoperă serviciile noastre</a></div>
