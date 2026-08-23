@@ -208,7 +208,7 @@
     /* ========== HERO - CLEAN & BRIGHT ========== */
     .hero {
       position: relative;
-      padding: 80px 0 60px;
+      padding: 0;
       text-align: center;
       border-radius: 32px;
       margin: 16px 0 24px;
@@ -216,13 +216,12 @@
       animation: fadeUp 0.8s ease-out;
       min-height: 450px;
       width: 100%;
-      background: #fcf6ed; /* fallback */
+      background: #fcf6ed;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
       isolation: isolate;
     }
-    /* Background image – clean, with original brightness */
     .hero::before {
       content: '';
       position: absolute;
@@ -230,11 +229,10 @@
       background-image: url('images/hero-bg.jpg');
       background-size: cover;
       background-position: center;
-      opacity: 1; /* full brightness, no darkening */
+      opacity: 1;
       z-index: 0;
-      filter: brightness(1) saturate(1); /* original */
+      filter: brightness(1) saturate(1);
     }
-    /* Very subtle warm overlay to improve text readability, but not dim the image */
     .hero::after {
       content: '';
       position: absolute;
@@ -249,20 +247,20 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
       width: 100%;
-      padding: 0 16px;
+      padding: 40px 20px 30px;
+      min-height: inherit;
+      flex: 1;
     }
     .hero .subhead {
       font-size: 1.3rem;
       max-width: 90%;
-      margin: 0 auto 16px;
+      margin: 0;
       color: #3d2c1e;
       font-weight: 500;
       letter-spacing: 0.5px;
-      position: relative;
-      z-index: 2;
       text-shadow: 0 2px 20px rgba(255, 255, 255, 0.6);
       line-height: 1.4;
       animation: fadeUp 0.8s ease-out 0.2s both;
@@ -272,13 +270,14 @@
       border-radius: 60px;
       border: 1px solid rgba(255, 255, 255, 0.5);
       display: inline-block;
+      align-self: flex-start; /* stick to top-left, but we want centered? Actually we want top center. We'll use align-self: center; */
+      align-self: center;
     }
     .hero .subhead i { color: #a67c52; margin: 0 6px; }
     .hero .btn-wrapper {
-      margin-top: 30px;
-      position: relative;
-      z-index: 2;
+      margin: 0;
       animation: fadeUp 0.8s ease-out 0.4s both;
+      align-self: center;
     }
     .btn {
       display: inline-block;
@@ -980,9 +979,8 @@
       .team-member-image.zoomed { transform: scale(1.4); }
       .team-member-info .member-role { justify-content: center; }
       .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -8px; }
-      .hero { min-height: 400px; padding: 60px 0 40px; }
+      .hero { min-height: 400px; }
       .hero .subhead { font-size: 1.1rem; }
-      .hero .btn-wrapper { margin-top: 30px; }
       .gallery-masonry { column-count: 3; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 24px; }
       .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.8rem; }
@@ -1004,9 +1002,8 @@
       .language-btn i { font-size: 0.6rem; }
       .language-dropdown { min-width: 140px; right: -10px; }
       .language-dropdown a { padding: 8px 12px; font-size: 0.8rem; }
-      .hero { padding: 40px 0 30px; min-height: 350px; border-radius: 24px; margin: 12px 0 16px; }
+      .hero { padding: 30px 0 20px; min-height: 350px; border-radius: 24px; margin: 12px 0 16px; }
       .hero .subhead { font-size: 0.95rem; padding: 6px 16px; }
-      .hero .btn-wrapper { margin-top: 20px; }
       .btn { padding: 12px 28px; font-size: 0.9rem; }
       .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .news-header h2, .contact-header h2 { font-size: 1.6rem; }
       .mission-card { padding: 20px 16px; }
@@ -1074,9 +1071,8 @@
       .language-btn i { font-size: 0.5rem; }
       .language-dropdown { min-width: 120px; right: -15px; }
       .language-dropdown a { padding: 6px 10px; font-size: 0.7rem; }
-      .hero { padding: 20px 0 20px; min-height: 280px; border-radius: 20px; }
+      .hero { padding: 20px 0 15px; min-height: 280px; border-radius: 20px; }
       .hero .subhead { font-size: 0.85rem; padding: 4px 12px; }
-      .hero .btn-wrapper { margin-top: 15px; }
       .btn { padding: 10px 20px; font-size: 0.8rem; }
       .btn i { margin-right: 4px; }
       .gallery-masonry { column-count: 2; column-gap: 10px; }
@@ -1164,7 +1160,7 @@
       </div>
     </nav>
 
-    <!-- HERO - CLEAN & BRIGHT -->
+    <!-- HERO - CLEAN & BRIGHT - subhead top, button bottom -->
     <section class="hero" id="home">
       <div class="hero-content">
         <p class="subhead" data-key="hero-subhead"><i class="fas fa-feather-alt"></i> Unde căldura întâlnește îndrumarea divină <i class="fas fa-feather-alt"></i></p>
@@ -1427,8 +1423,8 @@
     <!-- ========== FLOATING LOGO - BETWEEN CONTACT AND ERASMUS ========== -->
     <div class="floating-logo-container">
       <div class="partner-logo">
-        <!-- 👇 Replace the src with your actual logo image -->
-        <img src="images/logo-placeholder.png" alt="Divina Providența Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-image\'></i>';" />
+        <!-- 👇 Your actual logo (logo.png) – now pointing to the correct file -->
+        <img src="images/logo.png" alt="Divina Providența Logo" />
       </div>
     </div>
 
