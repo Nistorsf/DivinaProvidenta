@@ -588,39 +588,69 @@
       color: #a67c52;
     }
 
-    /* ---------- GALLERY - MASONRY ---------- */
-    .gallery { padding: 40px 0 50px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.4s both; }
-
-    .gallery-masonry {
-      column-count: 4;
-      column-gap: 16px;
+    /* ---------- GALLERY - HORIZONTAL SCROLL ---------- */
+    .gallery {
+      padding: 40px 0 30px;
+      margin-bottom: 10px;
+      animation: fadeUp 0.8s ease-out 0.4s both;
     }
 
-    .gallery-masonry .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 16px;
+    .gallery-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      overflow-y: visible;
+      padding: 4px 4px 20px 4px; /* extra bottom space for scrollbar and shadow */
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #a67c52 #f5ede4;
+    }
+
+    .gallery-scroll .gallery-item {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       background: #f5ede4;
     }
 
-    .gallery-masonry .gallery-item img {
+    .gallery-scroll .gallery-item img {
       width: 100%;
-      display: block;
       height: auto;
-      transition: transform 0.5s;
+      display: block;
+      transition: transform 0.5s ease;
     }
 
-    .gallery-masonry .gallery-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px -12px rgba(166,124,82,0.2);
+    .gallery-scroll .gallery-item:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 40px -12px rgba(166,124,82,0.25);
     }
 
-    .gallery-masonry .gallery-item:hover img {
+    .gallery-scroll .gallery-item:hover img {
       transform: scale(1.05);
+    }
+
+    /* Custom scrollbar styling */
+    .gallery-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .gallery-scroll::-webkit-scrollbar-track {
+      background: #f5ede4;
+      border-radius: 10px;
+    }
+
+    .gallery-scroll::-webkit-scrollbar-thumb {
+      background: #a67c52;
+      border-radius: 10px;
+    }
+
+    .gallery-scroll::-webkit-scrollbar-thumb:hover {
+      background: #b88d62;
     }
 
     /* ---------- LIGHTBOX ---------- */
@@ -753,7 +783,7 @@
       .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -10px; }
       .hero .subhead { font-size: 1.2rem; }
       .hero .btn-wrapper { margin-top: 280px; }
-      .gallery-masonry { column-count: 3; }
+      .gallery-scroll .gallery-item { flex: 0 0 220px; }
       .nav-links { gap: 16px; font-size: 0.85rem; }
       .nav-links a { padding: 4px 8px; }
       .nav-links a i { font-size: 0.7rem; }
@@ -796,8 +826,9 @@
       .team-member-image.zoomed { transform: scale(1.4); }
       .team-member-info .member-name { font-size: 1.3rem; }
       .team-member.founder::before, .team-member.volunteer::before { font-size: 0.55rem; padding: 2px 10px; top: -8px; }
-      .gallery-masonry { column-count: 2; column-gap: 12px; }
-      .gallery-masonry .gallery-item { margin-bottom: 12px; border-radius: 16px; }
+      .gallery-scroll .gallery-item { flex: 0 0 180px; }
+      .gallery-scroll { gap: 12px; }
+      .gallery-scroll .gallery-item { border-radius: 16px; }
       .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 15px 10px; }
       .lightbox-prev { left: 8px; }
       .lightbox-next { right: 8px; }
@@ -848,8 +879,9 @@
       .hero .btn-wrapper { margin-top: 150px; }
       .btn { padding: 12px 24px; font-size: 0.85rem; }
       .btn i { margin-right: 6px; }
-      .gallery-masonry { column-count: 2; column-gap: 10px; }
-      .gallery-masonry .gallery-item { margin-bottom: 10px; border-radius: 14px; }
+      .gallery-scroll .gallery-item { flex: 0 0 150px; }
+      .gallery-scroll { gap: 10px; }
+      .gallery-scroll .gallery-item { border-radius: 14px; }
       .lightbox-prev, .lightbox-next { font-size: 1.5rem; padding: 12px 8px; }
       .lightbox-prev { left: 4px; }
       .lightbox-next { right: 4px; }
@@ -1070,10 +1102,10 @@
       </div>
     </section>
 
-    <!-- GALLERY - MASONRY -->
+    <!-- GALLERY - HORIZONTAL SCROLL -->
     <section class="gallery" id="gallery">
       <div class="gallery-header"><h2><span data-key="gallery-title">Galerie Foto</span></h2><div class="divider"></div></div>
-      <div class="gallery-masonry" id="galleryMasonry">
+      <div class="gallery-scroll" id="galleryScroll">
         <div class="gallery-item"><img src="images/gallery1.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery2.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery3.jpg" alt="Gallery photo" /></div>
@@ -1086,7 +1118,8 @@
         <div class="gallery-item"><img src="images/gallery10.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery11.jpg" alt="Gallery photo" /></div>
         <div class="gallery-item"><img src="images/gallery12.jpg" alt="Gallery photo" /></div>
-        <!-- You can add more images here: just copy the line above and change the number -->
+        <!-- ➕ ADD MORE IMAGES BELOW – just copy the line and change the number -->
+        <!-- <div class="gallery-item"><img src="images/gallery13.jpg" alt="Gallery photo" /></div> -->
       </div>
     </section>
 
