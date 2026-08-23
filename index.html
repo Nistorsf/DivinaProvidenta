@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Divina Providența</title>
+  <title>Divina Providența — Gropnița</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -141,13 +141,11 @@
     .nav-links a:hover { color: #a67c52; transform: translateY(-2px); background: rgba(166,124,82,0.05); }
     .nav-links a:active { transform: scale(0.95); }
 
-    /* ---------- LANGUAGE SWITCHER (Nav Item Style) ---------- */
+    /* ---------- LANGUAGE SWITCHER ---------- */
     .language-switcher {
       position: relative;
       display: inline-block;
     }
-
-    /* ✅ Language button now matches nav links */
     .language-btn {
       background: transparent;
       border: none;
@@ -164,77 +162,27 @@
       font-family: 'Inter', sans-serif;
       position: relative;
     }
-
-    .language-btn .current-flag {
-      font-size: 1rem;
-    }
-
-    .language-btn i {
-      font-size: 0.85rem;
-      opacity: 0.6;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .language-btn:hover {
-      color: #a67c52;
-      transform: translateY(-2px);
-      background: rgba(166,124,82,0.05);
-    }
-
-    .language-btn:hover i {
-      opacity: 1;
-      transform: translateY(-2px);
-    }
-
-    /* Underline animation for language button */
+    .language-btn .current-flag { font-size: 1rem; }
+    .language-btn i { font-size: 0.85rem; opacity: 0.6; transition: opacity 0.3s, transform 0.3s; }
+    .language-btn:hover { color: #a67c52; transform: translateY(-2px); background: rgba(166,124,82,0.05); }
+    .language-btn:hover i { opacity: 1; transform: translateY(-2px); }
     .language-btn::after {
-      content: '';
-      position: absolute;
-      bottom: 2px;
-      left: 50%;
-      width: 0;
-      height: 2.5px;
-      background: #a67c52;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
+      content: ''; position: absolute; bottom: 2px; left: 50%;
+      width: 0; height: 2.5px; background: #a67c52;
+      border-radius: 4px; transition: all 0.3s ease; transform: translateX(-50%);
     }
-
-    .language-btn:hover::after {
-      width: 70%;
-    }
-
-    /* Active state for language button (when dropdown is open) */
-    .language-btn.active-lang-btn {
-      color: #a67c52;
-      background: rgba(166,124,82,0.08);
-    }
-
-    .language-btn.active-lang-btn::after {
-      width: 70%;
-      background: #a67c52;
-    }
-
-    .language-btn.active-lang-btn i {
-      opacity: 1;
-      color: #a67c52;
-    }
-
-    .language-btn:active {
-      transform: scale(0.95);
-    }
+    .language-btn:hover::after { width: 70%; }
+    .language-btn.active-lang-btn { color: #a67c52; background: rgba(166,124,82,0.08); }
+    .language-btn.active-lang-btn::after { width: 70%; background: #a67c52; }
+    .language-btn.active-lang-btn i { opacity: 1; color: #a67c52; }
+    .language-btn:active { transform: scale(0.95); }
 
     .language-dropdown {
       display: none;
-      position: absolute;
-      top: 40px;
-      right: 0;
-      background: #fcf8f2;
-      border-radius: 16px;
+      position: absolute; top: 40px; right: 0;
+      background: #fcf8f2; border-radius: 16px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-      min-width: 180px;
-      overflow: hidden;
-      z-index: 100;
+      min-width: 180px; overflow: hidden; z-index: 100;
       border: 1px solid rgba(166,124,82,0.1);
     }
     .language-dropdown.active { display: block; animation: fadeDown 0.3s ease-out; }
@@ -288,11 +236,11 @@
     .float { animation: float 3.2s ease-in-out infinite; }
 
     /* ---------- SECTIONS ---------- */
-    .about, .services, .team, .contact, .gallery { scroll-margin-top: 70px; }
-    .about-header, .services-header, .team-header, .contact-header, .gallery-header {
+    .about, .services, .team, .gropnita, .gallery, .contact { scroll-margin-top: 70px; }
+    .about-header, .services-header, .team-header, .gropnita-header, .gallery-header, .contact-header {
       text-align: center; margin-bottom: 30px; perspective: 800px;
     }
-    .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 {
+    .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .contact-header h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.6rem; font-weight: 600; font-style: italic;
       color: #3d2c1e; display: inline-block;
@@ -300,19 +248,19 @@
       animation: float3D 6s ease-in-out infinite;
       transition: transform 0.3s ease; cursor: default;
     }
-    .about-header h2:hover, .services-header h2:hover, .team-header h2:hover, .contact-header h2:hover, .gallery-header h2:hover {
+    .about-header h2:hover, .services-header h2:hover, .team-header h2:hover, .gropnita-header h2:hover, .gallery-header h2:hover, .contact-header h2:hover {
       animation-play-state: paused; transform: translateZ(40px) scale(1.05);
     }
-    .about-header h2 span, .services-header h2 span, .team-header h2 span, .contact-header h2 span, .gallery-header h2 span {
+    .about-header h2 span, .services-header h2 span, .team-header h2 span, .gropnita-header h2 span, .gallery-header h2 span, .contact-header h2 span {
       color: #a67c52; background: #f5ede4; padding: 0 14px; border-radius: 40px;
       display: inline-block; box-shadow: 0 4px 20px rgba(166,124,82,0.08);
       transform-style: preserve-3d;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .about-header h2:hover span, .services-header h2:hover span, .team-header h2:hover span, .contact-header h2:hover span, .gallery-header h2:hover span {
+    .about-header h2:hover span, .services-header h2:hover span, .team-header h2:hover span, .gropnita-header h2:hover span, .gallery-header h2:hover span, .contact-header h2:hover span {
       box-shadow: 0 8px 40px rgba(166,124,82,0.15);
     }
-    .about-header .divider, .services-header .divider, .team-header .divider, .contact-header .divider, .gallery-header .divider {
+    .about-header .divider, .services-header .divider, .team-header .divider, .gropnita-header .divider, .gallery-header .divider, .contact-header .divider {
       width: 60px; height: 4px;
       background: linear-gradient(90deg, #c49a6c, #a67c52);
       margin: 8px auto 0; border-radius: 4px;
@@ -335,11 +283,13 @@
     .about-header h2 { animation-delay: 0s; }
     .services-header h2 { animation-delay: 0.5s; }
     .team-header h2 { animation-delay: 1s; }
+    .gropnita-header h2 { animation-delay: 0.7s; }
     .gallery-header h2 { animation-delay: 1.5s; }
     .contact-header h2 { animation-delay: 0.8s; }
     .about-header .divider { animation-delay: 0.2s; }
     .services-header .divider { animation-delay: 0.7s; }
     .team-header .divider { animation-delay: 1.2s; }
+    .gropnita-header .divider { animation-delay: 0.9s; }
     .gallery-header .divider { animation-delay: 1.7s; }
     .contact-header .divider { animation-delay: 1s; }
 
@@ -448,6 +398,195 @@
     .team-member-info .member-description { color: #4d3a2c; line-height: 1.6; font-size: 0.92rem; }
     .team-member-info .member-description .nickname { font-weight: 700; color: #a67c52; font-style: italic; }
     .team-member-info .member-description .highlight { color: #a67c52; font-weight: 600; }
+
+    /* ---------- GROPNIȚA SECTION ---------- */
+    .gropnita {
+      padding: 40px 0 50px;
+      margin-bottom: 10px;
+      animation: fadeUp 0.8s ease-out 0.35s both;
+    }
+
+    .gropnita-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gropnita-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    /* Image container */
+    .gropnita-image-container {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px -12px rgba(166,124,82,0.15);
+      background: #f5ede4;
+      aspect-ratio: 4/3;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gropnita-image-container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px -12px rgba(166,124,82,0.2);
+    }
+
+    .gropnita-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .gropnita-image-container:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Image overlay with Romania emblem */
+    .gropnita-image-overlay {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(252,248,242,0.9);
+      backdrop-filter: blur(4px);
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gropnita-image-overlay .flag {
+      font-size: 1.8rem;
+    }
+
+    .gropnita-image-overlay .label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3d2c1e;
+    }
+
+    /* Text content */
+    .gropnita-text-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .gropnita-text-content .intro {
+      font-size: 1.05rem;
+      color: #4d3a2c;
+      line-height: 1.7;
+      background: #f5ede4;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border-left: 4px solid #a67c52;
+    }
+
+    .gropnita-text-content .intro i {
+      color: #a67c52;
+      margin-right: 6px;
+    }
+
+    .gropnita-history {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .history-item {
+      background: #f5ede4;
+      padding: 16px 18px;
+      border-radius: 18px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(166,124,82,0.06);
+    }
+
+    .history-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08);
+    }
+
+    .history-item .h-icon {
+      font-size: 1.5rem;
+      color: #a67c52;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .history-item .h-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8a7566;
+      font-weight: 600;
+    }
+
+    .history-item .h-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #3d2c1e;
+      margin-top: 2px;
+    }
+
+    .gropnita-description {
+      background: #fcf8f2;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(166,124,82,0.08);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: #4d3a2c;
+    }
+
+    .gropnita-description strong {
+      color: #a67c52;
+    }
+
+    .gropnita-description .highlight-text {
+      color: #a67c52;
+      font-weight: 600;
+    }
+
+    .gropnita-description i {
+      color: #c49a6c;
+      margin: 0 4px;
+    }
+
+    .gropnita-monument {
+      background: linear-gradient(145deg, #f5ede4, #f0e6da);
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 2px solid rgba(166,124,82,0.12);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .gropnita-monument .monument-icon {
+      font-size: 2.2rem;
+      color: #a67c52;
+      flex-shrink: 0;
+    }
+
+    .gropnita-monument p {
+      font-size: 0.95rem;
+      color: #4d3a2c;
+      line-height: 1.6;
+    }
+
+    .gropnita-monument strong {
+      color: #a67c52;
+    }
 
     /* ---------- GALLERY ---------- */
     .gallery { padding: 40px 0 50px; margin-bottom: 10px; animation: fadeUp 0.8s ease-out 0.4s both; }
@@ -625,9 +764,11 @@
       .language-btn .current-flag { font-size: 0.85rem; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 30px; }
       .flag-icon { font-size: 1.8rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 2.2rem; }
+      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .contact-header h2 { font-size: 2.2rem; }
       .seasonal-particle { font-size: 1.4rem; }
       .gift-container { font-size: 2rem; padding: 8px 18px; gap: 14px; }
+      .gropnita-grid { grid-template-columns: 1fr; }
+      .gropnita-history { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 700px) {
       nav { justify-content: center; padding: 10px 0 8px; }
@@ -644,8 +785,8 @@
       .hero .subhead { font-size: 1rem; white-space: normal; }
       .hero .btn-wrapper { margin-top: 200px; }
       .btn { padding: 14px 32px; font-size: 0.95rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 2rem; }
-      .about-header, .services-header, .team-header, .contact-header, .gallery-header { margin-bottom: 20px; }
+      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .contact-header h2 { font-size: 2rem; }
+      .about-header, .services-header, .team-header, .gropnita-header, .gallery-header, .contact-header { margin-bottom: 20px; }
       .mission-card { padding: 24px 20px; }
       .mission-card p { font-size: 0.95rem; }
       .values-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -678,12 +819,19 @@
       .about { padding: 25px 0 20px; }
       .services { padding: 20px 0 20px; }
       .team { padding: 20px 0 20px; }
+      .gropnita { padding: 25px 0 30px; }
       .gallery { padding: 30px 0 30px; }
       .services-intro { font-size: 0.95rem; margin: 0 auto 18px; }
       .team-intro { font-size: 0.95rem; margin: 0 auto 20px; }
       .seasonal-particle { font-size: 1.2rem; }
       .seasonal-banner { font-size: 0.85rem; padding: 8px 16px; }
       .gift-container { font-size: 1.6rem; padding: 6px 14px; gap: 10px; bottom: 6px; }
+      .gropnita-grid { grid-template-columns: 1fr; }
+      .gropnita-history { grid-template-columns: 1fr; }
+      .gropnita-text-content .intro { font-size: 0.95rem; padding: 16px 18px; }
+      .gropnita-monument { flex-direction: column; text-align: center; padding: 16px; }
+      .gropnita-image-overlay { top: 10px; left: 10px; padding: 6px 12px; font-size: 1rem; }
+      .gropnita-image-overlay .flag { font-size: 1.4rem; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 14px; }
@@ -714,10 +862,15 @@
       .contact-info .contact-question { font-size: 1rem; }
       .flag-icon { font-size: 1.4rem; }
       .erasmus-card p { font-size: 0.8rem; }
-      .about-header h2, .services-header h2, .team-header h2, .contact-header h2, .gallery-header h2 { font-size: 1.7rem; }
+      .about-header h2, .services-header h2, .team-header h2, .gropnita-header h2, .gallery-header h2, .contact-header h2 { font-size: 1.7rem; }
       .seasonal-particle { font-size: 1rem; }
       .seasonal-banner { font-size: 0.75rem; padding: 6px 12px; }
       .gift-container { font-size: 1.3rem; padding: 4px 10px; gap: 8px; bottom: 4px; border-radius: 40px; }
+      .gropnita-text-content .intro { font-size: 0.9rem; padding: 14px; }
+      .gropnita-description { font-size: 0.88rem; padding: 16px; }
+      .history-item .h-value { font-size: 0.85rem; }
+      .gropnita-monument p { font-size: 0.88rem; }
+      .gropnita-image-overlay .label { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -740,17 +893,18 @@
   </div>
 
   <div class="container">
-    <!-- ✅ NAVIGATION - Language Switcher moved to the right of Contact -->
+    <!-- NAVIGATION -->
     <nav id="navbar">
       <div class="nav-links">
         <a href="#home" class="active" data-key="nav-home"><i class="fas fa-home"></i> <span>Acasă</span></a>
         <a href="#about" data-key="nav-about"><i class="fas fa-users"></i> <span>Cine suntem</span></a>
         <a href="#services" data-key="nav-services"><i class="fas fa-hand-holding-heart"></i> <span>Servicii</span></a>
         <a href="#team" data-key="nav-team"><i class="fas fa-user-friends"></i> <span>Echipa</span></a>
+        <a href="#gropnita" data-key="nav-gropnita"><i class="fas fa-landmark"></i> <span>Gropnița</span></a>
         <a href="#gallery" data-key="nav-gallery"><i class="fas fa-images"></i> <span>Galerie</span></a>
         <a href="#contact" data-key="nav-contact"><i class="fas fa-envelope"></i> <span>Contact</span></a>
 
-        <!-- ✅ Language Switcher - Now placed here, after Contact -->
+        <!-- Language Switcher -->
         <div class="language-switcher">
           <button class="language-btn" id="languageBtn">
             <span class="current-flag" id="currentFlag">🇷🇴</span>
@@ -828,6 +982,84 @@
             <div class="member-name">Croitoriu Petru</div>
             <div class="member-role" data-key="petru-role"><i class="fas fa-hands-helping"></i> Voluntar și Beneficiar</div>
             <div class="member-description" data-key="petru-desc"><span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.<br /><br />Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.<br /><br />De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.<br /><br /><i class="fas fa-heart" style="color:#8aaa7a;"></i> <span style="font-style:italic;color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span> <i class="fas fa-heart" style="color:#8aaa7a;"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ GROPNIȚA SECTION -->
+    <section class="gropnita" id="gropnita">
+      <div class="gropnita-header">
+        <h2><span data-key="gropnita-title">Gropnița</span></h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="gropnita-content">
+        <div class="gropnita-grid">
+          <!-- Image Container -->
+          <div class="gropnita-image-container">
+            <!-- 👇 Replace 'gropnita.jpg' with your actual image file -->
+            <img src="images/gropnita.jpg" alt="Gropnița, Iași" />
+            <div class="gropnita-image-overlay">
+              <span class="flag">🇷🇴</span>
+              <span class="label">România</span>
+            </div>
+          </div>
+
+          <!-- Text Content -->
+          <div class="gropnita-text-content">
+            <div class="intro">
+              <i class="fas fa-map-pin"></i>
+              <strong>Gropnița</strong> este o comună din județul <strong>Iași</strong>, Moldova, România, care cuprinde satele <strong>Bulbucani, Forăști, Gropnița, Mălăești, Săveni și Sângeri</strong>.
+            </div>
+
+            <div class="gropnita-history">
+              <div class="history-item">
+                <span class="h-icon">📅</span>
+                <span class="h-label">Secolul XIX</span>
+                <div class="h-value">2.026 locuitori</div>
+              </div>
+              <div class="history-item">
+                <span class="h-icon">📊</span>
+                <span class="h-label">1925</span>
+                <div class="h-value">2.441 locuitori</div>
+              </div>
+              <div class="history-item">
+                <span class="h-icon">🏛️</span>
+                <span class="h-label">Monument istoric</span>
+                <div class="h-value">1830</div>
+              </div>
+              <div class="history-item">
+                <span class="h-icon">📍</span>
+                <span class="h-label">Județ</span>
+                <div class="h-value">Iași</div>
+              </div>
+            </div>
+
+            <div class="gropnita-description">
+              <i class="fas fa-quote-left" style="color:#c49a6c;font-size:0.8rem;"></i>
+              La sfârșitul secolului al XIX-lea, comuna făcea parte din plasa Copou a județului Iași și era alcătuită din satele Gropnița, Sângeri, Bulbucani, Forăști, Mălăești și Miclești, cu un total de <strong>2.026 de locuitori</strong>. În comună funcționau trei mori de apă, uscătorii, trei biserici și o școală.
+              <i class="fas fa-quote-right" style="color:#c49a6c;font-size:0.8rem;"></i>
+            </div>
+
+            <div class="gropnita-description">
+              <i class="fas fa-quote-left" style="color:#c49a6c;font-size:0.8rem;"></i>
+              Anuarul Socec din <strong>1925</strong> o consemnează în plasa Bahlui a aceluiași județ, cu <strong>2.441 de locuitori</strong> în satele Forăști, Gropnița-Bulbucani, Mălăești și Sângeri.
+              <i class="fas fa-quote-right" style="color:#c49a6c;font-size:0.8rem;"></i>
+            </div>
+
+            <div class="gropnita-description">
+              <i class="fas fa-quote-left" style="color:#c49a6c;font-size:0.8rem;"></i>
+              În <strong>1950</strong>, comuna a fost transferată raionului Hârlău din regiunea Iași. În <strong>1968</strong>, a revenit, în componența actuală, la județul Iași.
+              <i class="fas fa-quote-right" style="color:#c49a6c;font-size:0.8rem;"></i>
+            </div>
+
+            <div class="gropnita-monument">
+              <span class="monument-icon">⛪</span>
+              <p>
+                <strong>Singurul obiectiv</strong> din satul Gropnița inclus în lista monumentelor istorice din județul Iași, clasificat ca monument de arhitectură, este biserica <strong>„Adormirea Maicii Domnului”</strong>, construită în <strong>1830</strong> și situată în satul Gropnița.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -916,22 +1148,14 @@
       const month = now.getMonth();
       const day = now.getDate();
 
-      // Christmas (Dec 24 - Jan 1)
       if (month === 11 && day >= 24 && day <= 31) return 'christmas';
       if (month === 0 && day === 1) return 'newyear';
-      // Halloween (Oct 31)
       if (month === 9 && day === 31) return 'halloween';
-      // La Befana (Jan 6)
       if (month === 0 && day === 6) return 'befana';
-      // St. Nicholas (Dec 6)
       if (month === 11 && day === 6) return 'stnicholas';
-      // St. Valentine (Feb 14)
       if (month === 1 && day === 14) return 'valentine';
-      // St. Patrick (Mar 17)
       if (month === 2 && day === 17) return 'stpatrick';
-      // All Saints (Nov 1)
       if (month === 10 && day === 1) return 'allsaints';
-      // Immaculate Conception (Dec 8)
       if (month === 11 && day === 8) return 'immaculate';
       return null;
     }
@@ -939,7 +1163,6 @@
     const season = getSeason();
     const holiday = getHoliday();
     const isHoliday = holiday !== null;
-    const pauseSummer = isHoliday;
 
     const seasonalConfig = {
       winter: { emojis: ['❄️','❄️','❄️','❄️','❄️','❄️'], count: 60, banner: { icon: '❄️', text: 'Iarnă magică! Sărbători fericite și un An Nou plin de bucurii! 🎄✨' }, heroClass: 'snow-effect' },
@@ -978,7 +1201,6 @@
     const overlay = document.getElementById('seasonalOverlay');
     const particles = [];
 
-    // Show/hide gift container
     const giftContainer = document.getElementById('giftContainer');
     if (isHoliday && config.showGifts) {
       giftContainer.style.display = 'flex';
@@ -986,7 +1208,6 @@
       giftContainer.style.display = 'none';
     }
 
-    // Decorations
     let decorationElements = [];
     if (isHoliday && config.decorations) {
       for (let i = 0; i < 20; i++) {
@@ -1007,7 +1228,6 @@
       }
     }
 
-    // Particles
     const particleEmojis = isHoliday ? config.emojis : config.emojis;
     const particleCount = isHoliday ? config.count : config.count;
 
@@ -1038,7 +1258,6 @@
     `;
     document.head.appendChild(styleSheet);
 
-    // ⏱️ Auto-stop after 10 seconds
     const stopDelay = 10000;
 
     setTimeout(function() {
@@ -1058,7 +1277,7 @@
     // ========== LANGUAGE TRANSLATIONS ==========
     const translations = {
       ro: {
-        'nav-home': 'Acasă', 'nav-about': 'Cine suntem', 'nav-services': 'Servicii', 'nav-team': 'Echipa', 'nav-gallery': 'Galerie', 'nav-contact': 'Contact',
+        'nav-home': 'Acasă', 'nav-about': 'Cine suntem', 'nav-services': 'Servicii', 'nav-team': 'Echipa', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-contact': 'Contact',
         'hero-subhead': '🪶 Unde căldura întâlnește îndrumarea divină 🪶', 'hero-btn': 'Descoperă serviciile noastre',
         'about-title': 'Cine suntem?', 'about-text': 'Suntem o organizație non-profit care crede din toată inima că <strong>fiecare om contează</strong>, indiferent de vârstă. Misiunea noastră este să construim <strong>punți calde</strong> între generații, să aducem educația mai aproape de comunități și să transformăm <strong>solidaritatea</strong> într-un motor real, plin de speranță, al schimbării sociale.',
         'value1-title': 'Prezență', 'value1-desc': 'Să fim acolo unde este nevoie, cu drag și fără judecată.',
@@ -1078,6 +1297,7 @@
         'mihaela-desc': 'Mihaela Ionescu este fondatoarea clubului nostru de seniori, un proiect născut din convingerea că experiența și energia seniorilor pot transforma o comunitate.<br /><br />Cu o pasiune constantă pentru conectarea oamenilor și dezvoltarea de activități care aduc bucurie, învățare și apartenență, Mihaela a pus bazele acestui spațiu — de la prima idee, până la activitățile și programele derulate astăzi prin proiectul <strong>ACTION</strong>.<br /><br /><em>„Pentru ea, un club de seniori nu este doar un loc de întâlnire, ci o comunitate în care fiecare poveste contează și fiecare voce are valoare.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Prin prezență, ascultare și acțiune, construim punți între generații.</span> ❤️',
         'petru-role': '🤝 Voluntar și Beneficiar',
         'petru-desc': '<span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.<br /><br />Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.<br /><br />De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span> 💚',
+        'gropnita-title': 'Gropnița',
         'gallery-title': 'Galerie Foto',
         'contact-title': 'Contact', 'contact-question': 'Vrei să te înscrii sau să afli mai multe detalii?',
         'contact-address-label': 'Sediul:', 'contact-address': 'Asociația Divina Providența, Gropnița, județul Iași',
@@ -1091,7 +1311,7 @@
         'footer-text': '❤️ Cu dragoste pentru comunitate ❤️'
       },
       en: {
-        'nav-home': 'Home', 'nav-about': 'About Us', 'nav-services': 'Services', 'nav-team': 'Team', 'nav-gallery': 'Gallery', 'nav-contact': 'Contact',
+        'nav-home': 'Home', 'nav-about': 'About Us', 'nav-services': 'Services', 'nav-team': 'Team', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Gallery', 'nav-contact': 'Contact',
         'hero-subhead': '🪶 Where warmth meets divine guidance 🪶', 'hero-btn': 'Discover our services',
         'about-title': 'About Us?', 'about-text': 'We are a non-profit organization that wholeheartedly believes that <strong>every person matters</strong>, regardless of age. Our mission is to build <strong>warm bridges</strong> between generations, bring education closer to communities, and transform <strong>solidarity</strong> into a real engine of social change, full of hope.',
         'value1-title': 'Presence', 'value1-desc': 'To be where needed, with love and without judgment.',
@@ -1111,6 +1331,7 @@
         'mihaela-desc': 'Mihaela Ionescu is the founder of our senior club, a project born from the conviction that the experience and energy of seniors can transform a community.<br /><br />With a constant passion for connecting people and developing activities that bring joy, learning, and belonging, Mihaela laid the foundations of this space — from the first idea to the activities and programs running today through the <strong>ACTION</strong> project.<br /><br /><em>„For her, a senior club is not just a meeting place, but a community where every story matters and every voice has value.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Through presence, listening, and action, we build bridges between generations.</span> ❤️',
         'petru-role': '🤝 Volunteer and Beneficiary',
         'petru-desc': '<span class="nickname">„Mr. Petrică”</span>, as we all affectionately call him, is a reliable person on our team, whom we can always count on. With a big heart and skilled not only in electrical work but also in all kinds of repairs, he always brings good humor, seriousness, and a youthful spirit around him.<br /><br />We appreciate his constant involvement, his elegant and youthful way of being, and the joy with which he is with us in everything we do.<br /><br />For more than a year, we have enjoyed his presence at <span class="highlight">Asociația Divina Providența</span> and the Day Center for the elderly, where he is both a <span class="highlight">beneficiary</span> and an <span class="highlight">involved volunteer</span>. In our activities, but especially on trips, we always feel him as a reliable partner — attentive, present, and ready to help whenever needed.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„With Mr. Petrică, every day is brighter!”</span> 💚',
+        'gropnita-title': 'Gropnița',
         'gallery-title': 'Photo Gallery',
         'contact-title': 'Contact', 'contact-question': 'Do you want to sign up or find out more details?',
         'contact-address-label': 'Address:', 'contact-address': 'Divina Providența Association, Gropnița, Iași County',
@@ -1124,7 +1345,7 @@
         'footer-text': '❤️ With love for the community ❤️'
       },
       fr: {
-        'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-services': 'Services', 'nav-team': 'Équipe', 'nav-gallery': 'Galerie', 'nav-contact': 'Contact',
+        'nav-home': 'Accueil', 'nav-about': 'À propos', 'nav-services': 'Services', 'nav-team': 'Équipe', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-contact': 'Contact',
         'hero-subhead': '🪶 Où la chaleur rencontre la guidance divine 🪶', 'hero-btn': 'Découvrez nos services',
         'about-title': 'Qui sommes-nous ?', 'about-text': 'Nous sommes une organisation à but non lucratif qui croit de tout cœur que <strong>chaque personne compte</strong>, quel que soit son âge. Notre mission est de construire des <strong>ponts chaleureux</strong> entre les générations, de rapprocher l\'éducation des communautés et de transformer la <strong>solidarité</strong> en un moteur réel de changement social, plein d\'espoir.',
         'value1-title': 'Présence', 'value1-desc': 'Être là où c\'est nécessaire, avec amour et sans jugement.',
@@ -1144,6 +1365,7 @@
         'mihaela-desc': 'Mihaela Ionescu est la fondatrice de notre club de seniors, un projet né de la conviction que l\'expérience et l\'énergie des seniors peuvent transformer une communauté.<br /><br />Avec une passion constante pour connecter les gens et développer des activités qui apportent joie, apprentissage et appartenance, Mihaela a posé les bases de cet espace — de la première idée aux activités et programmes menés aujourd\'hui à travers le projet <strong>ACTION</strong>.<br /><br /><em>„Pour elle, un club de seniors n\'est pas seulement un lieu de rencontre, mais une communauté où chaque histoire compte et chaque voix a de la valeur.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Par la présence, l\'écoute et l\'action, nous construisons des ponts entre les générations.</span> ❤️',
         'petru-role': '🤝 Bénévole et Bénéficiaire',
         'petru-desc': '<span class="nickname">„Monsieur Petrică”</span>, comme nous l\'appelons tous affectueusement, est une personne fiable de notre équipe, sur qui nous pouvons toujours compter. Avec un grand cœur et compétent non seulement en électricité mais aussi en toutes sortes de réparations, il apporte toujours autour de lui la bonne humeur, le sérieux et un esprit jeune.<br /><br />Nous apprécions son implication constante, sa façon élégante et jeune d\'être, et la joie avec laquelle il est avec nous dans tout ce que nous faisons.<br /><br />Depuis plus d\'un an, nous apprécions sa présence à <span class="highlight">l\'Asociația Divina Providența</span> et au Centre de jour pour personnes âgées, où il est à la fois <span class="highlight">bénéficiaire</span> et <span class="highlight">bénévole impliqué</span>. Dans nos activités, mais surtout lors des excursions, nous le sentons toujours comme un partenaire fiable — attentif, présent et prêt à aider chaque fois que c\'est nécessaire.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Avec Monsieur Petrică, chaque jour est plus lumineux!”</span> 💚',
+        'gropnita-title': 'Gropnița',
         'gallery-title': 'Galerie Photo',
         'contact-title': 'Contact', 'contact-question': 'Vous voulez vous inscrire ou en savoir plus ?',
         'contact-address-label': 'Adresse :', 'contact-address': 'Association Divina Providența, Gropnița, comté de Iași',
@@ -1157,7 +1379,7 @@
         'footer-text': '❤️ Avec amour pour la communauté ❤️'
       },
       de: {
-        'nav-home': 'Startseite', 'nav-about': 'Über uns', 'nav-services': 'Dienstleistungen', 'nav-team': 'Team', 'nav-gallery': 'Galerie', 'nav-contact': 'Kontakt',
+        'nav-home': 'Startseite', 'nav-about': 'Über uns', 'nav-services': 'Dienstleistungen', 'nav-team': 'Team', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galerie', 'nav-contact': 'Kontakt',
         'hero-subhead': '🪶 Wo Wärme auf göttliche Führung trifft 🪶', 'hero-btn': 'Entdecken Sie unsere Dienstleistungen',
         'about-title': 'Wer sind wir?', 'about-text': 'Wir sind eine gemeinnützige Organisation, die von ganzem Herzen glaubt, dass <strong>jeder Mensch zählt</strong>, unabhängig vom Alter. Unsere Mission ist es, <strong>warme Brücken</strong> zwischen Generationen zu bauen, Bildung näher an die Gemeinschaften zu bringen und <strong>Solidarität</strong> in eine reale, hoffnungsvolle Triebkraft des sozialen Wandels zu verwandeln.',
         'value1-title': 'Präsenz', 'value1-desc': 'Dort zu sein, wo es nötig ist, mit Liebe und ohne Urteil.',
@@ -1177,6 +1399,7 @@
         'mihaela-desc': 'Mihaela Ionescu ist die Gründerin unseres Seniorenclubs, ein Projekt, das aus der Überzeugung entstanden ist, dass die Erfahrung und Energie von Senioren eine Gemeinschaft verändern können.<br /><br />Mit einer ständigen Leidenschaft für die Verbindung von Menschen und die Entwicklung von Aktivitäten, die Freude, Lernen und Zugehörigkeit bringen, hat Mihaela den Grundstein für diesen Raum gelegt — von der ersten Idee bis zu den Aktivitäten und Programmen, die heute durch das <strong>ACTION</strong>-Projekt durchgeführt werden.<br /><br /><em>„Für sie ist ein Seniorenclub nicht nur ein Treffpunkt, sondern eine Gemeinschaft, in der jede Geschichte zählt und jede Stimme von Wert ist.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Durch Präsenz, Zuhören und Handeln bauen wir Brücken zwischen den Generationen.</span> ❤️',
         'petru-role': '🤝 Freiwilliger und Begünstigter',
         'petru-desc': '<span class="nickname">„Herr Petrică”</span>, wie wir ihn alle liebevoll nennen, ist eine zuverlässige Person in unserem Team, auf die wir uns immer verlassen können. Mit einem großen Herzen und nicht nur in Elektrik, sondern auch in allen Arten von Reparaturen geschickt, bringt er immer gute Laune, Ernsthaftigkeit und einen jugendlichen Geist um sich herum.<br /><br />Wir schätzen sein ständiges Engagement, seine elegante und jugendliche Art zu sein und die Freude, mit der er bei allem, was wir tun, dabei ist.<br /><br />Seit mehr als einem Jahr erfreuen wir uns seiner Anwesenheit bei <span class="highlight">Asociația Divina Providența</span> und im Tageszentrum für Senioren, wo er sowohl <span class="highlight">Begünstigter</span> als auch <span class="highlight">engagierter Freiwilliger</span> ist. In unseren Aktivitäten, aber besonders auf Ausflügen, fühlen wir ihn immer als einen zuverlässigen Partner — aufmerksam, präsent und bereit zu helfen, wann immer es nötig ist.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Mit Herrn Petrică ist jeder Tag heller!”</span> 💚',
+        'gropnita-title': 'Gropnița',
         'gallery-title': 'Fotogalerie',
         'contact-title': 'Kontakt', 'contact-question': 'Möchten Sie sich anmelden oder weitere Details erfahren?',
         'contact-address-label': 'Adresse:', 'contact-address': 'Divina Providența Verein, Gropnița, Kreis Iași',
@@ -1190,7 +1413,7 @@
         'footer-text': '❤️ Mit Liebe für die Gemeinschaft ❤️'
       },
       it: {
-        'nav-home': 'Home', 'nav-about': 'Chi siamo', 'nav-services': 'Servizi', 'nav-team': 'Squadra', 'nav-gallery': 'Galleria', 'nav-contact': 'Contatti',
+        'nav-home': 'Home', 'nav-about': 'Chi siamo', 'nav-services': 'Servizi', 'nav-team': 'Squadra', 'nav-gropnita': 'Gropnița', 'nav-gallery': 'Galleria', 'nav-contact': 'Contatti',
         'hero-subhead': '🪶 Dove il calore incontra la guida divina 🪶', 'hero-btn': 'Scopri i nostri servizi',
         'about-title': 'Chi siamo?', 'about-text': 'Siamo un\'organizzazione no-profit che crede con tutto il cuore che <strong>ogni persona conta</strong>, indipendentemente dall\'età. La nostra missione è costruire <strong>ponti caldi</strong> tra le generazioni, avvicinare l\'istruzione alle comunità e trasformare la <strong>solidarietà</strong> in un motore reale di cambiamento sociale, pieno di speranza.',
         'value1-title': 'Presenza', 'value1-desc': 'Essere dove c\'è bisogno, con amore e senza giudizio.',
@@ -1210,6 +1433,7 @@
         'mihaela-desc': 'Mihaela Ionescu è la fondatrice del nostro club per anziani, un progetto nato dalla convinzione che l\'esperienza e l\'energia degli anziani possano trasformare una comunità.<br /><br />Con una passione costante per connettere le persone e sviluppare attività che portano gioia, apprendimento e appartenenza, Mihaela ha gettato le basi di questo spazio — dalla prima idea alle attività e ai programmi in corso oggi attraverso il progetto <strong>ACTION</strong>.<br /><br /><em>„Per lei, un club per anziani non è solo un luogo d\'incontro, ma una comunità in cui ogni storia conta e ogni voce ha valore.”</em><br /><br />❤️ <span style="font-style:italic;color:#a67c52;">Attraverso la presenza, l\'ascolto e l\'azione, costruiamo ponti tra le generazioni.</span> ❤️',
         'petru-role': '🤝 Volontario e Beneficiario',
         'petru-desc': '<span class="nickname">„Signor Petrică”</span>, come lo chiamiamo tutti affettuosamente, è una persona affidabile del nostro team, su cui possiamo sempre contare. Con un grande cuore e abile non solo in elettronica ma anche in tutti i tipi di riparazioni, porta sempre intorno a sé buon umore, serietà e uno spirito giovane.<br /><br />Apprezziamo il suo costante impegno, il suo modo elegante e giovanile di essere, e la gioia con cui è con noi in tutto ciò che facciamo.<br /><br />Da più di un anno ci godiamo la sua presenza presso <span class="highlight">l\'Asociația Divina Providența</span> e il Centro diurno per anziani, dove è sia <span class="highlight">beneficiario</span> che <span class="highlight">volontario impegnato</span>. Nelle nostre attività, ma soprattutto nelle escursioni, lo sentiamo sempre come un partner affidabile — attento, presente e pronto ad aiutare ogni volta che ce n\'è bisogno.<br /><br />💚 <span style="font-style:italic;color:#6d8a5e;">„Con il signor Petrică, ogni giorno è più luminoso!”</span> 💚',
+        'gropnita-title': 'Gropnița',
         'gallery-title': 'Galleria Fotografica',
         'contact-title': 'Contatti', 'contact-question': 'Vuoi iscriverti o saperne di più?',
         'contact-address-label': 'Sede:', 'contact-address': 'Associazione Divina Providența, Gropnița, contea di Iași',
@@ -1234,14 +1458,12 @@
     const flagMap = { ro: '🇷🇴', en: '🇬🇧', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹' };
     const langMap = { ro: 'RO', en: 'EN', fr: 'FR', de: 'DE', it: 'IT' };
 
-    // Toggle dropdown
     langBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       langBtn.classList.toggle('active-lang-btn');
       langDropdown.classList.toggle('active');
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
       if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
         langDropdown.classList.remove('active');
@@ -1249,7 +1471,6 @@
       }
     });
 
-    // Language selection
     langLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
