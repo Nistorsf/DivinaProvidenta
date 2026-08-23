@@ -449,7 +449,6 @@
       transform: scale(1.03);
     }
 
-    /* Image overlay with Romania emblem */
     .gropnita-image-overlay {
       position: absolute;
       top: 16px;
@@ -497,45 +496,47 @@
       margin-right: 6px;
     }
 
+    /* --- COMPACT HISTORY BADGES --- */
     .gropnita-history {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 4px 0 8px;
     }
 
-    .history-item {
+    .history-badge {
       background: #f5ede4;
-      padding: 16px 18px;
-      border-radius: 18px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid rgba(166,124,82,0.06);
+      padding: 8px 16px;
+      border-radius: 40px;
+      border: 1px solid rgba(166,124,82,0.10);
+      box-shadow: 0 2px 8px rgba(166,124,82,0.04);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
     }
 
-    .history-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08);
+    .history-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(166,124,82,0.08);
     }
 
-    .history-item .h-icon {
-      font-size: 1.5rem;
+    .history-badge .h-icon {
+      font-size: 1.1rem;
       color: #a67c52;
-      margin-bottom: 6px;
-      display: block;
     }
 
-    .history-item .h-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #8a7566;
-      font-weight: 600;
+    .history-badge .h-label {
+      font-weight: 500;
+      color: #6b5544;
     }
 
-    .history-item .h-value {
-      font-size: 0.95rem;
-      font-weight: 600;
+    .history-badge .h-value {
+      font-weight: 700;
       color: #3d2c1e;
-      margin-top: 2px;
     }
 
     .gropnita-description {
@@ -768,7 +769,8 @@
       .seasonal-particle { font-size: 1.4rem; }
       .gift-container { font-size: 2rem; padding: 8px 18px; gap: 14px; }
       .gropnita-grid { grid-template-columns: 1fr; }
-      .gropnita-history { grid-template-columns: 1fr 1fr; }
+      .gropnita-history { gap: 8px; }
+      .history-badge { font-size: 0.75rem; padding: 6px 12px; }
     }
     @media (max-width: 700px) {
       nav { justify-content: center; padding: 10px 0 8px; }
@@ -827,11 +829,13 @@
       .seasonal-banner { font-size: 0.85rem; padding: 8px 16px; }
       .gift-container { font-size: 1.6rem; padding: 6px 14px; gap: 10px; bottom: 6px; }
       .gropnita-grid { grid-template-columns: 1fr; }
-      .gropnita-history { grid-template-columns: 1fr; }
       .gropnita-text-content .intro { font-size: 0.95rem; padding: 16px 18px; }
       .gropnita-monument { flex-direction: column; text-align: center; padding: 16px; }
       .gropnita-image-overlay { top: 10px; left: 10px; padding: 6px 12px; font-size: 1rem; }
       .gropnita-image-overlay .flag { font-size: 1.4rem; }
+      .gropnita-history { gap: 6px; }
+      .history-badge { font-size: 0.7rem; padding: 4px 10px; gap: 4px; }
+      .history-badge .h-icon { font-size: 0.9rem; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 14px; }
@@ -868,9 +872,11 @@
       .gift-container { font-size: 1.3rem; padding: 4px 10px; gap: 8px; bottom: 4px; border-radius: 40px; }
       .gropnita-text-content .intro { font-size: 0.9rem; padding: 14px; }
       .gropnita-description { font-size: 0.88rem; padding: 16px; }
-      .history-item .h-value { font-size: 0.85rem; }
       .gropnita-monument p { font-size: 0.88rem; }
       .gropnita-image-overlay .label { font-size: 0.7rem; }
+      .gropnita-history { gap: 4px; }
+      .history-badge { font-size: 0.65rem; padding: 3px 8px; gap: 3px; }
+      .history-badge .h-icon { font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -987,7 +993,7 @@
       </div>
     </section>
 
-    <!-- ✅ GROPNIȚA SECTION -->
+    <!-- ✅ GROPNIȚA SECTION with compact badges -->
     <section class="gropnita" id="gropnita">
       <div class="gropnita-header">
         <h2><span data-key="gropnita-title">Gropnița</span></h2>
@@ -998,7 +1004,6 @@
         <div class="gropnita-grid">
           <!-- Image Container -->
           <div class="gropnita-image-container">
-            <!-- 👇 Replace 'gropnita.jpg' with your actual image file -->
             <img src="images/gropnita.jpg" alt="Gropnița, Iași" />
             <div class="gropnita-image-overlay">
               <span class="flag">🇷🇴</span>
@@ -1013,27 +1018,33 @@
               <strong>Gropnița</strong> este o comună din județul <strong>Iași</strong>, Moldova, România, care cuprinde satele <strong>Bulbucani, Forăști, Gropnița, Mălăești, Săveni și Sângeri</strong>.
             </div>
 
+            <!-- COMPACT HISTORY BADGES -->
             <div class="gropnita-history">
-              <div class="history-item">
+              <span class="history-badge">
                 <span class="h-icon">📅</span>
+                <span class="h-label">17 Iulie</span>
+                <span class="h-value">—</span>
+              </span>
+              <span class="history-badge">
+                <span class="h-icon">📜</span>
                 <span class="h-label">Secolul XIX</span>
-                <div class="h-value">2.026 locuitori</div>
-              </div>
-              <div class="history-item">
+                <span class="h-value">2.026 locuitori</span>
+              </span>
+              <span class="history-badge">
                 <span class="h-icon">📊</span>
                 <span class="h-label">1925</span>
-                <div class="h-value">2.441 locuitori</div>
-              </div>
-              <div class="history-item">
+                <span class="h-value">2.441 locuitori</span>
+              </span>
+              <span class="history-badge">
                 <span class="h-icon">🏛️</span>
-                <span class="h-label">Monument istoric</span>
-                <div class="h-value">1830</div>
-              </div>
-              <div class="history-item">
+                <span class="h-label">Monument</span>
+                <span class="h-value">1830</span>
+              </span>
+              <span class="history-badge">
                 <span class="h-icon">📍</span>
                 <span class="h-label">Județ</span>
-                <div class="h-value">Iași</div>
-              </div>
+                <span class="h-value">Iași</span>
+              </span>
             </div>
 
             <div class="gropnita-description">
