@@ -475,44 +475,128 @@
     .team-intro { max-width: 650px; margin: 0 auto 20px; text-align: center; font-size: 0.95rem; color: #5a4030; line-height: 1.7; }
     .team-intro i { color: #c49a6c; }
     .team-grid { display: flex; flex-direction: column; gap: 20px; }
+
+    /* ---------- TEAM MEMBER (shared) ---------- */
     .team-member {
-      display: flex; align-items: center; gap: 24px;
-      background: #f5ede4; padding: 20px; border-radius: 28px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: #f5ede4;
+      padding: 20px;
+      border-radius: 28px;
       box-shadow: 0 8px 24px -8px rgba(166,124,82,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
       border: 1px solid rgba(255,255,255,0.3);
-      transition: transform 0.3s, box-shadow 0.3s; animation: fadeUp 0.8s ease-out both;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeUp 0.8s ease-out both;
     }
     .team-member:nth-child(1) { animation-delay: 0.1s; }
     .team-member:nth-child(2) { animation-delay: 0.3s; }
+    .team-member:nth-child(3) { animation-delay: 0.5s; }
     .team-member:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(166,124,82,0.14); }
     .team-member:nth-child(even) { flex-direction: row-reverse; }
-    .team-member.founder { border: 2px solid #a67c52; background: linear-gradient(145deg, #f5ede4, #f0e6da); position: relative; }
-    .team-member.founder::before { content: '⭐ Fondator'; position: absolute; top: -10px; right: 20px; background: #a67c52; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 2px 12px; border-radius: 30px; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(166,124,82,0.2); }
-    .team-member.volunteer { border: 2px solid #8aaa7a; background: linear-gradient(145deg, #f5f5ed, #eef0e8); position: relative; }
-    .team-member.volunteer::before { content: '🤝 Voluntar'; position: absolute; top: -10px; right: 20px; background: #8aaa7a; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 2px 12px; border-radius: 30px; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(138,170,122,0.2); }
-    .team-member-image {
-      flex-shrink: 0; width: 120px; height: 120px; border-radius: 50%;
-      overflow: hidden; border: 4px solid #ffffff;
-      box-shadow: 0 8px 24px rgba(166,124,82,0.12);
-      background: #e8ddd0; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Founder */
+    .team-member.founder {
+      border: 2px solid #a67c52;
+      background: linear-gradient(145deg, #f5ede4, #f0e6da);
       position: relative;
+    }
+    .team-member.founder::before {
+      content: '⭐ Fondator';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #a67c52;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 2px 12px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(166,124,82,0.2);
+    }
+
+    /* Volunteer */
+    .team-member.volunteer {
+      border: 2px solid #8aaa7a;
+      background: linear-gradient(145deg, #f5f5ed, #eef0e8);
+      position: relative;
+    }
+    .team-member.volunteer::before {
+      content: '🤝 Voluntar';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #8aaa7a;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 2px 12px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(138,170,122,0.2);
+    }
+
+    /* Poet / Professor (new) */
+    .team-member.poet {
+      border: 2px solid #b8860b;
+      background: linear-gradient(145deg, #f5f0e8, #f0e8dd);
+      position: relative;
+    }
+    .team-member.poet::before {
+      content: '📖 Profesor & Poet';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #b8860b;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 2px 12px;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.25);
+    }
+
+    .team-member-image {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #ffffff;
+      box-shadow: 0 8px 24px rgba(166,124,82,0.12);
+      background: #e8ddd0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      font-size: 2.5rem;
+      color: #a67c52;
     }
     .team-member-image:hover { transform: scale(1.05); box-shadow: 0 12px 32px rgba(166,124,82,0.2); }
     .team-member-image.zoomed { transform: scale(1.5); box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 10; border-color: #a67c52; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease; }
     .team-member-image.zoomed img { transform: scale(1); }
     .team-member-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
     .team-member-image:hover img { transform: scale(1.08); }
+
     .team-member.founder .team-member-image { border-color: #a67c52; box-shadow: 0 8px 24px rgba(166,124,82,0.2); }
     .team-member.volunteer .team-member-image { border-color: #8aaa7a; box-shadow: 0 8px 24px rgba(138,170,122,0.2); }
+    .team-member.poet .team-member-image { border-color: #b8860b; box-shadow: 0 8px 24px rgba(184, 134, 11, 0.2); }
+
     .team-member-info { flex: 1; }
     .team-member-info .member-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: #3d2c1e; margin-bottom: 2px; }
     .team-member.founder .member-name { color: #a67c52; }
     .team-member.volunteer .member-name { color: #6d8a5e; }
+    .team-member.poet .member-name { color: #b8860b; }
     .team-member-info .member-role { font-size: 0.85rem; font-weight: 600; color: #a67c52; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .team-member.poet .member-role { color: #b8860b; }
     .team-member-info .member-description { color: #4d3a2c; line-height: 1.6; font-size: 0.85rem; }
     .team-member-info .member-description .nickname { font-weight: 700; color: #a67c52; font-style: italic; }
     .team-member-info .member-description .highlight { color: #a67c52; font-weight: 600; }
+    .team-member.poet .member-description .highlight { color: #b8860b; }
 
     /* ---------- GROPNIȚA ---------- */
     .gropnita {
@@ -759,7 +843,6 @@
       opacity: 0.4;
     }
 
-    /* Carousel buttons */
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -805,7 +888,6 @@
       right: 8px;
     }
 
-    /* Carousel dots */
     .carousel-dots {
       display: flex;
       justify-content: center;
@@ -1136,7 +1218,7 @@
       .team-member-image { width: 120px; height: 120px; }
       .team-member-image.zoomed { transform: scale(1.4); }
       .team-member-info .member-role { justify-content: center; }
-      .team-member.founder::before, .team-member.volunteer::before { right: 50%; transform: translateX(50%); top: -8px; }
+      .team-member.founder::before, .team-member.volunteer::before, .team-member.poet::before { right: 50%; transform: translateX(50%); top: -8px; }
       .hero { min-height: 400px; }
       .hero .subhead { font-size: 1.1rem; margin-top: -50px; }
       .gallery-masonry { column-count: 3; }
@@ -1176,7 +1258,7 @@
       .team-member-image { width: 100px; height: 100px; }
       .team-member-image.zoomed { transform: scale(1.3); }
       .team-member-info .member-name { font-size: 1.1rem; }
-      .team-member.founder::before, .team-member.volunteer::before { font-size: 0.5rem; padding: 2px 8px; top: -6px; }
+      .team-member.founder::before, .team-member.volunteer::before, .team-member.poet::before { font-size: 0.5rem; padding: 2px 8px; top: -6px; }
       .gallery-masonry { column-count: 2; column-gap: 12px; }
       .gallery-masonry .gallery-item { margin-bottom: 12px; border-radius: 14px; }
       .lightbox-prev, .lightbox-next { font-size: 1.6rem; padding: 12px 8px; }
@@ -1252,7 +1334,7 @@
       .contact-item { flex-wrap: wrap; justify-content: center; gap: 2px; border-radius: 30px; }
       .team-member-image { width: 80px; height: 80px; }
       .team-member-image.zoomed { transform: scale(1.2); }
-      .team-member.founder::before, .team-member.volunteer::before { font-size: 0.45rem; padding: 2px 6px; top: -6px; }
+      .team-member.founder::before, .team-member.volunteer::before, .team-member.poet::before { font-size: 0.45rem; padding: 2px 6px; top: -6px; }
       .contact-info .contact-question { font-size: 0.9rem; }
       .flag-icon { font-size: 1.2rem; }
       .erasmus-card p { font-size: 0.75rem; }
@@ -1382,7 +1464,7 @@
       </div>
     </section>
 
-    <!-- TEAM -->
+    <!-- ========== TEAM ========== -->
     <section class="team" id="team">
       <div class="section-header-ai">
         <div class="team-header"><h2><span data-key="team-title">Echipa Noastră</span></h2><div class="divider"></div></div>
@@ -1390,22 +1472,52 @@
       </div>
       <div class="team-intro" data-key="team-intro"><i class="fas fa-heart"></i> Oamenii din spatele misiunii noastre – dedicați, pasionați și mereu aproape de comunitate. <i class="fas fa-heart"></i></div>
       <div class="team-grid">
+
+        <!-- 1. Mihaela Ionescu (Founder) -->
         <div class="team-member founder">
-          <div class="team-member-image" id="mihaelaPhoto"><img src="images/mihaela-ionescu.jpg" alt="Mihaela Ionescu" /></div>
+          <div class="team-member-image" id="mihaelaPhoto">
+            <img src="images/mihaela-ionescu.jpg" alt="Mihaela Ionescu" />
+          </div>
           <div class="team-member-info">
             <div class="member-name">Mihaela Ionescu</div>
             <div class="member-role" data-key="mihaela-role"><i class="fas fa-crown"></i> Membru Fondator</div>
             <div class="member-description" data-key="mihaela-desc">Mihaela Ionescu este fondatoarea clubului nostru de seniori, un proiect născut din convingerea că experiența și energia seniorilor pot transforma o comunitate.<br /><br />Cu o pasiune constantă pentru conectarea oamenilor și dezvoltarea de activități care aduc bucurie, învățare și apartenență, Mihaela a pus bazele acestui spațiu — de la prima idee, până la activitățile și programele derulate astăzi prin proiectul <strong>ACTION</strong>.<br /><br /><em>„Pentru ea, un club de seniori nu este doar un loc de întâlnire, ci o comunitate în care fiecare poveste contează și fiecare voce are valoare.”</em><br /><br /><i class="fas fa-quote-left" style="color:#c49a6c;"></i> <span style="font-style:italic;color:#a67c52;">Prin prezență, ascultare și acțiune, construim punți între generații.</span> <i class="fas fa-quote-right" style="color:#c49a6c;"></i></div>
           </div>
         </div>
+
+        <!-- 2. Croitoriu Petru (Volunteer) -->
         <div class="team-member volunteer">
-          <div class="team-member-image" id="petruPhoto"><img src="images/croitoriu-petru.jpg" alt="Croitoriu Petru" /></div>
+          <div class="team-member-image" id="petruPhoto">
+            <img src="images/croitoriu-petru.jpg" alt="Croitoriu Petru" />
+          </div>
           <div class="team-member-info">
             <div class="member-name">Croitoriu Petru</div>
             <div class="member-role" data-key="petru-role"><i class="fas fa-hands-helping"></i> Voluntar și Beneficiar</div>
             <div class="member-description" data-key="petru-desc"><span class="nickname">„Domnul Petrică”</span>, cum îi spunem cu drag toți, este un om de nădejde al echipei noastre, pe care ne putem baza oricând. Cu suflet mare și priceput nu doar la electrice, ci și la reparații de tot felul, aduce mereu în jurul său bună dispoziție, seriozitate și un spirit tânăr.<br /><br />Îl apreciem pentru implicarea sa constantă, pentru felul elegant și tineresc de a fi, și pentru bucuria cu care este alături de noi în tot ce facem.<br /><br />De mai bine de un an ne bucurăm de prezența sa la <span class="highlight">Asociația Divina Providența</span> și la Centrul de zi pentru vârstnici, unde este atât <span class="highlight">beneficiar</span>, cât și <span class="highlight">voluntar implicat</span>. În activitățile noastre, dar mai ales în excursii, îl simțim mereu ca pe un partener de nădejde — atent, prezent și gata să ajute oricând este nevoie.<br /><br /><i class="fas fa-heart" style="color:#8aaa7a;"></i> <span style="font-style:italic;color:#6d8a5e;">„Cu domnul Petrică, fiecare zi este mai luminoasă!”</span> <i class="fas fa-heart" style="color:#8aaa7a;"></i></div>
           </div>
         </div>
+
+        <!-- 3. Burlacu Petru (Poet & Professor) - NEW -->
+        <div class="team-member poet">
+          <div class="team-member-image" id="burlacuPhoto">
+            <!-- 👇 Replace the placeholder below with his actual photo -->
+            <span style="font-size:2.8rem; color:#b8860b; opacity:0.5;">📖</span>
+            <!-- <img src="images/burlacu-petru.jpg" alt="Burlacu Petru" /> -->
+          </div>
+          <div class="team-member-info">
+            <div class="member-name">Burlacu Petru</div>
+            <div class="member-role"><i class="fas fa-feather-alt"></i> Profesor, Poet și Voluntar</div>
+            <div class="member-description">
+              Dinamic, carismatic și dornic de a dărui mai departe, <span class="highlight">Burlacu Petru</span> este profesor la pensie, poet și voluntar activ.<br /><br />
+              Cu o carieră de peste <strong>30 de ani</strong> ca director și dirijor al corului de copii la școala din Vlădeni, își continuă astăzi misiunea prin lansări de carte și proiecte de voluntariat în sprijinul asociației.
+              <br /><br />
+              <i class="fas fa-quote-left" style="color:#b8860b; opacity:0.5;"></i>
+              <span style="font-style:italic; color:#b8860b;">„Muzica și cuvintele au puterea de a vindeca și de a uni generații.”</span>
+              <i class="fas fa-quote-right" style="color:#b8860b; opacity:0.5;"></i>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1455,7 +1567,7 @@
             <!-- ========== OBJECTIVES WITH CAROUSELS ========== -->
             <div class="gropnita-objectives">
 
-              <!-- Objective 1: Adormirea Maicii Domnului (3 photos) -->
+              <!-- Objective 1: Adormirea Maicii Domnului -->
               <div class="gropnita-objective">
                 <div class="objective-content">
                   <div class="objective-text">
@@ -1481,7 +1593,7 @@
                 </div>
               </div>
 
-              <!-- Objective 2: Parohia Romano Catolică Săveni (4 photos) -->
+              <!-- Objective 2: Parohia Romano Catolică Săveni -->
               <div class="gropnita-objective">
                 <div class="objective-content">
                   <div class="objective-text">
